@@ -25,8 +25,9 @@ class NetworkModule {
 
     @Provides
     fun provideOkHttpClient(interceptor: HttpLoggingInterceptor, authInterceptor: AuthInterceptor): OkHttpClient =
-            OkHttpClient.Builder().addInterceptor(interceptor)
+            OkHttpClient.Builder()
                     .addInterceptor(authInterceptor)
+                    .addInterceptor(interceptor)
                     .addNetworkInterceptor(StethoInterceptor())
                     .build()
 

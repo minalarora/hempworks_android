@@ -1,6 +1,8 @@
 package com.hemp.works.base
 
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 import timber.log.Timber
 /**
@@ -9,8 +11,11 @@ import timber.log.Timber
 abstract class BaseDataSource {
 
     protected suspend fun <T> getResult(call: suspend () -> Response<T>): Result<T> {
+
         try {
-            val response = call()
+            val response = withContext(Dispatchers.IO){
+                return@withContext call()
+            }
             if (response.isSuccessful) {
                 val body = response.body()
                 if (body != null) return Result.success(body)

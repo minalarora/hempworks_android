@@ -25,10 +25,10 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", "BASE_URL", "\"www.hempworks.in\""
+            buildConfigField "String", "BASE_URL", "\"https://hempworks-web-l5hj7.ondigitalocean.app\""
         }
         release {
-            buildConfigField "String", "BASE_URL", "\"www.hempworks.in\""
+            buildConfigField "String", "BASE_URL", "\"https://hempworks-web-l5hj7.ondigitalocean.app\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -101,6 +101,12 @@ dependencies {
     implementation "com.facebook.stetho:stetho:1.5.1"
     implementation "com.facebook.stetho:stetho-okhttp3:1.5.1"
 
+    //Dimen
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
+    //otp
+    implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.2'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

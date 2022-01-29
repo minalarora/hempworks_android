@@ -5,7 +5,101 @@
     xmlns:tools="http://schemas.android.com/tools">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/black" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/textview_bold_big"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:gravity="left"
+            android:text="@string/enter_mobile_number"
+            app:layout_constraintTop_toBottomOf="@id/back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/textview_bold_big"
+            android:singleLine="true"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:padding="@dimen/_8sdp"
+            android:drawableStart="@drawable/ic_india"
+            android:drawablePadding="@dimen/_10sdp"
+            android:backgroundTint="@color/black"
+            android:inputType="number"
+            android:letterSpacing="0.1"
+            android:maxLength="10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="8871748278"/>
+
+        <com.mukesh.OtpView
+            android:id="@+id/otp"
+            style="@style/textview_bold_big"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="number"
+            android:textColor="@color/black"
+            app:OtpItemCount="4"
+            app:OtpViewType="line"
+            app:OtpItemSpacing="@dimen/_10sdp"
+            app:OtpCursorColor="@color/orange_F8AA37"
+            app:OtpLineColor="@color/black"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_25sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mobile" />
+
+
+        <TextView
+            android:id="@+id/verify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/textview_bold_medium"
+            android:textColor="@color/white"
+            android:text="@string/continue_text"
+            android:background="@drawable/background_orange_corner_radius"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginHorizontal="@dimen/_24sdp"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@id/otp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/resend_otp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/textview_normal_small"
+            android:textColor="@color/orange_F8AA37"
+            android:text="@string/resend_otp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginHorizontal="@dimen/_25sdp"
+            app:layout_constraintTop_toBottomOf="@id/verify"
+            app:layout_constraintEnd_toEndOf="parent" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

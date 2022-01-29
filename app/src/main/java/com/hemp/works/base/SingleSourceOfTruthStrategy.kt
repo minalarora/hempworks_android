@@ -1,10 +1,12 @@
 package com.hemp.works.base
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import com.hemp.works.base.Result.Status.ERROR
 import com.hemp.works.base.Result.Status.SUCCESS
+import com.hemp.works.login.data.model.User
 import kotlinx.coroutines.Dispatchers
 
 /**
@@ -33,3 +35,4 @@ fun <T, A> resultLiveData(databaseQuery: () -> LiveData<T>,
                 emitSource(source)
             }
         }
+

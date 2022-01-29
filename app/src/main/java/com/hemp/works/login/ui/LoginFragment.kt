@@ -39,6 +39,8 @@ class LoginFragment : Fragment(), Injectable {
             inflater, R.layout.fragment_login, container, false).apply {
             lifecycleOwner = this@LoginFragment
         }
+
+        binding.login
         return binding.root
     }
 

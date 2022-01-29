@@ -1,17 +1,14 @@
 package com.hemp.works.base
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
-interface BaseViewModel  {
+abstract class BaseViewModel(repository: BaseRepository): ViewModel()  {
 
-    val error: SingleLiveEvent<String>
-        get() = SingleLiveEvent()
+    val error: LiveData<String> = repository.error
 
-    val _loading: MutableLiveData<Boolean>
-        get() = MutableLiveData(false)
-
-    val loading: LiveData<Boolean>
-        get() = _loading
+    val loading: LiveData<Boolean> = repository.loading
 
 }

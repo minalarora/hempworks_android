@@ -5,7 +5,6 @@ import com.hemp.works.base.BaseViewModel
 import com.hemp.works.login.data.repository.LoginRepository
 import javax.inject.Inject
 
-class CreateViewModel @Inject constructor(private val repository: LoginRepository) : ViewModel(), BaseViewModel {
-
+class CreateViewModel @Inject constructor(private val repository: LoginRepository) :  BaseViewModel(repository) {
 
 }
