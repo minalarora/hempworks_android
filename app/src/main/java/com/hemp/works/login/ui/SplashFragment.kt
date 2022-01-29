@@ -43,14 +43,15 @@ class SplashFragment : Fragment(), Injectable {
         }
 
         viewModel.user.observe(viewLifecycleOwner) {
-            it.doctor?.let {
-                //TODO: GOTO DOCTOR DASHBOARD
-            }
-            it.admin?.let {
-                //TODO: GOTO ADMIN DASHBOARD
-            }
             if (it.token.isNullOrBlank()) {
                 onNoUserFound()
+            } else {
+                it.doctor?.let {
+                    //TODO: GOTO DOCTOR DASHBOARD
+                }
+                it.admin?.let {
+                    //TODO: GOTO ADMIN DASHBOARD
+                }
             }
         }
 

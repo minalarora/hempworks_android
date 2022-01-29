@@ -14,12 +14,14 @@
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_onboardingFragment"
             app:destination="@id/onboardingFragment"
             app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -31,6 +33,7 @@
             android:id="@+id/action_loginFragment_to_verifyMobileFragment"
             app:destination="@id/verifyMobileFragment"
             app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/loginFragment" />
     </fragment>
     <fragment
@@ -51,6 +54,7 @@
             android:id="@+id/action_forgetPasswordFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
         <argument
@@ -67,7 +71,8 @@
             android:id="@+id/action_onboardingFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popUpTo="@id/splashFragment"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/onboardingFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -79,11 +84,13 @@
             android:id="@+id/action_verifyMobileFragment_to_createFragment"
             app:destination="@id/createFragment"
             app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/loginFragment" />
         <action
             android:id="@+id/action_verifyMobileFragment_to_forgetPasswordFragment"
             app:destination="@id/forgetPasswordFragment"
             app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/loginFragment" />
         <argument
             android:name="reason"

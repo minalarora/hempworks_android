@@ -21,7 +21,6 @@
         <activity
             android:screenOrientation="portrait"
             android:resizeableActivity="false"
-            android:noHistory="true"
             android:name=".login.LoginActivity"
             android:windowSoftInputMode="adjustPan"
             android:exported="true">

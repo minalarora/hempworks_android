@@ -16,7 +16,7 @@ abstract class BaseRepository {
     val loading: LiveData<Boolean>
         get() = _loading
 
-    protected suspend fun <T> getResult(call: suspend () -> Result<T>) : Result<T>? {
+    protected suspend fun <T> getResult( error: String? = null, call: suspend () -> Result<T>) : Result<T>? {
 
         return try {
 
@@ -24,14 +24,14 @@ abstract class BaseRepository {
             val result = call.invoke()
             _loading.postValue(false)
 
-            if (result.status == Result.Status.SUCCESS) {
+            if (result.status == Result.Status.SUCCESS && result.data != null) {
                 result
             } else {
-                _error.value = result.message!!
+                _error.postValue(error ?: result.message!!)
                 null
             }
         } catch (e: Exception) {
-            _error.value = e.message
+            _error.postValue(error ?: e.message)
             null
         }
     }

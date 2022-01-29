@@ -10,4 +10,5 @@
 
     <color name="orange_F8AA37">#f8aa37</color>
     <color name="grey_AAAAAA">#aaa</color>
+    <color name="grey_transparent">#60000000</color>
 </resources>

@@ -3,6 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.hemp.works.login.ui.viewmodel.VerifyMobileViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,10 +34,11 @@
             android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginHorizontal="@dimen/_20sdp"
             android:gravity="left"
-            android:text="@string/enter_mobile_number"
+            android:text="@{viewmodel.isMobileState ? @string/enter_mobile_number : @string/enter_otp}"
             app:layout_constraintTop_toBottomOf="@id/back"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="@string/enter_mobile_number"/>
 
         <EditText
             android:id="@+id/mobile"
@@ -47,10 +55,14 @@
             android:inputType="number"
             android:letterSpacing="0.1"
             android:maxLength="10"
+            android:hint="@string/mobile_number"
+            android:focusable="@{viewmodel.isMobileState}"
+            android:cursorVisible="@{viewmodel.isMobileState}"
+            android:clickable="@{viewmodel.isMobileState}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
-            tools:text="8871748278"/>
+            tools:text=""/>
 
         <com.mukesh.OtpView
             android:id="@+id/otp"
@@ -67,9 +79,11 @@
             app:OtpLineColor="@color/black"
             android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginHorizontal="@dimen/_25sdp"
+            hideIfTrue="@{viewmodel.isMobileState}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mobile" />
+            app:layout_constraintTop_toBottomOf="@id/mobile"
+            tools:visibility="gone"/>
 
 
         <TextView
@@ -95,12 +109,19 @@
             style="@style/textview_normal_small"
             android:textColor="@color/orange_F8AA37"
             android:text="@string/resend_otp"
+            hideIfTrue="@{viewmodel.isMobileState}"
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginHorizontal="@dimen/_25sdp"
             app:layout_constraintTop_toBottomOf="@id/verify"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="gone"/>
 
 
+        <include
+            layout="@layout/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:isVisible="@{viewmodel.loading}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

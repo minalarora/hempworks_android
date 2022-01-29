@@ -7,14 +7,14 @@
     <string name="get_started">Get Started</string>
     <string name="prescription_record">Prescription Record</string>
     <string name="onboarding_text1">Here you can keep a record of all your patient prescriptions with date and patient details for any future references.</string>
-    <string name="onboarding_text2">Here is a quick access for you, to help you place your regular orders conveniently.</string>
+    <string name="onboarding_text2">Our Monthly Newsletter where we share the Industry news, product launches, offers and rewards. A fun space to look out for, every month!</string>
     <string name="onboarding_text3">This is a one tap solution for you to attend all Ananta Sambhasha Sessions.</string>
     <string name="onboarding_text4">Now, you can access the benefitting sessions available to you in this tutorial hub.</string>
     <string name="your_orders">Your Orders</string>
     <string name="medical_cannabis_tutorials">Medical Cannabis Tutorials</string>
     <string name="live_cme_sessions">Live CME Sessions</string>
     <string name="email_or_mobile_number">Email or mobile number</string>
-    <string name="mobile_number">Enter your mobile number</string>
+    <string name="mobile_number">Enter mobile number</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="enter_new_password">Enter new password</string>
     <string name="enter_confirm_password">Confirm your password</string>
@@ -23,11 +23,64 @@
     <string name="skip_login">Skip Login</string>
     <string name="new_user_sign_up">New user? <b>Sign up</b></string>
     <string name="enter_mobile_number">Enter your mobile number to create your account.</string>
+    <string name="enter_otp">OTP is sent to your mobile number.</string>
     <string name="continue_text">Continue</string>
     <string name="submit_text">Submit</string>
     <string name="done_text">Done</string>
     <string name="resend_otp_timer">Resend OTP in %1$d</string>
     <string name="resend_otp"><b>Resend OTP</b></string>
     <string name="update_password">Change your Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="enter_your_clinic_name">Enter your clinic name</string>
+    <string name="address">ADDRESS</string>
+    <string name="address_line_1">Flat, House no., Building</string>
+    <string name="address_line_2">Area, Street, Sector</string>
+    <string name="city">City</string>
+    <string name="pincode">Pincode</string>
+    <string name="doctor_registration_certificate">DOCTOR REGISTRATION CERTIFICATE</string>
+    <string name="leaf_of_life_n_monthly_newsletter">Leaf of Life \n(Monthly Newsletter)</string>
 
+
+    <string-array name="state_list">
+        <item><b>Select State</b></item>
+        <item>Andaman and Nicobar</item>
+        <item>Andhra Pradesh</item>
+        <item>Arunachal Pradesh</item>
+        <item>Assam</item>
+        <item>Bihar</item>
+        <item>Chandigarh</item>
+        <item>Chhattisgarh</item>
+        <item>Dadra and Nagar Haveli</item>
+        <item>Daman and Diu</item>
+        <item>Delhi</item>
+        <item>Goa</item>
+        <item>Gujarat</item>
+        <item>Haryana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jammu and Kashmir</item>
+        <item>Jharkhand</item>
+        <item>Karnataka</item>
+        <item>Kerala</item>
+        <item>Lakshadweep</item>
+        <item>Madhya Pradesh</item>
+        <item>Maharashtra</item>
+        <item>Manipur</item>
+        <item>Meghalaya</item>
+        <item>Mizoram</item>
+        <item>Nagaland</item>
+        <item>Orissa</item>
+        <item>Puducherry</item>
+        <item>Punjab</item>
+        <item>Rajasthan</item>
+        <item>Sikkim</item>
+        <item>Tamil Nadu</item>
+        <item>Telangana</item>
+        <item>Tripura</item>
+        <item>Uttar Pradesh</item>
+        <item>Uttarakhand</item>
+        <item>West Bengal</item>
+
+    </string-array>
 </resources>

@@ -3,10 +3,348 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.hemp.works.login.ui.viewmodel.CreateViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
+        <ScrollView
+            android:id="@+id/scroll_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:scrollbars="none"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:src="@drawable/ic_back"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/black" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animationView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_140sdp"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="create_doctor.json"
+                    app:lottie_loop="true"
+                    app:lottie_speed="0.5" />
+
+                <EditText
+                    android:id="@+id/name"
+                    style="@style/textview_normal_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/edittext_orange_corner_radius"
+                    android:drawableStart="@drawable/ic_username"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:drawableTint="@color/orange_F8AA37"
+                    android:hint="@string/enter_your_name"
+                    android:padding="@dimen/_8sdp"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/animationView" />
+
+                <EditText
+                    android:id="@+id/email"
+                    style="@style/textview_normal_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/edittext_orange_corner_radius"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:drawableTint="@color/orange_F8AA37"
+                    android:hint="@string/enter_your_email"
+                    android:padding="@dimen/_8sdp"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/name" />
+
+
+                <EditText
+                    android:id="@+id/clinic"
+                    style="@style/textview_normal_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/edittext_orange_corner_radius"
+                    android:drawableStart="@drawable/ic_clinic"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:drawableTint="@color/orange_F8AA37"
+                    android:hint="@string/enter_your_clinic_name"
+                    android:padding="@dimen/_8sdp"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/email" />
+
+                <EditText
+                    android:id="@+id/password"
+                    style="@style/textview_normal_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/edittext_orange_corner_radius"
+                    android:drawableStart="@drawable/ic_password"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:drawableTint="@color/orange_F8AA37"
+                    android:hint="@string/enter_new_password"
+                    android:inputType="textPassword"
+                    android:padding="@dimen/_8sdp"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/clinic" />
+
+                <EditText
+                    android:id="@+id/confirm_password"
+                    style="@style/textview_normal_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/edittext_orange_corner_radius"
+                    android:drawableStart="@drawable/ic_password"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:drawableTint="@color/orange_F8AA37"
+                    android:hint="@string/enter_confirm_password"
+                    android:inputType="textPassword"
+                    android:padding="@dimen/_8sdp"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/password" />
+
+                <TextView
+                    android:id="@+id/address_title"
+                    style="@style/textview_bold_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="start"
+                    android:padding="@dimen/_6sdp"
+                    android:text="@string/address"
+                    android:textColor="@color/orange_F8AA37"
+                    app:layout_constraintEnd_toStartOf="@+id/view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:alpha="0.5"
+                    android:background="@color/orange_F8AA37"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/address_title"
+                    app:layout_constraintTop_toBottomOf="@id/confirm_password" />
+
+                <EditText
+                    android:id="@+id/address_line1"
+                    style="@style/textview_normal_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/edittext_orange_corner_radius"
+                    android:hint="@string/address_line_1"
+                    android:padding="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/address_title" />
+
+                <EditText
+                    android:id="@+id/address_line2"
+                    style="@style/textview_normal_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/edittext_orange_corner_radius"
+                    android:hint="@string/address_line_2"
+                    android:padding="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/address_line1" />
+
+                <EditText
+                    android:id="@+id/city"
+                    style="@style/textview_normal_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/edittext_orange_corner_radius"
+                    android:hint="@string/city"
+                    android:padding="@dimen/_8sdp"
+                    app:layout_constraintDimensionRatio="4:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/address_line2" />
+
+                <EditText
+                    android:id="@+id/pincode"
+                    style="@style/textview_normal_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/edittext_orange_corner_radius"
+                    android:hint="@string/pincode"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:padding="@dimen/_8sdp"
+                    app:layout_constraintDimensionRatio="4:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/address_line2" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/spinner_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:strokeWidth="@dimen/_1sdp"
+                    app:strokeColor="@color/orange_F8AA37"
+                    app:cardCornerRadius="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/city">
+                    <Spinner
+                        android:id="@+id/state"
+                        style="@style/textview_normal_medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:entries="@array/state_list"
+                        android:hint="@string/address_line_2"
+                        android:spinnerMode="dialog"
+                        android:backgroundTint="@color/orange_F8AA37"
+                        />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/certificate_title"
+                    style="@style/textview_bold_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="start"
+                    android:padding="@dimen/_6sdp"
+                    android:text="@string/doctor_registration_certificate"
+                    android:textColor="@color/orange_F8AA37"
+                    app:layout_constraintEnd_toStartOf="@+id/certificate_view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spinner_container" />
+
+                <View
+                    android:id="@+id/certificate_view"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:alpha="0.5"
+                    android:background="@color/orange_F8AA37"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/certificate_title"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_container" />
+
+
+                <RelativeLayout
+                    android:id="@+id/upload_image_container"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_18sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:gravity="end"
+                    android:paddingTop="@dimen/_8sdp"
+                    android:paddingBottom="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/certificate_title">
+
+                    <ImageView
+                        android:id="@+id/upload_imageview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:paddingStart="@dimen/_10sdp"
+                        tools:src="@drawable/ic_remove_image"/>
+
+                    <TextView
+                        android:id="@+id/upload_image_textview"
+                        style="@style/textview_italic_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toStartOf="@+id/upload_imageview"
+                        android:gravity="end"
+                        tools:text="Screenshot_202101 08-105637_upGradTest.jpg" />
+
+                </RelativeLayout>
+
+
+
+                <TextView
+                    android:id="@+id/submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/textview_bold_medium"
+                    android:textColor="@color/white"
+                    android:text="@string/create_account"
+                    android:background="@drawable/background_orange_corner_radius"
+                    android:gravity="center"
+                    android:layout_marginVertical="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_24sdp"
+                    android:padding="@dimen/_8sdp"
+                    app:layout_constraintTop_toBottomOf="@id/upload_image_container"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+
+        <include
+            layout="@layout/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:isVisible="@{viewmodel.loading}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

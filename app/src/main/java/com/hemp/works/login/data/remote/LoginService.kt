@@ -1,14 +1,16 @@
 package com.hemp.works.login.data.remote
 
 import com.hemp.works.base.BooleanResponse
+import com.hemp.works.base.ImageResponse
 import com.hemp.works.login.data.model.Credential
 import com.hemp.works.login.data.model.RequestDoctor
 import com.hemp.works.login.data.model.User
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
+import java.util.HashMap
 
 interface LoginService {
 
@@ -32,6 +34,10 @@ interface LoginService {
 
     @GET("/v1/verify/otp")
     suspend fun verifyOtp(@Query("mobile") mobile: String, @Query("otp") otp: Int): Response<BooleanResponse>
+
+    @Multipart
+    @POST("/v1/upload/certificate")
+    suspend fun uploadCertificate(@Part image: MultipartBody.Part): Response<ImageResponse>
 
 
 }

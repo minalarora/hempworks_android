@@ -4,6 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="fragment"
+            type="com.hemp.works.login.ui.OnboardingFragment" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,6 +21,7 @@
             style="@style/textview_normal_medium"
             android:text="@string/skip"
             android:layout_margin="@dimen/_18sdp"
+            invisibleIfTrue="@{fragment.isLast}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -44,7 +50,7 @@
             android:layout_height="wrap_content"
             style="@style/textview_normal_medium"
             android:textColor="@color/white"
-            android:text="@string/next"
+            android:text="@{fragment.isLast ? @string/get_started : @string/next}"
             android:background="@drawable/background_orange_corner_radius"
             android:gravity="center"
             android:layout_margin="@dimen/_24sdp"

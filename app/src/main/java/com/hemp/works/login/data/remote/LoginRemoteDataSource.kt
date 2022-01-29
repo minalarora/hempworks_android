@@ -5,6 +5,7 @@ import com.hemp.works.base.BooleanResponse
 import com.hemp.works.login.data.model.Credential
 import com.hemp.works.login.data.model.RequestDoctor
 import com.hemp.works.login.data.model.User
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -28,4 +29,6 @@ class LoginRemoteDataSource @Inject constructor(private val service: LoginServic
     suspend fun fetchDoctor() = getResult { service.fetchDoctor() }
 
     suspend fun fetchAdmin() = getResult { service.fetchAdmin() }
+
+    suspend fun uploadCertificate(image: MultipartBody.Part) = getResult { service.uploadCertificate(image) }
 }
