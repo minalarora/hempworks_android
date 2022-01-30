@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hemp.works.base.*
 import com.hemp.works.login.data.model.Credential
+import com.hemp.works.login.data.model.Doctor
+import com.hemp.works.login.data.model.RequestDoctor
 import com.hemp.works.login.data.model.User
 import com.hemp.works.login.data.remote.LoginRemoteDataSource
 import okhttp3.MultipartBody
@@ -22,9 +24,9 @@ class LoginRepository @Inject constructor(private val remoteDataSource: LoginRem
    val booleanResponse: LiveData<Boolean>
       get() = _booleanResponse
 
-   private val _imageUrl = LiveEvent<String>()
-   val imageUrl: LiveData<String>
-      get() = _imageUrl
+   private val _imageResponse = LiveEvent<ImageResponse>()
+   val imageResponse: LiveData<ImageResponse>
+      get() = _imageResponse
 
    suspend fun fetchAdmin() {
       getResult{ remoteDataSource.fetchAdmin() }?.let {
@@ -59,10 +61,21 @@ class LoginRepository @Inject constructor(private val remoteDataSource: LoginRem
 
    suspend fun uploadCertificate(image: MultipartBody.Part) {
       getResult(Constants.UNABLE_TO_UPLOAD_IMAGE) { remoteDataSource.uploadCertificate(image)}?.let {
-            it.data?.let { imageResponse -> _imageUrl.postValue(imageResponse.url)  }
+            it.data?.let { imageResponse -> _imageResponse.postValue(imageResponse)  }
       }
    }
 
+   suspend fun updatePassword(mobile: String, password: String) {
+      getResult(Constants.GENERAL_ERROR_MESSAGE) { remoteDataSource.updatePassword(mobile, password)}?.let {
+         it.data?.let { booleanResponse -> _booleanResponse.postValue(booleanResponse.success) }
+      }
+   }
+
+   suspend fun createDoctor(doctor: RequestDoctor) {
+      getResult(Constants.GENERAL_ERROR_MESSAGE) { remoteDataSource.createDoctor(doctor)}?.let {
+         it.data?.let { user -> _user.postValue(user) }
+      }
+   }
 
 
 }

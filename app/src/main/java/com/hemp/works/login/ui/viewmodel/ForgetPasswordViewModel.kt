@@ -11,6 +11,23 @@ import javax.inject.Inject
 
 class ForgetPasswordViewModel @Inject constructor(private val repository: LoginRepository) : BaseViewModel(repository) {
 
+    val booleanResponse = repository.booleanResponse
+    lateinit var mobile: String
+
+    fun updatePassword(password: String, confirmPassword: String) {
+        if (password != confirmPassword) {
+            error(Constants.PASSWORD_MISMATCH)
+            return
+        }
+        if (password.isBlank()) {
+            error(Constants.INVALID_PASSWORD)
+            return
+        }
+
+        viewModelScope.launch {
+            repository.updatePassword(mobile, password)
+        }
+    }
 
 
 }

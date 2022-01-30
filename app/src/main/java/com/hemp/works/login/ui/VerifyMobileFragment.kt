@@ -20,7 +20,9 @@ import com.hemp.works.login.ui.viewmodel.SplashViewModel
 import com.hemp.works.login.ui.viewmodel.VerifyMobileViewModel
 import javax.inject.Inject
 import android.app.Activity
+import android.content.Context
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
 
 
 class VerifyMobileFragment : Fragment(), Injectable {
@@ -31,11 +33,11 @@ class VerifyMobileFragment : Fragment(), Injectable {
     private lateinit var viewModel: VerifyMobileViewModel
     private lateinit var binding: FragmentVerifyMobileBinding
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white);
         // Inflate the layout for this fragment
         viewModel = injectViewModel(viewModelFactory)
         sharedViewModel = requireActivity().injectViewModel(viewModelFactory)
@@ -47,6 +49,8 @@ class VerifyMobileFragment : Fragment(), Injectable {
             this.viewmodel = viewModel
             lifecycleOwner = this@VerifyMobileFragment
         }
+
+        viewModel.updateTitle()
 
         viewModel.booleanResponse.observe(viewLifecycleOwner) {
             viewModel.handleBooleanResponse(it)
@@ -74,6 +78,10 @@ class VerifyMobileFragment : Fragment(), Injectable {
             } else {
                 viewModel.verifyOtp(binding.mobile.text.toString(), binding.otp.text.toString())
             }
+        }
+
+        binding.resendOtp.setOnClickListener {
+            if (viewModel.canResendOTP) viewModel.verifyMobile(binding.mobile.text.toString())
         }
 
         return binding.root

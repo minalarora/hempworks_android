@@ -34,7 +34,7 @@
             android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginHorizontal="@dimen/_20sdp"
             android:gravity="left"
-            android:text="@{viewmodel.isMobileState ? @string/enter_mobile_number : @string/enter_otp}"
+            android:text="@{viewmodel.titleText}"
             app:layout_constraintTop_toBottomOf="@id/back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mobile"
-            tools:visibility="gone"/>
+            tools:visibility="visible"/>
 
 
         <TextView
@@ -97,7 +97,7 @@
             android:gravity="center"
             android:layout_marginTop="@dimen/_50sdp"
             android:layout_marginHorizontal="@dimen/_24sdp"
-            android:padding="@dimen/_8sdp"
+            android:padding="@dimen/_10sdp"
             app:layout_constraintTop_toBottomOf="@id/otp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -108,13 +108,13 @@
             android:layout_height="wrap_content"
             style="@style/textview_normal_small"
             android:textColor="@color/orange_F8AA37"
-            android:text="@string/resend_otp"
+            android:text="@{viewmodel.resendOtpText}"
             hideIfTrue="@{viewmodel.isMobileState}"
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginHorizontal="@dimen/_25sdp"
             app:layout_constraintTop_toBottomOf="@id/verify"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:visibility="gone"/>
+            tools:visibility="visible"/>
 
 
         <include

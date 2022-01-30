@@ -1,11 +1,13 @@
 package com.hemp.works.login.ui
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.ViewModelProvider
@@ -25,7 +27,6 @@ import javax.inject.Inject
 class OnboardingFragment : Fragment() {
 
 
-
     private lateinit var binding: FragmentOnboardingBinding
     var isLast : ObservableBoolean = ObservableBoolean(false)
 
@@ -33,6 +34,7 @@ class OnboardingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white);
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentOnboardingBinding>(
             inflater, R.layout.fragment_onboarding, container, false).apply {

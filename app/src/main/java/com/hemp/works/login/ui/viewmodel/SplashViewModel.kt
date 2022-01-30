@@ -1,11 +1,14 @@
 package com.hemp.works.login.ui.viewmodel
 
 import android.content.Context
+import android.os.Looper
 import androidx.lifecycle.viewModelScope
 import com.hemp.works.base.*
 import com.hemp.works.login.data.repository.LoginRepository
 import com.hemp.works.utils.PreferenceManagerUtil
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.logging.Handler
 import javax.inject.Inject
 
 class SplashViewModel
@@ -18,10 +21,14 @@ class SplashViewModel
 
         init {
             if (userType?.equals(Constants.DOCTOR) == true) {
-                viewModelScope.launch { repository.fetchDoctor() }
+                viewModelScope.launch {
+                    repository.fetchDoctor()
+                }
             }
             else  {
-                viewModelScope.launch { repository.fetchAdmin() }
+                viewModelScope.launch {
+                    repository.fetchAdmin()
+                }
             }
         }
 

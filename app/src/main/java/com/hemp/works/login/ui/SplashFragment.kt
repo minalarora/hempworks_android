@@ -1,5 +1,6 @@
 package com.hemp.works.login.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,7 +12,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.hemp.works.R
+import com.hemp.works.adminpanel.AdminPanelActivity
 import com.hemp.works.base.Constants
+import com.hemp.works.dashboard.DashboardActivity
 import com.hemp.works.databinding.FragmentSplashBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
@@ -47,10 +50,16 @@ class SplashFragment : Fragment(), Injectable {
                 onNoUserFound()
             } else {
                 it.doctor?.let {
-                    //TODO: GOTO DOCTOR DASHBOARD
+                    Intent(requireActivity(), DashboardActivity::class.java).apply {
+                        startActivity(this)
+                        requireActivity().finish()
+                    }
                 }
                 it.admin?.let {
-                    //TODO: GOTO ADMIN DASHBOARD
+                    Intent(requireActivity(), AdminPanelActivity::class.java).apply {
+                        startActivity(this)
+                        requireActivity().finish()
+                    }
                 }
             }
         }

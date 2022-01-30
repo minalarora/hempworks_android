@@ -23,6 +23,7 @@
     <string name="skip_login">Skip Login</string>
     <string name="new_user_sign_up">New user? <b>Sign up</b></string>
     <string name="enter_mobile_number">Enter your mobile number to create your account.</string>
+    <string name="update_password_message">Enter your mobile number to verify your account.</string>
     <string name="enter_otp">OTP is sent to your mobile number.</string>
     <string name="continue_text">Continue</string>
     <string name="submit_text">Submit</string>
@@ -41,6 +42,14 @@
     <string name="pincode">Pincode</string>
     <string name="doctor_registration_certificate">DOCTOR REGISTRATION CERTIFICATE</string>
     <string name="leaf_of_life_n_monthly_newsletter">Leaf of Life \n(Monthly Newsletter)</string>
+    <string name="upload_certificate">Click here to upload certificate</string>
+    <string name="permissions_required">Necessary permissions required</string>
+    <string name="select_doctor_certificate">Select doctor registration certificate</string>
+    <string name="doctor_certificate">Doctor registration certificate</string>
+    <string name="uploaded_file_exceeded_size_limit">The uploaded file is above the 10 MB size limit.</string>
+    <string name="please_select_valid_file">Please select a valid file.</string>
+    <string name="password_updated_successfully">Password updated successfully</string>
+    <string name="something_went_wrong">Something went wrong</string>
 
 
     <string-array name="state_list">

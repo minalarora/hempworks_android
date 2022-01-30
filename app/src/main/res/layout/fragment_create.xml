@@ -45,6 +45,7 @@
                     android:id="@+id/animationView"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_140sdp"
+                    android:layout_marginHorizontal="@dimen/_50sdp"
                     android:layout_marginVertical="@dimen/_10sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -302,8 +303,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:paddingStart="@dimen/_10sdp"
-                        tools:src="@drawable/ic_remove_image"/>
+                        android:paddingStart="@dimen/_5sdp"
+                        android:src="@{viewmodel.isFile ? @drawable/ic_remove_image : @drawable/ic_upload_image}"
+                        tools:src="@drawable/ic_upload_image"/>
 
                     <TextView
                         android:id="@+id/upload_image_textview"
@@ -312,7 +314,8 @@
                         android:layout_height="wrap_content"
                         android:layout_toStartOf="@+id/upload_imageview"
                         android:gravity="end"
-                        tools:text="Screenshot_202101 08-105637_upGradTest.jpg" />
+                        android:text="@{viewmodel.isFile ? viewmodel.fileName : @string/upload_certificate}"
+                        tools:text="@string/upload_certificate" />
 
                 </RelativeLayout>
 
@@ -329,7 +332,7 @@
                     android:gravity="center"
                     android:layout_marginVertical="@dimen/_50sdp"
                     android:layout_marginHorizontal="@dimen/_24sdp"
-                    android:padding="@dimen/_8sdp"
+                    android:padding="@dimen/_10sdp"
                     app:layout_constraintTop_toBottomOf="@id/upload_image_container"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
