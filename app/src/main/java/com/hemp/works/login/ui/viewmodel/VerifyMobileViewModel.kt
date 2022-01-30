@@ -34,9 +34,9 @@ class VerifyMobileViewModel @Inject constructor(context: Context, private val re
     private val _resendOtpText: MutableLiveData<String> = MutableLiveData()
     val resendOtpText: LiveData<String> = _resendOtpText
 
-    val createAccountMessage  =  context.getString(R.string.enter_mobile_number)
-    val updatePasswordMessage = context.getString(R.string.update_password_message)
-    val otpMessage  = context.getString(R.string.enter_otp)
+    private val createAccountMessage  =  context.getString(R.string.enter_mobile_number)
+    private val updatePasswordMessage = context.getString(R.string.update_password_message)
+    private val otpMessage  = context.getString(R.string.enter_otp)
 
     var canResendOTP: Boolean = false
 
@@ -47,6 +47,7 @@ class VerifyMobileViewModel @Inject constructor(context: Context, private val re
             return
         }
         viewModelScope.launch {
+            _isMobileState.postValue(true)
             repository.verifyMobile(mobile)
         }
     }

@@ -105,7 +105,7 @@ class CreateFragment : Fragment(), Injectable {
                 showSnackBar(getString(R.string.something_went_wrong))
             } else {
                 PreferenceManagerUtil.putString(requireContext(), Constants.USER_TYPE, Constants.DOCTOR)
-                PreferenceManagerUtil.putString(requireContext(), Constants.AUTH_TOKEN, it.token.toString())
+                PreferenceManagerUtil.putString(requireContext(), Constants.AUTH_TOKEN, it.token)
                 Intent(requireActivity(), DashboardActivity::class.java).apply {
                     startActivity(this)
                     requireActivity().finish()

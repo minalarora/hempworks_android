@@ -22,11 +22,13 @@ class SplashViewModel
         init {
             if (userType?.equals(Constants.DOCTOR) == true) {
                 viewModelScope.launch {
+                    delay(2000)
                     repository.fetchDoctor()
                 }
             }
             else  {
                 viewModelScope.launch {
+                    delay(2000)
                     repository.fetchAdmin()
                 }
             }

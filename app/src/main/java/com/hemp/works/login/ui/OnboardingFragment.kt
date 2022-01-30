@@ -12,6 +12,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hemp.works.R
 import com.hemp.works.databinding.FragmentOnboardingBinding
@@ -44,8 +47,17 @@ class OnboardingFragment : Fragment() {
 
         binding.viewpager.apply {
             adapter = OnboardingPagerAdapter(this@OnboardingFragment)
-            isUserInputEnabled = false
         }
+
+        binding.viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                if (position == 2) isLast.set(true)
+                else isLast.set(false)
+            }
+
+        })
+
 
         TabLayoutMediator(binding.tablayout, binding.viewpager) { tab, position ->
         }.attach()
@@ -77,4 +89,5 @@ class OnboardingFragment : Fragment() {
         fun newInstance(param1: String, param2: String) =
             OnboardingFragment()
     }
+
 }

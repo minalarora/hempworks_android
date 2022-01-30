@@ -37,7 +37,7 @@ class NetworkModule {
 
     @Provides
     fun provideAuthInterceptor(sharedPreferences: SharedPreferences) =
-        AuthInterceptor(sharedPreferences.getString(Constants.AUTH_TOKEN, "").toString())
+        AuthInterceptor(sharedPreferences)
 
 
     @Provides

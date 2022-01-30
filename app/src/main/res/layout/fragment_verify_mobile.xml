@@ -110,11 +110,12 @@
             android:textColor="@color/orange_F8AA37"
             android:text="@{viewmodel.resendOtpText}"
             hideIfTrue="@{viewmodel.isMobileState}"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginHorizontal="@dimen/_25sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:paddingHorizontal="@dimen/_25sdp"
             app:layout_constraintTop_toBottomOf="@id/verify"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:visibility="visible"/>
+            tools:visibility="visible"
+            tools:text="@string/resend_otp"/>
 
 
         <include

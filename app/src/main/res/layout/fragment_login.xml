@@ -119,7 +119,7 @@
             style="@style/textview_normal_medium"
             android:textColor="@color/orange_F8AA37"
             android:text="@string/skip_login"
-            android:layout_margin="@dimen/_18sdp"
+            android:padding="@dimen/_18sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -130,7 +130,7 @@
             style="@style/textview_normal_medium"
             android:textColor="@color/orange_F8AA37"
             android:text="@string/new_user_sign_up"
-            android:layout_margin="@dimen/_18sdp"
+            android:padding="@dimen/_18sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

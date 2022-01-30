@@ -70,6 +70,11 @@ class VerifyMobileFragment : Fragment(), Injectable {
             showSnackBar(it)
         }
 
+        viewModel.isMobileState.observe(viewLifecycleOwner) {
+                val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+        }
+
         binding.back.setOnClickListener { binding.root.findNavController().popBackStack() }
 
         binding.verify.setOnClickListener {
