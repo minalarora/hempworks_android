@@ -33,7 +33,6 @@ class LoginActivity : AppCompatActivity(), HasSupportFragmentInjector{
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         sharedViewModel = injectViewModel(viewModelFactory)
         navController = this.findNavController(R.id.nav_host_fragment_container)
-
     }
 
 

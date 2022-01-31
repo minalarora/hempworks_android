@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "828599149594",
+    "project_id": "hempworks-3fca3",
+    "storage_bucket": "hempworks-3fca3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828599149594:android:e2abb593238b5a0cb29da3",
+        "android_client_info": {
+          "package_name": "com.hemp.works"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "828599149594-ub8fchfamrve6vcdlav6sl8eq8m4cumg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqmJRl9qAuipm-Q9eOTciTp8WadDUBkkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "828599149594-ub8fchfamrve6vcdlav6sl8eq8m4cumg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,6 +3,8 @@ package com.hemp.works
 import android.app.Application
 import android.app.Activity
 import com.facebook.stetho.Stetho
+import com.google.firebase.FirebaseApp
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.hemp.works.di.AppInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -23,6 +25,9 @@ class HempWorksApplication: Application(), HasActivityInjector{
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
 
         AppInjector.init(this)
+
+        FirebaseApp.initializeApp(this)
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
     }
 
     override fun activityInjector() = dispatchingAndroidInjector

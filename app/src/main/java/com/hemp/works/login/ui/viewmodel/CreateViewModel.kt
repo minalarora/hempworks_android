@@ -1,22 +1,17 @@
 package com.hemp.works.login.ui.viewmodel
 
-import android.content.Context
-import android.net.Uri
 import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.hemp.works.R
 import com.hemp.works.base.BaseViewModel
 import com.hemp.works.base.Constants
 import com.hemp.works.login.data.model.Address
 import com.hemp.works.login.data.model.RequestDoctor
 import com.hemp.works.login.data.repository.LoginRepository
-import com.hemp.works.utils.FileUtils
 import com.hemp.works.utils.FileUtils.JPG_FILE
 import com.hemp.works.utils.FileUtils.SERVER_FILE_TYPE
 import com.hemp.works.utils.FileUtils.SERVER_IMAGE_KEY_NAME
-import com.hemp.works.utils.isEmailValid
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
 import okhttp3.MultipartBody

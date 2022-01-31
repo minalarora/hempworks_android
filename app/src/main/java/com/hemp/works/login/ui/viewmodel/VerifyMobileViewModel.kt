@@ -55,7 +55,7 @@ class VerifyMobileViewModel @Inject constructor(context: Context, private val re
     fun verifyOtp(mobile: String, otp: String) {
 
         if (otp.length < 4) {
-            error(Constants.INVALID_MOBILE)
+            error(Constants.INVALID_OTP)
             return
         }
         viewModelScope.launch {
