@@ -34,6 +34,4 @@ class LoginActivity : AppCompatActivity(), HasSupportFragmentInjector{
         sharedViewModel = injectViewModel(viewModelFactory)
         navController = this.findNavController(R.id.nav_host_fragment_container)
     }
-
-
 }

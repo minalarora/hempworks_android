@@ -5,6 +5,11 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.hemp.works.dashboard.DashboardSharedViewModel
+import com.hemp.works.dashboard.home.ui.HomeViewModel
+import com.hemp.works.dashboard.home.ui.ProductListViewModel
+import com.hemp.works.dashboard.product.ui.ProductViewModel
+import com.hemp.works.dashboard.search.ui.SearchViewModel
 import com.hemp.works.login.LoginSharedViewModel
 import com.hemp.works.login.ui.viewmodel.*
 
@@ -12,6 +17,7 @@ import com.hemp.works.login.ui.viewmodel.*
 @Module
 abstract class ViewModelModule {
 
+    //LOGIN
     @Binds
     @IntoMap
     @ViewModelKey(SplashViewModel::class)
@@ -42,6 +48,31 @@ abstract class ViewModelModule {
     @ViewModelKey(LoginSharedViewModel::class)
     abstract fun bindLoginSharedViewModel(viewModel: LoginSharedViewModel): ViewModel
 
+    //DASHBOARD
+    @Binds
+    @IntoMap
+    @ViewModelKey(DashboardSharedViewModel::class)
+    abstract fun bindDashboardSharedViewModel(viewModel: DashboardSharedViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(HomeViewModel::class)
+    abstract fun bindHomeViewModel(viewModel: HomeViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchViewModel::class)
+    abstract fun bindSearchViewModel(viewModel: SearchViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ProductListViewModel::class)
+    abstract fun bindProductListViewModel(viewModel: ProductListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ProductViewModel::class)
+    abstract fun bindProductViewModel(viewModel: ProductViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

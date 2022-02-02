@@ -50,6 +50,17 @@
     <string name="please_select_valid_file">Please select a valid file.</string>
     <string name="password_updated_successfully">Password updated successfully</string>
     <string name="something_went_wrong">Something went wrong</string>
+    <string name="home">Home</string>
+    <string name="dosage_calculator">Dosage Calculator</string>
+    <string name="profile">Profile</string>
+    <string name="live_sessions">Live Sessions</string>
+    <string name="tutorials">Tutorials</string>
+    <string name="orders">Orders</string>
+    <string name="newsletter">Newsletter</string>
+    <string name="support">Support</string>
+    <string name="log_out">Log Out</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
 
     <string-array name="state_list">

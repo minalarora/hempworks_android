@@ -3,6 +3,7 @@ package com.hemp.works.di
 import android.app.Application
 import android.content.Context
 import com.hemp.works.HempWorksApplication
+import com.hemp.works.di.dashboard.DashboardActivityModule
 import com.hemp.works.di.login.LoginActivityModule
 import dagger.BindsInstance
 import dagger.Component
@@ -14,7 +15,8 @@ import javax.inject.Singleton
     modules = [AndroidInjectionModule::class,
         NetworkModule::class,
         AppModule::class,
-        LoginActivityModule::class]
+        LoginActivityModule::class,
+        DashboardActivityModule::class]
 )
 
 interface AppComponent {
