@@ -50,13 +50,15 @@ class SplashFragment : Fragment(), Injectable {
             if (it.token.isNullOrBlank()) {
                 onNoUserFound()
             } else {
-                it.doctor?.let {
+                it.doctor?.let { doctor ->
+                    PreferenceManagerUtil.putDoctor(requireContext(), doctor)
                     Intent(requireActivity(), DashboardActivity::class.java).apply {
                         startActivity(this)
                         requireActivity().finish()
                     }
                 }
-                it.admin?.let {
+                it.admin?.let { admin ->
+                    PreferenceManagerUtil.putAdmin(requireContext(), admin)
                     Intent(requireActivity(), AdminPanelActivity::class.java).apply {
                         startActivity(this)
                         requireActivity().finish()
@@ -73,6 +75,7 @@ class SplashFragment : Fragment(), Injectable {
     }
 
     private fun onNoUserFound() {
+        PreferenceManagerUtil.clear(requireContext())
         if (PreferenceManagerUtil.getString(requireContext(), Constants.FIRST_USER_FLAG_KEY).equals(Constants.FIRST_USER_FLAG_VALUE)) {
             binding.root.findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
         } else {

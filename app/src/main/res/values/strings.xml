@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Ananta Partners</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_user">Hello User</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="skip">Skip</string>
     <string name="next">Next</string>
@@ -32,6 +33,7 @@
     <string name="resend_otp"><b>Resend OTP</b></string>
     <string name="update_password">Change your Password</string>
     <string name="create_account">Create Account</string>
+    <string name="sign_up_sign_in">Create Account / Login</string>
     <string name="enter_your_name">Enter your name</string>
     <string name="enter_your_email">Enter your email</string>
     <string name="enter_your_clinic_name">Enter your clinic name</string>
@@ -61,6 +63,8 @@
     <string name="log_out">Log Out</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="notification">Notification</string>
+    <string name="search">Search</string>
 
 
     <string-array name="state_list">

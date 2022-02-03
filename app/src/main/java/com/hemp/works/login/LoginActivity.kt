@@ -1,11 +1,13 @@
 package com.hemp.works.login
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.NavDeepLinkBuilder
 import androidx.navigation.findNavController
 import com.hemp.works.R
 import com.hemp.works.databinding.ActivityLoginBinding
@@ -33,5 +35,15 @@ class LoginActivity : AppCompatActivity(), HasSupportFragmentInjector{
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         sharedViewModel = injectViewModel(viewModelFactory)
         navController = this.findNavController(R.id.nav_host_fragment_container)
+    }
+
+    companion object {
+
+        fun getPendingIntent(context: Context, destination: Int, args: Bundle? = null) = NavDeepLinkBuilder(context)
+            .setGraph(R.navigation.login_navigation)
+            .setDestination(destination)
+            .setArguments(args)
+            .setComponentName(LoginActivity::class.java)
+            .createPendingIntent()
     }
 }

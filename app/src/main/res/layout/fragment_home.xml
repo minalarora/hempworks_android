@@ -8,6 +8,14 @@
         <variable
             name="viewmodel"
             type="com.hemp.works.dashboard.home.ui.HomeViewModel" />
+
+        <variable
+            name="usertype"
+            type="com.hemp.works.dashboard.UserType" />
+
+        <variable
+            name="user"
+            type="com.hemp.works.login.data.model.Doctor" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,6 +36,7 @@
                     android:minHeight="?attr/actionBarSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:menu="@menu/toolbar_user_menu"
                     app:titleTextColor="@android:color/white"
                     android:background="?attr/colorPrimary">
 
@@ -36,13 +45,15 @@
 
             <com.google.android.material.navigation.NavigationView
                 android:id="@+id/navigation_view"
-                style="@style/Widget.Custom.NavigationView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
                 android:clipToPadding="false"
-                app:menu="@menu/without_login_menu"
+                app:itemTextColor="@color/orange_F8AA37"
+                app:itemIconTint="@color/orange_F8AA37"
                 app:headerLayout="@layout/nav_header_main"
+                app:setMenu="@{usertype}"
+                app:setHeader="@{user}"
                 />
 
         </androidx.drawerlayout.widget.DrawerLayout>

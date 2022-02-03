@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="128dp"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="bottom"
     android:orientation="vertical">
 
@@ -15,19 +15,30 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            tools:src="@drawable/doctor_placeholder"/>
         <TextView
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="16dp"
-            android:text="Waseef Akhtar"
-            style="@style/textview_bold_big"/>
+            style="@style/textview_bold_medium"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            tools:text = "Minal Arora"/>
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="waseefakhtar@gmail.com"
-            style="@style/textview_normal_medium"/>
+            style="@style/textview_italic_small"
+            android:textColor="@color/white"
+            tools:text="minaalarora567@gmail.com"/>
 
     </LinearLayout>
 

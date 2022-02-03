@@ -106,6 +106,7 @@ class CreateFragment : Fragment(), Injectable {
             } else {
                 PreferenceManagerUtil.putString(requireContext(), Constants.USER_TYPE, Constants.DOCTOR)
                 PreferenceManagerUtil.putString(requireContext(), Constants.AUTH_TOKEN, it.token)
+                PreferenceManagerUtil.putDoctor(requireContext(), it.doctor!!)
                 Intent(requireActivity(), DashboardActivity::class.java).apply {
                     startActivity(this)
                     requireActivity().finish()

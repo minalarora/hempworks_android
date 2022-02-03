@@ -7,4 +7,5 @@ import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(private val repository: HomeRepository) : BaseViewModel(repository) {
 
+
 }

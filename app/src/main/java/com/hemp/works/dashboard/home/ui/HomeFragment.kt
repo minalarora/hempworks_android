@@ -1,6 +1,7 @@
 package com.hemp.works.dashboard.home.ui
 
 import android.app.Activity
+import android.app.PendingIntent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,18 +9,25 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
+import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.databinding.FragmentHomeBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
+import com.hemp.works.login.LoginActivity
+import com.hemp.works.login.ui.LoginFragmentDirections
+import com.hemp.works.utils.PreferenceManagerUtil
 import kotlinx.android.synthetic.main.fragment_home.*
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -31,6 +39,19 @@ class HomeFragment : Fragment(), Injectable {
     private lateinit var sharedViewModel: DashboardSharedViewModel
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: FragmentHomeBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (binding.drawer.isDrawerOpen(GravityCompat.START)) {
+                    binding.drawer.closeDrawer(GravityCompat.START)
+                } else {
+                    requireActivity().finish()
+                }
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,27 +66,38 @@ class HomeFragment : Fragment(), Injectable {
         binding = DataBindingUtil.inflate<FragmentHomeBinding>(
             inflater, R.layout.fragment_home, container, false).apply {
             this.viewmodel = viewModel
+            this.usertype = sharedViewModel.userType
+            this.user = sharedViewModel.user
             lifecycleOwner = this@HomeFragment
         }
-       // requireActivity().setSupportActionBar(findViewById(R.id.toolbar))
 
         binding.navigationView.setNavigationItemSelectedListener{
-            when (it.itemId) {
-                R.id.home -> {
-                    true
-                }
-            }
-            true
+            selectDrawerItem(it)
+            false
         }
 
-        ActionBarDrawerToggle(requireActivity(), binding.drawer, R.string.open, R.string.close).let {
+        ActionBarDrawerToggle(requireActivity(), binding.drawer, binding.toolbar, R.string.open, R.string.close).let {
             binding.drawer.addDrawerListener(it)
+            it.isDrawerIndicatorEnabled = true
+            it.drawerArrowDrawable.color = ContextCompat.getColor(requireContext(), R.color.white)
             it.syncState()
         }
 
-        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.toolbar.setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.search -> {
+                    //TODO: SEARCH
+                }
+                R.id.notification -> {
+                    //TODO: NOTIFICATION
+                }
+
+            }
+           true
+        }
         return binding.root
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -75,6 +107,20 @@ class HomeFragment : Fragment(), Injectable {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun selectDrawerItem(menuItem: MenuItem) {
+        when(menuItem.itemId) {
+            R.id.log_out, R.id.create_account -> {
+                PreferenceManagerUtil.clear(requireContext())
+                LoginActivity.getPendingIntent(requireContext(), R.id.loginFragment).send()
+                requireActivity().finish()
+                //TODO: LOG OUT API CALL
+            }
+            //TODO: NAVIGATE TO DIFF FRAGMENTS
+        }
+
+        binding.drawer.closeDrawers()
     }
 
 

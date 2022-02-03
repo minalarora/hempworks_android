@@ -8,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -36,6 +38,15 @@ class LoginFragment : Fragment(), Injectable {
     private lateinit var viewModel: LoginViewModel
     private lateinit var binding: FragmentLoginBinding
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                requireActivity().finish()
+            }
+        })
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,6 +70,7 @@ class LoginFragment : Fragment(), Injectable {
                 user.doctor?.let {
                     PreferenceManagerUtil.putString(requireContext(), Constants.AUTH_TOKEN, user.token)
                     PreferenceManagerUtil.putString(requireContext(), Constants.USER_TYPE, Constants.DOCTOR)
+                    PreferenceManagerUtil.putDoctor(requireContext(), it)
                     Intent(requireActivity(), DashboardActivity::class.java).apply {
                         startActivity(this)
                         requireActivity().finish()
@@ -67,6 +79,7 @@ class LoginFragment : Fragment(), Injectable {
                 user.admin?.let {
                     PreferenceManagerUtil.putString(requireContext(), Constants.AUTH_TOKEN, user.token)
                     PreferenceManagerUtil.putString(requireContext(), Constants.USER_TYPE, Constants.ADMIN)
+                    PreferenceManagerUtil.putAdmin(requireContext(), it)
                     Intent(requireActivity(), AdminPanelActivity::class.java).apply {
                         startActivity(this)
                         requireActivity().finish()
