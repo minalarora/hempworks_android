@@ -1,7 +1,6 @@
 package com.hemp.works.dashboard.home.ui
 
 import android.app.Activity
-import android.app.PendingIntent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,21 +12,19 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
+import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
-import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.DashboardSharedViewModel
+import com.hemp.works.dashboard.home.ui.adapters.BannerAdapter
+import com.hemp.works.dashboard.home.ui.adapters.CategoryAdapter
 import com.hemp.works.databinding.FragmentHomeBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
 import com.hemp.works.login.LoginActivity
-import com.hemp.works.login.ui.LoginFragmentDirections
 import com.hemp.works.utils.PreferenceManagerUtil
-import kotlinx.android.synthetic.main.fragment_home.*
-import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -95,6 +92,21 @@ class HomeFragment : Fragment(), Injectable {
             }
            true
         }
+
+        binding.bannerRecyclerview.adapter = BannerAdapter()
+        ViewCompat.setNestedScrollingEnabled(binding.bannerRecyclerview, false);
+
+        binding.categoryRecyclerview.adapter = CategoryAdapter()
+        ViewCompat.setNestedScrollingEnabled(binding.categoryRecyclerview, false)
+
+        viewModel.bannerList.observe(viewLifecycleOwner) {
+            (binding.bannerRecyclerview.adapter as BannerAdapter).submitList(it)
+            viewModel.startScrolling()
+        }
+
+        viewModel.categoryList.observe(viewLifecycleOwner) {
+            (binding.categoryRecyclerview.adapter as CategoryAdapter).submitList(it)
+        }
         return binding.root
     }
 
@@ -135,3 +147,7 @@ class HomeFragment : Fragment(), Injectable {
         fun newInstance() = HomeFragment()
     }
 }
+
+//if we put RecyclerView inside NestedScrollView,
+//RecyclerView's smooth scrolling is disturbed. So to bring back smooth scrolling there's trick:
+//ViewCompat.setNestedScrollingEnabled(recyclerView, false);

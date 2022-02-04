@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hemp.works.R
 import com.hemp.works.base.MyAppGlideModule
-import com.hemp.works.dashboard.model.Category
-import com.hemp.works.databinding.ItemCategoryBinding
+import com.hemp.works.dashboard.model.Banner
+import com.hemp.works.databinding.ItemBannerImageBinding
 
-class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ViewHolder>(CategoryDiffCallback()) {
+class BannerAdapter : ListAdapter<Banner, BannerAdapter.ViewHolder>(BannerDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(holder.adapterPosition)
@@ -24,24 +24,23 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ViewHolder>(Catego
         return ViewHolder.from(parent)
     }
 
-    class ViewHolder private constructor(val binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root){
+    class ViewHolder private constructor(val binding: ItemBannerImageBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: Category) {
+        fun bind(item: Banner) {
             Glide.with(binding.root.context)
-                .load(item.image)
-                .placeholder(ColorDrawable(ContextCompat.getColor(binding.root.context, R.color.grey_AAAAAA)))
-                .error(ColorDrawable(ContextCompat.getColor(binding.root.context, R.color.grey_AAAAAA)))
+                .load(item.url)
+                .placeholder(ColorDrawable(ContextCompat.getColor(binding.root.context, R.color.white)))
+                .error(ColorDrawable(ContextCompat.getColor(binding.root.context, R.color.white)))
                 .apply(MyAppGlideModule.requestOptions)
                 .into(binding.image);
 
-            binding.title.text = item.category
             binding.executePendingBindings()
         }
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemCategoryBinding.inflate(layoutInflater, parent, false)
+                val binding = ItemBannerImageBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }
@@ -49,16 +48,16 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ViewHolder>(Catego
 }
 
 
-class CategoryDiffCallback: DiffUtil.ItemCallback<Category>() {
+    class BannerDiffCallback : DiffUtil.ItemCallback<Banner>() {
 
-    override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean {
-        return oldItem.id == newItem.id
-    }
+        override fun areItemsTheSame(oldItem: Banner, newItem: Banner): Boolean {
+            return oldItem.url == newItem.url
+        }
 
 
-    override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {
-        return oldItem == newItem
-    }
+        override fun areContentsTheSame(oldItem: Banner, newItem: Banner): Boolean {
+            return oldItem == newItem
+        }
 
 
 }

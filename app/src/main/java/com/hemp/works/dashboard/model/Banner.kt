@@ -1,4 +1,6 @@
 package com.hemp.works.dashboard.model
 
-class Banner {
-}
+data class Banner(
+    var id: Long = 0,
+    var url: String = ""
+)

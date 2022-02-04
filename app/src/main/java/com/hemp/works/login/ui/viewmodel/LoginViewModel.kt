@@ -12,7 +12,6 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(private val repository: LoginRepository) : BaseViewModel(repository) {
 
     val user = repository.user
-
     fun onLogin(username: String, password: String) {
 
         if (username.isBlank() || password.isBlank()) {
