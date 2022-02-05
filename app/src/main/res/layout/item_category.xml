@@ -30,8 +30,9 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/textview_bold_medium"
+            style="@style/textview_normal_medium"
             android:gravity="center"
+            android:textAllCaps="true"
             tools:text="Herbal Combo Products"/>
 
     </LinearLayout>

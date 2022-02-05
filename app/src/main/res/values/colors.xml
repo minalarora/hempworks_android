@@ -12,4 +12,5 @@
     <color name="grey_AAAAAA">#aaa</color>
     <color name="grey_transparent">#60000000</color>
     <color name="orange_transparent">#f8aa37</color>
+    <color name="dark_red">#8B0000</color>
 </resources>

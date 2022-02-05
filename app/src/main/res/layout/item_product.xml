@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.hemp.works.dashboard.home.ui.adapters.ProductViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="4.5:5"
+        android:scaleType="centerCrop"
+        app:glideImage="@{viewmodel.image}"
+        tools:src="@drawable/dummy_product"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/sub_title"
+        style="@style/textview_normal_small"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_20sdp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:text="@{viewmodel.subTitle}"
+        android:background="@{viewmodel.subTitleBackgroundColor}"
+        app:hideIfFalse="@{viewmodel.subTitleVisibility}"
+        android:paddingHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="BEST SELLER"
+        tools:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/textview_normal_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:letterSpacing="0.15"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@{viewmodel.title}"
+        app:layout_constraintTop_toBottomOf="@id/image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="ANANTA HEMP BODY BUTTER &amp; HEMP CHARCOAL SOAP COMBO"/>
+
+    <TextView
+        android:id="@+id/price"
+        style="@style/textview_normal_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:letterSpacing="0.15"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:text="@{viewmodel.price}"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="from Rs. 999"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -66,6 +66,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginTop="@dimen/_5sdp"
+                        app:hideIfFalse="@{viewmodel.bannerVisibility}"
                         tools:listitem="@layout/item_banner_image"/>
 
                     <TextView
@@ -76,7 +77,8 @@
                         android:text="@string/categories"
                         android:singleLine="true"
                         app:layout_constraintTop_toBottomOf="@id/banner_recyclerview"
-                        android:layout_margin="@dimen/_10sdp"/>
+                        android:layout_margin="@dimen/_10sdp"
+                        app:hideIfFalse="@{viewmodel.categoryVisibility}"/>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/category_recyclerview"
@@ -88,7 +90,60 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginTop="@dimen/_5sdp"
+                        app:hideIfFalse="@{viewmodel.categoryVisibility}"
                         tools:listitem="@layout/item_category"/>
+
+                    <TextView
+                        android:id="@+id/trending_product_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/textview_bold_medium"
+                        android:text="@string/trending_products"
+                        android:singleLine="true"
+                        app:layout_constraintTop_toBottomOf="@id/category_recyclerview"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        app:hideIfFalse="@{viewmodel.bestSellerProductVisibility}"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/trending_product_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="2"
+                        app:layout_constraintTop_toBottomOf="@id/trending_product_title"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        app:hideIfFalse="@{viewmodel.bestSellerProductVisibility}"
+                        tools:listitem="@layout/item_product"/>
+
+                    <TextView
+                        android:id="@+id/all_product_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/textview_bold_medium"
+                        android:text="@string/all_products"
+                        android:singleLine="true"
+                        app:layout_constraintTop_toBottomOf="@id/trending_product_recyclerview"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        app:hideIfFalse="@{viewmodel.allProductVisibility}"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/all_product_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="2"
+                        app:layout_constraintTop_toBottomOf="@id/all_product_title"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        app:hideIfFalse="@{viewmodel.allProductVisibility}"
+                        tools:listitem="@layout/item_product"/>
 
 
 

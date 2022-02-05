@@ -14,11 +14,54 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-        <include
-            layout="@layout/progress_bar"
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/black" />
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/textview_normal_medium"
+            android:singleLine="true"
+            android:hint="@string/search_products"
+            android:paddingVertical="@dimen/_12sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            app:layout_constraintStart_toEndOf="@id/back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:indicatorColor="@color/orange_F8AA37"
+            app:trackColor="@color/grey_AAAAAA"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:hideIfFalse="@{viewmodel.loading}"
+            app:layout_constraintTop_toBottomOf="@id/search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/product_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:isVisible="@{viewmodel.loading}"/>
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:hideIfTrue="@{viewmodel.loading}"
+            tools:listitem="@layout/item_search"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

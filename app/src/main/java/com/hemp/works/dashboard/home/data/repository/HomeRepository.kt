@@ -7,6 +7,7 @@ import com.hemp.works.base.LiveEvent
 import com.hemp.works.dashboard.home.data.remote.HomeRemoteDataSource
 import com.hemp.works.dashboard.model.Banner
 import com.hemp.works.dashboard.model.Category
+import com.hemp.works.dashboard.model.Product
 import com.hemp.works.login.data.model.User
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
@@ -24,6 +25,15 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
     val categoryList: LiveData<List<Category>>
         get() = _categoryList
 
+    private val _bestSellerProductList = MutableLiveData<List<Product>>()
+    val bestSellerProductList: LiveData<List<Product>>
+        get() = _bestSellerProductList
+
+    private val _allProductList = MutableLiveData<List<Product>>()
+    val allProductList: LiveData<List<Product>>
+        get() = _allProductList
+
+
     suspend fun fetchHomeData() {
 
         coroutineScope {
@@ -31,7 +41,9 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
 
             val deferredBannerList = async { getResult(handleLoading = false) { remoteDataSource.fetchBanners() }  }
             val deferredCategoryList = async { getResult(handleLoading = false) { remoteDataSource.fetchCategories() } }
-            //TODO: more async calls
+            val deferredBestSellerProductList = async { getResult(handleLoading = false) { remoteDataSource.fetchBestSellerProducts() } }
+            val deferredAllProductList = async { getResult(handleLoading = false) { remoteDataSource.fetchAllProducts() } }
+
 
             deferredBannerList.await()?.let {
                 it.data?.let { list -> _bannerList.postValue(list) }
@@ -39,7 +51,12 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
             deferredCategoryList.await()?.let {
                 it.data?.let { list -> _categoryList.postValue(list) }
             }
-            //TODO: more await calls
+            deferredBestSellerProductList.await()?.let {
+                it.data?.let { list -> _bestSellerProductList.postValue(list) }
+            }
+            deferredAllProductList.await()?.let {
+                it.data?.let { list -> _allProductList.postValue(list) }
+            }
 
             _loading.postValue(false)
         }

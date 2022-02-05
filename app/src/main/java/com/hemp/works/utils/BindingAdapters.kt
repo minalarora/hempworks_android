@@ -1,9 +1,11 @@
 package com.hemp.works.utils
 
+import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
@@ -63,6 +65,17 @@ import de.hdodenhof.circleimageview.CircleImageView
                     .into(it);
             }
         }
+    }
+
+    @BindingAdapter("glideImage")
+    fun setImage(imageView: ImageView, url: String) {
+
+        Glide.with(imageView.context)
+            .load(url)
+            .placeholder(ColorDrawable(ContextCompat.getColor(imageView.context, R.color.white)))
+            .error(ColorDrawable(ContextCompat.getColor(imageView.context, R.color.white)))
+            .apply(MyAppGlideModule.requestOptions)
+            .into(imageView);
     }
 
 

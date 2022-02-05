@@ -5,4 +5,7 @@ import com.hemp.works.dashboard.product.data.remote.ProductService
 import javax.inject.Inject
 
 class SearchRemoteDataSource @Inject constructor(private val service: SearchService): BaseDataSource() {
+
+    suspend fun searchProducts(searchKey: String) = getResult { service.searchProducts(searchKey) }
+
 }

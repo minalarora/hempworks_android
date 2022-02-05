@@ -20,6 +20,7 @@ import com.hemp.works.R
 import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.dashboard.home.ui.adapters.BannerAdapter
 import com.hemp.works.dashboard.home.ui.adapters.CategoryAdapter
+import com.hemp.works.dashboard.home.ui.adapters.ProductAdapter
 import com.hemp.works.databinding.FragmentHomeBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
@@ -99,14 +100,33 @@ class HomeFragment : Fragment(), Injectable {
         binding.categoryRecyclerview.adapter = CategoryAdapter()
         ViewCompat.setNestedScrollingEnabled(binding.categoryRecyclerview, false)
 
+        binding.trendingProductRecyclerview.adapter = ProductAdapter()
+        ViewCompat.setNestedScrollingEnabled(binding.trendingProductRecyclerview, false)
+
+        binding.allProductRecyclerview.adapter = ProductAdapter()
+        ViewCompat.setNestedScrollingEnabled(binding.allProductRecyclerview, false)
+
         viewModel.bannerList.observe(viewLifecycleOwner) {
             (binding.bannerRecyclerview.adapter as BannerAdapter).submitList(it)
+            viewModel.handleBannerVisibility(it.isEmpty())
             viewModel.startScrolling()
         }
 
         viewModel.categoryList.observe(viewLifecycleOwner) {
             (binding.categoryRecyclerview.adapter as CategoryAdapter).submitList(it)
+            viewModel.handleCategoryVisibility(it.isEmpty())
         }
+
+        viewModel.bestSellerProductList.observe(viewLifecycleOwner) {
+            (binding.trendingProductRecyclerview.adapter as ProductAdapter).submitList(it)
+            viewModel.handleBSProductVisibility(it.isEmpty())
+        }
+
+        viewModel.allProductList.observe(viewLifecycleOwner) {
+            (binding.allProductRecyclerview.adapter as ProductAdapter).submitList(it)
+            viewModel.handleAllProductVisibility(it.isEmpty())
+        }
+
         return binding.root
     }
 
@@ -147,7 +167,3 @@ class HomeFragment : Fragment(), Injectable {
         fun newInstance() = HomeFragment()
     }
 }
-
-//if we put RecyclerView inside NestedScrollView,
-//RecyclerView's smooth scrolling is disturbed. So to bring back smooth scrolling there's trick:
-//ViewCompat.setNestedScrollingEnabled(recyclerView, false);
