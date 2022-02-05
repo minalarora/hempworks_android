@@ -50,6 +50,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
+        <include
+            layout="@layout/layout_no_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isVisible="@{viewmodel.loading == false &amp;&amp; viewmodel.allProductVisibility == false ? true : false}"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/product_recyclerview"
             android:layout_width="match_parent"

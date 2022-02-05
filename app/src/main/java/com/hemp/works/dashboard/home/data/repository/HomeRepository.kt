@@ -3,6 +3,7 @@ package com.hemp.works.dashboard.home.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hemp.works.base.BaseRepository
+import com.hemp.works.base.Constants
 import com.hemp.works.base.LiveEvent
 import com.hemp.works.dashboard.home.data.remote.HomeRemoteDataSource
 import com.hemp.works.dashboard.model.Banner
@@ -33,6 +34,9 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
     val allProductList: LiveData<List<Product>>
         get() = _allProductList
 
+    private val _productsByCategory = LiveEvent<List<Product>>()
+    val productsByCategory: LiveData<List<Product>>
+        get() = _productsByCategory
 
     suspend fun fetchHomeData() {
 
@@ -59,6 +63,12 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
             }
 
             _loading.postValue(false)
+        }
+    }
+
+    suspend fun fetchProductsByCategory(category: Long) {
+        getResult(Constants.GENERAL_ERROR_MESSAGE){ remoteDataSource.fetchProductsByCategory(category) }?.let {
+            it.data?.let { list -> _productsByCategory.postValue(list) }
         }
     }
 

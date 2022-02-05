@@ -6,6 +6,7 @@ import com.hemp.works.dashboard.model.Product
 import com.hemp.works.login.data.model.User
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface HomeService {
 
@@ -20,6 +21,9 @@ interface HomeService {
 
     @GET("/v1/product/bestseller")
     suspend fun fetchBestSellerProducts(): Response<List<Product>>
+
+    @GET("/v1/product/category")
+    suspend fun fetchProductsByCategory(@Query("category") category: Long): Response<List<Product>>
 
 
 }

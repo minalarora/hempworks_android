@@ -70,9 +70,10 @@
     <string name="best_seller">BESTSELLER</string>
     <string name="product_price_from">from %1$d</string>
     <string name="product_category_in">in %1$s</string>
-    <string name="trending_products">TRENDING PRODUCTS</string>
+    <string name="trending_products">BEST RATED PRODUCTS</string>
     <string name="all_products">ALL PRODUCTS</string>
     <string name="search_products">Search Products...</string>
+    <string name="no_products_found">NO PRODUCTS FOUND</string>
 
 
     <string-array name="state_list">

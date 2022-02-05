@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="isVisible"
+            type="Boolean" />
+    </data>
+
+    <merge tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_160sdp"
+            android:src="@drawable/no_product_found"
+            app:hideIfFalse="@{isVisible}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.31" />
+        <TextView
+            android:id="@+id/title"
+            style="@style/textview_bold_medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@color/grey_AAAAAA"
+            android:text="@string/no_products_found"
+            app:hideIfFalse="@{isVisible}"
+            app:layout_constraintTop_toBottomOf="@id/image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </merge>
+</layout>

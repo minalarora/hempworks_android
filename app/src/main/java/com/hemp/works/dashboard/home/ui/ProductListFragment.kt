@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.dashboard.DashboardSharedViewModel
+import com.hemp.works.dashboard.home.ui.adapters.ProductAdapter
+import com.hemp.works.dashboard.search.ui.adapters.SearchAdapter
 import com.hemp.works.databinding.FragmentProductListBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
@@ -44,6 +46,22 @@ class  ProductListFragment : Fragment(), Injectable {
             this.viewmodel = viewModel
             lifecycleOwner = this@ProductListFragment
         }
+
+        binding.recyclerview.adapter = ProductAdapter()
+
+        viewModel.productId = ProductListFragmentArgs.fromBundle(requireArguments()).product
+        viewModel.fetchProductsByCategory(ProductListFragmentArgs.fromBundle(requireArguments()).category!!)
+
+        viewModel.productList.observe(viewLifecycleOwner) {
+            (binding.recyclerview.adapter as ProductAdapter).submitList(it)
+            viewModel.handleAllProductVisibility(it.isEmpty())
+        }
+
+        viewModel.error.observe(viewLifecycleOwner) {
+            //TODO: SEND BACK TO DASHBOARD
+            showSnackBar(it)
+        }
+
         return binding.root
     }
 

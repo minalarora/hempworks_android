@@ -55,7 +55,7 @@
         android:name="com.hemp.works.dashboard.home.ui.ProductListFragment"
         android:label="ProductListFragment" >
         <argument
-            android:name="name"
+            android:name="product"
             app:argType="string"
             app:nullable="true" />
         <argument

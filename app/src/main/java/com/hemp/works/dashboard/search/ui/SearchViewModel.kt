@@ -1,5 +1,7 @@
 package com.hemp.works.dashboard.search.ui
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.hemp.works.base.BaseViewModel
 import com.hemp.works.base.Constants
@@ -15,6 +17,9 @@ class SearchViewModel @Inject constructor(private val repository: SearchReposito
 
     private var _job: Job? = null
 
+    private val _allProductVisibility= MutableLiveData(false)
+    val allProductVisibility: LiveData<Boolean> = _allProductVisibility
+
     fun search(text: String) {
         if (text.isBlank()) {
             return
@@ -23,5 +28,9 @@ class SearchViewModel @Inject constructor(private val repository: SearchReposito
         _job = viewModelScope.launch {
             repository.searchProducts(text)
         }
+    }
+
+    fun handleAllProductVisibility(isEmpty: Boolean) {
+        _allProductVisibility.postValue(!isEmpty)
     }
 }

@@ -127,6 +127,9 @@ class HomeFragment : Fragment(), Injectable {
             viewModel.handleAllProductVisibility(it.isEmpty())
         }
 
+        viewModel.error.observe(viewLifecycleOwner) {
+            showSnackBar(it)
+        }
         return binding.root
     }
 
