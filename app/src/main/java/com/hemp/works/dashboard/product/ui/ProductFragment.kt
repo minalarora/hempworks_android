@@ -58,3 +58,4 @@ class ProductFragment : Fragment(), Injectable {
         fun newInstance() = ProductFragment()
     }
 }
+//https://blog.davidmedenjak.com/android/2017/06/24/viewpager-recyclerview.html

@@ -61,7 +61,6 @@ class OnboardingFragment : Fragment() {
 
         TabLayoutMediator(binding.tablayout, binding.viewpager) { tab, position ->
         }.attach()
-
         binding.next.setOnClickListener {
             if (binding.viewpager.currentItem == 2) {
                 binding.root.findNavController().navigate(

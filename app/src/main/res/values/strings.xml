@@ -74,6 +74,15 @@
     <string name="all_products">ALL PRODUCTS</string>
     <string name="search_products">Search Products...</string>
     <string name="no_products_found">NO PRODUCTS FOUND</string>
+    <string name="cart">Cart</string>
+    <string name="price"><![CDATA[Price:  <strike>%1$s</strike>   %2$s  <font color='#8B0000'>%3$s</font>]]></string>
+    <string name="size">Size</string>
+    <string name="quantity">Quantity</string>
+    <string name="description">Description</string>
+    <string name="add_to_cart">ADD TO CART</string>
+    <string name="buy_now">BUY NOW</string>
+    <string name="download_pdf">DOWNLOAD PDF</string>
+    <string name="you_may_also_like">You may also like</string>
 
 
     <string-array name="state_list">

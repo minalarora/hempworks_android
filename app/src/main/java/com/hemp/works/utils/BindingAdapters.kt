@@ -1,5 +1,6 @@
 package com.hemp.works.utils
 
+import android.graphics.Paint
 import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.ImageView
@@ -78,5 +79,16 @@ import de.hdodenhof.circleimageview.CircleImageView
             .into(imageView);
     }
 
+    @BindingAdapter("strike")
+    fun setStrikeText(textView: TextView, visible: Boolean) {
+        textView.strike = visible
+    }
+
+    inline var TextView.strike: Boolean
+        set(visible) {
+            paintFlags = if (visible) paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            else paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+        }
+        get() = paintFlags and Paint.STRIKE_THRU_TEXT_FLAG == Paint.STRIKE_THRU_TEXT_FLAG
 
 
