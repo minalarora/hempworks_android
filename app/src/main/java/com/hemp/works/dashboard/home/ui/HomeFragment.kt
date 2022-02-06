@@ -15,16 +15,21 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
+import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.dashboard.home.ui.adapters.BannerAdapter
 import com.hemp.works.dashboard.home.ui.adapters.CategoryAdapter
 import com.hemp.works.dashboard.home.ui.adapters.ProductAdapter
+import com.hemp.works.dashboard.search.ui.SearchFragmentDirections
+import com.hemp.works.dashboard.search.ui.SearchItemClickListener
 import com.hemp.works.databinding.FragmentHomeBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
 import com.hemp.works.login.LoginActivity
+import com.hemp.works.login.ui.LoginFragmentDirections
 import com.hemp.works.utils.PreferenceManagerUtil
 import javax.inject.Inject
 
@@ -84,7 +89,9 @@ class HomeFragment : Fragment(), Injectable {
         binding.toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.search -> {
-                    //TODO: SEARCH
+                    HomeFragmentDirections.actionHomeFragmentToSearchFragment().also {
+                        binding.root.findNavController().navigate(it)
+                    }
                 }
                 R.id.notification -> {
                     //TODO: NOTIFICATION
@@ -97,7 +104,15 @@ class HomeFragment : Fragment(), Injectable {
         binding.bannerRecyclerview.adapter = BannerAdapter()
         ViewCompat.setNestedScrollingEnabled(binding.bannerRecyclerview, false);
 
-        binding.categoryRecyclerview.adapter = CategoryAdapter()
+        binding.categoryRecyclerview.adapter = CategoryAdapter(listener = object :
+            CategoryItemClickListener {
+            override fun onItemClick(categoryid: Long) {
+                HomeFragmentDirections.
+                actionHomeFragmentToProductListFragment(null, categoryid.toString()).let {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+        })
         ViewCompat.setNestedScrollingEnabled(binding.categoryRecyclerview, false)
 
         binding.trendingProductRecyclerview.adapter = ProductAdapter()
@@ -109,7 +124,7 @@ class HomeFragment : Fragment(), Injectable {
         viewModel.bannerList.observe(viewLifecycleOwner) {
             (binding.bannerRecyclerview.adapter as BannerAdapter).submitList(it)
             viewModel.handleBannerVisibility(it.isEmpty())
-            viewModel.startScrolling()
+            if (it.isNotEmpty()) viewModel.startScrolling()
         }
 
         viewModel.categoryList.observe(viewLifecycleOwner) {
@@ -127,8 +142,18 @@ class HomeFragment : Fragment(), Injectable {
             viewModel.handleAllProductVisibility(it.isEmpty())
         }
 
+        viewModel.scroll.observe(viewLifecycleOwner) {
+            binding.bannerRecyclerview.smoothScrollToPosition(it)
+        }
+
         viewModel.error.observe(viewLifecycleOwner) {
             showSnackBar(it)
+        }
+
+        viewModel.booleanResponse.observe(viewLifecycleOwner) {
+            PreferenceManagerUtil.clear(requireContext())
+            LoginActivity.getPendingIntent(requireContext(), R.id.loginFragment).send()
+            requireActivity().finish()
         }
         return binding.root
     }
@@ -146,11 +171,13 @@ class HomeFragment : Fragment(), Injectable {
 
     private fun selectDrawerItem(menuItem: MenuItem) {
         when(menuItem.itemId) {
-            R.id.log_out, R.id.create_account -> {
+            R.id.log_out -> {
+                viewModel.logout()
+            }
+            R.id.create_account -> {
                 PreferenceManagerUtil.clear(requireContext())
                 LoginActivity.getPendingIntent(requireContext(), R.id.loginFragment).send()
                 requireActivity().finish()
-                //TODO: LOG OUT API CALL
             }
             //TODO: NAVIGATE TO DIFF FRAGMENTS
         }
@@ -169,4 +196,8 @@ class HomeFragment : Fragment(), Injectable {
         @JvmStatic
         fun newInstance() = HomeFragment()
     }
+}
+
+interface CategoryItemClickListener{
+    fun onItemClick(categoryid: Long)
 }

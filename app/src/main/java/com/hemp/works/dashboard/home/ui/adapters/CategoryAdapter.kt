@@ -10,14 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hemp.works.R
 import com.hemp.works.base.MyAppGlideModule
+import com.hemp.works.dashboard.home.ui.CategoryItemClickListener
 import com.hemp.works.dashboard.model.Category
 import com.hemp.works.databinding.ItemCategoryBinding
 
-class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ViewHolder>(CategoryDiffCallback()) {
+class CategoryAdapter(private val listener: CategoryItemClickListener) : ListAdapter<Category, CategoryAdapter.ViewHolder>(CategoryDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(holder.adapterPosition)
-        holder.bind(item)
+        holder.bind(item, listener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,7 +27,7 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ViewHolder>(Catego
 
     class ViewHolder private constructor(val binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: Category) {
+        fun bind(item: Category, listener: CategoryItemClickListener) {
             Glide.with(binding.root.context)
                 .load(item.image)
                 .placeholder(ColorDrawable(ContextCompat.getColor(binding.root.context, R.color.grey_AAAAAA)))
@@ -35,6 +36,9 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ViewHolder>(Catego
                 .into(binding.image);
 
             binding.title.text = item.category
+            binding.root.setOnClickListener {
+                listener.onItemClick(item.id)
+            }
             binding.executePendingBindings()
         }
 

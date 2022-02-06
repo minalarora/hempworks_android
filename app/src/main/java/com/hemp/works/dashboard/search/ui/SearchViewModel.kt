@@ -24,7 +24,6 @@ class SearchViewModel @Inject constructor(private val repository: SearchReposito
         if (text.isBlank()) {
             return
         }
-        _job?.cancel()
         _job = viewModelScope.launch {
             repository.searchProducts(text)
         }

@@ -1,5 +1,6 @@
 package com.hemp.works.dashboard.home.data.remote
 
+import com.hemp.works.base.BooleanResponse
 import com.hemp.works.dashboard.model.Banner
 import com.hemp.works.dashboard.model.Category
 import com.hemp.works.dashboard.model.Product
@@ -24,6 +25,9 @@ interface HomeService {
 
     @GET("/v1/product/category")
     suspend fun fetchProductsByCategory(@Query("category") category: Long): Response<List<Product>>
+
+    @GET("/v1/doctor/logout")
+    suspend fun logout(): Response<BooleanResponse>
 
 
 }

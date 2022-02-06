@@ -15,15 +15,69 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:minHeight="?attr/actionBarSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </androidx.appcompat.widget.Toolbar>
+
         <ImageView
             android:id="@+id/back"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
             android:layout_margin="@dimen/_10sdp"
             android:src="@drawable/ic_back"
+            android:elevation="1dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:tint="@color/black" />
+            app:tint="@color/white" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/banner_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:hideIfFalse="@{viewmodel.bannerVisibility}"
+            tools:listitem="@layout/item_banner_image"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/textview_italic_medium"
+            android:textColor="@color/orange_F8AA37"
+            android:singleLine="true"
+            android:text="@{viewmodel.title}"
+            app:hideIfFalse="@{viewmodel.allProductVisibility}"
+            app:layout_constraintTop_toBottomOf="@id/banner_recyclerview"
+            android:layout_margin="@dimen/_10sdp"
+            tools:text="Search results for Ananta Hempworks"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
@@ -31,13 +85,22 @@
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
-            app:layout_constraintTop_toBottomOf="@id/back"
+            app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginHorizontal="@dimen/_5sdp"
             app:hideIfFalse="@{viewmodel.allProductVisibility}"
             tools:listitem="@layout/item_product"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+        <include
+            layout="@layout/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:isVisible="@{viewmodel.loading}"/>
 
         <include
             layout="@layout/layout_no_product"
@@ -45,12 +108,6 @@
             android:layout_height="wrap_content"
             app:isVisible="@{viewmodel.loading == false &amp;&amp; viewmodel.allProductVisibility == false ? true : false}"/>
 
-
-        <include
-            layout="@layout/progress_bar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:isVisible="@{viewmodel.loading}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

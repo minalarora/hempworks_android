@@ -15,4 +15,6 @@ class HomeRemoteDataSource @Inject constructor(private val service: HomeService)
 
     suspend fun fetchProductsByCategory(category: Long) = getResult { service.fetchProductsByCategory(category) }
 
+    suspend fun logout() = getResult { service.logout() }
+
 }

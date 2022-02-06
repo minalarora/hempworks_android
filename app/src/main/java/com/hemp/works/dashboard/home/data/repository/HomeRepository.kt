@@ -9,6 +9,7 @@ import com.hemp.works.dashboard.home.data.remote.HomeRemoteDataSource
 import com.hemp.works.dashboard.model.Banner
 import com.hemp.works.dashboard.model.Category
 import com.hemp.works.dashboard.model.Product
+import com.hemp.works.login.data.model.Credential
 import com.hemp.works.login.data.model.User
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
@@ -37,6 +38,10 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
     private val _productsByCategory = LiveEvent<List<Product>>()
     val productsByCategory: LiveData<List<Product>>
         get() = _productsByCategory
+
+    private val _booleanResponse = LiveEvent<Boolean>()
+    val booleanResponse: LiveData<Boolean>
+        get() = _booleanResponse
 
     suspend fun fetchHomeData() {
 
@@ -69,6 +74,13 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
     suspend fun fetchProductsByCategory(category: Long) {
         getResult(Constants.GENERAL_ERROR_MESSAGE){ remoteDataSource.fetchProductsByCategory(category) }?.let {
             it.data?.let { list -> _productsByCategory.postValue(list) }
+        }
+    }
+
+    suspend fun logout() {
+
+        getResult { remoteDataSource.logout() }?.let {
+            it.data?.let { booleanResponse -> _booleanResponse.postValue(booleanResponse.success) }
         }
     }
 

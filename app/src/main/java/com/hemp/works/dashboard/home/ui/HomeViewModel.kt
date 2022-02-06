@@ -17,6 +17,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     val categoryList = repository.categoryList
     val bestSellerProductList = repository.bestSellerProductList
     val allProductList = repository.allProductList
+    val booleanResponse = repository.booleanResponse
 
     private val _scroll = MutableLiveData<Int>(0)
     val scroll: LiveData<Int> = _scroll
@@ -41,13 +42,19 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
         _job?.cancel()
         _job = viewModelScope.launch {
             while (true) {
-                delay(2000)
+                delay(3000)
 
                 _scroll.value?.let {
                     if (it == (bannerList.value?.size!! - 1)) _scroll.postValue(0)
                     else _scroll.postValue(it+1)
                 }
             }
+        }
+    }
+
+    fun logout() {
+        viewModelScope.launch {
+            repository.logout()
         }
     }
 

@@ -3,6 +3,8 @@ package com.hemp.works.dashboard.search.ui
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,7 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.dashboard.DashboardSharedViewModel
@@ -50,7 +53,31 @@ class SearchFragment : Fragment(), Injectable {
             lifecycleOwner = this@SearchFragment
         }
 
-        binding.productRecyclerview.adapter = SearchAdapter()
+        binding.productRecyclerview.adapter = SearchAdapter(listener = object : SearchItemClickListener{
+            override fun onItemClick(productid: Long, categoryid: Long) {
+                SearchFragmentDirections.
+                actionSearchFragmentToProductListFragment(productid.toString(), categoryid.toString()).let {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+        })
+
+        binding.back.setOnClickListener { binding.root.findNavController().popBackStack() }
+
+        binding.search.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                viewModel.search(p0.toString())
+            }
+
+        })
 
         viewModel.productList.observe(viewLifecycleOwner) {
             (binding.productRecyclerview.adapter as SearchAdapter).submitList(it)
@@ -69,13 +96,19 @@ class SearchFragment : Fragment(), Injectable {
         showSoftKeyboard(binding.search)
 
     }
+
+    override fun onPause() {
+        super.onPause()
+        val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+    }
     private fun showSnackBar(msg: String) {
         val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
     }
 
-    fun showSoftKeyboard(view: View) {
+    private fun showSoftKeyboard(view: View) {
         if (view.requestFocus()) {
             val imm: InputMethodManager =
                 requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -87,4 +120,8 @@ class SearchFragment : Fragment(), Injectable {
         @JvmStatic
         fun newInstance() = SearchFragment()
     }
+}
+
+interface SearchItemClickListener{
+    fun onItemClick(productid: Long, categoryid: Long)
 }

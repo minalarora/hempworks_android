@@ -7,13 +7,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hemp.works.R
 import com.hemp.works.dashboard.model.Product
+import com.hemp.works.dashboard.search.ui.SearchItemClickListener
 import com.hemp.works.databinding.ItemSearchBinding
 
-class SearchAdapter : ListAdapter<Product, SearchAdapter.ViewHolder>(SearchDiffCallback()) {
+class SearchAdapter(private val listener: SearchItemClickListener) : ListAdapter<Product, SearchAdapter.ViewHolder>(SearchDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(holder.adapterPosition)
-        holder.bind(item)
+        holder.bind(item, listener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,9 +23,12 @@ class SearchAdapter : ListAdapter<Product, SearchAdapter.ViewHolder>(SearchDiffC
 
     class ViewHolder private constructor(val binding: ItemSearchBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: Product) {
+        fun bind(item: Product, listener: SearchItemClickListener) {
             binding.title.text = item.title
             binding.subTitle.text = binding.root.context.getString(R.string.product_category_in, item.categoryname)
+            binding.root.setOnClickListener {
+                listener.onItemClick(item.id, item.category)
+            }
             binding.executePendingBindings()
         }
 

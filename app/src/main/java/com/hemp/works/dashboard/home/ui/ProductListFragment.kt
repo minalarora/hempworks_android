@@ -8,11 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.dashboard.DashboardSharedViewModel
+import com.hemp.works.dashboard.home.ui.adapters.BannerAdapter
 import com.hemp.works.dashboard.home.ui.adapters.ProductAdapter
 import com.hemp.works.dashboard.search.ui.adapters.SearchAdapter
 import com.hemp.works.databinding.FragmentProductListBinding
@@ -36,7 +39,7 @@ class  ProductListFragment : Fragment(), Injectable {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white);
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.orange_F8AA37);
 
         viewModel = injectViewModel(viewModelFactory)
         sharedViewModel = requireActivity().injectViewModel(viewModelFactory)
@@ -47,19 +50,36 @@ class  ProductListFragment : Fragment(), Injectable {
             lifecycleOwner = this@ProductListFragment
         }
 
+        binding.bannerRecyclerview.adapter = BannerAdapter()
+        ViewCompat.setNestedScrollingEnabled(binding.bannerRecyclerview, false);
+
         binding.recyclerview.adapter = ProductAdapter()
+        ViewCompat.setNestedScrollingEnabled(binding.recyclerview, false);
+
+        binding.back.setOnClickListener { binding.root.findNavController().popBackStack() }
 
         viewModel.productId = ProductListFragmentArgs.fromBundle(requireArguments()).product
         viewModel.fetchProductsByCategory(ProductListFragmentArgs.fromBundle(requireArguments()).category!!)
 
+        viewModel.bannerList.observe(viewLifecycleOwner) {
+            (binding.bannerRecyclerview.adapter as BannerAdapter).submitList(it)
+            viewModel.handleBannerVisibility(it.isEmpty())
+            if (it.isNotEmpty()) viewModel.startScrolling()
+        }
+
         viewModel.productList.observe(viewLifecycleOwner) {
             (binding.recyclerview.adapter as ProductAdapter).submitList(it)
             viewModel.handleAllProductVisibility(it.isEmpty())
+            if (it.isNotEmpty()) viewModel.setHeader(it[0])
+        }
+
+        viewModel.scroll.observe(viewLifecycleOwner) {
+            binding.bannerRecyclerview.smoothScrollToPosition(it)
         }
 
         viewModel.error.observe(viewLifecycleOwner) {
-            //TODO: SEND BACK TO DASHBOARD
-            showSnackBar(it)
+            viewModel.handleAllProductVisibility(true)
+            viewModel.handleBannerVisibility(true)
         }
 
         return binding.root
