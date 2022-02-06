@@ -12,6 +12,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:elevation="@dimen/_2sdp"
     android:layout_margin="@dimen/_5sdp">
 
     <ImageView
@@ -70,6 +72,7 @@
         android:letterSpacing="0.15"
         android:layout_marginVertical="@dimen/_5sdp"
         android:text="@{viewmodel.price}"
+        android:paddingBottom="@dimen/_5sdp"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

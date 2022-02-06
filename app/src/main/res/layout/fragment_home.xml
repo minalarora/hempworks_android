@@ -54,7 +54,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/white">
+                    android:background="@color/grey_CDCDCD">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/banner_recyclerview"
@@ -73,7 +73,7 @@
                         android:id="@+id/category_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/textview_bold_medium"
+                        style="@style/textview_italic_medium"
                         android:textColor="@color/orange_F8AA37"
                         android:text="@string/categories"
                         android:singleLine="true"
@@ -98,7 +98,7 @@
                         android:id="@+id/trending_product_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/textview_bold_medium"
+                        style="@style/textview_italic_medium"
                         android:textColor="@color/orange_F8AA37"
                         android:text="@string/trending_products"
                         android:singleLine="true"
@@ -125,7 +125,7 @@
                         android:id="@+id/all_product_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/textview_bold_medium"
+                        style="@style/textview_italic_medium"
                         android:textColor="@color/orange_F8AA37"
                         android:text="@string/all_products"
                         android:singleLine="true"

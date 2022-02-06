@@ -36,7 +36,7 @@
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/fragment_verify_mobile.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/item_banner_image.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/item_category.xml" value="0.2611111111111111" />
+        <entry key="app/src/main/res/layout/item_category.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_no_product.xml" value="0.2611111111111111" />
         <entry key="app/src/main/res/layout/item_product.xml" value="0.2611111111111111" />
         <entry key="app/src/main/res/layout/item_search.xml" value="0.2611111111111111" />

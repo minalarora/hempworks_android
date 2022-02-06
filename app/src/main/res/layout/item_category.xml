@@ -4,10 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
         <androidx.cardview.widget.CardView
             android:layout_width="@dimen/_240sdp"
             android:layout_height="@dimen/_240sdp"
@@ -15,6 +11,7 @@
             app:cardBackgroundColor="@color/white"
             app:cardPreventCornerOverlap="false"
             app:cardUseCompatPadding="false"
+            app:cardElevation="@dimen/_2sdp"
             android:layout_margin="@dimen/_5sdp">
 
             <ImageView
@@ -24,19 +21,22 @@
                 android:scaleType="centerCrop"
                 tools:src="@drawable/dummy_category" />
 
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textview_normal_medium"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:letterSpacing="0.07"
+                android:layout_gravity="bottom"
+                android:padding="@dimen/_5sdp"
+                android:background="@color/grey_transparent"
+                tools:text="Herbal Combo Products"/>
+
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/textview_normal_medium"
-            android:textSize="@dimen/_11sdp"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:letterSpacing="0.07"
-            tools:text="Herbal Combo Products"/>
-
-    </LinearLayout>
 
 </layout>

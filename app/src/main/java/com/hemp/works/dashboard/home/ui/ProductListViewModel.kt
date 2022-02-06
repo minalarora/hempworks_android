@@ -70,9 +70,9 @@ class ProductListViewModel @Inject constructor(private val repository: HomeRepos
 
     fun setHeader(product: Product) {
         if (productId == null) {
-            _title.postValue("Search results for '${product.categoryname}'")
+            _title.postValue("Showing results for '${product.categoryname}'")
         } else {
-            _title.postValue("Search results for '${product.title}'")
+            _title.postValue("Showing results for '${product.title}'")
         }
     }
     private fun modifyListForSearchResult(list: List<Product>) : List<Product> {
