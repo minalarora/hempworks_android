@@ -85,7 +85,7 @@ class SearchFragment : Fragment(), Injectable {
         }
 
         viewModel.error.observe(viewLifecycleOwner) {
-            showSnackBar(it)
+            viewModel.handleAllProductVisibility(true)
         }
 
         return binding.root

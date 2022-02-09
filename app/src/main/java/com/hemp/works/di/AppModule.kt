@@ -2,6 +2,9 @@ package com.hemp.works.di
 
 import android.app.Application
 import android.content.Context
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.SnapHelper
 import com.hemp.works.base.AppDatabase
 import com.hemp.works.dashboard.home.data.remote.HomeRemoteDataSource
 import com.hemp.works.dashboard.home.data.remote.HomeService
@@ -28,6 +31,12 @@ class AppModule {
     @Singleton
     @Provides
     fun provideContext(app: Application): Context = app.applicationContext
+
+    @Provides
+    fun provideSnapHelper(): SnapHelper = LinearSnapHelper()
+
+    @Provides
+    fun providePagerSnapHelper(): PagerSnapHelper = PagerSnapHelper()
 
     @Singleton
     @Provides

@@ -6,14 +6,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hemp.works.dashboard.model.Variant
+import com.hemp.works.dashboard.product.ui.SizeItemClickListener
 import com.hemp.works.databinding.ItemSizeBinding
 import com.hemp.works.utils.strike
 
-class SizeAdapter : ListAdapter<Variant, SizeAdapter.ViewHolder>(SizeDiffCallback()) {
+class SizeAdapter(private val listener: SizeItemClickListener) : ListAdapter<Variant, SizeAdapter.ViewHolder>(SizeDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(holder.adapterPosition)
-        holder.bind(item)
+        holder.bind(item, listener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,12 +23,12 @@ class SizeAdapter : ListAdapter<Variant, SizeAdapter.ViewHolder>(SizeDiffCallbac
 
    class ViewHolder private constructor(val binding: ItemSizeBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(variant: Variant) {
+        fun bind(variant: Variant, listener: SizeItemClickListener) {
             binding.size.text = "${variant.size} ${variant.type}"
             binding.size.strike = !variant.instock
             binding.variant = variant
             binding.root.setOnClickListener {
-                //TODO: IMPLEMENT SELECTION LISTENER FOR SIZE
+                listener.onSizeClick(variant)
             }
             binding.executePendingBindings()
         }

@@ -37,6 +37,22 @@
             android:name="id"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="category"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_productFragment_to_productImageFragment"
+            app:destination="@id/productImageFragment"
+            app:enterAnim="@anim/fade_in"
+            app:popUpTo="@id/productFragment"
+            app:popExitAnim="@anim/fade_out" />
+
+        <action
+            android:id="@+id/action_productFragment_to_productFragment"
+            app:destination="@id/productFragment"
+            app:enterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -69,5 +85,16 @@
             app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@id/homeFragment"
             app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/productImageFragment"
+        android:name="com.hemp.works.dashboard.product.ui.ProductImageFragment"
+        android:label="ProductImageFragment" >
+
+        <argument
+            android:name="url"
+            app:argType="string"
+            app:nullable="true" />
+
     </fragment>
 </navigation>

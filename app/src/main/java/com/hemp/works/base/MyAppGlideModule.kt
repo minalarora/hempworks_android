@@ -31,10 +31,6 @@ class MyAppGlideModule : AppGlideModule() {
 
     override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
         super.registerComponents(context, glide, registry)
-        val okHttpClient = OkHttpClient.Builder()
-            .connectTimeout(15, TimeUnit.SECONDS)
-            .readTimeout(15, TimeUnit.SECONDS)
-            .retryOnConnectionFailure(true).build()
 
         registry.replace(
             GlideUrl::class.java,
@@ -44,6 +40,10 @@ class MyAppGlideModule : AppGlideModule() {
     }
     companion object {
         val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
+        val okHttpClient: OkHttpClient = OkHttpClient.Builder()
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
+            .retryOnConnectionFailure(true).build()
 //        Glide.with(context)
 //        .load("http://via.placeholder.com/300.png")
 //        .placeholder(R.drawable.placeholder)

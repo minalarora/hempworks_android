@@ -12,11 +12,14 @@ import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.PagerSnapHelper
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.dashboard.home.ui.adapters.BannerAdapter
 import com.hemp.works.dashboard.home.ui.adapters.ProductAdapter
+import com.hemp.works.dashboard.model.Product
+import com.hemp.works.dashboard.product.ui.ProductItemClickListener
 import com.hemp.works.dashboard.search.ui.adapters.SearchAdapter
 import com.hemp.works.databinding.FragmentProductListBinding
 import com.hemp.works.di.Injectable
@@ -53,7 +56,14 @@ class  ProductListFragment : Fragment(), Injectable {
         binding.bannerRecyclerview.adapter = BannerAdapter()
         ViewCompat.setNestedScrollingEnabled(binding.bannerRecyclerview, false);
 
-        binding.recyclerview.adapter = ProductAdapter()
+        binding.recyclerview.adapter = ProductAdapter(object :
+            ProductItemClickListener {
+            override fun onProductClick(product: Product) {
+                ProductListFragmentDirections.actionProductListFragmentToProductFragment(product.id.toString(), product.category.toString()).let {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+        })
         ViewCompat.setNestedScrollingEnabled(binding.recyclerview, false);
 
         binding.back.setOnClickListener { binding.root.findNavController().popBackStack() }

@@ -5,13 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.hemp.works.dashboard.product.ui.ProductImageClickListener
 import com.hemp.works.databinding.ItemProductImageBinding
 
-class ImageAdapter : ListAdapter<String, ImageAdapter.ViewHolder>(ImageDiffCallback()) {
+class ImageAdapter(private val listener: ProductImageClickListener) : ListAdapter<String, ImageAdapter.ViewHolder>(ImageDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(holder.adapterPosition)
-        holder.bind(item)
+        holder.bind(item, listener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,8 +21,9 @@ class ImageAdapter : ListAdapter<String, ImageAdapter.ViewHolder>(ImageDiffCallb
 
     class ViewHolder private constructor(val binding: ItemProductImageBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(url: String) {
+        fun bind(url: String, listener: ProductImageClickListener) {
             binding.url = url
+            binding.root.setOnClickListener { listener.onProductImage(url) }
             binding.executePendingBindings()
         }
 

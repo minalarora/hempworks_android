@@ -16,6 +16,7 @@ import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.SnapHelper
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.base.Constants
@@ -23,6 +24,8 @@ import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.dashboard.home.ui.adapters.BannerAdapter
 import com.hemp.works.dashboard.home.ui.adapters.CategoryAdapter
 import com.hemp.works.dashboard.home.ui.adapters.ProductAdapter
+import com.hemp.works.dashboard.model.Product
+import com.hemp.works.dashboard.product.ui.ProductItemClickListener
 import com.hemp.works.dashboard.search.ui.SearchFragmentDirections
 import com.hemp.works.dashboard.search.ui.SearchItemClickListener
 import com.hemp.works.databinding.FragmentHomeBinding
@@ -39,6 +42,8 @@ class HomeFragment : Fragment(), Injectable {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var snapHelper: SnapHelper
     private lateinit var sharedViewModel: DashboardSharedViewModel
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: FragmentHomeBinding
@@ -113,12 +118,28 @@ class HomeFragment : Fragment(), Injectable {
                 }
             }
         })
+        snapHelper.attachToRecyclerView(binding.categoryRecyclerview)
         ViewCompat.setNestedScrollingEnabled(binding.categoryRecyclerview, false)
 
-        binding.trendingProductRecyclerview.adapter = ProductAdapter()
+        binding.trendingProductRecyclerview.adapter = ProductAdapter(object :
+            ProductItemClickListener {
+            override fun onProductClick(product: Product) {
+                HomeFragmentDirections.actionHomeFragmentToProductFragment(product.id.toString(), product.category.toString()).let {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+        })
+
         ViewCompat.setNestedScrollingEnabled(binding.trendingProductRecyclerview, false)
 
-        binding.allProductRecyclerview.adapter = ProductAdapter()
+        binding.allProductRecyclerview.adapter = ProductAdapter(object :
+            ProductItemClickListener {
+            override fun onProductClick(product: Product) {
+                HomeFragmentDirections.actionHomeFragmentToProductFragment(product.id.toString(), product.category.toString()).let {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+        })
         ViewCompat.setNestedScrollingEnabled(binding.allProductRecyclerview, false)
 
         viewModel.bannerList.observe(viewLifecycleOwner) {

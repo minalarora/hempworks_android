@@ -7,14 +7,16 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.hemp.works.dashboard.home.ui.CategoryItemClickListener
 import com.hemp.works.dashboard.model.Product
+import com.hemp.works.dashboard.product.ui.ProductItemClickListener
 import com.hemp.works.databinding.ItemProductBinding
 
-class ProductAdapter : ListAdapter<Product, ProductAdapter.ViewHolder>(ProductDiffCallback()) {
+class ProductAdapter(private val listener: ProductItemClickListener) : ListAdapter<Product, ProductAdapter.ViewHolder>(ProductDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(holder.adapterPosition)
-        holder.bind(item)
+        holder.bind(item, listener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,8 +25,11 @@ class ProductAdapter : ListAdapter<Product, ProductAdapter.ViewHolder>(ProductDi
 
     class ViewHolder private constructor(val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: Product) {
+        fun bind(item: Product, listener: ProductItemClickListener) {
             binding.viewmodel = ProductViewModel(binding.root.context, item)
+            binding.root.setOnClickListener {
+                listener.onProductClick(item)
+            }
             binding.executePendingBindings()
         }
 

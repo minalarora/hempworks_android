@@ -8,6 +8,9 @@
         <variable
             name="viewmodel"
             type="com.hemp.works.dashboard.product.ui.ProductViewModel" />
+
+            <import type="com.hemp.works.dashboard.UserType"/>
+
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -53,7 +56,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/grey_CDCDCD">
+                android:background="@color/white">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/image_recyclerview"
@@ -64,19 +67,20 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:hideIfFalse="@{viewmodel.productImagesVisibility}"
                     tools:listitem="@layout/item_product_image"/>
 
                 <TextView
                     android:id="@+id/title"
-                    style="@style/textview_normal_medium"
+                    style="@style/textview_bold_big"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginHorizontal="@dimen/_10sdp"
                     android:gravity="left"
-                    android:letterSpacing="0.09"
                     android:textAllCaps="true"
-                    android:textColor="@color/orange_F8AA37"
+                    android:text="@{viewmodel.productTitle}"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/image_recyclerview"
@@ -84,19 +88,32 @@
 
                 <TextView
                     android:id="@+id/price"
-                    style="@style/textview_italic_medium"
+                    style="@style/textview_bold_medium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginHorizontal="@dimen/_10sdp"
                     android:gravity="left"
+                    android:lineHeight="@dimen/_17sdp"
+                    android:text="@{viewmodel.price}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/title"
-                    tools:text="@string/price" />
+                    app:layout_constraintTop_toBottomOf="@id/title" />
 
 <!--                String text = "<strike><font color=\'#757575\'>Some text</font></strike>";-->
 <!--                textview.setText(Html.fromHtml(text));-->
+
+                <TextView
+                    android:id="@+id/price_sub"
+                    style="@style/textview_italic_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:gravity="left"
+                    android:text="@string/tax_included"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/price" />
 
                 <TextView
                     android:id="@+id/size"
@@ -112,7 +129,7 @@
                     android:letterSpacing="0.09"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/price"
+                    app:layout_constraintTop_toBottomOf="@id/price_sub"
                     />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -154,13 +171,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/quantity"
                     android:elevation="1dp"
+                    android:onClick="@{() -> viewmodel.decreaseQuantity()}"
                     app:tint="@color/orange_F8AA37" />
                 <TextView
                     android:id="@+id/quantity_number"
-                    style="@style/textview_normal_small"
+                    style="@style/textview_normal_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:gravity="center"
+                    android:text="@{viewmodel.quantity}"
                     android:layout_marginVertical="@dimen/_4sdp"
                     app:layout_constraintStart_toEndOf="@id/minus"
                     app:layout_constraintTop_toTopOf="@id/minus"
@@ -178,6 +197,7 @@
                     app:layout_constraintStart_toEndOf="@id/quantity_number"
                     app:layout_constraintTop_toBottomOf="@id/quantity"
                     android:elevation="1dp"
+                    android:onClick="@{ () -> viewmodel.increaseQuantity()}"
                     app:tint="@color/orange_F8AA37" />
 
                 <View
@@ -201,6 +221,7 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_marginHorizontal="@dimen/_24sdp"
                     android:padding="@dimen/_10sdp"
+                    app:hideIfFalse="@{viewmodel.userType == UserType.APPROVED}"
                     app:layout_constraintTop_toBottomOf="@id/minus"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
@@ -218,6 +239,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginHorizontal="@dimen/_24sdp"
                     android:padding="@dimen/_10sdp"
+                    app:hideIfFalse="@{viewmodel.userType == UserType.APPROVED}"
                     app:layout_constraintTop_toBottomOf="@id/add_cart"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
@@ -247,45 +269,34 @@
                     android:layout_marginHorizontal="@dimen/_15sdp"
                     android:gravity="left"
                     android:textAllCaps="true"
+                    android:text="@{viewmodel.description}"
                     android:letterSpacing="0.09"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/description_title"
                     />
 
-                <TextView
-                    android:id="@+id/pdf_title"
-                    style="@style/textview_normal_small"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginHorizontal="@dimen/_15sdp"
-                    android:gravity="left"
-                    android:textAllCaps="true"
-                    android:letterSpacing="0.09"
-                    android:text="@string/download_pdf"
-                    android:textColor="@color/orange_F8AA37"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/description_text"
-                    />
+
 
                 <TextView
                     android:id="@+id/pdf_download"
-                    style="@style/textview_normal_small"
+                    style="@style/textview_normal_medium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginHorizontal="@dimen/_15sdp"
-                    android:gravity="left"
+                    android:gravity="center_vertical"
                     android:textAllCaps="true"
-                    android:letterSpacing="0.09"
                     android:background="@color/white"
                     android:padding="@dimen/_5sdp"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:text="@string/download_test_reports"
                     android:drawableStart="@drawable/ic_pdf"
+                    android:textColor="@color/blue"
+                    app:hideIfFalse="@{viewmodel.pdfVisibility}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/pdf_title"
+                    app:layout_constraintTop_toBottomOf="@id/description_text"
                     />
 
                 <TextView
@@ -299,6 +310,7 @@
                     android:textAllCaps="true"
                     android:letterSpacing="0.09"
                     android:text="@string/you_may_also_like"
+                    app:hideIfFalse="@{viewmodel.productsListVisibility}"
                     android:textColor="@color/orange_F8AA37"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -316,6 +328,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:hideIfFalse="@{viewmodel.productsListVisibility}"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginHorizontal="@dimen/_5sdp"
                     tools:listitem="@layout/item_product"/>

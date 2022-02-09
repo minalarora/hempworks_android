@@ -3,8 +3,11 @@ package com.hemp.works
 import android.app.Application
 import android.app.Activity
 import com.facebook.stetho.Stetho
+import com.github.piasy.biv.BigImageViewer
+import com.github.piasy.biv.loader.glide.GlideCustomImageLoader
 import com.google.firebase.FirebaseApp
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.hemp.works.base.MyAppGlideModule
 import com.hemp.works.di.AppInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -28,6 +31,8 @@ class HempWorksApplication: Application(), HasActivityInjector{
 
         FirebaseApp.initializeApp(this)
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
+
+        BigImageViewer.initialize(GlideCustomImageLoader.with(applicationContext, MyAppGlideModule.okHttpClient))
     }
 
     override fun activityInjector() = dispatchingAndroidInjector
