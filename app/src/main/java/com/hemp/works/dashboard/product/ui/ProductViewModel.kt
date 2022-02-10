@@ -132,6 +132,8 @@ class ProductViewModel @Inject constructor(private val repository: ProductReposi
         it.isNotEmpty()
     }
 
-
+    val buttonVisibility: LiveData<Boolean> = Transformations.map(repository.product) {
+        it.instock
+    }
 
 }

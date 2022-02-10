@@ -197,6 +197,10 @@ class CreateFragment : Fragment(), Injectable {
                     showSnackBar(requireContext().getString(R.string.please_select_valid_file))
                     false
                 }
+                !mimeType.contains("image") -> {
+                    showSnackBar(requireContext().getString(R.string.please_select_valid_file))
+                    false
+                }
                 else -> {
                     true
                 }
@@ -206,6 +210,9 @@ class CreateFragment : Fragment(), Injectable {
     }
 
     private fun showSnackBar(msg: String) {
+        if (viewModel.isFile.value == true) {
+            viewModel.removeImage()
+        }
         val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()

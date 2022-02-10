@@ -13,6 +13,7 @@
     <color name="grey_CDCDCD">#F6F5F5</color>
     <color name="grey_transparent">#60000000</color>
     <color name="orange_transparent">#f8aa37</color>
+    <color name="light_red">#fbe9e8</color>
     <color name="dark_red">#8B0000</color>
     <color name="blue">#0B0080</color>
 </resources>

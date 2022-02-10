@@ -49,7 +49,7 @@
     <string name="select_doctor_certificate">Select doctor registration certificate</string>
     <string name="doctor_certificate">Doctor registration certificate</string>
     <string name="uploaded_file_exceeded_size_limit">The uploaded file is above the 10 MB size limit.</string>
-    <string name="please_select_valid_file">Please select a valid file.</string>
+    <string name="please_select_valid_file">Please select a valid image.</string>
     <string name="password_updated_successfully">Password updated successfully</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="home">Home</string>
@@ -66,7 +66,6 @@
     <string name="notification">Notification</string>
     <string name="search">Search</string>
     <string name="categories">CATEGORIES</string>
-    <string name="out_of_stock">OUT OF STOCK</string>
     <string name="best_seller">BESTSELLER</string>
     <string name="product_price_from">from Rs. %1$d/-</string>
     <string name="product_category_in">in %1$s</string>
@@ -86,6 +85,7 @@
     <string name="you_may_also_like">You may also like</string>
     <string name="tax_included">Tax Included</string>
     <string name="download_test_reports">DOWNLOAD TEST REPORTS</string>
+    <string name="out_of_stock">OUT OF STOCK</string>
 
 
     <string-array name="state_list">

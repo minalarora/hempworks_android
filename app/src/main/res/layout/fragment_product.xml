@@ -221,7 +221,7 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_marginHorizontal="@dimen/_24sdp"
                     android:padding="@dimen/_10sdp"
-                    app:hideIfFalse="@{viewmodel.userType == UserType.APPROVED}"
+                    app:hideIfFalse="@{viewmodel.buttonVisibility}"
                     app:layout_constraintTop_toBottomOf="@id/minus"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
@@ -239,10 +239,31 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginHorizontal="@dimen/_24sdp"
                     android:padding="@dimen/_10sdp"
-                    app:hideIfFalse="@{viewmodel.userType == UserType.APPROVED}"
+                    app:hideIfFalse="@{viewmodel.buttonVisibility}"
                     app:layout_constraintTop_toBottomOf="@id/add_cart"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/out_of_stock_textview"
+                    style="@style/textview_normal_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:gravity="center_vertical"
+                    android:background="@color/light_red"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_15sdp"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:text="Sorry, this item is currently out of stock"
+                    android:drawableStart="@drawable/ic_error"
+                    android:textColor="@color/dark_red"
+                    app:hideIfTrue="@{viewmodel.buttonVisibility}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/buy_now"
+                    />
                 <TextView
                     android:id="@+id/description_title"
                     style="@style/textview_normal_small"
@@ -257,7 +278,7 @@
                     android:textColor="@color/orange_F8AA37"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/buy_now"
+                    app:layout_constraintTop_toBottomOf="@id/out_of_stock_textview"
                     />
 
                 <TextView
@@ -268,9 +289,8 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginHorizontal="@dimen/_15sdp"
                     android:gravity="left"
-                    android:textAllCaps="true"
-                    android:text="@{viewmodel.description}"
                     android:letterSpacing="0.09"
+                    android:text="@{viewmodel.description}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/description_title"
@@ -287,7 +307,7 @@
                     android:layout_marginHorizontal="@dimen/_15sdp"
                     android:gravity="center_vertical"
                     android:textAllCaps="true"
-                    android:background="@color/white"
+                    android:background="@color/grey_CDCDCD"
                     android:padding="@dimen/_5sdp"
                     android:drawablePadding="@dimen/_10sdp"
                     android:text="@string/download_test_reports"
@@ -341,7 +361,7 @@
         </androidx.core.widget.NestedScrollView>
 
         <include
-            layout="@layout/progress_bar"
+            layout="@layout/progress_bar_white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:isVisible="@{viewmodel.loading}"/>
