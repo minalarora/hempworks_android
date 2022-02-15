@@ -16,7 +16,7 @@ import com.hemp.works.dashboard.UserType
 import com.hemp.works.login.data.model.Doctor
 import de.hdodenhof.circleimageview.CircleImageView
 
-@BindingAdapter("hideIfFalse")
+    @BindingAdapter("hideIfFalse")
     fun hideIfFalse(view: View, boo: Boolean) {
         if (boo) view.visibility = View.VISIBLE else view.visibility = View.GONE
     }

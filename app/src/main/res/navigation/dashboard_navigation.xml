@@ -97,4 +97,16 @@
             app:nullable="true" />
 
     </fragment>
+    <dialog
+        android:id="@+id/infoBottomSheetFragment"
+        android:name="com.hemp.works.dashboard.info.InfoBottomSheetFragment"
+        android:label="InfoBottomSheetFragment" >
+        <argument
+            android:name="text"
+            app:argType="string"
+            app:nullable="false" />
+    </dialog>
+    <action
+        android:id="@+id/action_global_infoBottomSheetFragment"
+        app:destination="@id/infoBottomSheetFragment" />
 </navigation>

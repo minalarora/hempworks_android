@@ -17,6 +17,7 @@ object Constants {
     const val GENERAL_ERROR_MESSAGE = "Something went wrong!"
     const val INVALID_CREDENTIALS = "Please enter valid username or password!"
     const val INVALID_MOBILE = "Please enter valid mobile number!"
+    const val INVALID_EMAIL = "Please enter valid Email!"
     const val INVALID_PASSWORD = "Please enter valid password!"
     const val INVALID_FIELDS = "Please fill the required fields!"
     const val INVALID_OTP = "Invalid OTP!"
