@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class DashboardSharedViewModel @Inject constructor(context: Context): BaseViewModel() {
 
-    val user = PreferenceManagerUtil.getDoctor(context)
+    val user =  PreferenceManagerUtil.getDoctor(context)
 
     val userType: UserType = when(user) {
         null -> UserType.ANONYMOUS

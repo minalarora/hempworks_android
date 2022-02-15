@@ -23,6 +23,7 @@
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/fragment_create.xml" value="0.337037037037037" />
+        <entry key="app/src/main/res/layout/fragment_dosage_calculator.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_forget_password.xml" value="0.2861111111111111" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.337037037037037" />
@@ -31,9 +32,11 @@
         <entry key="app/src/main/res/layout/fragment_onboarding2.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/fragment_onboarding3.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/fragment_onboarding4.xml" value="0.31203703703703706" />
+        <entry key="app/src/main/res/layout/fragment_prescription.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_product.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_product_image.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_product_list.xml" value="0.2796296296296296" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2796296296296296" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/fragment_verify_mobile.xml" value="0.337037037037037" />
@@ -67,7 +70,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.337037037037037" />
+        <option name="scale" value="0.1" />
       </ProjectState>
     </option>
   </component>

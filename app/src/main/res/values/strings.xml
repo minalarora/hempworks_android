@@ -86,6 +86,7 @@
     <string name="tax_included">Tax Included</string>
     <string name="download_test_reports">DOWNLOAD TEST REPORTS</string>
     <string name="out_of_stock">OUT OF STOCK</string>
+    <string name="prescription">Prescription</string>
 
 
     <string-array name="state_list">

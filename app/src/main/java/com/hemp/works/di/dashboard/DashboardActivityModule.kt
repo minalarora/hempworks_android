@@ -13,6 +13,4 @@ abstract class DashboardActivityModule {
     @ContributesAndroidInjector(modules = [DashboardFragmentBuildersModule::class])
     abstract fun contributeDashboardActivity(): DashboardActivity
 
-
-
 }
