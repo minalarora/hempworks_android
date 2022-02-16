@@ -2,6 +2,7 @@ package com.hemp.works.dashboard.profile.data.remote
 
 import com.hemp.works.base.BooleanResponse
 import com.hemp.works.base.ImageResponse
+import com.hemp.works.login.data.model.User
 import okhttp3.MultipartBody
 import org.json.JSONObject
 import retrofit2.Response
@@ -21,6 +22,9 @@ interface ProfileService {
 
     @GET("/v1/verify/otp")
     suspend fun verifyOtp(@Query("mobile") mobile: String, @Query("otp") otp: Int): Response<BooleanResponse>
+
+    @GET("/v1/doctor/me")
+    suspend fun fetchDoctor(): Response<User>
 
 
 

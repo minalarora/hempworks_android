@@ -69,12 +69,22 @@ import de.hdodenhof.circleimageview.CircleImageView
     }
 
     @BindingAdapter("glideImage")
-    fun setImage(imageView: ImageView, url: String) {
+    fun setImage(imageView: ImageView, url: String?) {
 
         Glide.with(imageView.context)
             .load(url)
             .placeholder(ColorDrawable(ContextCompat.getColor(imageView.context, R.color.white)))
             .error(ColorDrawable(ContextCompat.getColor(imageView.context, R.color.white)))
+            .apply(MyAppGlideModule.requestOptions)
+            .into(imageView);
+    }
+
+    @BindingAdapter("glideImage")
+    fun setImage(imageView: CircleImageView, url: String?) {
+        Glide.with(imageView.context)
+            .load(url)
+            .placeholder(R.drawable.ic_profile_loading)
+            .error(R.drawable.doctor_placeholder)
             .apply(MyAppGlideModule.requestOptions)
             .into(imageView);
     }

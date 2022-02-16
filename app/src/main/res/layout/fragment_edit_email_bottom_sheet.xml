@@ -31,7 +31,7 @@
 
         <TextView
             android:id="@+id/title"
-            style="@style/textview_bold_big"
+            style="@style/textview_normal_big"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_30sdp"
@@ -50,13 +50,12 @@
             android:singleLine="true"
             android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginHorizontal="@dimen/_20sdp"
-            android:padding="@dimen/_8sdp"
             android:drawableStart="@drawable/ic_email"
             android:drawablePadding="@dimen/_10sdp"
             android:backgroundTint="@color/black"
             android:drawableTint="@color/orange_F8AA37"
-            android:inputType="textEmailAddress"
             android:hint="@string/enter_your_email"
+            android:textColorHint="@color/grey_AAAAAA"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
@@ -64,18 +63,19 @@
 
         <TextView
             android:id="@+id/verify"
+            style="@style/textview_bold_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/textview_bold_medium"
-            android:textColor="@color/white"
-            android:text="@string/update"
+            android:layout_marginHorizontal="@dimen/_24sdp"
+            android:layout_marginVertical="@dimen/_64sdp"
             android:background="@drawable/background_orange_corner_radius"
             android:gravity="center"
-            android:layout_marginTop="@dimen/_50sdp"
-            android:layout_marginHorizontal="@dimen/_24sdp"
             android:padding="@dimen/_10sdp"
-            app:layout_constraintTop_toBottomOf="@id/email"
+            android:text="@string/update"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/email"
+            app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -4,6 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="isMobileState"
+            type="androidx.databinding.ObservableBoolean" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,7 +36,7 @@
 
         <TextView
             android:id="@+id/title"
-            style="@style/textview_bold_big"
+            style="@style/textview_normal_big"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_30sdp"
@@ -40,7 +45,7 @@
             app:layout_constraintTop_toBottomOf="@id/back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="@string/update_mobile_number"/>
+            android:text="@{isMobileState == true ? @string/update_mobile_number : @string/enter_otp}"/>
 
         <EditText
             android:id="@+id/mobile"
@@ -58,6 +63,7 @@
             android:letterSpacing="0.1"
             android:maxLength="10"
             android:hint="@string/mobile_number"
+            app:hideIfFalse="@{isMobileState}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
@@ -78,6 +84,7 @@
             app:OtpLineColor="@color/black"
             android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginHorizontal="@dimen/_25sdp"
+            app:hideIfTrue="@{isMobileState}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mobile"
@@ -92,11 +99,12 @@
             android:text="@string/continue_text"
             android:background="@drawable/background_orange_corner_radius"
             android:gravity="center"
-            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginVertical="@dimen/_64sdp"
             android:layout_marginHorizontal="@dimen/_24sdp"
             android:padding="@dimen/_10sdp"
             app:layout_constraintTop_toBottomOf="@id/otp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

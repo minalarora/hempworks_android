@@ -34,6 +34,16 @@ class EditEmailBottomSheetFragment : BottomSheetDialogFragment() {
             inflater, R.layout.fragment_edit_email_bottom_sheet, container, false)
 
         binding.back.setOnClickListener { dismiss() }
+
+        binding.verify.setOnClickListener {
+            requireActivity().supportFragmentManager.setFragmentResult(
+                getString(R.string.update_email),
+                Bundle().apply { putString("email", binding.email.text.toString()) }
+            )
+            dismiss()
+        }
+
+        binding.email.requestFocus()
         return binding.root
     }
 
@@ -47,7 +57,7 @@ class EditEmailBottomSheetFragment : BottomSheetDialogFragment() {
                     val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
                     bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
                 }
-            }, 0)
+            }, 100)
         }
     }
 

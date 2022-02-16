@@ -19,4 +19,6 @@ class ProfileRemoteDataSource @Inject constructor(private val service: ProfileSe
     suspend fun verifyOtp(mobile: String, otp: Int) = getResult { service.verifyOtp(mobile, otp) }
 
     suspend fun uploadProfile(image: MultipartBody.Part) = getResult { service.uploadProfile(image) }
+
+    suspend fun fetchDoctor() = getResult { service.fetchDoctor() }
 }

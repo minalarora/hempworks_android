@@ -27,6 +27,11 @@
             app:enterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
     <fragment
@@ -109,4 +114,8 @@
     <action
         android:id="@+id/action_global_infoBottomSheetFragment"
         app:destination="@id/infoBottomSheetFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.hemp.works.dashboard.profile.ui.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>

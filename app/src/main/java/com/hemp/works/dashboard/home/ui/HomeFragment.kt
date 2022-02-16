@@ -200,6 +200,11 @@ class HomeFragment : Fragment(), Injectable {
                 LoginActivity.getPendingIntent(requireContext(), R.id.loginFragment).send()
                 requireActivity().finish()
             }
+            R.id.profile -> {
+                HomeFragmentDirections.actionHomeFragmentToProfileFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
             //TODO: NAVIGATE TO DIFF FRAGMENTS
         }
 

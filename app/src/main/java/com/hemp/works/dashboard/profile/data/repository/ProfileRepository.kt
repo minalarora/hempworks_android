@@ -1,12 +1,14 @@
 package com.hemp.works.dashboard.profile.data.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.hemp.works.base.BaseRepository
 import com.hemp.works.base.Constants
 import com.hemp.works.base.ImageResponse
 import com.hemp.works.base.LiveEvent
 import com.hemp.works.dashboard.home.data.remote.HomeRemoteDataSource
 import com.hemp.works.dashboard.profile.data.remote.ProfileRemoteDataSource
+import com.hemp.works.login.data.model.User
 import okhttp3.MultipartBody
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -17,6 +19,16 @@ class ProfileRepository @Inject constructor(private val remoteDataSource: Profil
     private val _booleanResponse = LiveEvent<Boolean>()
     val booleanResponse: LiveData<Boolean>
         get() = _booleanResponse
+
+    private val _user = MutableLiveData<User>()
+    val user: LiveData<User>
+        get() = _user
+
+    suspend fun fetchDoctor() {
+        getResult{ remoteDataSource.fetchDoctor() }?.let {
+            it.data?.let { user -> _user.postValue(user) }
+        }
+    }
 
     suspend fun updateProfile(image: MultipartBody.Part) {
         getResult(Constants.UNABLE_TO_UPLOAD_IMAGE) { remoteDataSource.uploadProfile(image)}?.let {
@@ -34,7 +46,7 @@ class ProfileRepository @Inject constructor(private val remoteDataSource: Profil
     }
 
     suspend fun sendOTP(mobile: String) {
-        getResult(Constants.GENERAL_ERROR_MESSAGE) { remoteDataSource.verifyMobile(mobile) }
+        getResult(Constants.GENERAL_ERROR_MESSAGE, handleLoading = false) { remoteDataSource.verifyMobile(mobile) }
     }
 
     suspend fun updateMobile(mobile: String, otp: Int) {

@@ -1,10 +1,16 @@
 package com.hemp.works.dashboard.profile.ui
 
+import android.content.Context
+import androidx.core.text.isDigitsOnly
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.hemp.works.base.BaseViewModel
 import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.profile.data.repository.ProfileRepository
+import com.hemp.works.login.data.model.Doctor
 import com.hemp.works.utils.FileUtils
+import com.hemp.works.utils.PreferenceManagerUtil
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -12,13 +18,22 @@ import okhttp3.RequestBody
 import java.io.File
 import javax.inject.Inject
 
-class ProfileViewModel  @Inject constructor(private val repository: ProfileRepository): BaseViewModel() {
+class ProfileViewModel  @Inject constructor(private val repository: ProfileRepository, context: Context): BaseViewModel(repository) {
 
     val booleanResponse = repository.booleanResponse
+    private val localDoctor =  PreferenceManagerUtil.getDoctor(context)
 
+    val doctor: LiveData<Doctor> =  Transformations.map(repository.user) {
+        if (it.doctor != null) it.doctor
+        else localDoctor
+    }
 
     var fileName: String = ""
     var file: File? = null
+
+    init {
+       fetchDoctor()
+    }
 
     private fun uploadImage() {
         if (file == null) {
@@ -49,7 +64,7 @@ class ProfileViewModel  @Inject constructor(private val repository: ProfileRepos
 
     fun sendOTP(mobile: String) {
 
-        if (mobile.length < 10) {
+        if (mobile.length < 10 && !mobile.isDigitsOnly()) {
             error(Constants.INVALID_MOBILE)
             return
         }
@@ -59,7 +74,7 @@ class ProfileViewModel  @Inject constructor(private val repository: ProfileRepos
     }
 
     fun updateMobile(mobile: String, otp: String) {
-        if (otp.length < 4) {
+        if (otp.length < 4 && !otp.isDigitsOnly()) {
             error(Constants.INVALID_OTP)
             return
         }
@@ -75,6 +90,12 @@ class ProfileViewModel  @Inject constructor(private val repository: ProfileRepos
         }
         viewModelScope.launch {
             repository.updateEmail(email)
+        }
+    }
+
+    fun fetchDoctor() {
+        viewModelScope.launch {
+            repository.fetchDoctor()
         }
     }
 }
