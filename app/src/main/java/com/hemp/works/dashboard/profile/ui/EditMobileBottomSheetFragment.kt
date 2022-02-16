@@ -42,6 +42,8 @@ class EditMobileBottomSheetFragment : BottomSheetDialogFragment() {
                 isMobileState = this@EditMobileBottomSheetFragment.isMobileState
         }
 
+        binding.mobile.requestFocus()
+
         binding.verify.setOnClickListener {
             if (isMobileState.get()) {
                 if (binding.mobile.text.toString().length == 10) {

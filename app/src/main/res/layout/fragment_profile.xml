@@ -116,19 +116,6 @@
             tools:text="Minal Arora"/>
 
         <TextView
-            android:id="@+id/status"
-            style="@style/textview_normal_small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/your_id_verification_is_in_progress"
-            android:background="@color/light_red"
-            android:padding="@dimen/_3sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            app:hideIfFalse="@{usertype == UserType.APPROVED}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profile_container" />
-
-        <TextView
             android:id="@+id/clinic_name_title"
             style="@style/textview_bold_small"
             android:layout_width="match_parent"
@@ -180,6 +167,7 @@
             android:text="@string/edit"
             android:drawablePadding="@dimen/_3sdp"
             android:layout_marginTop="@dimen/_20sdp"
+            android:clickable="@{viewmodel.loading == true ? false : true}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/clinic_name_value"
             app:drawableStartCompat="@drawable/ic_edit" />
@@ -214,9 +202,24 @@
             android:text="@string/edit"
             android:drawablePadding="@dimen/_3sdp"
             android:layout_marginTop="@dimen/_20sdp"
+            android:clickable="@{viewmodel.loading == true ? false : true}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/email_value"
             app:drawableStartCompat="@drawable/ic_edit" />
+
+        <TextView
+            android:id="@+id/status"
+            style="@style/textview_normal_small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/your_id_verification_is_in_progress"
+            android:background="@color/light_red"
+            android:gravity="center"
+            android:padding="@dimen/_13sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:hideIfFalse="@{usertype == UserType.PENDING}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mobile_value" />
 
 <!--        <TextView-->
 <!--            android:id="@+id/wallet_title"-->
@@ -257,7 +260,7 @@
     </androidx.core.widget.NestedScrollView>
 
         <include
-            layout="@layout/progress_bar_white"
+            layout="@layout/progress_bar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:isVisible="@{viewmodel.loading}"/>

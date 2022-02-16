@@ -96,7 +96,7 @@
     <string name="due_amount">Due Amount</string>
     <string name="pending">Pending</string>
     <string name="approved">Approved</string>
-    <string name="your_id_verification_is_in_progress">Your ID verification is in progress</string>
+    <string name="your_id_verification_is_in_progress">Note: Your ID verification is in progress</string>
     <string name="edit">Edit</string>
     <string name="pay_remaining_amount">Pay remaining amount</string>
     <string name="update">Update</string>
