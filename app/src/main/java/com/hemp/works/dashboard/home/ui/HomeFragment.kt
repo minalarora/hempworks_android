@@ -205,6 +205,11 @@ class HomeFragment : Fragment(), Injectable {
                     binding.root.findNavController().navigate(it)
                 }
             }
+            R.id.support -> {
+                HomeFragmentDirections.actionHomeFragmentToPrescriptionFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
             //TODO: NAVIGATE TO DIFF FRAGMENTS
         }
 

@@ -32,6 +32,11 @@
             app:destination="@id/profileFragment"
             app:enterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_prescriptionFragment"
+            app:destination="@id/prescriptionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
     <fragment
@@ -118,4 +123,18 @@
         android:id="@+id/profileFragment"
         android:name="com.hemp.works.dashboard.profile.ui.ProfileFragment"
         android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/prescriptionFragment"
+        android:name="com.hemp.works.dashboard.prescription.ui.PrescriptionFragment"
+        android:label="PrescriptionFragment" >
+        <action
+            android:id="@+id/action_prescriptionFragment_to_uploadPrescriptionFragment"
+            app:destination="@id/uploadPrescriptionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/uploadPrescriptionFragment"
+        android:name="com.hemp.works.dashboard.prescription.ui.UploadPrescriptionFragment"
+        android:label="UploadPrescriptionFragment" />
 </navigation>

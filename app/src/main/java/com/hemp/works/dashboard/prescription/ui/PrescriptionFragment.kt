@@ -69,3 +69,7 @@ class PrescriptionFragment : Fragment(), Injectable {
             PrescriptionFragment()
     }
 }
+
+interface PrescriptionItemClickListener{
+    fun onItemClick(prescription: String?, type: String?)
+}

@@ -47,6 +47,7 @@
     <string name="doctor_registration_certificate">DOCTOR REGISTRATION CERTIFICATE</string>
     <string name="leaf_of_life_n_monthly_newsletter">Leaf of Life \n(Monthly Newsletter)</string>
     <string name="upload_certificate">Click here to upload certificate</string>
+    <string name="upload_prescription_text">Click here to upload prescription</string>
     <string name="permissions_required">Necessary permissions required</string>
     <string name="select_doctor_certificate">Select doctor registration certificate</string>
     <string name="doctor_certificate">Doctor registration certificate</string>
@@ -100,6 +101,11 @@
     <string name="edit">Edit</string>
     <string name="pay_remaining_amount">Pay remaining amount</string>
     <string name="update">Update</string>
+    <string name="no_prescriptions_found">No Prescriptions Found :-(</string>
+    <string name="upload_prescription">Upload Prescription</string>
+    <string name="max_30_words">Max 30 words...</string>
+    <string name="write_here">Write here...</string>
+    <string name="add_description">Add Description (Max 30 words... )</string>
 
 
     <string-array name="state_list">

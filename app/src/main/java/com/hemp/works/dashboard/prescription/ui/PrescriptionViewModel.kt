@@ -22,6 +22,9 @@ class PrescriptionViewModel  @Inject constructor(private val repository: Prescri
     } as MutableLiveData<List<Prescription>>
     val prescriptionList: LiveData<List<Prescription>> = _prescriptionsList
 
+    private val _prescriptionVisibility= MutableLiveData(false)
+    val prescriptionVisibility: LiveData<Boolean> = _prescriptionVisibility
+
     private var description: String? = null
     private var dateRange: Pair<Date, Date>? = null
 
@@ -55,5 +58,9 @@ class PrescriptionViewModel  @Inject constructor(private val repository: Prescri
     fun updateDescription(text: String?) {
         description = text
         _prescriptionsList.postValue(filterList(repository.prescriptionList.value!!))
+    }
+
+    fun handlePrescriptionVisibility(isEmpty: Boolean) {
+        _prescriptionVisibility.postValue(!isEmpty)
     }
 }

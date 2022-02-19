@@ -12,60 +12,124 @@
         <import type="com.hemp.works.dashboard.UserType"/>
 
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
-
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:minHeight="?attr/actionBarSize"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleTextColor="@android:color/white"
-            android:background="?attr/colorPrimary"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:layout_height="match_parent"
+            >
 
-            <ImageView
-                android:id="@+id/back"
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
-                android:layout_margin="@dimen/_10sdp"
-                android:src="@drawable/ic_back"
-                android:elevation="1dp"
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:minHeight="?attr/actionBarSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:titleTextColor="@android:color/white"
+                android:background="?attr/colorPrimary"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:tint="@color/white" />
+                app:layout_constraintEnd_toEndOf="parent">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:src="@drawable/ic_back"
+                    android:elevation="1dp"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/textview_normal_big"
+                    android:textColor="@color/white"
+                    android:text="@string/prescription"/>
+
+                <ImageView
+                    android:id="@+id/filter"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:src="@drawable/ic_menu_filter"
+                    android:elevation="1dp"
+                    android:layout_gravity="end"
+                    app:tint="@color/white" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/grey_CDCDCD"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search"
+                    android:layout_width="0dp"
+                    app:queryHint="Search your prescriptions"
+                    android:layout_height="wrap_content"
+                    app:iconifiedByDefault="false"
+                    android:background="@drawable/edittext_orange_corner_radius"
+                    android:layout_margin="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/prescription_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/search"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:hideIfTrue="@{viewmodel.loading}"
+                    android:background="@color/grey_CDCDCD"
+                    tools:listitem="@layout/item_prescription"
+                    tools:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/no_prescription_uploaded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_prescriptions_found"
+                    style="@style/textview_normal_medium"
+                    android:textColor="@color/orange_F8AA37"
+                    app:hideIfFalse="@{viewmodel.loading == false &amp;&amp; viewmodel.prescriptionVisibility == false ? true : false}"
+                    app:layout_constraintTop_toBottomOf="@id/search"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <include
+                layout="@layout/progress_bar"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                style="@style/textview_normal_big"
-                android:textColor="@color/white"
-                android:text="@string/prescription"/>
-
-        </androidx.appcompat.widget.Toolbar>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@color/grey_CDCDCD"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+                app:isVisible="@{viewmodel.loading}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <include
-            layout="@layout/progress_bar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:isVisible="@{viewmodel.loading}"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="@dimen/_16sdp"
+            android:src="@drawable/ic_add"
+            app:layout_anchorGravity="bottom|right|end"
+            app:layout_behavior=".utils.ScrollAwareFABBehavior"
+            app:tint="@color/white"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

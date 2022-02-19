@@ -15,57 +15,164 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/grey_CDCDCD">
 
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:minHeight="?attr/actionBarSize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleTextColor="@android:color/white"
-            android:background="?attr/colorPrimary"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <ImageView
-                android:id="@+id/back"
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
-                android:layout_margin="@dimen/_10sdp"
-                android:src="@drawable/ic_back"
-                android:elevation="1dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:tint="@color/white" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                style="@style/textview_normal_big"
-                android:textColor="@color/white"
-                android:text="@string/prescription"/>
-
-        </androidx.appcompat.widget.Toolbar>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container"
+        <ScrollView
+            android:id="@+id/scroll_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/grey_CDCDCD"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            android:orientation="vertical"
+            android:scrollbars="none"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_CDCDCD">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/black" />
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_marginHorizontal="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="prescription.json"
+            app:lottie_loop="true"
+            app:lottie_speed="0.5" />
+
+        <TextView
+            android:id="@+id/prescription_title"
+            style="@style/textview_bold_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:gravity="start"
+            android:padding="@dimen/_6sdp"
+            android:textAllCaps="true"
+            android:text="@string/upload_prescription"
+            android:textColor="@color/orange_F8AA37"
+            app:layout_constraintEnd_toStartOf="@+id/prescription_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/animationView" />
+
+        <View
+            android:id="@+id/prescription_view"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:alpha="0.5"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/orange_F8AA37"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/prescription_title"
+            app:layout_constraintTop_toBottomOf="@id/animationView" />
+
+
+        <RelativeLayout
+            android:id="@+id/upload_image_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_18sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:gravity="end"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/prescription_title">
+
+            <ImageView
+                android:id="@+id/upload_imageview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:paddingStart="@dimen/_5sdp"
+                android:src="@{viewmodel.isFile ? @drawable/ic_remove_image : @drawable/ic_upload_image}"
+                tools:src="@drawable/ic_upload_image"/>
+
+            <TextView
+                android:id="@+id/upload_image_textview"
+                style="@style/textview_italic_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/upload_imageview"
+                android:gravity="end"
+                android:text="@{viewmodel.isFile ? viewmodel.fileName : @string/upload_prescription_text}"
+                tools:text="@string/upload_prescription_text" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/description_title"
+            style="@style/textview_normal_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:gravity="start"
+            android:padding="@dimen/_6sdp"
+            android:text="@string/add_description"
+            app:layout_constraintTop_toBottomOf="@id/upload_image_container"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <EditText
+            android:id="@+id/description"
+            style="@style/textview_normal_small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:background="@drawable/edittext_orange_corner_radius"
+            android:hint="@string/write_here"
+            android:padding="@dimen/_8sdp"
+            android:lines="3"
+            android:gravity="start"
+            android:maxLength="30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description_title" />
+
+        <TextView
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/textview_bold_medium"
+            android:textColor="@color/white"
+            android:text="@string/submit_text"
+            android:background="@drawable/background_orange_corner_radius"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginHorizontal="@dimen/_24sdp"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
         <include
             layout="@layout/progress_bar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:isVisible="@{viewmodel.loading}"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>
