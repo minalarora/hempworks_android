@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.hemp.works.BuildConfig
 import com.hemp.works.base.AuthInterceptor
 import com.hemp.works.base.Constants
@@ -42,7 +43,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideGson(): Gson = Gson()
+    fun provideGson(): Gson = GsonBuilder().setDateFormat("YYYY-MM-DD HH:mm:ss").create()
 
     @Provides
     @Singleton

@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Suppress("unused")
-@Module
+@Module(includes = [DashboardDataModule::class, DashboardViewModelModule::class])
 abstract class DashboardActivityModule {
 
     @ContributesAndroidInjector(modules = [DashboardFragmentBuildersModule::class])

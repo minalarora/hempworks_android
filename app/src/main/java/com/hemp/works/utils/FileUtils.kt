@@ -15,11 +15,15 @@ object FileUtils {
     const val ANY_FILES = "*/*"
     const val SERVER_FILE_TYPE = "file/*"
     const val JPG_FILE = ".jpg"
+    const val PDF_FILE = ".pdf"
     const val SERVER_IMAGE_KEY_NAME = "image"
+    const val SERVER_PDF_KEY_NAME = "pdf"
     const val SERVER_JSON_KEY_NAME = "json"
     const val REQUEST_MEDIA_TYPE = "text/plain"
     const val MIME_TYPES = "image/jpeg"
     const val MAX_FILE_SIZE = 1048576 * 10
+    const val IMAGE_TYPE = "image"
+    const val PDF_TYPE = "pdf"
 
     /**
      * This method will check permission

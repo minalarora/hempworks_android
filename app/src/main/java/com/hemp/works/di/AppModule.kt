@@ -26,7 +26,7 @@ import retrofit2.Retrofit
 import javax.inject.Singleton
 
 
-@Module(includes = [ViewModelModule::class, NetworkModule::class])
+@Module
 class AppModule {
 
     @Singleton
@@ -42,70 +42,5 @@ class AppModule {
 
     @Provides
     fun providePagerSnapHelper(): PagerSnapHelper = PagerSnapHelper()
-
-    @Singleton
-    @Provides
-    fun provideLoginService(retrofit: Retrofit): LoginService = retrofit.create(LoginService::class.java)
-
-    @Singleton
-    @Provides
-    fun provideLoginRemoteDataSource(service: LoginService)
-            = LoginRemoteDataSource(service)
-
-    @Singleton
-    @Provides
-    fun provideHomeService(retrofit: Retrofit): HomeService = retrofit.create(HomeService::class.java)
-
-    @Singleton
-    @Provides
-    fun provideHomeRemoteDataSource(service: HomeService)
-            = HomeRemoteDataSource(service)
-
-    @Singleton
-    @Provides
-    fun provideSearchService(retrofit: Retrofit): SearchService = retrofit.create(SearchService::class.java)
-
-    @Singleton
-    @Provides
-    fun provideSearchRemoteDataSource(service: SearchService)
-            = SearchRemoteDataSource(service)
-
-    @Singleton
-    @Provides
-    fun provideProductService(retrofit: Retrofit): ProductService = retrofit.create(ProductService::class.java)
-
-    @Singleton
-    @Provides
-    fun provideProductRemoteDataSource(service: ProductService)
-            = ProductRemoteDataSource(service)
-
-    @Singleton
-    @Provides
-    fun provideProfileService(retrofit: Retrofit): ProfileService = retrofit.create(ProfileService::class.java)
-
-    @Singleton
-    @Provides
-    fun provideProfileRemoteDataSource(service: ProfileService)
-            = ProfileRemoteDataSource(service)
-
-    @Singleton
-    @Provides
-    fun providePrescriptionService(retrofit: Retrofit): PrescriptionService = retrofit.create(PrescriptionService::class.java)
-
-    @Singleton
-    @Provides
-    fun providePrescriptionRemoteDataSource(service: PrescriptionService)
-            = PrescriptionRemoteDataSource(service)
-
-    @Singleton
-    @Provides
-    fun provideCalculatorService(retrofit: Retrofit): CalculatorService = retrofit.create(CalculatorService::class.java)
-
-    @Singleton
-    @Provides
-    fun provideCalculatorRemoteDataSource(service: CalculatorService)
-            = CalculatorRemoteDataSource(service)
-
-
 
 }
