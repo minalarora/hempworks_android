@@ -12,7 +12,7 @@ import com.hemp.works.databinding.ItemPrescriptionBinding
 import java.text.SimpleDateFormat
 
 @SuppressLint("SimpleDateFormat")
-val dateFormat = SimpleDateFormat("yyyy-MM-DD HH:mm:ss");
+val dateFormat = SimpleDateFormat("dd MMM yyyy  hh:mm:ss a");
 class PrescriptionAdapter(private val listener: PrescriptionItemClickListener) : ListAdapter<Prescription, PrescriptionAdapter.ViewHolder>(PrescriptionDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

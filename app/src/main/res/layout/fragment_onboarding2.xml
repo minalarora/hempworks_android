@@ -12,10 +12,10 @@
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="@dimen/_200sdp"
+            android:layout_width="@dimen/_250sdp"
             android:layout_height="@dimen/_200sdp"
             android:scaleType="centerInside"
-            android:src="@drawable/newsletter"
+            android:src="@drawable/orders"
             android:layout_marginBottom="@dimen/_50sdp"
             app:layout_constraintBottom_toTopOf="@+id/title"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_15sdp"
             android:gravity="center"
-            android:text="@string/leaf_of_life_n_monthly_newsletter"
+            android:text="@string/your_orders"
             app:layout_constraintBottom_toTopOf="@+id/description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

@@ -16,6 +16,8 @@
         <variable
             name="user"
             type="com.hemp.works.login.data.model.Doctor" />
+
+        <import type="com.hemp.works.dashboard.UserType"/>
     </data>
 
         <androidx.drawerlayout.widget.DrawerLayout
@@ -65,20 +67,82 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginVertical="@dimen/_10sdp"
                         app:hideIfFalse="@{viewmodel.bannerVisibility}"
                         tools:listitem="@layout/item_banner_image"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/dosage_calculator"
+                        android:layout_width="@dimen/_120sdp"
+                        android:layout_height="@dimen/_120sdp"
+                        android:foreground="@drawable/edittext_orange_corner_radius"
+                        app:cardCornerRadius="@dimen/_8sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        app:hideIfFalse="@{usertype == UserType.APPROVED}"
+                        app:layout_constraintTop_toBottomOf="@id/banner_recyclerview"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/upload_prescription">
+
+                         <ImageView
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/_80sdp"
+                             android:src="@drawable/ic_menu_calculator"
+                             app:tint="@color/orange_F8AA37" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/textview_normal_medium"
+                            android:padding="@dimen/_10sdp"
+                            android:textColor="@color/orange_F8AA37"
+                            android:text="@string/dosage_calculator"
+                            android:layout_gravity="bottom"
+                            android:gravity="center"/>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/upload_prescription"
+                        android:layout_width="@dimen/_120sdp"
+                        android:layout_height="@dimen/_120sdp"
+                        android:foreground="@drawable/edittext_orange_corner_radius"
+                        app:cardCornerRadius="@dimen/_8sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        app:hideIfFalse="@{usertype == UserType.APPROVED}"
+                        app:layout_constraintStart_toEndOf="@id/dosage_calculator"
+                        app:layout_constraintTop_toBottomOf="@id/banner_recyclerview"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_70sdp"
+                            android:layout_marginVertical="@dimen/_5sdp"
+                            android:src="@drawable/ic_menu_prescription_upload"
+                            app:tint="@color/orange_F8AA37" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/textview_normal_medium"
+                            android:padding="@dimen/_10sdp"
+                            android:textColor="@color/orange_F8AA37"
+                            android:text="@string/upload_prescription"
+                            android:layout_gravity="bottom"
+                            android:gravity="center"/>
+
+                    </androidx.cardview.widget.CardView>
 
                     <TextView
                         android:id="@+id/category_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/textview_italic_medium"
+                        style="@style/textview_normal_medium"
                         android:textColor="@color/orange_F8AA37"
                         android:text="@string/categories"
                         android:singleLine="true"
-                        app:layout_constraintTop_toBottomOf="@id/banner_recyclerview"
-                        android:layout_margin="@dimen/_10sdp"
+                        app:layout_constraintTop_toBottomOf="@id/dosage_calculator"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
                         app:hideIfFalse="@{viewmodel.categoryVisibility}"/>
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -98,7 +162,7 @@
                         android:id="@+id/trending_product_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/textview_italic_medium"
+                        style="@style/textview_normal_medium"
                         android:textColor="@color/orange_F8AA37"
                         android:text="@string/trending_products"
                         android:singleLine="true"
@@ -125,7 +189,7 @@
                         android:id="@+id/all_product_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/textview_italic_medium"
+                        style="@style/textview_normal_medium"
                         android:textColor="@color/orange_F8AA37"
                         android:text="@string/all_products"
                         android:singleLine="true"

@@ -34,12 +34,15 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablayout"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
+            app:tabMode="scrollable"
             app:tabBackground="@drawable/viewpager_tablayout_selector"
             app:tabGravity="center"
             app:tabIndicatorColor="@color/orange_F8AA37"
             app:tabIndicatorHeight="0dp"
+            app:tabIndicatorFullWidth="false"
+            app:tabMaxWidth="@dimen/_20sdp"
             app:layout_constraintBottom_toTopOf="@id/next"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

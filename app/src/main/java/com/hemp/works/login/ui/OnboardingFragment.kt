@@ -52,7 +52,7 @@ class OnboardingFragment : Fragment() {
         binding.viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                if (position == 2) isLast.set(true)
+                if (position == 4) isLast.set(true)
                 else isLast.set(false)
             }
 
@@ -62,12 +62,12 @@ class OnboardingFragment : Fragment() {
         TabLayoutMediator(binding.tablayout, binding.viewpager) { tab, position ->
         }.attach()
         binding.next.setOnClickListener {
-            if (binding.viewpager.currentItem == 2) {
+            if (binding.viewpager.currentItem == 4) {
                 binding.root.findNavController().navigate(
                     OnboardingFragmentDirections.actionOnboardingFragmentToLoginFragment()
                 )
             } else {
-                if (binding.viewpager.currentItem == 1) {
+                if (binding.viewpager.currentItem == 3) {
                     isLast.set(true)
                 }
                 binding.viewpager.setCurrentItem(binding.viewpager.currentItem + 1, true)
@@ -85,7 +85,7 @@ class OnboardingFragment : Fragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance() =
             OnboardingFragment()
     }
 

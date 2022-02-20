@@ -8,6 +8,7 @@ import android.net.Uri
 import android.provider.OpenableColumns
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
+import com.hemp.works.base.Constants
 import java.io.File
 import java.io.FileOutputStream
 
@@ -21,6 +22,7 @@ object FileUtils {
     const val SERVER_JSON_KEY_NAME = "json"
     const val REQUEST_MEDIA_TYPE = "text/plain"
     const val MIME_TYPES = "image/jpeg"
+    const val MIME_TYPE_PDF = "application/pdf"
     const val MAX_FILE_SIZE = 1048576 * 10
     const val IMAGE_TYPE = "image"
     const val PDF_TYPE = "pdf"
@@ -78,6 +80,25 @@ object FileUtils {
             out.close()
             `in`.close()
             return file
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
+        return null
+    }
+
+    fun getFileTypeFromUri(
+        context: Context,
+        uri: Uri?
+    ): String? {
+        try {
+            val mimeType: String? = uri?.let { context.contentResolver.getType(it) }
+            if (mimeType?.contains("image") == true) {
+                return IMAGE_TYPE
+            } else if(mimeType?.contains("pdf") == true) {
+                return PDF_TYPE
+            } else {
+                null
+            }
         } catch (ex: Exception) {
             ex.printStackTrace()
         }

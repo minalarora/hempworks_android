@@ -60,31 +60,18 @@
 
         <TextView
             android:id="@+id/prescription_title"
-            style="@style/textview_bold_small"
-            android:layout_width="wrap_content"
+            style="@style/textview_normal_medium"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:gravity="start"
-            android:padding="@dimen/_6sdp"
-            android:textAllCaps="true"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:background="@drawable/textview_orange_corner_radius"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:letterSpacing="0.09"
             android:text="@string/upload_prescription"
             android:textColor="@color/orange_F8AA37"
-            app:layout_constraintEnd_toStartOf="@+id/prescription_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/animationView" />
-
-        <View
-            android:id="@+id/prescription_view"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginEnd="@dimen/_25sdp"
-            android:alpha="0.5"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:background="@color/orange_F8AA37"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/prescription_title"
-            app:layout_constraintTop_toBottomOf="@id/animationView" />
-
 
         <RelativeLayout
             android:id="@+id/upload_image_container"
@@ -115,17 +102,19 @@
                 android:layout_height="wrap_content"
                 android:layout_toStartOf="@+id/upload_imageview"
                 android:gravity="end"
-                android:text="@{viewmodel.isFile ? viewmodel.fileName : @string/upload_prescription_text}"
-                tools:text="@string/upload_prescription_text" />
+                android:text="@{viewmodel.isFile ? viewmodel.fileName : @string/note_only_image_and_pdf_can_be_uploaded}"
+                tools:text="@string/note_only_image_and_pdf_can_be_uploaded" />
 
         </RelativeLayout>
+
 
         <TextView
             android:id="@+id/description_title"
             style="@style/textview_normal_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:gravity="start"
             android:padding="@dimen/_6sdp"
             android:text="@string/add_description"
@@ -160,6 +149,7 @@
             android:layout_marginTop="@dimen/_50sdp"
             android:layout_marginHorizontal="@dimen/_24sdp"
             android:padding="@dimen/_10sdp"
+            android:clickable="@{viewmodel.loading == true ? false : true}"
             app:layout_constraintTop_toBottomOf="@id/description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

@@ -8,10 +8,10 @@
     <string name="get_started">Get Started</string>
     <string name="prescription_record">Prescription Record</string>
     <string name="onboarding_text1">Here you can keep a record of all your patient prescriptions with date and patient details for any future references.</string>
-    <string name="onboarding_text2">Our Monthly Newsletter where we share the Industry news, product launches, offers and rewards. A fun space to look out for, every month!</string>
+    <string name="onboarding_text2">Here is a quick access for you, to help you place your regular orders conveniently.</string>
     <string name="onboarding_text3">This is a one tap solution for you to attend all Ananta Sambhasha Sessions.</string>
     <string name="onboarding_text4">Now, you can access the benefitting sessions available to you in this tutorial hub.</string>
-    <string name="your_orders">Your Orders</string>
+    <string name="onboarding_text5">Our Monthly Newsletter where we share the Industry news, product launches, offers and rewards. A fun space to look out for, every month!</string>
     <string name="medical_cannabis_tutorials">Medical Cannabis Tutorials</string>
     <string name="live_cme_sessions">Live CME Sessions</string>
     <string name="email_or_mobile_number">Email or mobile number</string>
@@ -52,7 +52,7 @@
     <string name="select_doctor_certificate">Select doctor registration certificate</string>
     <string name="doctor_certificate">Doctor registration certificate</string>
     <string name="uploaded_file_exceeded_size_limit">The uploaded file is above the 10 MB size limit.</string>
-    <string name="please_select_valid_file">Please select a valid image.</string>
+    <string name="please_select_valid_file">Please select a valid file.</string>
     <string name="password_updated_successfully">Password updated successfully</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="home">Home</string>
@@ -106,6 +106,10 @@
     <string name="max_30_words">Max 30 words...</string>
     <string name="write_here">Write here...</string>
     <string name="add_description">Add Description (Max 30 words... )</string>
+    <string name="select_dates">Select Dates</string>
+    <string name="note_only_image_and_pdf_can_be_uploaded">Note: Only Image and PDF can be uploaded.</string>
+    <string name="your_orders">Your Orders</string>
+    <string name="leaf_of_life_monthly_newsletter">Leaf of Life (Monthly Newsletter)</string>
 
 
     <string-array name="state_list">

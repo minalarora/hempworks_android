@@ -16,9 +16,10 @@ import okhttp3.RequestBody
 import java.io.File
 import javax.inject.Inject
 
-class UploadPrescriptionViewModel  @Inject constructor(private val repository: PrescriptionRepository): BaseViewModel() {
+class UploadPrescriptionViewModel  @Inject constructor(private val repository: PrescriptionRepository): BaseViewModel(repository) {
 
     val mediaUrl = repository.imageResponse
+    val booleanResponse = repository.booleanResponse
 
     private val _isFile: MutableLiveData<Boolean> = MutableLiveData(false)
     val isFile: LiveData<Boolean> = _isFile
@@ -50,7 +51,7 @@ class UploadPrescriptionViewModel  @Inject constructor(private val repository: P
             return
         }
         viewModelScope.launch {
-            repository.uploadImage(prepareFilePart(FileUtils.SERVER_PDF_KEY_NAME, file!!))
+            repository.uploadPDF(prepareFilePart(FileUtils.SERVER_PDF_KEY_NAME, file!!))
         }
     }
 

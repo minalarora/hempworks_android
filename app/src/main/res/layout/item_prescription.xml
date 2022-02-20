@@ -39,7 +39,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:letterSpacing="0.15"
             android:textColor="@color/orange_F8AA37"
             app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintStart_toStartOf="parent"

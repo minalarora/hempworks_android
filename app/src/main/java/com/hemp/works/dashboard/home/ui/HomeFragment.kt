@@ -42,8 +42,6 @@ class HomeFragment : Fragment(), Injectable {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    @Inject
-    lateinit var snapHelper: SnapHelper
     private lateinit var sharedViewModel: DashboardSharedViewModel
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: FragmentHomeBinding
@@ -118,7 +116,6 @@ class HomeFragment : Fragment(), Injectable {
                 }
             }
         })
-        snapHelper.attachToRecyclerView(binding.categoryRecyclerview)
         ViewCompat.setNestedScrollingEnabled(binding.categoryRecyclerview, false)
 
         binding.trendingProductRecyclerview.adapter = ProductAdapter(object :
@@ -141,6 +138,12 @@ class HomeFragment : Fragment(), Injectable {
             }
         })
         ViewCompat.setNestedScrollingEnabled(binding.allProductRecyclerview, false)
+
+        binding.uploadPrescription.setOnClickListener {
+            HomeFragmentDirections.actionHomeFragmentToPrescriptionFragment().also {
+                binding.root.findNavController().navigate(it)
+            }
+        }
 
         viewModel.bannerList.observe(viewLifecycleOwner) {
             (binding.bannerRecyclerview.adapter as BannerAdapter).submitList(it)
@@ -205,7 +208,7 @@ class HomeFragment : Fragment(), Injectable {
                     binding.root.findNavController().navigate(it)
                 }
             }
-            R.id.support -> {
+            R.id.upload_prescription -> {
                 HomeFragmentDirections.actionHomeFragmentToPrescriptionFragment().also {
                     binding.root.findNavController().navigate(it)
                 }

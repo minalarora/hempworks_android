@@ -83,15 +83,44 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
+                <TextView
+                    android:id="@+id/date_range"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/textview_italic_small"
+                    android:textSize="@dimen/_12sdp"
+                    app:layout_constraintTop_toBottomOf="@id/search"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_marginVertical="@dimen/_15sdp"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:text="@{viewmodel.dateRangeText}"
+                    app:hideIfFalse="@{viewmodel.dateRangeVisibility}"
+                    tools:text="Showing results for 17 DEC 21 - 30 jan 21"/>
+
+                <ImageView
+                    android:id="@+id/date_range_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_close_fill"
+                    android:layout_margin="@dimen/_5sdp"
+                    app:layout_constraintTop_toTopOf="@id/date_range"
+                    app:layout_constraintBottom_toBottomOf="@id/date_range"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:hideIfFalse="@{viewmodel.dateRangeVisibility}"
+                    app:tint="@color/dark_red" />
+
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/prescription_recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/search"
+                    app:layout_constraintTop_toBottomOf="@id/date_range"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_margin="@dimen/_5sdp"
                     app:hideIfTrue="@{viewmodel.loading}"
                     android:background="@color/grey_CDCDCD"
                     tools:listitem="@layout/item_prescription"

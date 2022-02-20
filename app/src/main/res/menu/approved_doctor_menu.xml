@@ -16,6 +16,10 @@
             android:icon="@drawable/ic_menu_profile"
             android:title="@string/profile" />
         <item
+            android:id="@+id/upload_prescription"
+            android:icon="@drawable/ic_menu_prescription"
+            android:title="@string/upload_prescription"/>
+        <item
             android:id="@+id/orders"
             android:icon="@drawable/ic_menu_orders"
             android:title="@string/orders" />
