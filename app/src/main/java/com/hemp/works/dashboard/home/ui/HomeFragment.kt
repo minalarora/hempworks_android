@@ -145,6 +145,12 @@ class HomeFragment : Fragment(), Injectable {
             }
         }
 
+        binding.dosageCalculator.setOnClickListener {
+            HomeFragmentDirections.actionHomeFragmentToDosageCalculatorFragment().also {
+                binding.root.findNavController().navigate(it)
+            }
+        }
+
         viewModel.bannerList.observe(viewLifecycleOwner) {
             (binding.bannerRecyclerview.adapter as BannerAdapter).submitList(it)
             viewModel.handleBannerVisibility(it.isEmpty())
@@ -210,6 +216,11 @@ class HomeFragment : Fragment(), Injectable {
             }
             R.id.upload_prescription -> {
                 HomeFragmentDirections.actionHomeFragmentToPrescriptionFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            R.id.dosage_calculator -> {
+                HomeFragmentDirections.actionHomeFragmentToDosageCalculatorFragment().also {
                     binding.root.findNavController().navigate(it)
                 }
             }

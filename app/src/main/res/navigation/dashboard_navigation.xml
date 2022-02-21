@@ -38,6 +38,12 @@
             app:enterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_right" />
 
+        <action
+            android:id="@+id/action_homeFragment_to_dosageCalculatorFragment"
+            app:destination="@id/dosageCalculatorFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+
     </fragment>
     <fragment
         android:id="@+id/productFragment"
@@ -137,4 +143,20 @@
         android:id="@+id/uploadPrescriptionFragment"
         android:name="com.hemp.works.dashboard.prescription.ui.UploadPrescriptionFragment"
         android:label="UploadPrescriptionFragment" />
+    <fragment
+        android:id="@+id/dosageCalculatorFragment"
+        android:name="com.hemp.works.dashboard.calculator.ui.DosageCalculatorFragment"
+        android:label="DosageCalculatorFragment" />
+    <fragment
+        android:id="@+id/infoDialogFragment"
+        android:name="com.hemp.works.dashboard.info.InfoDialogFragment"
+        android:label="InfoDialogFragment" >
+        <argument
+            android:name="text"
+            app:argType="string"
+            app:nullable="false" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_infoDialogFragment"
+        app:destination="@id/infoDialogFragment" />
 </navigation>

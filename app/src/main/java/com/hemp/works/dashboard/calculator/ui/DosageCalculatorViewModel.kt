@@ -3,11 +3,13 @@ package com.hemp.works.dashboard.calculator.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import androidx.lifecycle.viewModelScope
 import com.hemp.works.base.BaseViewModel
 import com.hemp.works.base.LiveEvent
 import com.hemp.works.dashboard.calculator.data.repository.CalculatorRepository
 import com.hemp.works.dashboard.model.CalculatorProduct
 import com.hemp.works.dashboard.model.CalculatorVariant
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DosageCalculatorViewModel  @Inject constructor(private val repository: CalculatorRepository): BaseViewModel(repository) {
@@ -17,6 +19,11 @@ class DosageCalculatorViewModel  @Inject constructor(private val repository: Cal
 
     var selectedProduct: CalculatorProduct? = null
 
+    init {
+        viewModelScope.launch {
+            repository.fetchCalculatorList()
+        }
+    }
     private val _productList: MutableLiveData<List<String>> = Transformations.map(repository.calculatorList) {
         filterProductList(it)
     } as MutableLiveData<List<String>>
@@ -98,9 +105,7 @@ class DosageCalculatorViewModel  @Inject constructor(private val repository: Cal
         selectedProduct = null
     }
 
-    private val _dosage: LiveEvent<String> = Transformations.map(repository.calculatorList) {
-        filterDosageResult(it)
-    } as LiveEvent<String>
+    private val _dosage: LiveEvent<String> = LiveEvent()
     val dosage: LiveData<String> = _dosage
 
     private fun filterDosageResult(list: List<CalculatorProduct>): String {
@@ -117,6 +122,6 @@ class DosageCalculatorViewModel  @Inject constructor(private val repository: Cal
 
 }
 
-enum class STATE(val int: Int){
+enum class STATE(val value: Int){
     PRODUCT(0), TYPE(1), INDICATION(2), WEIGHT(3), DOSAGE(4)
 }

@@ -251,7 +251,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
                         android:entries="@array/state_list"
-                        android:hint="@string/address_line_2"
                         android:spinnerMode="dialog"
                         android:backgroundTint="@color/orange_F8AA37"
                         />

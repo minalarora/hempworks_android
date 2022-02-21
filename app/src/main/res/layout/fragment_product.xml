@@ -192,7 +192,7 @@
                     android:id="@+id/plus"
                     android:layout_width="@dimen/_28sdp"
                     android:layout_height="@dimen/_28sdp"
-                    android:src="@drawable/ic_add"
+                    android:src="@drawable/ic_add_fill"
                     android:layout_marginTop="@dimen/_5sdp"
                     app:layout_constraintStart_toEndOf="@id/quantity_number"
                     app:layout_constraintTop_toBottomOf="@id/quantity"

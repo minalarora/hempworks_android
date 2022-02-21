@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/background_orange_corner_radius.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable/background_round_padded.xml" value="0.36102564102564105" />
         <entry key="app/src/main/res/drawable/edittext_orange_corner_radius.xml" value="0.36666666666666664" />
+        <entry key="app/src/main/res/drawable/ic_add.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.36102564102564105" />
@@ -15,6 +16,7 @@
         <entry key="app/src/main/res/drawable/ic_menu_prescription_upload.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/ic_menu_support.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_menu_tutorials.xml" value="0.36102564102564105" />
+        <entry key="app/src/main/res/drawable/ic_minus.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_password.xml" value="0.36102564102564105" />
         <entry key="app/src/main/res/drawable/ic_profile_loading.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_remove_image.xml" value="0.36102564102564105" />
@@ -35,6 +37,7 @@
         <entry key="app/src/main/res/layout/fragment_forget_password.xml" value="0.2861111111111111" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_info_bottom_sheet.xml" value="0.4035897435897436" />
+        <entry key="app/src/main/res/layout/fragment_info_dialog.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/fragment_onboarding.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/fragment_onboarding1.xml" value="0.375" />
@@ -43,7 +46,7 @@
         <entry key="app/src/main/res/layout/fragment_onboarding4.xml" value="0.31203703703703706" />
         <entry key="app/src/main/res/layout/fragment_onboarding5.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_prescription.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_product.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_product.xml" value="0.27775484936029715" />
         <entry key="app/src/main/res/layout/fragment_product_image.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_product_list.xml" value="0.2796296296296296" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />

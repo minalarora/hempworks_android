@@ -110,6 +110,11 @@
     <string name="note_only_image_and_pdf_can_be_uploaded">Note: Only Image and PDF can be uploaded.</string>
     <string name="your_orders">Your Orders</string>
     <string name="leaf_of_life_monthly_newsletter">Leaf of Life (Monthly Newsletter)</string>
+    <string name="select_any_value">Select any type</string>
+    <string name="select_product">Select Product</string>
+    <string name="select_product_type">Select Product Type</string>
+    <string name="select_indication">Select Indication</string>
+    <string name="select_your_weight">Select Your Weight</string>
 
 
     <string-array name="state_list">

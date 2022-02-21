@@ -2,28 +2,30 @@ package com.hemp.works.dashboard.calculator.ui
 
 import android.app.Activity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.SnapHelper
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.dashboard.DashboardSharedViewModel
-import com.hemp.works.dashboard.home.ui.HomeViewModel
+import com.hemp.works.dashboard.info.InfoDialogFragment
+import com.hemp.works.dashboard.info.InfoDialogFragmentDirections
 import com.hemp.works.databinding.FragmentDosageCalculatorBinding
-import com.hemp.works.databinding.FragmentHomeBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
 import javax.inject.Inject
 
 
-class DosageCalculatorFragment : Fragment() , Injectable{
+class DosageCalculatorFragment : Fragment() , Injectable, AdapterView.OnItemSelectedListener {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -49,6 +51,30 @@ class DosageCalculatorFragment : Fragment() , Injectable{
 
         binding.back.setOnClickListener { binding.root.findNavController().popBackStack() }
 
+        binding.productSpinner.onItemSelectedListener = this
+        viewModel.productList.observe(viewLifecycleOwner) {
+            setAdapter(binding.productSpinner, it)
+        }
+
+        binding.typeSpinner.onItemSelectedListener = this
+        viewModel.typeList.observe(viewLifecycleOwner) {
+            setAdapter(binding.typeSpinner, it)
+        }
+
+        binding.indicationSpinner.onItemSelectedListener = this
+        viewModel.indicationList.observe(viewLifecycleOwner) {
+            setAdapter(binding.indicationSpinner, it)
+        }
+
+        binding.weightSpinner.onItemSelectedListener = this
+        viewModel.weightList.observe(viewLifecycleOwner) {
+            setAdapter(binding.weightSpinner, it)
+        }
+
+        viewModel.dosage.observe(viewLifecycleOwner) {
+            binding.productSpinner.setSelection(0)
+            InfoDialogFragment.newInstance(it).show(childFragmentManager, InfoDialogFragment.javaClass.simpleName)
+        }
         viewModel.error.observe(viewLifecycleOwner) {
             showSnackBar(it)
         }
@@ -60,7 +86,15 @@ class DosageCalculatorFragment : Fragment() , Injectable{
         val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
-        binding.root.findNavController().popBackStack()
+    }
+
+    private fun setAdapter(spinner: Spinner, list: List<String>) {
+        val arrayList = ArrayList<String>()
+        arrayList.add( getString(R.string.select_any_value))
+        arrayList.addAll(list)
+        val adapter: ArrayAdapter<String> = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, arrayList )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
     }
 
     companion object {
@@ -68,5 +102,27 @@ class DosageCalculatorFragment : Fragment() , Injectable{
         @JvmStatic
         fun newInstance() =
             DosageCalculatorFragment()
+    }
+
+    override fun onItemSelected(spinner: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        val selectedItem = spinner?.getItemAtPosition(p2).toString()
+        if (selectedItem == getString(R.string.select_any_value)) return
+       when(spinner as Spinner) {
+           binding.productSpinner -> {
+                viewModel.onProductSelected(selectedItem)
+           }
+           binding.typeSpinner -> {
+                viewModel.onTypeSelected(selectedItem)
+           }
+           binding.indicationSpinner -> {
+                viewModel.onIndicationSelected(selectedItem)
+           }
+           binding.weightSpinner -> {
+               viewModel.onWeightSelected(selectedItem)
+           }
+       }
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
     }
 }
