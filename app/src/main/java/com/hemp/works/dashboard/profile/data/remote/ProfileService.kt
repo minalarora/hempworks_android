@@ -26,6 +26,8 @@ interface ProfileService {
     @GET("/v1/doctor/me")
     suspend fun fetchDoctor(): Response<User>
 
+    @DELETE("/v1/doctor/delete")
+    suspend fun deleteDoctor(): Response<BooleanResponse>
 
 
 }

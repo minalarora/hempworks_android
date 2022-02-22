@@ -21,4 +21,6 @@ class ProfileRemoteDataSource @Inject constructor(private val service: ProfileSe
     suspend fun uploadProfile(image: MultipartBody.Part) = getResult { service.uploadProfile(image) }
 
     suspend fun fetchDoctor() = getResult { service.fetchDoctor() }
+
+    suspend fun deleteDoctor() = getResult { service.deleteDoctor() }
 }

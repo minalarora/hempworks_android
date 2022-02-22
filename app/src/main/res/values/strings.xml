@@ -115,6 +115,11 @@
     <string name="select_product_type">Select Product Type</string>
     <string name="select_indication">Select Indication</string>
     <string name="select_your_weight">Select Your Weight</string>
+    <string name="delete_your_account">To delete your account, <font color="#8B0000">Click Here</font></string>
+    <string name="delete_account">Delete Account</string>
+    <string name="confirm_delete_account">Are you sure you want to delete your account?</string>
+    <string name="no">NO</string>
+    <string name="yes">YES</string>
 
 
     <string-array name="state_list">

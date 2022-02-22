@@ -20,6 +20,10 @@ class ProfileRepository @Inject constructor(private val remoteDataSource: Profil
     val booleanResponse: LiveData<Boolean>
         get() = _booleanResponse
 
+    private val _booleanResponseForDelete = LiveEvent<Boolean>()
+    val booleanResponseForDelete: LiveData<Boolean>
+        get() = _booleanResponseForDelete
+
     private val _user = MutableLiveData<User>()
     val user: LiveData<User>
         get() = _user
@@ -70,6 +74,11 @@ class ProfileRepository @Inject constructor(private val remoteDataSource: Profil
         }
     }
 
+    suspend fun deleteDoctor() {
+        getResult(Constants.GENERAL_ERROR_MESSAGE) { remoteDataSource.deleteDoctor() }?.let {
+            it.data?.let { booleanResponse -> _booleanResponseForDelete.postValue(booleanResponse.success) }
+        }
+    }
 
 
 }

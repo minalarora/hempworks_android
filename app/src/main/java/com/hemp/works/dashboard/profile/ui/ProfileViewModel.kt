@@ -21,6 +21,7 @@ import javax.inject.Inject
 class ProfileViewModel  @Inject constructor(private val repository: ProfileRepository, context: Context): BaseViewModel(repository) {
 
     val booleanResponse = repository.booleanResponse
+    val booleanResponseForDelete = repository.booleanResponseForDelete
     private val localDoctor =  PreferenceManagerUtil.getDoctor(context)
 
     val doctor: LiveData<Doctor> =  Transformations.map(repository.user) {
@@ -96,6 +97,12 @@ class ProfileViewModel  @Inject constructor(private val repository: ProfileRepos
     fun fetchDoctor() {
         viewModelScope.launch {
             repository.fetchDoctor()
+        }
+    }
+
+    fun deleteDoctor() {
+        viewModelScope.launch {
+            repository.deleteDoctor()
         }
     }
 }

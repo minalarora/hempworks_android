@@ -17,6 +17,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.base.Constants
@@ -26,6 +27,7 @@ import com.hemp.works.databinding.FragmentPrescriptionBinding
 import com.hemp.works.databinding.FragmentProfileBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
+import com.hemp.works.login.LoginActivity
 import com.hemp.works.login.ui.CreateFragment
 import com.hemp.works.utils.FileUtils
 import com.hemp.works.utils.PreferenceManagerUtil
@@ -66,8 +68,29 @@ class ProfileFragment : Fragment(), Injectable {
         binding.emailEdit.setOnClickListener {  EditEmailBottomSheetFragment.newInstance().show(requireActivity().supportFragmentManager, EditEmailBottomSheetFragment.javaClass.simpleName) }
         binding.mobileEdit.setOnClickListener {  EditMobileBottomSheetFragment.newInstance().show(requireActivity().supportFragmentManager, EditMobileBottomSheetFragment.javaClass.simpleName) }
 
+        binding.deleteAccount.setOnClickListener {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(resources.getString(R.string.delete_account))
+                .setMessage(resources.getString(R.string.confirm_delete_account))
+                .setNegativeButton(getString(R.string.no)) { dialog, which ->
+
+                }
+                .setPositiveButton(getString(R.string.yes)) { dialog, which ->
+                    viewModel.deleteDoctor()
+                }
+                .show()
+        }
         viewModel.booleanResponse.observe(viewLifecycleOwner) {
             if (it) viewModel.fetchDoctor() else showSnackBar(Constants.GENERAL_ERROR_MESSAGE)
+        }
+
+        viewModel.booleanResponseForDelete.observe(viewLifecycleOwner) {
+            if (it) {
+                PreferenceManagerUtil.clear(requireContext())
+                LoginActivity.getPendingIntent(requireContext(), R.id.loginFragment).send()
+                requireActivity().finish()
+            } else
+                showSnackBar(Constants.GENERAL_ERROR_MESSAGE)
         }
 
         viewModel.doctor.observe(viewLifecycleOwner) {
