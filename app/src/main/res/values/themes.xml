@@ -16,6 +16,7 @@
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
 
         <item name="snackbarStyle">@style/MySnackBarStyle</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
 
     </style>
 

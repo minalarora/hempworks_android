@@ -9,6 +9,7 @@ import com.hemp.works.dashboard.product.ui.ProductFragment
 import com.hemp.works.dashboard.product.ui.ProductImageFragment
 import com.hemp.works.dashboard.profile.ui.ProfileFragment
 import com.hemp.works.dashboard.search.ui.SearchFragment
+import com.hemp.works.dashboard.tnl.ui.TNLFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -42,5 +43,8 @@ abstract class DashboardFragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeDosageCalculatorFragment(): DosageCalculatorFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeTNLFragment(): TNLFragment
 
 }

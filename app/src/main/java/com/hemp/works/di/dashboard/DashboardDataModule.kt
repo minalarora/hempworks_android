@@ -12,6 +12,8 @@ import com.hemp.works.dashboard.profile.data.remote.ProfileRemoteDataSource
 import com.hemp.works.dashboard.profile.data.remote.ProfileService
 import com.hemp.works.dashboard.search.data.remote.SearchRemoteDataSource
 import com.hemp.works.dashboard.search.data.remote.SearchService
+import com.hemp.works.dashboard.tnl.data.remote.TNLRemoteDataSource
+import com.hemp.works.dashboard.tnl.data.remote.TNLService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -76,5 +78,16 @@ class DashboardDataModule {
     @Provides
     fun provideCalculatorRemoteDataSource(service: CalculatorService)
             = CalculatorRemoteDataSource(service)
+
+    @Singleton
+    @Provides
+    fun provideTNLService(retrofit: Retrofit): TNLService = retrofit.create(
+        TNLService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideTNLRemoteDataSource(service: TNLService)
+            = TNLRemoteDataSource(service)
+
 
 }

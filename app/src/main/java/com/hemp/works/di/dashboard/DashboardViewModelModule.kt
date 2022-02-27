@@ -14,6 +14,7 @@ import com.hemp.works.dashboard.prescription.ui.UploadPrescriptionViewModel
 import com.hemp.works.dashboard.product.ui.ProductViewModel
 import com.hemp.works.dashboard.profile.ui.ProfileViewModel
 import com.hemp.works.dashboard.search.ui.SearchViewModel
+import com.hemp.works.dashboard.tnl.ui.TNLViewModel
 import com.hemp.works.di.ViewModelKey
 import com.hemp.works.login.LoginSharedViewModel
 import com.hemp.works.login.ui.viewmodel.*
@@ -67,5 +68,10 @@ abstract class DashboardViewModelModule {
     @IntoMap
     @ViewModelKey(DosageCalculatorViewModel::class)
     abstract fun bindDosageCalculatorViewModel(viewModel: DosageCalculatorViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TNLViewModel::class)
+    abstract fun bindTNLViewModel(viewModel: TNLViewModel): ViewModel
 
 }
