@@ -29,6 +29,7 @@ object Constants {
     const val REASON = "reason"
     const val REASON_UPDATE_PASSWORD = "update_password"
     const val REASON_CREATE_ACCOUNT = "create_account"
+    const val DATE_FORMAT = "dd MMM yyyy  hh:mm:ss a"
 
 
 }

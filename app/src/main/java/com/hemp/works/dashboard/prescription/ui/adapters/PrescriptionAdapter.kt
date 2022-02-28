@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.model.Prescription
 import com.hemp.works.dashboard.prescription.ui.PrescriptionItemClickListener
 import com.hemp.works.databinding.ItemPrescriptionBinding
 import java.text.SimpleDateFormat
 
 @SuppressLint("SimpleDateFormat")
-val dateFormat = SimpleDateFormat("dd MMM yyyy  hh:mm:ss a");
+val dateFormat = SimpleDateFormat(Constants.DATE_FORMAT);
 class PrescriptionAdapter(private val listener: PrescriptionItemClickListener) : ListAdapter<Prescription, PrescriptionAdapter.ViewHolder>(PrescriptionDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

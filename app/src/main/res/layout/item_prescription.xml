@@ -40,6 +40,8 @@
             android:layout_height="wrap_content"
             android:gravity="start"
             android:textColor="@color/orange_F8AA37"
+            android:drawableStart="@drawable/ic_time"
+            android:drawablePadding="@dimen/_4sdp"
             app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/download_image"

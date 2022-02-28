@@ -57,12 +57,15 @@
         <entry key="app/src/main/res/layout/fragment_verify_mobile.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/item_banner_image.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_category.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/item_livesession.xml" value="0.35052083333333334" />
+        <entry key="app/src/main/res/layout/item_newsletter.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/item_no_product.xml" value="0.2611111111111111" />
         <entry key="app/src/main/res/layout/item_prescription.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/item_product.xml" value="0.2611111111111111" />
         <entry key="app/src/main/res/layout/item_product_image.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/item_search.xml" value="0.2611111111111111" />
         <entry key="app/src/main/res/layout/item_size.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/item_tutorial.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/layout_no_product.xml" value="0.25" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.25555555555555554" />
