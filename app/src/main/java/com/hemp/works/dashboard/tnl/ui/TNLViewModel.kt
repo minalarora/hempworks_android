@@ -10,6 +10,7 @@ import com.hemp.works.dashboard.model.NewsLetter
 import com.hemp.works.dashboard.model.Tutorial
 import com.hemp.works.dashboard.tnl.data.repository.TNLRepository
 import kotlinx.coroutines.launch
+import java.lang.UnsupportedOperationException
 import javax.inject.Inject
 
 class TNLViewModel @Inject constructor(private val repository: TNLRepository): BaseViewModel(repository) {
@@ -95,7 +96,11 @@ class TNLViewModel @Inject constructor(private val repository: TNLRepository): B
     private val _listVisibility= MutableLiveData(false)
     val listVisibility: LiveData<Boolean> = _listVisibility
 
+    private val _titleText= MutableLiveData("")
+    val titleText: LiveData<String> = _titleText
+
     private var searchText: String? = null
+    lateinit var fragmentType: TNLType
 
     fun handleListVisibility(isEmpty: Boolean) {
         _listVisibility.postValue(!isEmpty)
@@ -105,4 +110,25 @@ class TNLViewModel @Inject constructor(private val repository: TNLRepository): B
         searchText = null
     }
 
+    fun updateFragmentType(type: TNLType) {
+        fragmentType = type
+        _titleText.postValue(when(fragmentType) {
+            TNLType.TUTORIAL -> "Tutorial"
+            TNLType.NEWSLETTER -> "NewsLetter"
+            TNLType.LIVESESSION -> "Live Session"
+        })
+    }
+}
+
+enum class TNLType(val type: String) {
+    TUTORIAL("tutorial"), NEWSLETTER("newsletter"), LIVESESSION("livesession");
+
+    companion object {
+        fun getTNLTypeFromString (type: String) = when(type) {
+                TUTORIAL.type -> TUTORIAL
+                NEWSLETTER.type -> NEWSLETTER
+                LIVESESSION.type -> LIVESESSION
+                else -> throw UnsupportedOperationException()
+        }
+    }
 }

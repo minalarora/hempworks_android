@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.hemp.works.dashboard.tnl.ui.adapters.NewsLetterViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,13 +20,15 @@
             android:id="@+id/cover_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            hideIfFalse="@{viewmodel.imageVisibility}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
             <ImageView
                 android:id="@+id/cover"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_150sdp" />
+                android:layout_height="@dimen/_150sdp"
+                glideImage="@{viewmodel.image}"/>
         </RelativeLayout>
         <TextView
             android:id="@+id/title"
@@ -30,6 +38,7 @@
             android:gravity="start"
             android:maxLines="3"
             android:ellipsize="end"
+            android:text="@{viewmodel.title}"
             android:paddingHorizontal="@dimen/_3sdp"
             android:layout_marginTop="@dimen/_5sdp"
             app:layout_constraintTop_toBottomOf="@id/cover_container"
@@ -58,6 +67,7 @@
             android:drawablePadding="@dimen/_4sdp"
             android:paddingHorizontal="@dimen/_3sdp"
             android:layout_marginTop="@dimen/_5sdp"
+            android:text="@{viewmodel.date}"
             app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

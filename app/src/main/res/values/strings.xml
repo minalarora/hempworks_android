@@ -120,6 +120,8 @@
     <string name="confirm_delete_account">Are you sure you want to delete your account?</string>
     <string name="no">NO</string>
     <string name="yes">YES</string>
+    <string name="no_data_found">No data found :-(</string>
+    <string name="search_here">Search here...</string>
 
 
     <string-array name="state_list">

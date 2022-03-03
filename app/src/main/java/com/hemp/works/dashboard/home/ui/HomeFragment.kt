@@ -28,6 +28,7 @@ import com.hemp.works.dashboard.model.Product
 import com.hemp.works.dashboard.product.ui.ProductItemClickListener
 import com.hemp.works.dashboard.search.ui.SearchFragmentDirections
 import com.hemp.works.dashboard.search.ui.SearchItemClickListener
+import com.hemp.works.dashboard.tnl.ui.TNLType
 import com.hemp.works.databinding.FragmentHomeBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
@@ -221,6 +222,21 @@ class HomeFragment : Fragment(), Injectable {
             }
             R.id.dosage_calculator -> {
                 HomeFragmentDirections.actionHomeFragmentToDosageCalculatorFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            R.id.newsletter -> {
+                HomeFragmentDirections.actionHomeFragmentToTNLFragment(TNLType.NEWSLETTER.type).also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            R.id.live_sessions -> {
+                HomeFragmentDirections.actionHomeFragmentToTNLFragment(TNLType.LIVESESSION.type).also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            R.id.tutorials -> {
+                HomeFragmentDirections.actionHomeFragmentToTNLFragment(TNLType.TUTORIAL.type).also {
                     binding.root.findNavController().navigate(it)
                 }
             }

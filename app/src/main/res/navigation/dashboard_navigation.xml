@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_navigation"
     app:startDestination="@id/homeFragment">
 
@@ -42,6 +43,12 @@
             android:id="@+id/action_homeFragment_to_dosageCalculatorFragment"
             app:destination="@id/dosageCalculatorFragment"
             app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_TNLFragment"
+            app:destination="@id/TNLFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
             app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
@@ -159,4 +166,14 @@
     <action
         android:id="@+id/action_global_infoDialogFragment"
         app:destination="@id/infoDialogFragment" />
+    <fragment
+        android:id="@+id/TNLFragment"
+        android:name="com.hemp.works.dashboard.tnl.ui.TNLFragment"
+        android:label="fragment_tnl"
+        tools:layout="@layout/fragment_tnl" >
+        <argument
+            android:name="type"
+            app:argType="string"
+            app:nullable="false" />
+    </fragment>
 </navigation>
