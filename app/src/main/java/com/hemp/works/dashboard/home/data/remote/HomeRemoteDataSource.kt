@@ -1,6 +1,9 @@
 package com.hemp.works.dashboard.home.data.remote
 
 import com.hemp.works.base.BaseDataSource
+import com.hemp.works.dashboard.model.Instagram
+import retrofit2.Response
+import retrofit2.http.GET
 import javax.inject.Inject
 
 class HomeRemoteDataSource @Inject constructor(private val service: HomeService): BaseDataSource() {
@@ -17,4 +20,5 @@ class HomeRemoteDataSource @Inject constructor(private val service: HomeService)
 
     suspend fun logout() = getResult { service.logout() }
 
+    suspend fun fetchInstagram() = getResult { service.fetchInstagram() }
 }

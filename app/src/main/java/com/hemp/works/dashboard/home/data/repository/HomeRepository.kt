@@ -8,6 +8,7 @@ import com.hemp.works.base.LiveEvent
 import com.hemp.works.dashboard.home.data.remote.HomeRemoteDataSource
 import com.hemp.works.dashboard.model.Banner
 import com.hemp.works.dashboard.model.Category
+import com.hemp.works.dashboard.model.Instagram
 import com.hemp.works.dashboard.model.Product
 import com.hemp.works.login.data.model.Credential
 import com.hemp.works.login.data.model.User
@@ -35,6 +36,10 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
     val allProductList: LiveData<List<Product>>
         get() = _allProductList
 
+    private val _instagramList = MutableLiveData<List<Instagram>>()
+    val instagramList: LiveData<List<Instagram>>
+        get() = _instagramList
+
     private val _productsByCategory = LiveEvent<List<Product>>()
     val productsByCategory: LiveData<List<Product>>
         get() = _productsByCategory
@@ -52,6 +57,7 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
             val deferredCategoryList = async { getResult(handleLoading = false) { remoteDataSource.fetchCategories() } }
             val deferredBestSellerProductList = async { getResult(handleLoading = false) { remoteDataSource.fetchBestSellerProducts() } }
             val deferredAllProductList = async { getResult(handleLoading = false) { remoteDataSource.fetchAllProducts() } }
+            val deferredInstagramList = async { getResult(handleLoading = false) { remoteDataSource.fetchInstagram() } }
 
 
             deferredBannerList.await()?.let {
@@ -65,6 +71,10 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
             }
             deferredAllProductList.await()?.let {
                 it.data?.let { list -> _allProductList.postValue(list) }
+            }
+
+            deferredInstagramList.await()?.let {
+                it.data?.let { list -> _instagramList.postValue(list) }
             }
 
             _loading.postValue(false)

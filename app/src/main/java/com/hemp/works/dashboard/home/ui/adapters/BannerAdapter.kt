@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
 import com.hemp.works.R
 import com.hemp.works.base.MyAppGlideModule
 import com.hemp.works.dashboard.model.Banner
@@ -32,6 +33,7 @@ class BannerAdapter : ListAdapter<Banner, BannerAdapter.ViewHolder>(BannerDiffCa
                 .placeholder(ColorDrawable(ContextCompat.getColor(binding.root.context, R.color.white)))
                 .error(ColorDrawable(ContextCompat.getColor(binding.root.context, R.color.white)))
                 .apply(MyAppGlideModule.requestOptions)
+                .priority(Priority.IMMEDIATE)
                 .into(binding.image);
 
             binding.executePendingBindings()

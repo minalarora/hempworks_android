@@ -3,6 +3,7 @@ package com.hemp.works.dashboard.home.data.remote
 import com.hemp.works.base.BooleanResponse
 import com.hemp.works.dashboard.model.Banner
 import com.hemp.works.dashboard.model.Category
+import com.hemp.works.dashboard.model.Instagram
 import com.hemp.works.dashboard.model.Product
 import com.hemp.works.login.data.model.User
 import retrofit2.Response
@@ -29,5 +30,7 @@ interface HomeService {
     @GET("/v1/doctor/logout")
     suspend fun logout(): Response<BooleanResponse>
 
+    @GET("/v1/instagram")
+    suspend fun fetchInstagram(): Response<List<Instagram>>
 
 }

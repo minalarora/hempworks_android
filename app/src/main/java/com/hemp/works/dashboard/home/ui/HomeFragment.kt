@@ -1,6 +1,8 @@
 package com.hemp.works.dashboard.home.ui
 
 import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,7 +25,9 @@ import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.dashboard.home.ui.adapters.BannerAdapter
 import com.hemp.works.dashboard.home.ui.adapters.CategoryAdapter
+import com.hemp.works.dashboard.home.ui.adapters.InstagramAdapter
 import com.hemp.works.dashboard.home.ui.adapters.ProductAdapter
+import com.hemp.works.dashboard.model.Instagram
 import com.hemp.works.dashboard.model.Product
 import com.hemp.works.dashboard.product.ui.ProductItemClickListener
 import com.hemp.works.dashboard.search.ui.SearchFragmentDirections
@@ -139,6 +143,19 @@ class HomeFragment : Fragment(), Injectable {
             }
         })
         ViewCompat.setNestedScrollingEnabled(binding.allProductRecyclerview, false)
+
+        binding.instagramRecyclerview.adapter = InstagramAdapter(object :
+            InstagramItemClickListener {
+            override fun onItemClick(instagram: Instagram) {
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(instagram.post)
+                    )
+                )
+            }
+        })
+        ViewCompat.setNestedScrollingEnabled(binding.instagramRecyclerview, false)
 
         binding.uploadPrescription.setOnClickListener {
             HomeFragmentDirections.actionHomeFragmentToPrescriptionFragment().also {
@@ -261,4 +278,8 @@ class HomeFragment : Fragment(), Injectable {
 
 interface CategoryItemClickListener{
     fun onItemClick(categoryid: Long)
+}
+
+interface InstagramItemClickListener{
+    fun onItemClick(model: Instagram)
 }

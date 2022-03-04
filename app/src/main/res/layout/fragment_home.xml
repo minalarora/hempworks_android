@@ -212,6 +212,33 @@
                         app:hideIfFalse="@{viewmodel.allProductVisibility}"
                         tools:listitem="@layout/item_product"/>
 
+                    <TextView
+                        android:id="@+id/instagram_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/textview_normal_medium"
+                        android:textColor="@color/orange_F8AA37"
+                        android:text="@string/instagram_feed"
+                        android:singleLine="true"
+                        app:layout_constraintTop_toBottomOf="@id/all_product_recyclerview"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        app:hideIfFalse="@{viewmodel.instagramVisibility}"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/instagram_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="1"
+                        app:layout_constraintTop_toBottomOf="@id/instagram_title"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        app:hideIfFalse="@{viewmodel.instagramVisibility}"
+                        tools:listitem="@layout/item_instagram"/>
+
 
 
 

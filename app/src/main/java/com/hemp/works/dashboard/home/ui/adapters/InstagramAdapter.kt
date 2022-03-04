@@ -8,14 +8,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
 import com.hemp.works.R
 import com.hemp.works.base.MyAppGlideModule
 import com.hemp.works.dashboard.home.ui.CategoryItemClickListener
+import com.hemp.works.dashboard.home.ui.InstagramItemClickListener
 import com.hemp.works.dashboard.model.Category
+import com.hemp.works.dashboard.model.Instagram
 import com.hemp.works.databinding.ItemCategoryBinding
+import com.hemp.works.databinding.ItemInstagramBinding
 
-class CategoryAdapter(private val listener: CategoryItemClickListener) : ListAdapter<Category, CategoryAdapter.ViewHolder>(CategoryDiffCallback()) {
+class InstagramAdapter(private val listener: InstagramItemClickListener) : ListAdapter<Instagram, InstagramAdapter.ViewHolder>(InstagramDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(holder.adapterPosition)
@@ -26,20 +28,15 @@ class CategoryAdapter(private val listener: CategoryItemClickListener) : ListAda
         return ViewHolder.from(parent)
     }
 
-    class ViewHolder private constructor(val binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root){
+    class ViewHolder private constructor(val binding: ItemInstagramBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: Category, listener: CategoryItemClickListener) {
-            Glide.with(binding.root.context)
-                .load(item.image)
-                .placeholder(ColorDrawable(ContextCompat.getColor(binding.root.context, R.color.grey_AAAAAA)))
-                .error(ColorDrawable(ContextCompat.getColor(binding.root.context, R.color.grey_AAAAAA)))
-                .apply(MyAppGlideModule.requestOptions)
-                .priority(Priority.HIGH)
-                .into(binding.image);
+        fun bind(item: Instagram, listener: InstagramItemClickListener) {
 
-            binding.title.text = item.category
+
+            binding.model = item
+
             binding.root.setOnClickListener {
-                listener.onItemClick(item.id)
+                listener.onItemClick(item)
             }
             binding.executePendingBindings()
         }
@@ -47,7 +44,7 @@ class CategoryAdapter(private val listener: CategoryItemClickListener) : ListAda
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemCategoryBinding.inflate(layoutInflater, parent, false)
+                val binding = ItemInstagramBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }
@@ -55,14 +52,14 @@ class CategoryAdapter(private val listener: CategoryItemClickListener) : ListAda
 }
 
 
-class CategoryDiffCallback: DiffUtil.ItemCallback<Category>() {
+class InstagramDiffCallback: DiffUtil.ItemCallback<Instagram>() {
 
-    override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean {
-        return oldItem.id == newItem.id
+    override fun areItemsTheSame(oldItem: Instagram, newItem: Instagram): Boolean {
+        return oldItem.post == newItem.post
     }
 
 
-    override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {
+    override fun areContentsTheSame(oldItem: Instagram, newItem: Instagram): Boolean {
         return oldItem == newItem
     }
 
