@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_2sdp"
-        android:background="@color/white"
+        android:background="@drawable/background_all_rounded_corners"
         android:paddingVertical="@dimen/_5sdp">
 
         <TextView
@@ -23,9 +23,8 @@
             android:layout_height="wrap_content"
             android:text="@{viewmodel.description}"
             android:gravity="start"
-            android:maxLines="3"
             android:ellipsize="end"
-            android:paddingHorizontal="@dimen/_3sdp"
+            android:paddingHorizontal="@dimen/_6sdp"
             android:layout_marginTop="@dimen/_5sdp"
             app:hideIfFalse="@{viewmodel.descriptionVisibility}"
             app:layout_constraintTop_toTopOf="parent"
@@ -46,6 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_150sdp"
                 app:glideImage="@{viewmodel.coverImageUrl}"
+                android:scaleType="centerCrop"
                 tools:src="@drawable/newsletter"/>
             <ImageView
                 android:id="@+id/cover"
@@ -58,13 +58,12 @@
         </RelativeLayout>
         <TextView
             android:id="@+id/title"
-            style="@style/textview_normal_medium"
+            style="@style/textview_normal_small"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:maxLines="3"
             android:ellipsize="end"
-            android:paddingHorizontal="@dimen/_3sdp"
+            android:paddingHorizontal="@dimen/_6sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:text="@{viewmodel.title}"
             app:layout_constraintTop_toBottomOf="@id/cover_container"
@@ -74,8 +73,8 @@
 
         <ImageView
             android:id="@+id/pdf_download"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
             android:src="@drawable/ic_pdf"
             android:paddingHorizontal="@dimen/_3sdp"
             android:layout_marginTop="@dimen/_5sdp"
@@ -84,22 +83,23 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
 
-        <TextView
-            android:id="@+id/time"
-            style="@style/textview_italic_small"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:textColor="@color/orange_F8AA37"
-            android:drawablePadding="@dimen/_4sdp"
-            android:paddingHorizontal="@dimen/_3sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:text="@{viewmodel.date}"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="in Personal Care"
-            app:drawableStartCompat="@drawable/ic_time" />
+<!--        <TextView-->
+<!--            android:id="@+id/time"-->
+<!--            style="@style/textview_italic_small"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="start"-->
+<!--            android:textColor="@color/orange_F8AA37"-->
+<!--            android:drawablePadding="@dimen/_4sdp"-->
+<!--            android:paddingHorizontal="@dimen/_3sdp"-->
+<!--            android:layout_marginTop="@dimen/_5sdp"-->
+<!--            android:text="@{viewmodel.date}"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/title"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            android:visibility="gone"-->
+<!--            tools:text="in Personal Care"-->
+<!--            app:drawableStartCompat="@drawable/ic_time" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

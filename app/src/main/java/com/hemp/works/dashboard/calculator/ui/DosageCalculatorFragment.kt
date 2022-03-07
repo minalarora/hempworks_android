@@ -2,6 +2,7 @@ package com.hemp.works.dashboard.calculator.ui
 
 import android.app.Activity
 import android.os.Bundle
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.dashboard.DashboardSharedViewModel
@@ -72,9 +74,17 @@ class DosageCalculatorFragment : Fragment() , Injectable, AdapterView.OnItemSele
         }
 
         viewModel.dosage.observe(viewLifecycleOwner) {
+//            InfoDialogFragment.newInstance(it).show(childFragmentManager, InfoDialogFragment.javaClass.simpleName)
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(resources.getString(R.string.result))
+                .setMessage(createResult(it))
+                .setPositiveButton(getString(R.string.ok)) { dialog, which ->
+
+                }
+                .show()
             binding.productSpinner.setSelection(0)
-            InfoDialogFragment.newInstance(it).show(childFragmentManager, InfoDialogFragment.javaClass.simpleName)
         }
+
         viewModel.error.observe(viewLifecycleOwner) {
             showSnackBar(it)
         }
@@ -86,6 +96,14 @@ class DosageCalculatorFragment : Fragment() , Injectable, AdapterView.OnItemSele
         val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun createResult(res: String): String {
+        return  "Product: " + binding.productSpinner.selectedItem.toString() + "\n" + "\n" +
+                "Product Type: " + binding.typeSpinner.selectedItem.toString() + "\n" + "\n" +
+                "Indication: " + binding.indicationSpinner.selectedItem.toString() + "\n" + "\n" +
+                "Weight: " + binding.weightSpinner.selectedItem.toString() + "\n" + "\n" +
+                "Result: " + res
     }
 
     private fun setAdapter(spinner: Spinner, list: List<String>) {

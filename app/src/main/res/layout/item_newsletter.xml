@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_2sdp"
         android:paddingBottom="@dimen/_5sdp"
-        android:background="@color/white">
+        android:background="@drawable/background_all_rounded_corners">
 
         <RelativeLayout
             android:id="@+id/cover_container"
@@ -28,18 +28,19 @@
                 android:id="@+id/cover"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_150sdp"
+                android:scaleType="centerCrop"
                 glideImage="@{viewmodel.image}"/>
         </RelativeLayout>
         <TextView
             android:id="@+id/title"
-            style="@style/textview_normal_medium"
+            style="@style/textview_normal_small"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="start"
             android:maxLines="3"
             android:ellipsize="end"
             android:text="@{viewmodel.title}"
-            android:paddingHorizontal="@dimen/_3sdp"
+            android:paddingHorizontal="@dimen/_6sdp"
             android:layout_marginTop="@dimen/_5sdp"
             app:layout_constraintTop_toBottomOf="@id/cover_container"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,8 +49,8 @@
 
         <ImageView
             android:id="@+id/pdf_download"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
             android:src="@drawable/ic_pdf"
             android:paddingHorizontal="@dimen/_3sdp"
             android:layout_marginTop="@dimen/_5sdp"

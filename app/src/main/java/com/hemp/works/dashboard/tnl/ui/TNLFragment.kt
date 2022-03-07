@@ -16,6 +16,8 @@ import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.dashboard.DashboardSharedViewModel
+import com.hemp.works.dashboard.info.InfoBottomSheetFragment
+import com.hemp.works.dashboard.info.InfoDialogFragment
 import com.hemp.works.dashboard.model.LiveSession
 import com.hemp.works.dashboard.model.NewsLetter
 import com.hemp.works.dashboard.model.Tutorial
@@ -67,18 +69,24 @@ class TNLFragment : Fragment(), Injectable,
 
 
         viewModel.tutorialList.observe(viewLifecycleOwner) {
-            (binding.recyclerview.adapter as TNLAdapter).submitList(it)
-            viewModel.handleListVisibility(it.isEmpty())
+            if (viewModel.fragmentType == TNLType.TUTORIAL) {
+                (binding.recyclerview.adapter as TNLAdapter).submitList(it)
+                viewModel.handleListVisibility(it.isEmpty())
+            }
         }
 
         viewModel.newsLetterList.observe(viewLifecycleOwner) {
-            (binding.recyclerview.adapter as TNLAdapter).submitList(it)
-            viewModel.handleListVisibility(it.isEmpty())
+            if (viewModel.fragmentType == TNLType.NEWSLETTER) {
+                (binding.recyclerview.adapter as TNLAdapter).submitList(it)
+                viewModel.handleListVisibility(it.isEmpty())
+            }
         }
 
         viewModel.liveSessionList.observe(viewLifecycleOwner) {
-            (binding.recyclerview.adapter as TNLAdapter).submitList(it)
-            viewModel.handleListVisibility(it.isEmpty())
+            if (viewModel.fragmentType == TNLType.LIVESESSION) {
+                (binding.recyclerview.adapter as TNLAdapter).submitList(it)
+                viewModel.handleListVisibility(it.isEmpty())
+            }
         }
 
         viewModel.error.observe(viewLifecycleOwner) {
@@ -131,6 +139,11 @@ class TNLFragment : Fragment(), Injectable,
         )
     }
 
+    override fun onTutorialReadMore(tutorial: Tutorial) {
+        InfoBottomSheetFragment.newInstance(tutorial.description.toString())
+            .show(childFragmentManager, InfoBottomSheetFragment.javaClass.simpleName)
+    }
+
     override fun onLiveSessionClick(liveSession: LiveSession) {
         startActivity(
             Intent(
@@ -159,6 +172,8 @@ class TNLFragment : Fragment(), Injectable,
 
 interface TNLItemClickListener{
     fun onTutorialClick(tutorial: Tutorial)
+
+    fun onTutorialReadMore(tutorial: Tutorial)
 
     fun onLiveSessionClick(liveSession: LiveSession)
 

@@ -247,7 +247,7 @@
                 </androidx.core.widget.NestedScrollView>
 
                 <include
-                    layout="@layout/progress_bar"
+                    layout="@layout/progress_bar_white"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:isVisible="@{viewmodel.loading}"/>

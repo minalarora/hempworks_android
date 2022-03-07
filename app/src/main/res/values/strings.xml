@@ -118,11 +118,15 @@
     <string name="delete_your_account">To delete your account, <font color="#8B0000">Click Here</font></string>
     <string name="delete_account">Delete Account</string>
     <string name="confirm_delete_account">Are you sure you want to delete your account?</string>
+    <string name="confirm_logout_account">Are you sure you want to log out?</string>
     <string name="no">NO</string>
     <string name="yes">YES</string>
     <string name="no_data_found">No data found :-(</string>
     <string name="search_here">Search here...</string>
     <string name="instagram_feed">INSTAGRAM FEED</string>
+    <string name="live_session_header">LIVE SESSION</string>
+    <string name="result">Result</string>
+    <string name="ok">OK</string>
 
 
     <string-array name="state_list">

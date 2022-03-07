@@ -19,6 +19,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.SnapHelper
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.base.Constants
@@ -190,6 +191,11 @@ class HomeFragment : Fragment(), Injectable {
             viewModel.handleAllProductVisibility(it.isEmpty())
         }
 
+        viewModel.instagramList.observe(viewLifecycleOwner) {
+            (binding.instagramRecyclerview.adapter as InstagramAdapter).submitList(it)
+            viewModel.handleInstagramVisibility(it.isEmpty())
+        }
+
         viewModel.scroll.observe(viewLifecycleOwner) {
             binding.bannerRecyclerview.smoothScrollToPosition(it)
         }
@@ -220,7 +226,16 @@ class HomeFragment : Fragment(), Injectable {
     private fun selectDrawerItem(menuItem: MenuItem) {
         when(menuItem.itemId) {
             R.id.log_out -> {
-                viewModel.logout()
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(resources.getString(R.string.log_out))
+                    .setMessage(resources.getString(R.string.confirm_logout_account))
+                    .setNegativeButton(getString(R.string.no)) { dialog, which ->
+
+                    }
+                    .setPositiveButton(getString(R.string.yes)) { dialog, which ->
+                        viewModel.logout()
+                    }
+                    .show()
             }
             R.id.create_account -> {
                 PreferenceManagerUtil.clear(requireContext())

@@ -57,6 +57,12 @@ class TNLAdapter(private val listener: TNLItemClickListener, private val listTyp
             binding.coverContainer.setOnClickListener {
                 listener.onTutorialClick(item)
             }
+            binding.description.setOnClickListener {
+                if ((binding.viewmodel as TutorialViewModel).isReadMore) listener.onTutorialReadMore(item)
+            }
+            binding.title.setOnClickListener {
+                if ((binding.viewmodel as TutorialViewModel).isReadMore) listener.onTutorialReadMore(item)
+            }
             binding.executePendingBindings()
         }
 
@@ -73,7 +79,7 @@ class TNLAdapter(private val listener: TNLItemClickListener, private val listTyp
 
         fun bind(item: NewsLetter, listener: TNLItemClickListener) {
             binding.viewmodel = NewsLetterViewModel(item)
-            binding.pdfDownload.setOnClickListener {
+            binding.root.setOnClickListener {
                 listener.onNewsLetterClick(item)
             }
             binding.executePendingBindings()

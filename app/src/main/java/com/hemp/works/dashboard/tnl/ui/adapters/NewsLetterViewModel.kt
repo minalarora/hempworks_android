@@ -17,7 +17,7 @@ class NewsLetterViewModel(private val newsLetter: NewsLetter) {
         } else {
             newsLetter.title
         }
-    } ?: ""
+    } ?: "No Title Defined!"
 
     @SuppressLint("SimpleDateFormat")
     private val dateFormat = SimpleDateFormat(Constants.DATE_FORMAT);

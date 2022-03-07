@@ -15,7 +15,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.hemp.works.R
 import com.hemp.works.databinding.FragmentInfoBottomSheetBinding
 
-
 class InfoBottomSheetFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentInfoBottomSheetBinding
@@ -33,6 +32,8 @@ class InfoBottomSheetFragment : BottomSheetDialogFragment() {
         binding = DataBindingUtil.inflate<FragmentInfoBottomSheetBinding>(
             inflater, R.layout.fragment_info_bottom_sheet, container, false)
 
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.text.text = InfoDialogFragmentArgs.fromBundle(requireArguments()).text
         binding.back.setOnClickListener { dismiss() }
         return binding.root
     }
@@ -54,7 +55,11 @@ class InfoBottomSheetFragment : BottomSheetDialogFragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance() =
-            InfoBottomSheetFragment()
+        fun newInstance(text: String) =
+            InfoBottomSheetFragment().apply {
+                arguments = Bundle().apply {
+                    putString(TEXT_KEY, text)
+                }
+            }
     }
 }

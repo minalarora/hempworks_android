@@ -14,31 +14,68 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_2sdp"
         android:padding="@dimen/_5sdp"
-        android:background="@color/white">
+        android:background="@drawable/background_all_rounded_corners">
 
         <TextView
             android:id="@+id/title"
-            style="@style/textview_normal_medium"
+            style="@style/textview_normal_small"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="start"
             android:maxLines="3"
             android:ellipsize="end"
-            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
             android:text="@{viewmodel.title}"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/pdf_download"
+            app:layout_constraintTop_toBottomOf="@id/header_title"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             tools:text="Minal Arora"/>
 
         <ImageView
-            android:id="@+id/pdf_download"
-            android:layout_width="@dimen/_36sdp"
-            android:layout_height="@dimen/_36sdp"
+            android:id="@+id/icon"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_12sdp"
             android:src="@drawable/ic_play"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/header_title"
+            style="@style/textview_bold_small"
+            android:textSize="@dimen/_8sdp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:maxLines="5"
+            android:ellipsize="end"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="@string/live_session_header"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/icon"
+            tools:text="Minal Arora"/>
+
+        <TextView
+            android:id="@+id/sub_title"
+            style="@style/textview_italic_small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@{viewmodel.date}"
+            android:textColor="@color/orange_F8AA37"
+            android:drawableStart="@drawable/ic_time"
+            android:drawablePadding="@dimen/_4sdp"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="in Personal Care"/>
+
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
