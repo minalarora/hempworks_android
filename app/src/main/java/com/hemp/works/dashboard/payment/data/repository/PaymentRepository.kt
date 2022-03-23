@@ -24,7 +24,7 @@ class PaymentRepository @Inject constructor(private val remoteDataSource: Paymen
     private val _order = MutableLiveData<Order>()
     val order: LiveData<Order>
         get() = _order
-    
+
     private val _paymentResponse = LiveEvent<Payment>()
     val paymentResponse: LiveData<Payment>
         get() = _paymentResponse

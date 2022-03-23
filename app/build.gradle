@@ -130,7 +130,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     //payment
-    implementation 'com.cashfree.pg:android-sdk:1.7.15'
+    implementation "com.cashfree.pg:android-sdk:1.7.15"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
