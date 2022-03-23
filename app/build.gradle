@@ -29,9 +29,11 @@ android {
         debug {
             testCoverageEnabled true
             buildConfigField "String", "BASE_URL", "\"https://hempworks-web-l5hj7.ondigitalocean.app\""
+            buildConfigField "String", "CASHFREE_APP_ID", "\"178225384e22b2d4a293fe27d0522871\""
         }
         release {
             buildConfigField "String", "BASE_URL", "\"https://hempworks-web-l5hj7.ondigitalocean.app\""
+            buildConfigField "String", "CASHFREE_APP_ID", "\"178225384e22b2d4a293fe27d0522871\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -126,6 +128,9 @@ dependencies {
 
     //circular image view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //payment
+    implementation 'com.cashfree.pg:android-sdk:1.7.15'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

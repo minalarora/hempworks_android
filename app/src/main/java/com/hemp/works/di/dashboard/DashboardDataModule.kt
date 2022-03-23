@@ -1,9 +1,17 @@
 package com.hemp.works.di.dashboard
 
+import com.hemp.works.dashboard.address.data.remote.AddressRemoteDataSource
+import com.hemp.works.dashboard.address.data.remote.AddressService
 import com.hemp.works.dashboard.calculator.data.remote.CalculatorRemoteDataSource
 import com.hemp.works.dashboard.calculator.data.remote.CalculatorService
+import com.hemp.works.dashboard.cart.data.remote.CartRemoteDataSource
+import com.hemp.works.dashboard.cart.data.remote.CartService
+import com.hemp.works.dashboard.credit.data.remote.CreditRemoteDataSource
+import com.hemp.works.dashboard.credit.data.remote.CreditService
 import com.hemp.works.dashboard.home.data.remote.HomeRemoteDataSource
 import com.hemp.works.dashboard.home.data.remote.HomeService
+import com.hemp.works.dashboard.payment.data.remote.PaymentRemoteDataSource
+import com.hemp.works.dashboard.payment.data.remote.PaymentService
 import com.hemp.works.dashboard.prescription.data.remote.PrescriptionRemoteDataSource
 import com.hemp.works.dashboard.prescription.data.remote.PrescriptionService
 import com.hemp.works.dashboard.product.data.remote.ProductRemoteDataSource
@@ -88,6 +96,48 @@ class DashboardDataModule {
     @Provides
     fun provideTNLRemoteDataSource(service: TNLService)
             = TNLRemoteDataSource(service)
+
+    @Singleton
+    @Provides
+    fun provideAddressService(retrofit: Retrofit): AddressService = retrofit.create(
+        AddressService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideAddressRemoteDataSource(service: AddressService)
+            = AddressRemoteDataSource(service)
+
+    @Singleton
+    @Provides
+    fun provideCartService(retrofit: Retrofit): CartService = retrofit.create(
+        CartService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideCartRemoteDataSource(service: CartService)
+            = CartRemoteDataSource(service)
+
+    @Singleton
+    @Provides
+    fun providePaymentService(retrofit: Retrofit): PaymentService = retrofit.create(
+        PaymentService::class.java)
+
+    @Singleton
+    @Provides
+    fun providePaymentRemoteDataSource(service: PaymentService)
+            = PaymentRemoteDataSource(service)
+
+    @Singleton
+    @Provides
+    fun provideCreditService(retrofit: Retrofit): CreditService = retrofit.create(
+        CreditService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideCreditRemoteDataSource(service: CreditService)
+            = CreditRemoteDataSource(service)
+
+
 
 
 }

@@ -1,11 +1,12 @@
 package com.hemp.works.login.data.model
 
 data class Address(
-    var id:  Int? = null,
+    var id:  Long? = null,
     var address1 : String?,
-    var address2 : String? = "",
+    var address2 : String?,
     var city     : String?,
     var state    : String?,
+    var mobile   : String?,
     var pincode  : Int?,
     var doctor   : Doctor? = null
 )

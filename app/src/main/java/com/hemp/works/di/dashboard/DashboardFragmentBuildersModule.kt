@@ -1,8 +1,12 @@
 package com.hemp.works.di.dashboard
 
+import com.hemp.works.dashboard.address.ui.AddressFragment
 import com.hemp.works.dashboard.calculator.ui.DosageCalculatorFragment
+import com.hemp.works.dashboard.cart.ui.CartFragment
+import com.hemp.works.dashboard.credit.ui.CreditFragment
 import com.hemp.works.dashboard.home.ui.HomeFragment
 import com.hemp.works.dashboard.home.ui.ProductListFragment
+import com.hemp.works.dashboard.payment.ui.PaymentFragment
 import com.hemp.works.dashboard.prescription.ui.PrescriptionFragment
 import com.hemp.works.dashboard.prescription.ui.UploadPrescriptionFragment
 import com.hemp.works.dashboard.product.ui.ProductFragment
@@ -46,5 +50,17 @@ abstract class DashboardFragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeTNLFragment(): TNLFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeAddressFragment(): AddressFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeCartFragment(): CartFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributePaymentFragment(): PaymentFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeCreditFragment(): CreditFragment
 
 }

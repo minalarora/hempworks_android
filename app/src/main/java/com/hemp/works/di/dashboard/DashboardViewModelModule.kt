@@ -6,9 +6,13 @@ import dagger.multibindings.IntoMap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.hemp.works.dashboard.DashboardSharedViewModel
+import com.hemp.works.dashboard.address.ui.AddressViewModel
 import com.hemp.works.dashboard.calculator.ui.DosageCalculatorViewModel
+import com.hemp.works.dashboard.cart.ui.CartViewModel
+import com.hemp.works.dashboard.credit.ui.CreditViewModel
 import com.hemp.works.dashboard.home.ui.HomeViewModel
 import com.hemp.works.dashboard.home.ui.ProductListViewModel
+import com.hemp.works.dashboard.payment.ui.PaymentViewModel
 import com.hemp.works.dashboard.prescription.ui.PrescriptionViewModel
 import com.hemp.works.dashboard.prescription.ui.UploadPrescriptionViewModel
 import com.hemp.works.dashboard.product.ui.ProductViewModel
@@ -73,5 +77,25 @@ abstract class DashboardViewModelModule {
     @IntoMap
     @ViewModelKey(TNLViewModel::class)
     abstract fun bindTNLViewModel(viewModel: TNLViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddressViewModel::class)
+    abstract fun bindAddressViewModel(viewModel: AddressViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CartViewModel::class)
+    abstract fun bindCartViewModel(viewModel: CartViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PaymentViewModel::class)
+    abstract fun bindPaymentViewModel(viewModel: PaymentViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CreditViewModel::class)
+    abstract fun bindCreditViewModel(viewModel: CreditViewModel): ViewModel
 
 }

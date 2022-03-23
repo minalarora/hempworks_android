@@ -77,7 +77,8 @@ class CreateViewModel @Inject constructor(private val repository: LoginRepositor
                 address2 = addressLine2,
                 city = city,
                 state = state,
-                pincode = pincode.toInt()
+                pincode = pincode.toInt(),
+                mobile = mobile
             )
 
             val doctor = RequestDoctor(
