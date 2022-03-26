@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.hemp.works.dashboard.address.ui.CreateAddressViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/black" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/textview_bold_big"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:gravity="left"
+            app:layout_constraintTop_toBottomOf="@id/back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="@string/update_address_text"/>
+
+        <EditText
+            android:id="@+id/address_line1"
+            style="@style/textview_normal_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:background="@drawable/edittext_orange_corner_radius"
+            android:hint="@string/address_line_1"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title" />
+
+        <EditText
+            android:id="@+id/address_line2"
+            style="@style/textview_normal_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/edittext_orange_corner_radius"
+            android:hint="@string/address_line_2"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/address_line1" />
+
+        <EditText
+            android:id="@+id/city"
+            style="@style/textview_normal_medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/edittext_orange_corner_radius"
+            android:hint="@string/city"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintDimensionRatio="4:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/address_line2" />
+
+        <EditText
+            android:id="@+id/pincode"
+            style="@style/textview_normal_medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/edittext_orange_corner_radius"
+            android:hint="@string/pincode"
+            android:inputType="number"
+            android:maxLength="6"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintDimensionRatio="4:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/address_line2" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/spinner_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:strokeWidth="@dimen/_1sdp"
+            app:strokeColor="@color/orange_F8AA37"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/city">
+            <Spinner
+                android:id="@+id/state"
+                style="@style/textview_normal_medium"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:entries="@array/state_list"
+                android:spinnerMode="dialog"
+                android:backgroundTint="@color/orange_F8AA37"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+        <EditText
+            android:id="@+id/mobile"
+            style="@style/textview_normal_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/edittext_orange_corner_radius"
+            android:hint="@string/address_mobile_number"
+            android:padding="@dimen/_8sdp"
+            android:singleLine="true"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_container" />
+
+        <TextView
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/textview_bold_medium"
+            android:textColor="@color/white"
+            android:background="@drawable/background_orange_corner_radius"
+            android:gravity="center"
+            android:layout_marginVertical="@dimen/_50sdp"
+            android:layout_marginHorizontal="@dimen/_24sdp"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="@string/update_address"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

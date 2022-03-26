@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.hemp.works.dashboard.cart.ui.adapter.CouponViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/_2sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/edittext_orange_corner_radius">
+
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/textview_bold_medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.title}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:maxLines="4"
+            android:ellipsize="end"
+            tools:text="MIGD-32"/>
+
+        <TextView
+            android:id="@+id/sub_title"
+            style="@style/textview_normal_small"
+            android:textSize="@dimen/_9sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:minLines="2"
+            android:text="@{viewmodel.subtitle}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            tools:text="462003"/>
+
+        <TextView
+            android:id="@+id/expiry"
+            style="@style/textview_italic_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:text="@{viewmodel.date}"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sub_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Expiry on 12/03/2022"/>
+
+        <TextView
+            android:id="@+id/apply"
+            style="@style/textview_bold_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/apply"
+            android:letterSpacing="0.04"
+            android:paddingVertical="@dimen/_6sdp"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:textColor="@color/white"
+            android:background="@drawable/background_orange_corner_radius"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sub_title"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

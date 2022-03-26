@@ -20,6 +20,10 @@ class CartRepository @Inject constructor(private val remoteDataSource: CartRemot
     val cart: LiveData<Cart>
         get() = _cart
 
+    private val _coupons = MutableLiveData<List<Coupon>>()
+    val coupons: LiveData<List<Coupon>>
+        get() = _coupons
+
     private val _booleanResponse = LiveEvent<Boolean>()
     val booleanResponse: LiveData<Boolean>
         get() = _booleanResponse
@@ -29,6 +33,14 @@ class CartRepository @Inject constructor(private val remoteDataSource: CartRemot
             remoteDataSource.getCart()
         }?.let{
             it.data?.let { cart -> _cart.postValue(cart) }
+        }
+    }
+
+    suspend fun fetchCoupons() {
+        getResult(Constants.GENERAL_ERROR_MESSAGE) {
+            remoteDataSource.getCouponList()
+        }?.let{
+            it.data?.let { coupons -> _coupons.postValue(coupons) }
         }
     }
 

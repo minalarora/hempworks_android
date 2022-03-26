@@ -2,6 +2,7 @@ package com.hemp.works.dashboard.cart.data.remote
 
 import com.hemp.works.base.BooleanResponse
 import com.hemp.works.dashboard.model.Cart
+import com.hemp.works.dashboard.model.Coupon
 import com.hemp.works.dashboard.model.RequestProduct
 import retrofit2.Response
 import retrofit2.http.Body
@@ -27,6 +28,9 @@ interface CartService {
 
     @PATCH("/v1/cart/empty")
     suspend fun emptyCart() : Response<BooleanResponse>
+
+    @GET("/v1/coupon")
+    suspend fun getCouponList() : Response<List<Coupon>>
 
 
 }

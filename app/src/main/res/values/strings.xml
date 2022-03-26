@@ -16,6 +16,7 @@
     <string name="live_cme_sessions">Live CME Sessions</string>
     <string name="email_or_mobile_number">Email or mobile number</string>
     <string name="mobile_number">Enter mobile number</string>
+    <string name="address_mobile_number">Mobile number</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="enter_new_password">Enter new password</string>
     <string name="enter_confirm_password">Confirm your password</string>
@@ -40,6 +41,7 @@
     <string name="enter_your_email">Enter your email</string>
     <string name="enter_your_clinic_name">Enter your clinic name</string>
     <string name="address">ADDRESS</string>
+    <string name="address_title">Address</string>
     <string name="address_line_1">Flat, House no., Building</string>
     <string name="address_line_2">Area, Street, Sector</string>
     <string name="city">City</string>
@@ -84,6 +86,7 @@
     <string name="description">Description</string>
     <string name="add_to_cart">ADD TO CART</string>
     <string name="buy_now">BUY NOW</string>
+    <string name="place_order">PLACE ORDER</string>
     <string name="download_pdf">DOWNLOAD PDF</string>
     <string name="you_may_also_like">You may also like</string>
     <string name="tax_included">Tax Included</string>
@@ -99,9 +102,11 @@
     <string name="approved">Approved</string>
     <string name="your_id_verification_is_in_progress">Note: Your ID verification is in progress</string>
     <string name="edit">Edit</string>
+    <string name="edit_address">Edit Address</string>
     <string name="pay_remaining_amount">Pay remaining amount</string>
     <string name="update">Update</string>
     <string name="no_prescriptions_found">No Prescriptions Found :-(</string>
+    <string name="no_orders_found">kindly add items in Cart :-(</string>
     <string name="upload_prescription">Upload Prescription</string>
     <string name="max_30_words">Max 30 words...</string>
     <string name="write_here">Write here...</string>
@@ -127,7 +132,23 @@
     <string name="live_session_header">LIVE SESSION</string>
     <string name="result">Result</string>
     <string name="ok">OK</string>
-
+    <string name="coupon">Coupon</string>
+    <string name="price_to_pay">Price to pay</string>
+    <string name="no_coupon_applied">NO COUPON APPLIED</string>
+    <string name="use_the_below_codes_to_avail_discount">Use the below codes to avail discount</string>
+    <string name="enter_coupon_code">Enter Coupon Code</string>
+    <string name="apply">Apply</string>
+    <string name="expiry_coupon">Expiry on %1$s</string>
+    <string name="invalid_coupon">Invalid Coupon</string>
+    <string name="coupon_applied">Coupon Applied!</string>
+    <string name="check_offers">Check offers</string>
+    <string name="select_any_address_to_proceed_checkout">Select any address to proceed checkout</string>
+    <string name="proceed_checkout">Proceed Checkout</string>
+    <string name="add_address">ADD ADDRESS</string>
+    <string name="update_address">UPDATE ADDRESS</string>
+    <string name="no_address_found">Kindly add address to place order</string>
+    <string name="new_address_text">Add your address to place order</string>
+    <string name="update_address_text">Update your existing address to place order</string>
 
     <string-array name="state_list">
         <item><b>Select State</b></item>

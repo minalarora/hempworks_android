@@ -11,6 +11,9 @@
         <entry key="app/src/main/res/drawable/edittext_orange_corner_radius.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.2125" />
+        <entry key="app/src/main/res/drawable/ic_close.xml" value="0.2265" />
+        <entry key="app/src/main/res/drawable/ic_close_fill.xml" value="0.2265" />
+        <entry key="app/src/main/res/drawable/ic_coupon.xml" value="0.2265" />
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.36102564102564105" />
         <entry key="app/src/main/res/drawable/ic_india.xml" value="0.36666666666666664" />
@@ -22,6 +25,7 @@
         <entry key="app/src/main/res/drawable/ic_play.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_profile_loading.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_remove_image.xml" value="0.36102564102564105" />
+        <entry key="app/src/main/res/drawable/ic_rupee.xml" value="0.2265" />
         <entry key="app/src/main/res/drawable/ic_upload_image.xml" value="0.36102564102564105" />
         <entry key="app/src/main/res/drawable/ic_username.xml" value="0.36102564102564105" />
         <entry key="app/src/main/res/drawable/menu_background_color_state.xml" value="0.36102564102564105" />
@@ -32,7 +36,11 @@
         <entry key="app/src/main/res/drawable/viewpager_tablayout_selector.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.337037037037037" />
-        <entry key="app/src/main/res/layout/fragment_create.xml" value="0.337037037037037" />
+        <entry key="app/src/main/res/layout/fragment_address.xml" value="0.22138157894736843" />
+        <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_coupon.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_create.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_create_address.xml" value="0.22138157894736843" />
         <entry key="app/src/main/res/layout/fragment_dosage_calculator.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_edit_email_bottom_sheet.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_edit_mobile_bottom_sheet.xml" value="0.25" />
@@ -49,7 +57,7 @@
         <entry key="app/src/main/res/layout/fragment_onboarding4.xml" value="0.31203703703703706" />
         <entry key="app/src/main/res/layout/fragment_onboarding5.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_prescription.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_product.xml" value="0.27775484936029715" />
+        <entry key="app/src/main/res/layout/fragment_product.xml" value="0.2582501918649271" />
         <entry key="app/src/main/res/layout/fragment_product_image.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_product_list.xml" value="0.2796296296296296" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
@@ -57,13 +65,17 @@
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/fragment_tnl.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_upload_prescription.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_verify_mobile.xml" value="0.337037037037037" />
+        <entry key="app/src/main/res/layout/fragment_verify_mobile.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/item_address.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_banner_image.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/item_cart.xml" value="0.125" />
         <entry key="app/src/main/res/layout/item_category.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/item_coupon.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_instagram.xml" value="0.41794871794871796" />
         <entry key="app/src/main/res/layout/item_livesession.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/item_newsletter.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/item_no_product.xml" value="0.2611111111111111" />
+        <entry key="app/src/main/res/layout/item_order.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/item_prescription.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/item_product.xml" value="0.2611111111111111" />
         <entry key="app/src/main/res/layout/item_product_image.xml" value="0.35052083333333334" />

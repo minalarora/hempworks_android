@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.hemp.works.dashboard.cart.ui.adapter.CartViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/_2sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:onClick="@{() -> viewmodel.onProductClick()}"
+        android:background="@drawable/background_all_rounded_corners">
+
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_85sdp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            glideImage="@{viewmodel.image}"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/dummy_product"/>
+
+        <ImageView
+            android:id="@+id/cross"
+            android:layout_width="@dimen/_17sdp"
+            android:layout_height="@dimen/_17sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="@dimen/_5sdp"
+            android:onClick="@{() -> viewmodel.deleteProduct()}"
+            android:src="@drawable/ic_close"
+            app:tint="@color/grey_AAAAAA" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/textview_normal_medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/product_image"
+            app:layout_constraintEnd_toStartOf="@id/cross"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="@{viewmodel.title}"
+            tools:text="Ananta Upper Meidicne"/>
+
+        <TextView
+            android:id="@+id/sub_title"
+            style="@style/textview_bold_small"
+            android:textSize="@dimen/_9sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:text="@{viewmodel.subTitle}"
+            android:textColor="@color/orange_F8AA37"
+            app:layout_constraintStart_toEndOf="@id/product_image"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            android:layout_margin="@dimen/_5sdp"
+            tools:text="10 ml"/>
+
+
+        <TextView
+            android:id="@+id/price"
+            style="@style/textview_normal_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{viewmodel.price}"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/product_image"
+            tools:text="Rs. 999"/>
+
+        <ImageView
+            android:id="@+id/minus"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:src="@drawable/ic_minus"
+            android:elevation="1dp"
+            android:onClick="@{() -> viewmodel.decreaseQuantity()}"
+            android:layout_marginVertical="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/quantity_number"
+            app:tint="@color/orange_F8AA37" />
+        <TextView
+            android:id="@+id/quantity_number"
+            style="@style/textview_normal_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@{viewmodel.quantity}"
+            android:layout_marginVertical="@dimen/_4sdp"
+            app:layout_constraintStart_toEndOf="@id/minus"
+            app:layout_constraintTop_toTopOf="@id/minus"
+            app:layout_constraintBottom_toBottomOf="@id/minus"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:elevation="1dp"
+            tools:text="1"
+            />
+        <ImageView
+            android:id="@+id/plus"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:src="@drawable/ic_add_fill"
+            app:layout_constraintStart_toEndOf="@id/quantity_number"
+            android:elevation="1dp"
+            android:onClick="@{() -> viewmodel.increaseQuantity()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:tint="@color/orange_F8AA37" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/minus"
+            app:layout_constraintEnd_toEndOf="@id/plus"
+            app:layout_constraintTop_toTopOf="@id/minus"
+            app:layout_constraintBottom_toBottomOf="@id/minus"
+            android:background="@color/white"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

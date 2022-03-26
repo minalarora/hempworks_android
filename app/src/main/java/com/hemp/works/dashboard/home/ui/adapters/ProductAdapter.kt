@@ -1,13 +1,10 @@
 package com.hemp.works.dashboard.home.ui.adapters
 
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.hemp.works.dashboard.home.ui.CategoryItemClickListener
 import com.hemp.works.dashboard.model.Product
 import com.hemp.works.dashboard.product.ui.ProductItemClickListener
 import com.hemp.works.databinding.ItemProductBinding

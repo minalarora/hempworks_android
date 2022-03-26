@@ -9,6 +9,7 @@ import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.dashboard.address.ui.AddressViewModel
 import com.hemp.works.dashboard.calculator.ui.DosageCalculatorViewModel
 import com.hemp.works.dashboard.cart.ui.CartViewModel
+import com.hemp.works.dashboard.cart.ui.CouponViewModel
 import com.hemp.works.dashboard.credit.ui.CreditViewModel
 import com.hemp.works.dashboard.home.ui.HomeViewModel
 import com.hemp.works.dashboard.home.ui.ProductListViewModel
@@ -97,5 +98,10 @@ abstract class DashboardViewModelModule {
     @IntoMap
     @ViewModelKey(CreditViewModel::class)
     abstract fun bindCreditViewModel(viewModel: CreditViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CouponViewModel::class)
+    abstract fun bindCouponViewModel(viewModel: CouponViewModel): ViewModel
 
 }

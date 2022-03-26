@@ -20,4 +20,6 @@ class CartRemoteDataSource @Inject constructor(private val service: CartService)
     suspend fun removeCoupon() = getResult { service.applyCoupon(hashMapOf("coupon" to "")) }
 
     suspend fun emptyCart() = getResult { service.emptyCart() }
+
+    suspend fun getCouponList() = getResult { service.getCouponList() }
 }
