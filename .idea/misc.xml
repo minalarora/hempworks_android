@@ -26,6 +26,7 @@
         <entry key="app/src/main/res/drawable/ic_profile_loading.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_remove_image.xml" value="0.36102564102564105" />
         <entry key="app/src/main/res/drawable/ic_rupee.xml" value="0.2265" />
+        <entry key="app/src/main/res/drawable/ic_support.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/ic_upload_image.xml" value="0.36102564102564105" />
         <entry key="app/src/main/res/drawable/ic_username.xml" value="0.36102564102564105" />
         <entry key="app/src/main/res/drawable/menu_background_color_state.xml" value="0.36102564102564105" />
@@ -56,7 +57,8 @@
         <entry key="app/src/main/res/layout/fragment_onboarding3.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/fragment_onboarding4.xml" value="0.31203703703703706" />
         <entry key="app/src/main/res/layout/fragment_onboarding5.xml" value="0.35052083333333334" />
-        <entry key="app/src/main/res/layout/fragment_prescription.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_payment.xml" value="0.22138157894736843" />
+        <entry key="app/src/main/res/layout/fragment_prescription.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_product.xml" value="0.2582501918649271" />
         <entry key="app/src/main/res/layout/fragment_product_image.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_product_list.xml" value="0.2796296296296296" />

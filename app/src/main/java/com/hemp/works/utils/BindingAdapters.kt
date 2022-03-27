@@ -6,13 +6,16 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import com.hemp.works.R
 import com.hemp.works.base.MyAppGlideModule
 import com.hemp.works.dashboard.UserType
+import com.hemp.works.dashboard.payment.ui.PaymentStatus
 import com.hemp.works.login.data.model.Doctor
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -100,5 +103,84 @@ import de.hdodenhof.circleimageview.CircleImageView
             else paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
         }
         get() = paintFlags and Paint.STRIKE_THRU_TEXT_FLAG == Paint.STRIKE_THRU_TEXT_FLAG
+
+
+
+    @BindingAdapter("paymentBackground")
+    fun setPaymentBackground(view: ConstraintLayout, paymentStatus: PaymentStatus) {
+        when(paymentStatus) {
+            PaymentStatus.NONE -> view.setBackgroundColor(
+                ContextCompat.getColor(view.context, R.color.grey_CDCDCD)
+            )
+            PaymentStatus.CREDIT_PENDING, PaymentStatus.ORDER_PENDING -> view.setBackgroundColor(
+                ContextCompat.getColor(view.context, R.color.yellow)
+            )
+            PaymentStatus.CREDIT_COMPLETED, PaymentStatus.ORDER_COMPLETED -> view.setBackgroundColor(
+                ContextCompat.getColor(view.context, R.color.green)
+            )
+            PaymentStatus.CREDIT_FAILED, PaymentStatus.ORDER_FAILED -> view.setBackgroundColor(
+                ContextCompat.getColor(view.context, R.color.red)
+            )
+        }
+    }
+
+    @BindingAdapter("paymentAnimation")
+    fun setPaymentAnimation(view: LottieAnimationView, paymentStatus: PaymentStatus) {
+        when(paymentStatus) {
+            PaymentStatus.NONE -> view.visibility = View.GONE
+            PaymentStatus.CREDIT_PENDING, PaymentStatus.ORDER_PENDING -> {
+                view.setAnimation("pending.json")
+                view.visibility = View.VISIBLE
+            }
+            PaymentStatus.CREDIT_COMPLETED, PaymentStatus.ORDER_COMPLETED -> {
+                view.setAnimation("completed.json")
+                view.visibility = View.VISIBLE
+            }
+            PaymentStatus.CREDIT_FAILED, PaymentStatus.ORDER_FAILED ->  {
+                view.setAnimation("failed.json")
+                view.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    @BindingAdapter("paymentTitle")
+    fun setPaymentTitle(view: TextView, paymentStatus: PaymentStatus) {
+        when(paymentStatus) {
+            PaymentStatus.NONE -> view.visibility = View.GONE
+            PaymentStatus.CREDIT_PENDING, PaymentStatus.ORDER_PENDING -> {
+                view.visibility = View.VISIBLE
+                view.text = view.context.getString(R.string.trans_pending)
+            }
+            PaymentStatus.CREDIT_COMPLETED, PaymentStatus.ORDER_COMPLETED -> {
+                view.visibility = View.VISIBLE
+                view.text = view.context.getString(R.string.trans_completed)
+            }
+            PaymentStatus.CREDIT_FAILED, PaymentStatus.ORDER_FAILED ->  {
+                view.visibility = View.VISIBLE
+                view.text = view.context.getString(R.string.trans_failed)
+            }
+        }
+    }
+
+    @BindingAdapter("paymentDesc")
+    fun setPaymentDescription(view: TextView, paymentStatus: PaymentStatus) {
+        when(paymentStatus) {
+            PaymentStatus.NONE -> view.visibility = View.GONE
+            PaymentStatus.CREDIT_PENDING, PaymentStatus.ORDER_PENDING -> {
+                view.visibility = View.VISIBLE
+                view.text = view.context.getString(R.string.trans_pending_desc)
+            }
+            PaymentStatus.CREDIT_COMPLETED, PaymentStatus.ORDER_COMPLETED -> {
+                view.visibility = View.VISIBLE
+                view.text = view.context.getString(R.string.trans_completed_desc)
+            }
+            PaymentStatus.CREDIT_FAILED, PaymentStatus.ORDER_FAILED ->  {
+                view.visibility = View.VISIBLE
+                view.text = view.context.getString(R.string.trans_failed_desc)
+            }
+        }
+    }
+
+
 
 

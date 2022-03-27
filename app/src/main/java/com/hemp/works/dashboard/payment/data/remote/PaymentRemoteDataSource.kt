@@ -7,11 +7,15 @@ import javax.inject.Inject
 
 class PaymentRemoteDataSource @Inject constructor(private val service: PaymentService): BaseDataSource()  {
 
-    suspend fun addOrder(order: RequestOrder) = getResult { service.addOrder(order) }
+    suspend fun addOrder(order: RequestOrder) = getResult { service.doOrderPayment(order) }
 
     suspend fun getSingleOrder(id: Long) = getResult { service.getSingleOrder(id) }
 
-    suspend fun requestCancellationForOrder(id: Long) = getResult { service.requestCancellationForOrder(id) }
+    suspend fun addCreditPayment(amount: Int) = getResult { service.doCreditPayment(hashMapOf("amount" to amount)) }
 
-    suspend fun getAllOrder() = getResult { service.getAllOrder() }
+    suspend fun getSingleCreditHistory(id: Long) = getResult { service.getSingleCreditHistory(id) }
+
+//    suspend fun requestCancellationForOrder(id: Long) = getResult { service.requestCancellationForOrder(id) }
+//
+//    suspend fun getAllOrder() = getResult { service.getAllOrder() }
 }

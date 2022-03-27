@@ -149,6 +149,14 @@
     <string name="no_address_found">Kindly add address to place order</string>
     <string name="new_address_text">Add your address to place order</string>
     <string name="update_address_text">Update your existing address to place order</string>
+    <string name="trans_pending">Please Wait!</string>
+    <string name="trans_completed">Transaction Successful!</string>
+    <string name="trans_failed">Transaction Failed!</string>
+    <string name="trans_pending_desc">We are continuously checking the status of your payment. We request you not to make multiple payments and wait for few minutes till the status is updated.</string>
+    <string name="trans_completed_desc">Your transaction of %1$s has been successfully completed. Kindly not the transaction id: %2$s for your reference.</string>
+    <string name="trans_failed_desc">Your transaction of %1$s has been failed or denied. In case of amount deducted, it will be credited within 14 working days.</string>
+    <string name="contact_support">CONTACT SUPPORT</string>
+
 
     <string-array name="state_list">
         <item><b>Select State</b></item>
