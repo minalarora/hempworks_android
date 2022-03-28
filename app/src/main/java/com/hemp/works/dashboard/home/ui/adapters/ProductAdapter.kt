@@ -34,6 +34,7 @@ class ProductAdapter(private val listener: ProductItemClickListener) : ListAdapt
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemProductBinding.inflate(layoutInflater, parent, false)
+                binding.root.clipToOutline = true
                 return ViewHolder(binding)
             }
         }

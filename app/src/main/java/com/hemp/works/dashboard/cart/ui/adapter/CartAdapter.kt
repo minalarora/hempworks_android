@@ -31,6 +31,7 @@ class CartAdapter(private val listener: CartItemClickListener) : ListAdapter<Car
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemCartBinding.inflate(layoutInflater, parent, false)
+                binding.root.clipToOutline = true
                 return ViewHolder(binding)
             }
         }

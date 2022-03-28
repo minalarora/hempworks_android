@@ -45,6 +45,7 @@ class InstagramAdapter(private val listener: InstagramItemClickListener) : ListA
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemInstagramBinding.inflate(layoutInflater, parent, false)
+                binding.root.clipToOutline = true
                 return ViewHolder(binding)
             }
         }
