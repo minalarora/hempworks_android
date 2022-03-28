@@ -129,6 +129,7 @@
             android:background="@drawable/edittext_orange_corner_radius"
             android:hint="@string/address_mobile_number"
             android:padding="@dimen/_8sdp"
+            android:maxLength="10"
             android:singleLine="true"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
@@ -151,6 +152,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             tools:text="@string/update_address"/>
 
-
+        <include
+            layout="@layout/progress_bar_white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:isVisible="@{viewmodel.loading}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

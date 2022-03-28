@@ -32,7 +32,8 @@
 
         <TextView
             android:id="@+id/title"
-            style="@style/textview_normal_small"
+            style="@style/textview_normal_medium"
+            android:textSize="@dimen/_12sdp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,6 +44,7 @@
             android:minLines="2"
             android:maxLines="4"
             android:ellipsize="end"
+            android:text="@{viewmodel.title}"
             tools:text="MIG D-32, Ganpati Encalve, Naear BeemaKunj, Bhopal, Madhya Pradesh"/>
 
         <TextView
@@ -53,6 +55,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="@dimen/_5sdp"
             android:minLines="2"
+            android:text="@{viewmodel.subTitle}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
             android:layout_margin="@dimen/_5sdp"

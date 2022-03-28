@@ -18,7 +18,7 @@ class CartViewModel  @Inject constructor(private val repository: CartRepository)
     }
     val price = Transformations.map(repository.cart) {
         HtmlCompat.fromHtml(
-        "<strike>MRP:&ensp; Rs. ${it.totalprice}</strike>  <br>  <b> Rs. ${it.discountprice} </b> &emsp;"
+        "<strike>MRP:&ensp; Rs. ${it.totalprice}</strike>  &emsp;  <b> Rs. ${it.discountprice} </b>"
             , HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 
@@ -36,9 +36,6 @@ class CartViewModel  @Inject constructor(private val repository: CartRepository)
 
     val booleanResponse = repository.booleanResponse
 
-    init {
-       fetchCartDetails()
-    }
 
     fun fetchCartDetails() {
         viewModelScope.launch {

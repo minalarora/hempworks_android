@@ -2,6 +2,7 @@ package com.hemp.works.dashboard.product.ui
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,8 +19,10 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import com.github.piasy.biv.BigImageViewer
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
+import com.hemp.works.base.Constants
 import com.hemp.works.base.LinePagerIndicatorDecoration
 import com.hemp.works.dashboard.DashboardSharedViewModel
+import com.hemp.works.dashboard.UserType
 import com.hemp.works.dashboard.home.ui.adapters.ProductAdapter
 import com.hemp.works.dashboard.model.Product
 import com.hemp.works.dashboard.model.Variant
@@ -58,10 +61,16 @@ class ProductFragment : Fragment(), Injectable {
             lifecycleOwner = this@ProductFragment
         }
 
+        if (sharedViewModel.userType == UserType.APPROVED) {
+            binding.toolbar.inflateMenu(R.menu.toolbar_product_menu)
+        }
+
         binding.toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.cart -> {
-                   //TODO: GOTO CART
+                   ProductFragmentDirections.actionProductFragmentToCartFragment().also {
+                       binding.root.findNavController().navigate(it)
+                   }
                 }
             }
             true
@@ -111,6 +120,14 @@ class ProductFragment : Fragment(), Injectable {
         })
         ViewCompat.setNestedScrollingEnabled(binding.extraRecyclerview, false);
 
+        binding.addCart.setOnClickListener {
+            viewModel.addProduct(false)
+        }
+
+        binding.buyNow.setOnClickListener {
+            viewModel.addProduct(true)
+        }
+
         binding.pdfDownload.setOnClickListener {
             startActivity(
                 Intent(
@@ -128,6 +145,20 @@ class ProductFragment : Fragment(), Injectable {
             (binding.extraRecyclerview.adapter as ProductAdapter).submitList(it)
         }
 
+        viewModel.booleanResponse.observe(viewLifecycleOwner) {
+            if (it) {
+                if (viewModel.goToCart) {
+                    ProductFragmentDirections.actionProductFragmentToCartFragment().also {
+                        binding.root.findNavController().navigate(it)
+                    }
+                } else {
+                    showSuccessSnackBar(getString(R.string.product_added))
+                }
+            } else {
+                Snackbar.make(binding.root, Constants.GENERAL_ERROR_MESSAGE, Snackbar.LENGTH_LONG).show()
+            }
+        }
+
         viewModel.error.observe(viewLifecycleOwner) {
             showSnackBar(it)
         }
@@ -139,6 +170,15 @@ class ProductFragment : Fragment(), Injectable {
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
         binding.root.findNavController().popBackStack()
+    }
+
+    private fun showSuccessSnackBar(msg: String) {
+        val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+        Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).apply {
+            setBackgroundTint(ContextCompat.getColor(view.context, R.color.orange_F8AA37))
+            setTextColor(Color.BLACK)
+        }.show()
     }
 
     companion object {

@@ -45,7 +45,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginHorizontal="@dimen/_20sdp"
             android:gravity="left"
-            android:text="@string/use_the_below_codes_to_avail_discount"
+            android:text="@{ viewmodel.couponListVisibility == true ?  @string/use_the_below_codes_to_avail_discount : @string/enter_coupon_to_avail_discount}"
             app:layout_constraintTop_toBottomOf="@id/back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -91,6 +91,7 @@
             android:layout_marginHorizontal="@dimen/_15sdp"
             android:background="@color/grey_CDCDCD"
             tools:listitem="@layout/item_coupon" />
+
 
         <include
             layout="@layout/progress_bar"

@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -51,6 +52,16 @@ import de.hdodenhof.circleimageview.CircleImageView
             UserType.APPROVED -> R.menu.approved_doctor_menu
             UserType.PENDING -> R.menu.pending_doctor_menu
             UserType.ANONYMOUS -> R.menu.without_login_menu
+        });
+    }
+
+    @BindingAdapter("setToolbarMenu")
+    fun setToolbarMenu(toolbar: Toolbar, userType: UserType) {
+        toolbar.menu.clear();
+        toolbar.inflateMenu(when(userType) {
+            UserType.APPROVED -> R.menu.toolbar_user_menu_approved
+            UserType.PENDING ->  R.menu.toolbar_user_menu
+            UserType.ANONYMOUS ->  R.menu.toolbar_user_menu
         });
     }
 

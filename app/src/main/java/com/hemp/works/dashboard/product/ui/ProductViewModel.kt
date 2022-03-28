@@ -9,6 +9,8 @@ import androidx.lifecycle.*
 import com.hemp.works.R
 import com.hemp.works.base.BaseViewModel
 import com.hemp.works.dashboard.UserType
+import com.hemp.works.dashboard.cart.data.repository.CartRepository
+import com.hemp.works.dashboard.model.RequestProduct
 import com.hemp.works.dashboard.model.Variant
 import com.hemp.works.dashboard.product.data.repository.ProductRepository
 import com.hemp.works.login.data.model.Doctor
@@ -18,7 +20,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.math.roundToInt
 
-class ProductViewModel @Inject constructor(private val repository: ProductRepository) : BaseViewModel(repository) {
+class ProductViewModel @Inject constructor(private val repository: ProductRepository, private val cartRepository: CartRepository ) : BaseViewModel(repository, cartRepository) {
 
     fun loadProduct(user: Doctor?, userType: UserType, id: String, category: String) {
         this.user = user
@@ -134,6 +136,16 @@ class ProductViewModel @Inject constructor(private val repository: ProductReposi
 
     val buttonVisibility: LiveData<Boolean> = Transformations.map(repository.product) {
         it.instock
+    }
+
+    val booleanResponse = cartRepository.booleanResponse
+    var goToCart: Boolean = false
+
+    fun addProduct(goToCart: Boolean) {
+        viewModelScope.launch {
+            this@ProductViewModel.goToCart = goToCart
+            cartRepository.addProduct(RequestProduct(productId, selectedVariant?.id, quantity.value?.toInt()))
+        }
     }
 
 }

@@ -8,5 +8,5 @@ data class Address(
     var state    : String?,
     var mobile   : String?,
     var pincode  : Int?,
-    var doctor   : Doctor? = null
+    var doctor   : String? = null
 )

@@ -1,6 +1,7 @@
 package com.hemp.works.dashboard.cart.ui
 
 import android.app.Activity
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -42,7 +43,7 @@ class CouponFragment : Fragment(), Injectable, CouponItemClickListener{
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white);
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.grey_CDCDCD);
 
         viewModel = injectViewModel(viewModelFactory)
         sharedViewModel = requireActivity().injectViewModel(viewModelFactory)
@@ -96,13 +97,9 @@ class CouponFragment : Fragment(), Injectable, CouponItemClickListener{
         viewModel.booleanResponse.observe(viewLifecycleOwner) {
             if (!it) showSnackBar(Constants.GENERAL_ERROR_MESSAGE)
             else {
-                MaterialAlertDialogBuilder(requireContext())
-                    .setMessage(resources.getString(R.string.coupon_applied))
-                    .setNeutralButton(getString(R.string.ok)) { dialog, which ->
+                showSuccessSnackBar(resources.getString(R.string.coupon_applied))
+                binding.root.findNavController().popBackStack()
 
-                       //TODO: GOTO CART
-                    }
-                    .show()
             }
         }
 
@@ -124,6 +121,14 @@ class CouponFragment : Fragment(), Injectable, CouponItemClickListener{
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
     }
 
+    private fun showSuccessSnackBar(msg: String) {
+        val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+        Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).apply {
+            setBackgroundTint(ContextCompat.getColor(view.context, R.color.orange_F8AA37))
+            setTextColor(Color.BLACK)
+        }.show()
+    }
 
     companion object {
 

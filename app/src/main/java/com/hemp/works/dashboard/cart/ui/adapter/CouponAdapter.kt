@@ -25,7 +25,7 @@ class CouponAdapter(private val listener: CouponItemClickListener) : ListAdapter
         fun bind(item: Coupon, listener: CouponItemClickListener) {
             binding.viewmodel = CouponViewModel(binding.root.context, item)
             binding.apply.setOnClickListener {
-
+                listener.onItemClick(item)
             }
             binding.executePendingBindings()
         }

@@ -105,6 +105,11 @@ class HomeFragment : Fragment(), Injectable {
                 R.id.notification -> {
                     //TODO: NOTIFICATION
                 }
+                R.id.cart -> {
+                    HomeFragmentDirections.actionHomeFragmentToCartFragment().also {
+                        binding.root.findNavController().navigate(it)
+                    }
+                }
 
             }
            true

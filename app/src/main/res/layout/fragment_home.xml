@@ -34,7 +34,7 @@
                     android:minHeight="?attr/actionBarSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:menu="@menu/toolbar_user_menu"
+                    app:setToolbarMenu="@{usertype}"
                     app:titleTextColor="@android:color/white"
                     android:background="?attr/colorPrimary"
                     app:layout_constraintTop_toTopOf="parent"

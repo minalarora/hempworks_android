@@ -1,6 +1,7 @@
 package com.hemp.works.di.dashboard
 
 import com.hemp.works.dashboard.address.ui.AddressFragment
+import com.hemp.works.dashboard.address.ui.CreateAddressFragment
 import com.hemp.works.dashboard.calculator.ui.DosageCalculatorFragment
 import com.hemp.works.dashboard.cart.ui.CartFragment
 import com.hemp.works.dashboard.cart.ui.CouponFragment
@@ -54,6 +55,9 @@ abstract class DashboardFragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeAddressFragment(): AddressFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeCreateAddressFragment(): CreateAddressFragment
 
     @ContributesAndroidInjector
     abstract fun contributeCartFragment(): CartFragment

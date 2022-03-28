@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.dashboard.address.ui.AddressViewModel
+import com.hemp.works.dashboard.address.ui.CreateAddressViewModel
 import com.hemp.works.dashboard.calculator.ui.DosageCalculatorViewModel
 import com.hemp.works.dashboard.cart.ui.CartViewModel
 import com.hemp.works.dashboard.cart.ui.CouponViewModel
@@ -83,6 +84,11 @@ abstract class DashboardViewModelModule {
     @IntoMap
     @ViewModelKey(AddressViewModel::class)
     abstract fun bindAddressViewModel(viewModel: AddressViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CreateAddressViewModel::class)
+    abstract fun bindCreateAddressViewModel(viewModel: CreateAddressViewModel): ViewModel
 
     @Binds
     @IntoMap

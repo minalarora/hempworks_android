@@ -14,7 +14,7 @@ interface CartService {
     @PATCH("/v1/cart/addproduct")
     suspend fun addProduct(@Body product: RequestProduct) : Response<BooleanResponse>
 
-    @PATCH("/v1/cart/addproduct")
+    @PATCH("/v1/cart/quantity")
     suspend fun addQuantity(@Body product: RequestProduct) : Response<BooleanResponse>
 
     @GET("/v1/cart")
@@ -29,7 +29,7 @@ interface CartService {
     @PATCH("/v1/cart/empty")
     suspend fun emptyCart() : Response<BooleanResponse>
 
-    @GET("/v1/coupon")
+    @GET("/v1/coupon/public")
     suspend fun getCouponList() : Response<List<Coupon>>
 
 

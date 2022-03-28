@@ -105,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/textview_normal_small"
-            android:text="@{viewmodel.coupon == null ?  @string/check_offers : viewmodel.coupon.name}"
+            android:text="@{viewmodel.coupon == null ?  @string/check_offers : viewmodel.coupon.name.toUpperCase()}"
             android:paddingVertical="@dimen/_3sdp"
             android:paddingHorizontal="@dimen/_10sdp"
             android:background="@drawable/background_all_rounded_corners"

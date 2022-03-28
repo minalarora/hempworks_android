@@ -136,6 +136,7 @@
     <string name="price_to_pay">Price to pay</string>
     <string name="no_coupon_applied">NO COUPON APPLIED</string>
     <string name="use_the_below_codes_to_avail_discount">Use the below codes to avail discount</string>
+    <string name="enter_coupon_to_avail_discount">Enter coupon code to avail discount</string>
     <string name="enter_coupon_code">Enter Coupon Code</string>
     <string name="apply">Apply</string>
     <string name="expiry_coupon">Expiry on %1$s</string>
@@ -146,6 +147,8 @@
     <string name="proceed_checkout">Proceed Checkout</string>
     <string name="add_address">ADD ADDRESS</string>
     <string name="update_address">UPDATE ADDRESS</string>
+    <string name="add_address_done">ADDRESS CREATED!</string>
+    <string name="update_address_done">ADDRESS UPDATED!</string>
     <string name="no_address_found">Kindly add address to place order</string>
     <string name="new_address_text">Add your address to place order</string>
     <string name="update_address_text">Update your existing address to place order</string>
@@ -156,6 +159,8 @@
     <string name="trans_completed_desc">Your transaction of %1$s has been successfully completed. Kindly not the transaction id: %2$s for your reference.</string>
     <string name="trans_failed_desc">Your transaction of %1$s has been failed or denied. In case of amount deducted, it will be credited within 14 working days.</string>
     <string name="contact_support">CONTACT SUPPORT</string>
+    <string name="product_added">PRODUCT ADDED IN CART</string>
+    <string name="empty_string"></string>
 
 
     <string-array name="state_list">

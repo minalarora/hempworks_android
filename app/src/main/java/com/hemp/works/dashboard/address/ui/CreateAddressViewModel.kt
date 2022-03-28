@@ -24,6 +24,7 @@ class CreateAddressViewModel @Inject constructor(private val repository: Address
 
     fun fetchAddress(id: String?) {
         try {
+            loading.postValue(true)
             if (id.isNullOrBlank()) _address.postValue(null)
 
            val address =  repository.addressList.value?.first { it.id == id?.toLong() }
@@ -33,6 +34,8 @@ class CreateAddressViewModel @Inject constructor(private val repository: Address
 
         } catch (ex: Exception) {
             _address.postValue(null)
+        } finally {
+            loading.postValue(false)
         }
     }
 

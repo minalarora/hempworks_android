@@ -32,6 +32,7 @@
             android:paddingHorizontal="@dimen/_5sdp"
             android:maxLines="4"
             android:ellipsize="end"
+            android:textAllCaps="true"
             tools:text="MIGD-32"/>
 
         <TextView

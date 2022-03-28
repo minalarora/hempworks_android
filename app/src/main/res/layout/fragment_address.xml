@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.hemp.works.dashboard.address.ui.AddressViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -48,6 +54,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginHorizontal="@dimen/_20sdp"
             android:gravity="left"
+            app:hideIfTrue="@{viewmodel.loading == false &amp;&amp; viewmodel.addressListVisibility == false ? true : false}"
             android:text="@string/select_any_address_to_proceed_checkout"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,11 +65,12 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/bottom_layout"
             android:layout_margin="@dimen/_5sdp"
+            app:hideIfTrue="@{viewmodel.loading}"
             android:background="@color/grey_CDCDCD"
             tools:listitem="@layout/item_address" />
 
@@ -73,6 +81,7 @@
             android:text="@string/no_address_found"
             style="@style/textview_normal_medium"
             android:textColor="@color/orange_F8AA37"
+            app:hideIfFalse="@{viewmodel.loading == false &amp;&amp; viewmodel.addressListVisibility == false ? true : false}"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,12 +89,12 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bottom_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:elevation="@dimen/_10sdp"
-        app:layout_constraintBottom_toBottomOf="parent">
+            android:id="@+id/bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:elevation="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
             android:id="@+id/add_address"
@@ -96,32 +105,22 @@
             android:background="@drawable/textview_orange_corner_radius"
             android:gravity="center"
             android:letterSpacing="0.09"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginVertical="@dimen/_20sdp"
             android:layout_marginHorizontal="@dimen/_24sdp"
             android:padding="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <TextView
-            android:id="@+id/buy_now"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/textview_normal_medium"
-            android:text="@string/place_order"
-            android:textColor="@color/white"
-            android:background="@drawable/background_orange_corner_radius"
-            android:gravity="center"
-            android:letterSpacing="0.09"
-            android:layout_marginVertical="@dimen/_10sdp"
-            android:layout_marginHorizontal="@dimen/_24sdp"
-            android:padding="@dimen/_10sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/add_address"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <include
+            layout="@layout/progress_bar_white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:isVisible="@{viewmodel.loading}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

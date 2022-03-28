@@ -93,6 +93,7 @@
         <entry key="app/src/main/res/menu/product_menu.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/menu/toolbar_product_menu.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/menu/toolbar_user_menu.xml" value="0.2611111111111111" />
+        <entry key="app/src/main/res/menu/toolbar_user_menu_approved.xml" value="0.22138157894736843" />
         <entry key="app/src/main/res/menu/without_login_menu.xml" value="0.22685185185185186" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2109375" />
       </map>

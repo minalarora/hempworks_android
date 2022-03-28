@@ -16,11 +16,13 @@ import com.hemp.works.R
 import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.dashboard.cart.ui.adapter.CartAdapter
+import com.hemp.works.dashboard.home.ui.HomeFragmentDirections
 import com.hemp.works.dashboard.home.ui.adapters.CategoryAdapter
 import com.hemp.works.dashboard.model.CartProduct
 import com.hemp.works.dashboard.product.ui.ProductFragmentDirections
 import com.hemp.works.dashboard.product.ui.ProductImageClickListener
 import com.hemp.works.dashboard.product.ui.adapters.ImageAdapter
+import com.hemp.works.dashboard.tnl.ui.TNLType
 import com.hemp.works.databinding.FragmentCartBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
@@ -63,11 +65,15 @@ class CartFragment : Fragment(), Injectable, CartItemClickListener {
         }
 
         binding.couponValue.setOnClickListener {
-            //TODO: GOTO COUPON FRAGMENT
+            CartFragmentDirections.actionCartFragmentToCouponFragment().also {
+                binding.root.findNavController().navigate(it)
+            }
         }
 
         binding.buyNow.setOnClickListener {
-            //TODO: GOTO ORDER FRAGMENT
+            CartFragmentDirections.actionCartFragmentToAddressFragment().also {
+                binding.root.findNavController().navigate(it)
+            }
         }
 
         viewModel.cartList.observe(viewLifecycleOwner) {
@@ -87,6 +93,11 @@ class CartFragment : Fragment(), Injectable, CartItemClickListener {
     }
 
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.fetchCartDetails()
+    }
+
     private fun showSnackBar(msg: String) {
         val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
@@ -101,7 +112,9 @@ class CartFragment : Fragment(), Injectable, CartItemClickListener {
     }
 
     override fun onItemClick(cartProduct: CartProduct) {
-        //TODO: GOTO PRODUCT PAGE
+        CartFragmentDirections.actionCartFragmentToProductFragment(cartProduct.productid?.toString(), cartProduct.product?.category?.toString()).also {
+            binding.root.findNavController().navigate(it)
+        }
     }
 
     override fun onCancelClick(cartProduct: CartProduct) {
