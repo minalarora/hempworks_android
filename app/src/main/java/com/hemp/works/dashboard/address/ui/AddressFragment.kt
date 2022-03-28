@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.base.Constants
@@ -98,7 +99,32 @@ class AddressFragment : Fragment(), Injectable, AddressItemClickListener {
     }
 
     override fun onItemClick(address: Address) {
-        TODO("Not yet implemented")
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(R.string.mode_of_payment))
+            .setMessage(getString(R.string.payment_dialog_text))
+            .setNegativeButton(getString(R.string.credit_dialog_text)) { dialog, which ->
+                AddressFragmentDirections.actionAddressFragmentToPaymentFragment(
+                    RequestPayment(address = address.id,
+                    payment = "CREDIT",
+                    totalprice = viewModel.totalprice?.toInt()!!,
+                    discountprice = viewModel.discountprice?.toInt()!!,
+                    reason = "ORDER")
+                ).also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            .setPositiveButton(getString(R.string.pay_now)) { dialog, which ->
+                AddressFragmentDirections.actionAddressFragmentToPaymentFragment(
+                    RequestPayment(address = address.id,
+                        payment = "DIRECT",
+                        totalprice = viewModel.totalprice?.toInt()!!,
+                        discountprice = viewModel.discountprice?.toInt()!!,
+                        reason = "ORDER")
+                ).also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            .show()
     }
 
     override fun onEditClick(address: Address) {

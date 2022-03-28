@@ -4,11 +4,12 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.hemp.works.base.BaseViewModel
 import com.hemp.works.dashboard.address.data.repository.AddressRepository
+import com.hemp.works.dashboard.cart.data.repository.CartRepository
 import com.hemp.works.login.data.model.Address
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class AddressViewModel  @Inject constructor(private val repository: AddressRepository): BaseViewModel(repository) {
+class AddressViewModel  @Inject constructor(private val repository: AddressRepository, private val cartRepository: CartRepository): BaseViewModel(repository, cartRepository) {
 
     val addressList = repository.addressList
 
@@ -18,6 +19,8 @@ class AddressViewModel  @Inject constructor(private val repository: AddressRepos
 
     val booleanResponse = repository.booleanResponse
 
+    val totalprice = cartRepository.cart.value?.totalprice
+    val discountprice = cartRepository.cart.value?.discountprice
 
     fun fetchAddressList() {
         viewModelScope.launch {

@@ -1,5 +1,6 @@
 package com.hemp.works.dashboard
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -7,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.cashfree.pg.CFPaymentService
 import com.hemp.works.R
+import com.hemp.works.dashboard.payment.ui.PaymentFragment
 import com.hemp.works.databinding.ActivityDashboardBinding
 import com.hemp.works.di.injectViewModel
 import dagger.android.AndroidInjector
@@ -33,5 +36,12 @@ class DashboardActivity : AppCompatActivity(), HasSupportFragmentInjector{
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard)
         sharedViewModel = injectViewModel(viewModelFactory)
         navController = this.findNavController(R.id.nav_host_fragment_container)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == CFPaymentService.REQ_CODE) {
+            sharedViewModel.updatePaymentBundle(data?.extras)
+        }
     }
 }

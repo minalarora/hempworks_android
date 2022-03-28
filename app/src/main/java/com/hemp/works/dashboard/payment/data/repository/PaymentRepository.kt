@@ -31,7 +31,7 @@ class PaymentRepository @Inject constructor(private val remoteDataSource: Paymen
         get() = _payment
 
     suspend fun doOrder(order: RequestOrder) {
-        getResult(Constants.GENERAL_ERROR_MESSAGE) {
+        getResult(Constants.PAYMENT_ISSUE) {
             remoteDataSource.addOrder(order)
         }?.let{
             it.data?.let { payment -> _payment.postValue(payment) }
@@ -39,7 +39,7 @@ class PaymentRepository @Inject constructor(private val remoteDataSource: Paymen
     }
 
     suspend fun doCreditPayment(amount: Int) {
-        getResult(Constants.GENERAL_ERROR_MESSAGE) {
+        getResult(Constants.PAYMENT_ISSUE) {
             remoteDataSource.addCreditPayment(amount)
         }?.let{
             it.data?.let { payment -> _payment.postValue(payment) }

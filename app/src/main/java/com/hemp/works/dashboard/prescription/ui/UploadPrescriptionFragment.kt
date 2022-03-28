@@ -210,7 +210,7 @@ class UploadPrescriptionFragment : Fragment(), Injectable {
         fun newInstance() =
             UploadPrescriptionFragment()
 
-        private const val PICK_FILE_REQUEST = 100
-        private const val REQUEST_PERMISSIONS_CODE_WRITE_STORAGE = 101
+        private const val PICK_FILE_REQUEST = 200
+        private const val REQUEST_PERMISSIONS_CODE_WRITE_STORAGE = 201
     }
 }

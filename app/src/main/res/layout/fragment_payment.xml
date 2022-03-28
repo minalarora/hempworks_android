@@ -24,20 +24,20 @@
             android:layout_height="@dimen/_34sdp"
             android:src="@drawable/ic_close"
             android:padding="@dimen/_10sdp"
-            app:hideIfFalse="@{viewmodel.paymentStatus != PaymentStatus.NONE}"
+            app:hideIfFalse="@{viewmodel.compVisibility}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:tint="@color/black" />
+            app:tint="@color/white" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
-            android:layout_width="@dimen/_150sdp"
-            android:layout_height="@dimen/_150sdp"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
             android:layout_marginVertical="@dimen/_50sdp"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:paymentAnimation="@{viewmodel.paymentStatus}"
-            app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintBottom_toTopOf="@id/title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -46,9 +46,9 @@
             style="@style/textview_bold_big"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_50sdp"
             android:layout_marginHorizontal="@dimen/_20sdp"
             android:gravity="center"
+            android:textColor="@color/white"
             app:paymentTitle="@{viewmodel.paymentStatus}"
             app:layout_constraintTop_toBottomOf="@id/animationView"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,12 +56,13 @@
 
         <TextView
             android:id="@+id/sub_title"
-            style="@style/textview_bold_medium"
+            style="@style/textview_normal_small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginHorizontal="@dimen/_20sdp"
             android:gravity="center"
+            android:textColor="@color/white"
             app:paymentDesc="@{viewmodel.paymentStatus}"
             app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +74,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:elevation="@dimen/_10sdp"
-            app:hideIfFalse="@{viewmodel.paymentStatus != PaymentStatus.NONE}"
+            app:hideIfFalse="@{viewmodel.compVisibility}"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView

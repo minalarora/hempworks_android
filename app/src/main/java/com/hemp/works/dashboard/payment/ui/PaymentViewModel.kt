@@ -3,6 +3,7 @@ package com.hemp.works.dashboard.payment.ui
 import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.hemp.works.BuildConfig
 import com.hemp.works.base.BaseViewModel
@@ -19,37 +20,39 @@ class PaymentViewModel @Inject constructor(private val repository: PaymentReposi
 
     val order  = repository.order
     val creditHistory = repository.creditHistory
-    val payment  = repository.creditHistory
+    val payment  = repository.payment
 
-    private val _endingError = LiveEvent<String>()
-    val endingError: LiveData<String>
-        get() = _endingError
+//    private val _endingError = LiveEvent<String>()
+//    val endingError: LiveData<String>
+//        get() = _endingError
 
     private val _paymentStatus = MutableLiveData<PaymentStatus>(PaymentStatus.NONE)
     val paymentStatus: LiveData<PaymentStatus>
         get() = _paymentStatus
 
+    val compVisibility: LiveData<Boolean> = Transformations.map(paymentStatus) {
+        it != PaymentStatus.NONE
+    }
 
+    var requestPayment: RequestPayment? = null
 
-    fun initializePayment(paymentDetails: RequestPayment) {
+    fun initializePayment() {
         viewModelScope.launch {
             try {
-                if (paymentDetails.reason == "ORDER") {
+                if (requestPayment?.reason == "ORDER") {
 
                     val requestOrder = RequestOrder(
-                        address = paymentDetails.address!!,
-                        payment = paymentDetails.payment!!,
-                        totalprice =  if (BuildConfig.DEBUG) 1 else paymentDetails.totalprice!!,
-                        discountprice =  if (BuildConfig.DEBUG) 1 else paymentDetails.discountprice!!
+                        address = requestPayment?.address!!,
+                        payment = requestPayment?.payment!!,
+                        totalprice =  if (BuildConfig.DEBUG) 1 else requestPayment?.totalprice!!,
+                        discountprice =  if (BuildConfig.DEBUG) 1 else requestPayment?.discountprice!!
                     )
-
                     repository.doOrder(requestOrder)
                 } else {
-
-                    repository.doCreditPayment(paymentDetails.amount!!)
+                    repository.doCreditPayment(requestPayment?.amount!!)
                 }
             } catch (ex: Exception) {
-                _endingError.postValue(Constants.GENERAL_ERROR_MESSAGE)
+                error(Constants.PAYMENT_ISSUE)
             }
         }
     }
@@ -73,6 +76,27 @@ class PaymentViewModel @Inject constructor(private val repository: PaymentReposi
     }
 }
 
-enum class PaymentStatus(var amount: Int = 0, var id: String = "") {
-    NONE, ORDER_PENDING, ORDER_COMPLETED, ORDER_FAILED, CREDIT_PENDING, CREDIT_COMPLETED, CREDIT_FAILED;
+sealed class PaymentStatus {
+    object NONE : PaymentStatus()
+    data class ORDER_PENDING(var amount: Int = 0, var id: String = "") : PaymentStatus()
+    data class ORDER_COMPLETED(var amount: Int = 0, var id: String = "") : PaymentStatus()
+    data class ORDER_FAILED(var amount: Int = 0, var id: String = "") : PaymentStatus()
+    data class CREDIT_PENDING(var amount: Int = 0, var id: String = "") : PaymentStatus()
+    data class CREDIT_COMPLETED(var amount: Int = 0, var id: String = "") : PaymentStatus()
+    data class CREDIT_FAILED(var amount: Int = 0, var id: String = "") : PaymentStatus()
 }
+
+//sealed class Response<out R> {
+//
+//    data class Success<out T>(val data: T) : Response<T>()
+//    data class Error(val exception: Exception, val description:String) : Response<Nothing>()
+//    object Loading : Response<Nothing>()
+//
+//    override fun toString(): String {
+//        return when (this) {
+//            is Success<*> -> "Success[data=$data]"
+//            is Error -> "Error[exception=$exception description=$description]"
+//            Loading -> "Loading"
+//        }
+//    }
+//}

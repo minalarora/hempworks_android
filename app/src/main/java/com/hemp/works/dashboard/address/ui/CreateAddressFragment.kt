@@ -91,7 +91,7 @@ class CreateAddressFragment : Fragment(), Injectable {
         viewModel.error.observe(viewLifecycleOwner) {
             showSnackBar(it)
         }
-        
+
         return binding.root
     }
 

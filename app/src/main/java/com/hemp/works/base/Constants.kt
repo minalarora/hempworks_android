@@ -17,6 +17,7 @@ object Constants {
     const val ADMIN = "admin"
     const val FIRST_USER_FLAG_KEY = "flag_key"
     const val FIRST_USER_FLAG_VALUE = "flag_value"
+    const val PAYMENT_ISSUE = "Server Issue!"
     const val GENERAL_ERROR_MESSAGE = "Something went wrong!"
     const val INVALID_CREDENTIALS = "Please enter valid username or password!"
     const val INVALID_MOBILE = "Please enter valid mobile number!"

@@ -120,16 +120,25 @@ import de.hdodenhof.circleimageview.CircleImageView
     @BindingAdapter("paymentBackground")
     fun setPaymentBackground(view: ConstraintLayout, paymentStatus: PaymentStatus) {
         when(paymentStatus) {
-            PaymentStatus.NONE -> view.setBackgroundColor(
+            is PaymentStatus.NONE -> view.setBackgroundColor(
                 ContextCompat.getColor(view.context, R.color.grey_CDCDCD)
             )
-            PaymentStatus.CREDIT_PENDING, PaymentStatus.ORDER_PENDING -> view.setBackgroundColor(
+            is PaymentStatus.CREDIT_PENDING -> view.setBackgroundColor(
                 ContextCompat.getColor(view.context, R.color.yellow)
             )
-            PaymentStatus.CREDIT_COMPLETED, PaymentStatus.ORDER_COMPLETED -> view.setBackgroundColor(
+            is PaymentStatus.ORDER_PENDING -> view.setBackgroundColor(
+                ContextCompat.getColor(view.context, R.color.yellow)
+            )
+            is PaymentStatus.CREDIT_COMPLETED -> view.setBackgroundColor(
                 ContextCompat.getColor(view.context, R.color.green)
             )
-            PaymentStatus.CREDIT_FAILED, PaymentStatus.ORDER_FAILED -> view.setBackgroundColor(
+            is PaymentStatus.ORDER_COMPLETED -> view.setBackgroundColor(
+                ContextCompat.getColor(view.context, R.color.green)
+            )
+            is PaymentStatus.CREDIT_FAILED -> view.setBackgroundColor(
+                ContextCompat.getColor(view.context, R.color.red)
+            )
+            is PaymentStatus.ORDER_FAILED -> view.setBackgroundColor(
                 ContextCompat.getColor(view.context, R.color.red)
             )
         }
@@ -138,17 +147,20 @@ import de.hdodenhof.circleimageview.CircleImageView
     @BindingAdapter("paymentAnimation")
     fun setPaymentAnimation(view: LottieAnimationView, paymentStatus: PaymentStatus) {
         when(paymentStatus) {
-            PaymentStatus.NONE -> view.visibility = View.GONE
-            PaymentStatus.CREDIT_PENDING, PaymentStatus.ORDER_PENDING -> {
+            is PaymentStatus.NONE -> view.visibility = View.GONE
+            is PaymentStatus.CREDIT_PENDING, is PaymentStatus.ORDER_PENDING -> {
                 view.setAnimation("pending.json")
+                view.playAnimation()
                 view.visibility = View.VISIBLE
             }
-            PaymentStatus.CREDIT_COMPLETED, PaymentStatus.ORDER_COMPLETED -> {
+            is PaymentStatus.CREDIT_COMPLETED, is PaymentStatus.ORDER_COMPLETED -> {
                 view.setAnimation("completed.json")
+                view.playAnimation()
                 view.visibility = View.VISIBLE
             }
-            PaymentStatus.CREDIT_FAILED, PaymentStatus.ORDER_FAILED ->  {
+            is PaymentStatus.CREDIT_FAILED,is PaymentStatus.ORDER_FAILED ->  {
                 view.setAnimation("failed.json")
+                view.playAnimation()
                 view.visibility = View.VISIBLE
             }
         }
@@ -158,15 +170,15 @@ import de.hdodenhof.circleimageview.CircleImageView
     fun setPaymentTitle(view: TextView, paymentStatus: PaymentStatus) {
         when(paymentStatus) {
             PaymentStatus.NONE -> view.visibility = View.GONE
-            PaymentStatus.CREDIT_PENDING, PaymentStatus.ORDER_PENDING -> {
+            is PaymentStatus.CREDIT_PENDING, is PaymentStatus.ORDER_PENDING -> {
                 view.visibility = View.VISIBLE
                 view.text = view.context.getString(R.string.trans_pending)
             }
-            PaymentStatus.CREDIT_COMPLETED, PaymentStatus.ORDER_COMPLETED -> {
+            is PaymentStatus.CREDIT_COMPLETED, is PaymentStatus.ORDER_COMPLETED -> {
                 view.visibility = View.VISIBLE
                 view.text = view.context.getString(R.string.trans_completed)
             }
-            PaymentStatus.CREDIT_FAILED, PaymentStatus.ORDER_FAILED ->  {
+            is PaymentStatus.CREDIT_FAILED, is  PaymentStatus.ORDER_FAILED ->  {
                 view.visibility = View.VISIBLE
                 view.text = view.context.getString(R.string.trans_failed)
             }
@@ -176,18 +188,30 @@ import de.hdodenhof.circleimageview.CircleImageView
     @BindingAdapter("paymentDesc")
     fun setPaymentDescription(view: TextView, paymentStatus: PaymentStatus) {
         when(paymentStatus) {
-            PaymentStatus.NONE -> view.visibility = View.GONE
-            PaymentStatus.CREDIT_PENDING, PaymentStatus.ORDER_PENDING -> {
+            is PaymentStatus.NONE -> view.visibility = View.GONE
+            is PaymentStatus.CREDIT_PENDING -> {
                 view.visibility = View.VISIBLE
                 view.text = view.context.getString(R.string.trans_pending_desc)
             }
-            PaymentStatus.CREDIT_COMPLETED, PaymentStatus.ORDER_COMPLETED -> {
+            is PaymentStatus.ORDER_PENDING -> {
                 view.visibility = View.VISIBLE
-                view.text = view.context.getString(R.string.trans_completed_desc)
+                view.text = view.context.getString(R.string.trans_pending_desc)
             }
-            PaymentStatus.CREDIT_FAILED, PaymentStatus.ORDER_FAILED ->  {
+            is PaymentStatus.CREDIT_COMPLETED -> {
                 view.visibility = View.VISIBLE
-                view.text = view.context.getString(R.string.trans_failed_desc)
+                view.text = view.context.getString(R.string.trans_completed_desc,  paymentStatus.amount.toString(), paymentStatus.id.toString())
+            }
+            is PaymentStatus.ORDER_COMPLETED -> {
+                view.visibility = View.VISIBLE
+                view.text = view.context.getString(R.string.trans_completed_desc,  paymentStatus.amount.toString(), paymentStatus.id.toString())
+            }
+            is PaymentStatus.CREDIT_FAILED ->  {
+                view.visibility = View.VISIBLE
+                view.text = view.context.getString(R.string.trans_failed_desc, paymentStatus.amount.toString(), paymentStatus.id.toString())
+            }
+            is PaymentStatus.ORDER_FAILED ->  {
+                view.visibility = View.VISIBLE
+                view.text = view.context.getString(R.string.trans_failed_desc, paymentStatus.amount.toString(), paymentStatus.id.toString())
             }
         }
     }

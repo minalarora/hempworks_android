@@ -1,10 +1,12 @@
 package com.hemp.works.dashboard
 
 import android.content.Context
+import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hemp.works.base.BaseViewModel
 import com.hemp.works.base.Constants
+import com.hemp.works.base.LiveEvent
 import com.hemp.works.dashboard.model.Coupon
 import com.hemp.works.utils.PreferenceManagerUtil
 import javax.inject.Inject
@@ -25,11 +27,11 @@ class DashboardSharedViewModel @Inject constructor(context: Context): BaseViewMo
         }
     }
 
-//    private val _coupon: MutableLiveData<Coupon?> = MutableLiveData(null)
-//    val coupon: LiveData<Coupon?> = _coupon
-//
-//    fun updateCoupon(coupon: Coupon?) {
-//        _coupon.postValue(coupon)
-//    }
+    private val _paymentBundle: MutableLiveData<Bundle?> = LiveEvent()
+    val paymentBundle: LiveData<Bundle?> = _paymentBundle
+
+    fun updatePaymentBundle(bundle: Bundle?) {
+       _paymentBundle.postValue(bundle)
+    }
 }
 
