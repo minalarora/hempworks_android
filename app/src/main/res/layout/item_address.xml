@@ -56,10 +56,13 @@
             android:minLines="2"
             android:gravity="center_vertical"
             android:text="@{viewmodel.subTitle}"
+            android:drawablePadding="@dimen/_5sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
             android:layout_margin="@dimen/_5sdp"
-            tools:text="462003"/>
+            tools:text="462003"
+            android:drawableTint="@color/orange_F8AA37"
+            app:drawableStartCompat="@drawable/ic_call" />
 
         <TextView
             android:id="@+id/edit"

@@ -143,9 +143,9 @@
     <string name="invalid_coupon">Invalid Coupon</string>
     <string name="coupon_applied">Coupon Applied!</string>
     <string name="check_offers">Check offers</string>
-    <string name="select_any_address_to_proceed_checkout">Select any address to proceed checkout</string>
+    <string name="select_any_address_to_proceed_checkout">Select any address to place order</string>
     <string name="proceed_checkout">Proceed Checkout</string>
-    <string name="add_address">ADD ADDRESS</string>
+    <string name="add_address">ADD NEW ADDRESS</string>
     <string name="update_address">UPDATE ADDRESS</string>
     <string name="add_address_done">ADDRESS CREATED!</string>
     <string name="update_address_done">ADDRESS UPDATED!</string>
