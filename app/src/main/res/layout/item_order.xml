@@ -1,6 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.hemp.works.dashboard.order.ui.adapters.OrderViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/_2sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:onClick="@{() -> viewmodel.onProductClick()}"
+        android:background="@drawable/background_all_rounded_corners">
+
+        <TextView
+            android:id="@+id/order_id"
+            style="@style/textview_normal_small"
+            android:textSize="@dimen/_12sdp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey_AAAAAA"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@{viewmodel.orderId}"
+            tools:text="Order #1234567890"/>
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/textview_normal_small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/order_id"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@{viewmodel.date}"
+            tools:text="23 Feb 2021, 08:02 PM"/>
+
+        <TextView
+            android:id="@+id/status"
+            style="@style/textview_bold_small"
+            android:textSize="@dimen/_11sdp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@{viewmodel.status}"
+            android:textColor="@{viewmodel.statusTextColor}"
+            tools:text="Order #1234567890"/>
+
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/textview_normal_medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/date"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="@{viewmodel.title}"
+            tools:text="Ananta Upper Meidicne"/>
+
+
+        <TextView
+            android:id="@+id/sub_title"
+            style="@style/textview_bold_small"
+            android:textSize="@dimen/_9sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:text="@{viewmodel.subTitle}"
+            android:textColor="@color/orange_F8AA37"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            android:layout_marginStart="@dimen/_5sdp"
+            tools:text="10 ml"/>
+
+
+        <TextView
+            android:id="@+id/price"
+            style="@style/textview_normal_medium"
+            android:textSize="@dimen/_10sdp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/sub_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@{viewmodel.price}"
+            tools:text="Rs. 122"/>
+
+        <TextView
+            android:id="@+id/quantity"
+            style="@style/textview_normal_medium"
+            android:textSize="@dimen/_10sdp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@{viewmodel.quantity}"
+            tools:text="Qty: 1"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

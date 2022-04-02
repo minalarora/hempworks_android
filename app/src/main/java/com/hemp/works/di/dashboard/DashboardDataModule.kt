@@ -10,6 +10,8 @@ import com.hemp.works.dashboard.credit.data.remote.CreditRemoteDataSource
 import com.hemp.works.dashboard.credit.data.remote.CreditService
 import com.hemp.works.dashboard.home.data.remote.HomeRemoteDataSource
 import com.hemp.works.dashboard.home.data.remote.HomeService
+import com.hemp.works.dashboard.order.data.remote.OrderRemoteDataSource
+import com.hemp.works.dashboard.order.data.remote.OrderService
 import com.hemp.works.dashboard.payment.data.remote.PaymentRemoteDataSource
 import com.hemp.works.dashboard.payment.data.remote.PaymentService
 import com.hemp.works.dashboard.prescription.data.remote.PrescriptionRemoteDataSource
@@ -136,6 +138,16 @@ class DashboardDataModule {
     @Provides
     fun provideCreditRemoteDataSource(service: CreditService)
             = CreditRemoteDataSource(service)
+
+    @Singleton
+    @Provides
+    fun provideOrderService(retrofit: Retrofit): OrderService = retrofit.create(
+        OrderService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideOrderRemoteDataSource(service: OrderService)
+            = OrderRemoteDataSource(service)
 
 
 

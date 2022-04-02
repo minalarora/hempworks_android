@@ -8,6 +8,7 @@ import com.hemp.works.dashboard.cart.ui.CouponFragment
 import com.hemp.works.dashboard.credit.ui.CreditFragment
 import com.hemp.works.dashboard.home.ui.HomeFragment
 import com.hemp.works.dashboard.home.ui.ProductListFragment
+import com.hemp.works.dashboard.order.ui.OrderFragment
 import com.hemp.works.dashboard.payment.ui.PaymentFragment
 import com.hemp.works.dashboard.prescription.ui.PrescriptionFragment
 import com.hemp.works.dashboard.prescription.ui.UploadPrescriptionFragment
@@ -70,5 +71,8 @@ abstract class DashboardFragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeCouponFragment(): CouponFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeOrderFragment(): OrderFragment
 
 }

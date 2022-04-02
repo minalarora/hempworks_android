@@ -28,5 +28,6 @@ data class OrderProduct(
     val productname: String? = null,
     val variantname: String? = null,
     val quantity: Int? = null,
-    val price: Int? = null
+    val price: Int? = null,
+    val status: String? = null
 )
