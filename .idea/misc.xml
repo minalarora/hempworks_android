@@ -8,6 +8,8 @@
         <entry key="app/src/main/res/drawable/background_bottomsheet_top_rounded_corners.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/background_orange_corner_radius.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable/background_round_padded.xml" value="0.36102564102564105" />
+        <entry key="app/src/main/res/drawable/background_support_received.xml" value="0.2265" />
+        <entry key="app/src/main/res/drawable/background_support_sent.xml" value="0.2265" />
         <entry key="app/src/main/res/drawable/edittext_orange_corner_radius.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.2125" />
@@ -25,6 +27,7 @@
         <entry key="app/src/main/res/drawable/ic_play.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_profile_loading.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_remove_image.xml" value="0.36102564102564105" />
+        <entry key="app/src/main/res/drawable/ic_retry.xml" value="0.2265" />
         <entry key="app/src/main/res/drawable/ic_rupee.xml" value="0.2265" />
         <entry key="app/src/main/res/drawable/ic_support.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/ic_upload_image.xml" value="0.36102564102564105" />
@@ -66,6 +69,7 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2796296296296296" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.337037037037037" />
+        <entry key="app/src/main/res/layout/fragment_support.xml" value="0.22138157894736843" />
         <entry key="app/src/main/res/layout/fragment_tnl.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_upload_prescription.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_verify_mobile.xml" value="0.165" />
@@ -82,7 +86,9 @@
         <entry key="app/src/main/res/layout/item_prescription.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/item_product.xml" value="0.2611111111111111" />
         <entry key="app/src/main/res/layout/item_product_image.xml" value="0.35052083333333334" />
+        <entry key="app/src/main/res/layout/item_received.xml" value="0.22138157894736843" />
         <entry key="app/src/main/res/layout/item_search.xml" value="0.2611111111111111" />
+        <entry key="app/src/main/res/layout/item_sent.xml" value="0.22138157894736843" />
         <entry key="app/src/main/res/layout/item_size.xml" value="0.45" />
         <entry key="app/src/main/res/layout/item_tutorial.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/layout_no_product.xml" value="0.25" />
