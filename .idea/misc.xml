@@ -53,7 +53,7 @@
         <entry key="app/src/main/res/layout/fragment_info_bottom_sheet.xml" value="0.4035897435897436" />
         <entry key="app/src/main/res/layout/fragment_info_confirm_dialog.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_info_dialog.xml" value="0.35052083333333334" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.337037037037037" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_onboarding.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/fragment_onboarding1.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_onboarding2.xml" value="0.337037037037037" />

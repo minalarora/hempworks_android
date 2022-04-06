@@ -15,6 +15,7 @@ object Constants {
     const val USER_TYPE = "user_type"
     const val DOCTOR = "doctor"
     const val ADMIN = "admin"
+    const val UNIQUE_ID = "unique_id"
     const val FIRST_USER_FLAG_KEY = "flag_key"
     const val FIRST_USER_FLAG_VALUE = "flag_value"
     const val PAYMENT_ISSUE = "Server Issue!"
@@ -31,6 +32,7 @@ object Constants {
     const val REASON_UPDATE_PASSWORD = "update_password"
     const val REASON_CREATE_ACCOUNT = "create_account"
     const val DATE_FORMAT = "dd MMM yyyy  hh:mm:ss a"
+    const val CHAT_ERROR = "CHAT ERROR"
 
 
 }

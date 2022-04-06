@@ -101,7 +101,6 @@ class LoginFragment : Fragment(), Injectable {
                 binding.root.findNavController().navigate(it)
             }
         }
-
         binding.forgotPassword.setOnClickListener {
             LoginFragmentDirections.actionLoginFragmentToVerifyMobileFragment(Constants.REASON_UPDATE_PASSWORD).also {
                 binding.root.findNavController().navigate(it)

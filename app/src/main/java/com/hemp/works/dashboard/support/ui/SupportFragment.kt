@@ -1,62 +1,107 @@
 package com.hemp.works.dashboard.support.ui
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
+import com.hemp.works.base.Constants
+import com.hemp.works.dashboard.DashboardSharedViewModel
+import com.hemp.works.dashboard.UserType
+import com.hemp.works.dashboard.cart.ui.adapter.CouponAdapter
 import com.hemp.works.dashboard.model.Message
+import com.hemp.works.dashboard.product.ui.ProductViewModel
+import com.hemp.works.dashboard.support.ui.adapters.SupportAdapter
+import com.hemp.works.databinding.FragmentLoginBinding
+import com.hemp.works.databinding.FragmentProductBinding
+import com.hemp.works.databinding.FragmentSupportBinding
+import com.hemp.works.di.Injectable
+import com.hemp.works.di.injectViewModel
+import com.hemp.works.utils.PreferenceManagerUtil
+import java.util.*
+import javax.inject.Inject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SupportFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SupportFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class SupportFragment : Fragment(), Injectable, SupportItemClickListener {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var sharedViewModel: DashboardSharedViewModel
+    private lateinit var viewModel: SupportViewModel
+    private lateinit var binding: FragmentSupportBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_support, container, false)
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.orange_F8AA37);
+        // Inflate the layout for this fragment
+        viewModel = injectViewModel(viewModelFactory)
+        sharedViewModel = requireActivity().injectViewModel(viewModelFactory)
+
+        if (sharedViewModel.userType == UserType.ANONYMOUS) {
+            var uniqueId = PreferenceManagerUtil.getString(requireContext(), Constants.UNIQUE_ID)
+            if (uniqueId.isNullOrBlank()) uniqueId = UUID.randomUUID().toString()
+            viewModel.initChat(uniqueId)
+
+        } else {
+            PreferenceManagerUtil.putString(requireContext(), Constants.UNIQUE_ID, "")
+            viewModel.initChat(sharedViewModel.user?.id!!)
+        }
+
+        binding = DataBindingUtil.inflate<FragmentSupportBinding>(
+            inflater, R.layout.fragment_support, container, false).apply {
+            this.viewmodel = viewModel
+            lifecycleOwner =this@SupportFragment
+        }
+
+        binding.back.setOnClickListener{
+            binding.root.findNavController().popBackStack()
+        }
+
+        binding.sent.setOnClickListener{
+            viewModel.sendMessage(binding.message.text?.toString())
+            binding.message.text = null
+        }
+
+        binding.supportRecyclerview.adapter = SupportAdapter(this)
+
+        viewModel.chat.observe(viewLifecycleOwner) {
+            (binding.supportRecyclerview.adapter as SupportAdapter).submitList(it.messages)
+        }
+
+        viewModel.error.observe(viewLifecycleOwner) {
+            if (it !=  Constants.CHAT_ERROR) showSnackBar(it)
+        }
+
+
+        return binding.root
+    }
+
+    private fun showSnackBar(msg: String) {
+        val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+        Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SupportFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SupportFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        fun newInstance() =
+            SupportFragment()
+    }
+
+    override fun onRetry(message: Message) {
+        viewModel.retryMessage(message)
     }
 }
 

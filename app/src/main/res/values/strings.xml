@@ -175,6 +175,7 @@
     <string name="canceled">CANCELLED</string>
     <string name="completed">COMPLETED</string>
     <string name="your_message_has_failed_retry">Your message has failed. Retry</string>
+    <string name="send_message">Send Message...</string>
 
 
     <string-array name="state_list">

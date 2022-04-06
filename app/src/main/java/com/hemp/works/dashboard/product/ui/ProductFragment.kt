@@ -121,10 +121,12 @@ class ProductFragment : Fragment(), Injectable {
         ViewCompat.setNestedScrollingEnabled(binding.extraRecyclerview, false);
 
         binding.addCart.setOnClickListener {
+            //TODO: add login flow
             viewModel.addProduct(false)
         }
 
         binding.buyNow.setOnClickListener {
+            //TODO: add login flow
             viewModel.addProduct(true)
         }
 
