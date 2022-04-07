@@ -22,6 +22,8 @@ import com.hemp.works.dashboard.profile.data.remote.ProfileRemoteDataSource
 import com.hemp.works.dashboard.profile.data.remote.ProfileService
 import com.hemp.works.dashboard.search.data.remote.SearchRemoteDataSource
 import com.hemp.works.dashboard.search.data.remote.SearchService
+import com.hemp.works.dashboard.support.data.remote.SupportRemoteDataSource
+import com.hemp.works.dashboard.support.data.remote.SupportService
 import com.hemp.works.dashboard.tnl.data.remote.TNLRemoteDataSource
 import com.hemp.works.dashboard.tnl.data.remote.TNLService
 import dagger.Module
@@ -149,8 +151,13 @@ class DashboardDataModule {
     fun provideOrderRemoteDataSource(service: OrderService)
             = OrderRemoteDataSource(service)
 
+    @Singleton
+    @Provides
+    fun provideSupportService(retrofit: Retrofit): SupportService = retrofit.create(
+        SupportService::class.java)
 
-
-
+    @Provides
+    fun provideSupportRemoteDataSource(service: SupportService)
+            = SupportRemoteDataSource(service)
 
 }

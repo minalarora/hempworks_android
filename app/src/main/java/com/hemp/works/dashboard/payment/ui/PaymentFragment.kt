@@ -19,6 +19,7 @@ import com.hemp.works.BuildConfig
 import com.hemp.works.R
 import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.DashboardSharedViewModel
+import com.hemp.works.dashboard.home.ui.HomeFragmentDirections
 import com.hemp.works.dashboard.model.Payment
 import com.hemp.works.dashboard.model.RequestPayment
 import com.hemp.works.databinding.FragmentCartBinding
@@ -59,6 +60,12 @@ class PaymentFragment : Fragment(), Injectable {
 
         binding.back.setOnClickListener{
             binding.root.findNavController().popBackStack()
+        }
+
+        binding.bottomLayout.setOnClickListener {
+            PaymentFragmentDirections.actionPaymentFragmentToSupportFragment().also {
+                binding.root.findNavController().navigate(it)
+            }
         }
 
         viewModel.requestPayment = PaymentFragmentArgs.fromBundle(requireArguments()).payment

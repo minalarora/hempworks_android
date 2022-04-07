@@ -59,7 +59,7 @@ class  ProductListFragment : Fragment(), Injectable {
         binding.recyclerview.adapter = ProductAdapter(object :
             ProductItemClickListener {
             override fun onProductClick(product: Product) {
-                ProductListFragmentDirections.actionProductListFragmentToProductFragment(product.id.toString(), product.category.toString()).let {
+                ProductListFragmentDirections.actionProductListFragmentToProductFragment(product.id.toString()).let {
                     binding.root.findNavController().navigate(it)
                 }
             }

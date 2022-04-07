@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.base.Constants
@@ -28,6 +29,7 @@ import com.hemp.works.di.injectViewModel
 import com.hemp.works.utils.PreferenceManagerUtil
 import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 
 class SupportFragment : Fragment(), Injectable, SupportItemClickListener {
@@ -42,7 +44,6 @@ class SupportFragment : Fragment(), Injectable, SupportItemClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.orange_F8AA37);
         // Inflate the layout for this fragment
         viewModel = injectViewModel(viewModelFactory)
@@ -50,7 +51,10 @@ class SupportFragment : Fragment(), Injectable, SupportItemClickListener {
 
         if (sharedViewModel.userType == UserType.ANONYMOUS) {
             var uniqueId = PreferenceManagerUtil.getString(requireContext(), Constants.UNIQUE_ID)
-            if (uniqueId.isNullOrBlank()) uniqueId = UUID.randomUUID().toString()
+            if (uniqueId.isNullOrBlank()) {
+                uniqueId = UUID.randomUUID().toString()
+                PreferenceManagerUtil.putString(requireContext(), Constants.UNIQUE_ID, uniqueId)
+            }
             viewModel.initChat(uniqueId)
 
         } else {
@@ -76,8 +80,13 @@ class SupportFragment : Fragment(), Injectable, SupportItemClickListener {
         binding.supportRecyclerview.adapter = SupportAdapter(this)
 
         viewModel.chat.observe(viewLifecycleOwner) {
-            (binding.supportRecyclerview.adapter as SupportAdapter).submitList(it.messages)
+            (binding.supportRecyclerview.adapter as SupportAdapter).submitList(ArrayList(it.messages))
+            if((binding.supportRecyclerview.layoutManager as LinearLayoutManager).findLastVisibleItemPosition() > (binding.supportRecyclerview.adapter as SupportAdapter).itemCount - 3) {
+                binding.supportRecyclerview.scrollToPosition((binding.supportRecyclerview.adapter as SupportAdapter).itemCount - 1)
+            }
         }
+
+
 
         viewModel.error.observe(viewLifecycleOwner) {
             if (it !=  Constants.CHAT_ERROR) showSnackBar(it)

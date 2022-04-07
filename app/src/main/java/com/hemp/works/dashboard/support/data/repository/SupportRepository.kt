@@ -17,7 +17,6 @@ class SupportRepository @Inject constructor(private val remoteDataSource: Suppor
     val chat: LiveData<Chat>
         get() = _chat
 
-
     lateinit var identifierId: String
 
     suspend fun initChat(id: String) {
@@ -37,7 +36,10 @@ class SupportRepository @Inject constructor(private val remoteDataSource: Suppor
     }
 
     suspend fun sendMessage(message: Message) {
-        _chat.postValue(_chat.value?.apply { messages!!.add(message)})
+        _chat.value?.let {
+            it.messages?.add(message)
+            _chat.postValue(it)
+        }
         val response = getResult(error = Constants.CHAT_ERROR, handleLoading = false){ remoteDataSource.sendMessage(chat.value?.id!!,message.message!!) }
         if (response == null) {
             message.isSent.set(false)
@@ -47,13 +49,23 @@ class SupportRepository @Inject constructor(private val remoteDataSource: Suppor
     }
 
 
-    suspend fun retryMessage(message: Message) {
-        message.isSent.set(true)
-        val response = getResult(error = Constants.CHAT_ERROR, handleLoading = false){ remoteDataSource.sendMessage(chat.value?.id!!,message.message!!) }
-        if (response == null) {
-            message.isSent.set(false)
-        } else {
-            response.data?.let { chat -> _chat.postValue(chat) }
+    suspend fun retryMessage() {
+        _chat.value?.let {
+            val unSendMessages = it.messages?.filter { !it.isSent.get() }
+            for (message in unSendMessages ?: emptyList()) {
+                message.isSent.set(true)
+                val response = getResult(
+                    error = Constants.CHAT_ERROR,
+                    handleLoading = false
+                ) {
+                    remoteDataSource.sendMessage(chat.value?.id!!, message.message!!)
+                }
+                if (response == null) {
+                    message.isSent.set(false)
+                } else {
+                    response.data?.let { chat -> _chat.postValue(chat) }
+                }
+            }
         }
 
     }

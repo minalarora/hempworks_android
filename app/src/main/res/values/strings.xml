@@ -169,8 +169,8 @@
     <string name="credit_dialog_text">CREDIT</string>
     <string name="pay_now">PAY NOW</string>
     <string name="order_id">Order #%1$s</string>
-    <string name="order_price">Rs #%1$s</string>
-    <string name="order_quantity">Qty: #%1$s</string>
+    <string name="order_price">Rs %1$s</string>
+    <string name="order_quantity">Qty: %1$s</string>
     <string name="request_cancellation">REQUEST_CANCELLATION</string>
     <string name="canceled">CANCELLED</string>
     <string name="completed">COMPLETED</string>

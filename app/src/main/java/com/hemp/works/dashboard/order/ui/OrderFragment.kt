@@ -18,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.dashboard.cart.ui.CartViewModel
+import com.hemp.works.dashboard.home.ui.HomeFragmentDirections
 import com.hemp.works.dashboard.order.ui.adapters.OrderAdapter
 import com.hemp.works.dashboard.prescription.ui.PrescriptionFragmentDirections
 import com.hemp.works.dashboard.prescription.ui.adapters.PrescriptionAdapter
@@ -133,7 +134,9 @@ class OrderFragment : Fragment(), Injectable, OrderItemClickListener {
     }
 
     override fun onOrderClick(orderId: Long) {
-        //TODO: GOTO PRODUCT PAGE
+        OrderFragmentDirections.actionOrderFragmentToProductFragment(orderId.toString()).also {
+            binding.root.findNavController().navigate(it)
+        }
     }
 }
 

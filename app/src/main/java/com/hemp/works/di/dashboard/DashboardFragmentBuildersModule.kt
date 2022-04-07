@@ -16,6 +16,7 @@ import com.hemp.works.dashboard.product.ui.ProductFragment
 import com.hemp.works.dashboard.product.ui.ProductImageFragment
 import com.hemp.works.dashboard.profile.ui.ProfileFragment
 import com.hemp.works.dashboard.search.ui.SearchFragment
+import com.hemp.works.dashboard.support.ui.SupportFragment
 import com.hemp.works.dashboard.tnl.ui.TNLFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -74,5 +75,8 @@ abstract class DashboardFragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeOrderFragment(): OrderFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeSupportFragment(): SupportFragment
 
 }

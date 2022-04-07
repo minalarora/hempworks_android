@@ -132,7 +132,7 @@ class HomeFragment : Fragment(), Injectable {
         binding.trendingProductRecyclerview.adapter = ProductAdapter(object :
             ProductItemClickListener {
             override fun onProductClick(product: Product) {
-                HomeFragmentDirections.actionHomeFragmentToProductFragment(product.id.toString(), product.category.toString()).let {
+                HomeFragmentDirections.actionHomeFragmentToProductFragment(product.id.toString()).let {
                     binding.root.findNavController().navigate(it)
                 }
             }
@@ -143,7 +143,7 @@ class HomeFragment : Fragment(), Injectable {
         binding.allProductRecyclerview.adapter = ProductAdapter(object :
             ProductItemClickListener {
             override fun onProductClick(product: Product) {
-                HomeFragmentDirections.actionHomeFragmentToProductFragment(product.id.toString(), product.category.toString()).let {
+                HomeFragmentDirections.actionHomeFragmentToProductFragment(product.id.toString()).let {
                     binding.root.findNavController().navigate(it)
                 }
             }
@@ -209,7 +209,8 @@ class HomeFragment : Fragment(), Injectable {
             showSnackBar(it)
         }
 
-        viewModel.booleanResponse.observe(viewLifecycleOwner) {
+        viewModel.
+        booleanResponse.observe(viewLifecycleOwner) {
             PreferenceManagerUtil.clear(requireContext())
             LoginActivity.getPendingIntent(requireContext(), R.id.loginFragment).send()
             requireActivity().finish()
@@ -277,6 +278,17 @@ class HomeFragment : Fragment(), Injectable {
                     binding.root.findNavController().navigate(it)
                 }
             }
+            R.id.support -> {
+                HomeFragmentDirections.actionHomeFragmentToSupportFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            R.id.orders -> {
+                HomeFragmentDirections.actionHomeFragmentToOrderFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+
             //TODO: NAVIGATE TO DIFF FRAGMENTS
         }
 

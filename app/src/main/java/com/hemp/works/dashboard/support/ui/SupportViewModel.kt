@@ -27,7 +27,7 @@ class SupportViewModel @Inject constructor(private val repository: SupportReposi
 
     fun retryMessage(message: Message) {
         viewModelScope.launch {
-            repository.retryMessage(message)
+            repository.retryMessage()
         }
     }
 

@@ -12,21 +12,25 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/_20sdp"
+    android:paddingEnd="@dimen/_5sdp">
 
     <TextView
         android:id="@+id/messageText"
         style="@style/textview_normal_medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:background="@drawable/background_support_sent"
         android:gravity="end"
-        android:layout_margin="@dimen/_5sdp"
         android:paddingHorizontal="@dimen/_10sdp"
         android:paddingVertical="@dimen/_6sdp"
-        android:background="@drawable/background_support_sent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="ANANTA"/>
+        tools:text="ANANTfgfdgfdgdfdgfgfgfgfgfgffggfgfgfgfgfgfgfgfgfgfgA" />
 
     <TextView
         android:id="@+id/error"

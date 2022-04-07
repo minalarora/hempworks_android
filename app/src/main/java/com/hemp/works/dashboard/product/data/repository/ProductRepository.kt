@@ -25,7 +25,10 @@ class ProductRepository @Inject constructor(private val remoteDataSource: Produc
 
     suspend fun getProductById(id: Long) {
         getResult(Constants.GENERAL_ERROR_MESSAGE) { remoteDataSource.getProductById(id) }?.let {
-            it.data?.let { product -> _product.postValue(product) }
+            it.data?.let { product ->
+                _product.postValue(product)
+                getProductsByCategory(product.category)
+            }
         }
     }
 

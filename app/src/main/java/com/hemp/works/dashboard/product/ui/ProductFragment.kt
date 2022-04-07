@@ -31,6 +31,8 @@ import com.hemp.works.dashboard.product.ui.adapters.SizeAdapter
 import com.hemp.works.databinding.FragmentProductBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
+import com.hemp.works.login.LoginActivity
+import com.hemp.works.utils.PreferenceManagerUtil
 import javax.inject.Inject
 
 
@@ -80,8 +82,7 @@ class ProductFragment : Fragment(), Injectable {
 
         viewModel.loadProduct(sharedViewModel.user,
             sharedViewModel.userType,
-            ProductFragmentArgs.fromBundle(requireArguments()).id!!,
-            ProductFragmentArgs.fromBundle(requireArguments()).category!!)
+            ProductFragmentArgs.fromBundle(requireArguments()).id!!)
 
         //IMAGE RECYCLERVIEW
         binding.imageRecyclerview.adapter = ImageAdapter(object :
@@ -113,7 +114,7 @@ class ProductFragment : Fragment(), Injectable {
         binding.extraRecyclerview.adapter = ProductAdapter(object :
             ProductItemClickListener {
             override fun onProductClick(product: Product) {
-                ProductFragmentDirections.actionProductFragmentToProductFragment(product.id.toString(), product.category.toString()).let {
+                ProductFragmentDirections.actionProductFragmentToProductFragment(product.id.toString()).let {
                     binding.root.findNavController().navigate(it)
                 }
             }
@@ -121,13 +122,13 @@ class ProductFragment : Fragment(), Injectable {
         ViewCompat.setNestedScrollingEnabled(binding.extraRecyclerview, false);
 
         binding.addCart.setOnClickListener {
-            //TODO: add login flow
-            viewModel.addProduct(false)
+            if (sharedViewModel.userType == UserType.ANONYMOUS) navigateToLogin()
+            else viewModel.addProduct(false)
         }
 
         binding.buyNow.setOnClickListener {
-            //TODO: add login flow
-            viewModel.addProduct(true)
+            if (sharedViewModel.userType == UserType.ANONYMOUS) navigateToLogin()
+            else viewModel.addProduct(true)
         }
 
         binding.pdfDownload.setOnClickListener {
@@ -181,6 +182,12 @@ class ProductFragment : Fragment(), Injectable {
             setBackgroundTint(ContextCompat.getColor(view.context, R.color.orange_F8AA37))
             setTextColor(Color.BLACK)
         }.show()
+    }
+
+    private fun navigateToLogin() {
+        PreferenceManagerUtil.clear(requireContext())
+        LoginActivity.getPendingIntent(requireContext(), R.id.loginFragment).send()
+        requireActivity().finish()
     }
 
     companion object {

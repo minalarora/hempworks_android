@@ -18,7 +18,8 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     val bestSellerProductList = repository.bestSellerProductList
     val allProductList = repository.allProductList
     val instagramList = repository.instagramList
-    val booleanResponse = repository.booleanResponse
+    val booleanResponse = repository.
+    booleanResponse
 
     private val _scroll = MutableLiveData<Int>(0)
     val scroll: LiveData<Int> = _scroll

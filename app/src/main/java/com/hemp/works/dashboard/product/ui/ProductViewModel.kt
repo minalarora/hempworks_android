@@ -22,15 +22,12 @@ import kotlin.math.roundToInt
 
 class ProductViewModel @Inject constructor(private val repository: ProductRepository, private val cartRepository: CartRepository ) : BaseViewModel(repository, cartRepository) {
 
-    fun loadProduct(user: Doctor?, userType: UserType, id: String, category: String) {
+    fun loadProduct(user: Doctor?, userType: UserType, id: String) {
         this.user = user
         this.userType = userType
         productId = id.toLong()
         viewModelScope.launch {
-            val deferredProduct = async {  repository.getProductById(id.toLong()) }
-            val deferredCategoryProducts = async {  repository.getProductsByCategory(category.toLong()) }
-            deferredProduct.await()
-            deferredCategoryProducts.await()
+            repository.getProductById(id.toLong())
         }
     }
 

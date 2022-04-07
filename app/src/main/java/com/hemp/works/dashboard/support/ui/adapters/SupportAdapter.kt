@@ -78,11 +78,11 @@ class SupportAdapter(private val listener: SupportItemClickListener) : ListAdapt
 
 class SupportDiffCallback : DiffUtil.ItemCallback<Message>() {
     override fun areItemsTheSame(oldItem: Message, newItem: Message): Boolean {
-        return oldItem.message?.equals(newItem.message) == true
+        return oldItem == newItem
     }
 
     override fun areContentsTheSame(oldItem: Message, newItem: Message): Boolean {
-        return oldItem == newItem
+        return oldItem.message.equals(newItem.message) && oldItem.date?.equals(newItem.date) == true
     }
 
 

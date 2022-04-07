@@ -16,13 +16,7 @@ import com.hemp.works.R
 import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.dashboard.cart.ui.adapter.CartAdapter
-import com.hemp.works.dashboard.home.ui.HomeFragmentDirections
-import com.hemp.works.dashboard.home.ui.adapters.CategoryAdapter
 import com.hemp.works.dashboard.model.CartProduct
-import com.hemp.works.dashboard.product.ui.ProductFragmentDirections
-import com.hemp.works.dashboard.product.ui.ProductImageClickListener
-import com.hemp.works.dashboard.product.ui.adapters.ImageAdapter
-import com.hemp.works.dashboard.tnl.ui.TNLType
 import com.hemp.works.databinding.FragmentCartBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
@@ -112,7 +106,7 @@ class CartFragment : Fragment(), Injectable, CartItemClickListener {
     }
 
     override fun onItemClick(cartProduct: CartProduct) {
-        CartFragmentDirections.actionCartFragmentToProductFragment(cartProduct.productid?.toString(), cartProduct.product?.category?.toString()).also {
+        CartFragmentDirections.actionCartFragmentToProductFragment(cartProduct.productid?.toString()).also {
             binding.root.findNavController().navigate(it)
         }
     }

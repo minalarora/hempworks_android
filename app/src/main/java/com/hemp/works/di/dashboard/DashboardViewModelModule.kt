@@ -21,6 +21,7 @@ import com.hemp.works.dashboard.prescription.ui.UploadPrescriptionViewModel
 import com.hemp.works.dashboard.product.ui.ProductViewModel
 import com.hemp.works.dashboard.profile.ui.ProfileViewModel
 import com.hemp.works.dashboard.search.ui.SearchViewModel
+import com.hemp.works.dashboard.support.ui.SupportViewModel
 import com.hemp.works.dashboard.tnl.ui.TNLViewModel
 import com.hemp.works.di.ViewModelKey
 import com.hemp.works.login.LoginSharedViewModel
@@ -115,5 +116,10 @@ abstract class DashboardViewModelModule {
     @IntoMap
     @ViewModelKey(OrderViewModel::class)
     abstract fun bindOrderViewModel(viewModel: OrderViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SupportViewModel::class)
+    abstract fun bindSupportViewModel(viewModel: SupportViewModel): ViewModel
 
 }
