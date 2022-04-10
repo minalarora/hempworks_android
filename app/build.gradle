@@ -34,7 +34,7 @@ android {
             buildConfigField "String", "ONESIGNAL_APP_ID", "\"54ffd756-ac1f-4831-8b74-6776c05c8b8e\""
         }
         release {
-            buildConfigField "String", "BASE_URL", "\"https://hempworks-web-l5hj7.ondigitalocean.app\""
+            buildConfigField "String", "BASE_URL", "\"https://techhempworks.co.in\""
             buildConfigField "String", "CASHFREE_APP_ID", "\"178225384e22b2d4a293fe27d0522871\""
             buildConfigField "String", "ONESIGNAL_APP_ID", "\"54ffd756-ac1f-4831-8b74-6776c05c8b8e\""
             minifyEnabled false

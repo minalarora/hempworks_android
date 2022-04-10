@@ -28,11 +28,24 @@ class CartRepository @Inject constructor(private val remoteDataSource: CartRemot
     val booleanResponse: LiveData<Boolean>
         get() = _booleanResponse
 
-    suspend fun fetchCart() {
-        getResult(Constants.GENERAL_ERROR_MESSAGE) {
-            remoteDataSource.getCart()
-        }?.let{
-            it.data?.let { cart -> _cart.postValue(cart) }
+
+    suspend fun fetchCart(isFirstTime: Boolean) {
+        if (isFirstTime) {
+            getResult(Constants.GENERAL_ERROR_MESSAGE) {
+                remoteDataSource.removeCoupon()
+            }?.let {
+                getResult(Constants.GENERAL_ERROR_MESSAGE) {
+                    remoteDataSource.getCart()
+                }?.let {
+                    it.data?.let { cart -> _cart.postValue(cart) }
+                }
+            }
+        } else {
+            getResult(Constants.GENERAL_ERROR_MESSAGE) {
+                remoteDataSource.getCart()
+            }?.let {
+                it.data?.let { cart -> _cart.postValue(cart) }
+            }
         }
     }
 

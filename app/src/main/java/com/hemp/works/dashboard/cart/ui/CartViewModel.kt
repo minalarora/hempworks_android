@@ -13,6 +13,8 @@ import javax.inject.Inject
 
 class CartViewModel  @Inject constructor(private val repository: CartRepository): BaseViewModel(repository) {
 
+    var isFirstTime = true
+
     val cartList = Transformations.map(repository.cart) {
         it.products ?: emptyList()
     }
@@ -39,7 +41,8 @@ class CartViewModel  @Inject constructor(private val repository: CartRepository)
 
     fun fetchCartDetails() {
         viewModelScope.launch {
-            repository.fetchCart()
+            repository.fetchCart(isFirstTime)
+            if (isFirstTime) isFirstTime = false
         }
     }
 

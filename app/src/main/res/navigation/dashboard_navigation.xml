@@ -66,6 +66,11 @@
             app:destination="@id/supportFragment"
             app:enterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
     <fragment
@@ -280,6 +285,10 @@
         android:id="@+id/supportFragment"
         android:name="com.hemp.works.dashboard.support.ui.SupportFragment"
         android:label="SupportFragment" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.hemp.works.dashboard.notification.ui.NotificationFragment"
+        android:label="NotificationFragment" />
 
 </navigation>
 <!--https://developer.android.com/guide/navigation/navigation-pass-data#supported_argument_types-->

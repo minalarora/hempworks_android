@@ -103,7 +103,9 @@ class DosageCalculatorFragment : Fragment() , Injectable, AdapterView.OnItemSele
                 "Product Type: " + binding.typeSpinner.selectedItem.toString() + "\n" + "\n" +
                 "Indication: " + binding.indicationSpinner.selectedItem.toString() + "\n" + "\n" +
                 "Weight: " + binding.weightSpinner.selectedItem.toString() + "\n" + "\n" +
-                "Result: " + res
+                "Result: " + res + "\n" + "\n" + "\n" + "\n" +
+                "Note: Dosage is for reference purposes only. The doctor is advised to prescribe patients as per the individual case requirements only. "
+
     }
 
     private fun setAdapter(spinner: Spinner, list: List<String>) {

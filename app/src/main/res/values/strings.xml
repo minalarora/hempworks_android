@@ -156,8 +156,8 @@
     <string name="trans_completed">Transaction Successful!</string>
     <string name="trans_failed">Transaction Failed!</string>
     <string name="trans_pending_desc">We are continuously checking the status of your payment. We request you not to make multiple payments and wait for few minutes till the status is updated.</string>
-    <string name="trans_completed_desc">Your transaction of %1$s has been successfully completed. Kindly note the transaction id: %2$s for your reference.</string>
-    <string name="trans_failed_desc">Your transaction of %1$s has been failed or denied. In case of amount deducted, it will be credited within 14 working days. Kindly note the transaction id: %2$s for your reference.</string>
+    <string name="trans_completed_desc">Your transaction of Rs. %1$s has been successfully completed. Kindly note the transaction ID: %2$s for your reference.</string>
+    <string name="trans_failed_desc">Your transaction of Rs. %1$s has been failed or denied. In case of amount deducted, it will be credited within 14 working days. Kindly note the transaction ID: %2$s for your reference.</string>
     <string name="contact_support">CONTACT SUPPORT</string>
     <string name="product_added">PRODUCT ADDED IN CART</string>
     <string name="empty_string"></string>
@@ -165,7 +165,7 @@
     <string name="txStatus">txStatus</string>
     <string name="orderId">orderId</string>
     <string name="mode_of_payment">MODE OF PAYMENT?</string>
-    <string name="payment_dialog_text">While doing payment via CREDIT, you can pay us within 30 days with no extra cost.</string>
+    <string name="payment_dialog_text">While doing payment via CREDIT, you can pay us from 30 to 45 days with no extra cost.</string>
     <string name="credit_dialog_text">CREDIT</string>
     <string name="pay_now">PAY NOW</string>
     <string name="order_id">Order #%1$s</string>
@@ -176,6 +176,8 @@
     <string name="completed">COMPLETED</string>
     <string name="your_message_has_failed_retry">Your message has failed. Retry</string>
     <string name="send_message">Send Message...</string>
+    <string name="no_notifications_found">No Notifications found :-(</string>
+    <string name="today">Today</string>
 
 
     <string-array name="state_list">
