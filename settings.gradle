@@ -3,6 +3,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://maven.google.com' }
         maven { url "https://jitpack.io" }
         maven { url "https://maven.cashfree.com/release" }
         jcenter() // Warning: this repository is going to shut down soon

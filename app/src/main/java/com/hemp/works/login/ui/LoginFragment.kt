@@ -27,6 +27,7 @@ import com.hemp.works.login.LoginSharedViewModel
 import com.hemp.works.login.ui.viewmodel.LoginViewModel
 import com.hemp.works.login.ui.viewmodel.SplashViewModel
 import com.hemp.works.utils.PreferenceManagerUtil
+import com.onesignal.OneSignal
 import javax.inject.Inject
 
 
@@ -93,7 +94,9 @@ class LoginFragment : Fragment(), Injectable {
         }
 
         binding.login.setOnClickListener {
-            viewModel.onLogin(binding.username.text.toString(), binding.password.text.toString())
+            viewModel.onLogin(binding.username.text.toString(),
+                binding.password.text.toString(),
+                OneSignal.getDeviceState()?.userId)
         }
 
         binding.createAccount.setOnClickListener {

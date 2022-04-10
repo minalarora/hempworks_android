@@ -1,11 +1,12 @@
 plugins {
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin'
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
     id 'androidx.navigation.safeargs.kotlin'
-    id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -30,10 +31,12 @@ android {
             testCoverageEnabled true
             buildConfigField "String", "BASE_URL", "\"https://hempworks-web-l5hj7.ondigitalocean.app\""
             buildConfigField "String", "CASHFREE_APP_ID", "\"178225384e22b2d4a293fe27d0522871\""
+            buildConfigField "String", "ONESIGNAL_APP_ID", "\"54ffd756-ac1f-4831-8b74-6776c05c8b8e\""
         }
         release {
             buildConfigField "String", "BASE_URL", "\"https://hempworks-web-l5hj7.ondigitalocean.app\""
             buildConfigField "String", "CASHFREE_APP_ID", "\"178225384e22b2d4a293fe27d0522871\""
+            buildConfigField "String", "ONESIGNAL_APP_ID", "\"54ffd756-ac1f-4831-8b74-6776c05c8b8e\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -53,8 +56,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
 
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:29.0.4')
@@ -131,6 +134,13 @@ dependencies {
 
     //payment
     implementation "com.cashfree.pg:android-sdk:1.7.15"
+
+    //one signal
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
+    // Required for OneSignal, even if you have added FCM.
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
+    // Required for geotagging
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

@@ -49,7 +49,8 @@ class CreateViewModel @Inject constructor(private val repository: LoginRepositor
         addressLine2: String,
         city: String,
         state: String,
-        pincode: String
+        pincode: String,
+        notification: String?
     ) {
         if (TextUtils.isEmpty(name)) {
             error(Constants.INVALID_FIELDS)
@@ -88,7 +89,8 @@ class CreateViewModel @Inject constructor(private val repository: LoginRepositor
                 clinic = clinic,
                 password = password,
                 address = address,
-                certificate = imageUrl.value?.url
+                certificate = imageUrl.value?.url,
+                notification = notification
             )
 
             viewModelScope.launch {

@@ -32,6 +32,7 @@ import com.hemp.works.login.ui.viewmodel.SplashViewModel
 import com.hemp.works.utils.FileUtils
 import com.hemp.works.utils.FileUtils.MIME_TYPES
 import com.hemp.works.utils.PreferenceManagerUtil
+import com.onesignal.OneSignal
 import java.io.File
 import javax.inject.Inject
 
@@ -87,7 +88,8 @@ class CreateFragment : Fragment(), Injectable {
             addressLine2 = binding.addressLine2.text.toString(),
             city = binding.city.text.toString(),
             state = binding.state.selectedItem.toString(),
-            pincode = binding.pincode.text.toString()
+            pincode = binding.pincode.text.toString(),
+            notification = OneSignal.getDeviceState()?.userId
         ) }
 
         binding.back.setOnClickListener { binding.root.findNavController().popBackStack() }

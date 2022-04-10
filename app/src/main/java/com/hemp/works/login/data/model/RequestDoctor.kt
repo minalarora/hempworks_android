@@ -7,5 +7,6 @@ data class RequestDoctor(
     var email       : String?,
     var password    : String?,
     var certificate : String?,
-    var address     : Address?
+    var address     : Address?,
+    var notification: String?
 )
