@@ -20,6 +20,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     val instagramList = repository.instagramList
     val booleanResponse = repository.
     booleanResponse
+    val pendingAmount = repository.pendingAmount
 
     private val _scroll = MutableLiveData<Int>(0)
     val scroll: LiveData<Int> = _scroll
@@ -64,6 +65,12 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     fun logout() {
         viewModelScope.launch {
             repository.logout()
+        }
+    }
+
+    fun getPendingAmount() {
+        viewModelScope.launch {
+            repository.fetchPendingAmount()
         }
     }
 

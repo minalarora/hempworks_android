@@ -26,6 +26,7 @@ object Constants {
     const val INVALID_PASSWORD = "Please enter valid password!"
     const val INVALID_FIELDS = "Please fill the required fields!"
     const val INVALID_OTP = "Invalid OTP!"
+    const val INVALID_COUPON = "Invalid COUPON!"
     const val USER_NOT_FOUND = "User not found!"
     const val USER_ALREADY_EXIST = "User already exist with this mobile number!"
     const val REASON = "reason"

@@ -19,6 +19,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.dashboard.DashboardSharedViewModel
+import com.hemp.works.dashboard.model.Notification
 import com.hemp.works.dashboard.prescription.ui.PrescriptionFragmentDirections
 import com.hemp.works.dashboard.prescription.ui.PrescriptionViewModel
 import com.hemp.works.dashboard.prescription.ui.adapters.PrescriptionAdapter
@@ -29,7 +30,7 @@ import com.hemp.works.di.injectViewModel
 import java.util.*
 import javax.inject.Inject
 
-class NotificationFragment : Fragment(), Injectable{
+class NotificationFragment : Fragment(), Injectable, NotificationItemListener{
 
 
     @Inject
@@ -56,7 +57,7 @@ class NotificationFragment : Fragment(), Injectable{
 
         binding.back.setOnClickListener { binding.root.findNavController().popBackStack() }
 
-        binding.notificationRecyclerview.adapter = NotificationAdapter()
+        binding.notificationRecyclerview.adapter = NotificationAdapter(this)
 
         viewModel.notificationList.observe(viewLifecycleOwner) {
             (binding.notificationRecyclerview.adapter as NotificationAdapter).submitList(it)
@@ -77,5 +78,15 @@ class NotificationFragment : Fragment(), Injectable{
         fun newInstance() =
             NotificationFragment()
     }
+
+    override fun onNotificationClick(item: Notification) {
+
+    }
+
+}
+
+interface NotificationItemListener {
+
+    fun onNotificationClick(item: Notification)
 
 }

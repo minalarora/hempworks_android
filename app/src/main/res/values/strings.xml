@@ -141,6 +141,7 @@
     <string name="apply">Apply</string>
     <string name="expiry_coupon">Expiry on %1$s</string>
     <string name="invalid_coupon">Invalid Coupon</string>
+    <string name="invalid_amount">Invalid Amount</string>
     <string name="coupon_applied">Coupon Applied!</string>
     <string name="check_offers">Check offers</string>
     <string name="select_any_address_to_proceed_checkout">Select any address to place order</string>
@@ -178,6 +179,9 @@
     <string name="send_message">Send Message...</string>
     <string name="no_notifications_found">No Notifications found :-(</string>
     <string name="today">Today</string>
+    <string name="paying_amount">Paying Amount</string>
+    <string name="proceed_to_pay">PROCEED TO PAY</string>
+    <string name="pending_amount_title">Your credit amount of Rs. %1$s is pending. Kindly pay before %2$s to continue using this service.</string>
 
 
     <string-array name="state_list">

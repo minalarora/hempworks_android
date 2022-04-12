@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:src="@drawable/ic_close_thin"
+            android:elevation="1dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/black" />
+
+        <View
+            android:id="@+id/toolbar_background_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/grey_CDCDCD"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/textview_normal_big"
+            android:textSize="@dimen/_15sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:gravity="left"
+            app:layout_constraintTop_toBottomOf="@id/back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Your credit amount of Rs. 1000 is pending. Kindly pay before to continue using this service."/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/amount_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextColor="@color/grey_AAAAAA"
+            app:errorEnabled="true"
+            android:layout_marginVertical="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="@string/paying_amount">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/amount"
+                style="@style/textview_normal_medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLines="1"
+                android:letterSpacing="0.1"
+                android:maxLength="10"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/pay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/textview_bold_medium"
+            android:textColor="@color/white"
+            android:text="@string/proceed_to_pay"
+            android:background="@drawable/background_orange_corner_radius"
+            android:gravity="center"
+            android:layout_marginVertical="@dimen/_34sdp"
+            android:layout_marginHorizontal="@dimen/_24sdp"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/amount_container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

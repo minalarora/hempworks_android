@@ -128,7 +128,6 @@ class DashboardDataModule {
     fun providePaymentService(retrofit: Retrofit): PaymentService = retrofit.create(
         PaymentService::class.java)
 
-    @Singleton
     @Provides
     fun providePaymentRemoteDataSource(service: PaymentService)
             = PaymentRemoteDataSource(service)

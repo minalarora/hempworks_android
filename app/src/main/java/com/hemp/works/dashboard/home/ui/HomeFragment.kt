@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.SnapHelper
@@ -24,13 +25,19 @@ import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.DashboardSharedViewModel
+import com.hemp.works.dashboard.UserType
+import com.hemp.works.dashboard.address.ui.AddressFragmentDirections
+import com.hemp.works.dashboard.credit.ui.PendingCreditBottomSheet
 import com.hemp.works.dashboard.home.ui.adapters.BannerAdapter
 import com.hemp.works.dashboard.home.ui.adapters.CategoryAdapter
 import com.hemp.works.dashboard.home.ui.adapters.InstagramAdapter
 import com.hemp.works.dashboard.home.ui.adapters.ProductAdapter
 import com.hemp.works.dashboard.model.Instagram
 import com.hemp.works.dashboard.model.Product
+import com.hemp.works.dashboard.model.RequestPayment
+import com.hemp.works.dashboard.model.ResponsePendingAmount
 import com.hemp.works.dashboard.product.ui.ProductItemClickListener
+import com.hemp.works.dashboard.profile.ui.EditMobileBottomSheetFragment
 import com.hemp.works.dashboard.search.ui.SearchFragmentDirections
 import com.hemp.works.dashboard.search.ui.SearchItemClickListener
 import com.hemp.works.dashboard.tnl.ui.TNLType
@@ -40,6 +47,7 @@ import com.hemp.works.di.injectViewModel
 import com.hemp.works.login.LoginActivity
 import com.hemp.works.login.ui.LoginFragmentDirections
 import com.hemp.works.utils.PreferenceManagerUtil
+import java.text.SimpleDateFormat
 import javax.inject.Inject
 
 
@@ -211,12 +219,21 @@ class HomeFragment : Fragment(), Injectable {
             showSnackBar(it)
         }
 
-        viewModel.
-        booleanResponse.observe(viewLifecycleOwner) {
+        viewModel.booleanResponse.observe(viewLifecycleOwner) {
             PreferenceManagerUtil.clear(requireContext())
             LoginActivity.getPendingIntent(requireContext(), R.id.loginFragment).send()
             requireActivity().finish()
         }
+
+        viewModel.pendingAmount.observe(viewLifecycleOwner) {
+            showPendingAmountBottomSheet(it)
+        }
+
+        if (sharedViewModel.isFirstTime && sharedViewModel.userType == UserType.APPROVED) {
+            viewModel.getPendingAmount()
+            sharedViewModel.isFirstTime = false
+        }
+
         return binding.root
     }
 
@@ -297,6 +314,34 @@ class HomeFragment : Fragment(), Injectable {
         binding.drawer.closeDrawers()
     }
 
+
+    private fun showPendingAmountBottomSheet(response: ResponsePendingAmount) {
+
+        if (response.pendingamount == null ||
+                response.pendingamount == 0) {
+            return
+        }
+        val dateFormat = SimpleDateFormat(Constants.ONLY_DATE_FORMAT);
+        val date = dateFormat.format(response.date!!)
+
+        PendingCreditBottomSheet.newInstance(response.pendingamount.toString(), date)
+            .show(requireActivity().supportFragmentManager, PendingCreditBottomSheet.javaClass.simpleName)
+
+        requireActivity().supportFragmentManager.setFragmentResultListener(getString(R.string.pending_amount_title), this, object :
+            FragmentResultListener {
+            override fun onFragmentResult(requestKey: String, bundle: Bundle) {
+                val amount  = bundle.getString("amount", "")
+                HomeFragmentDirections.actionHomeFragmentToPaymentFragment(
+                    RequestPayment(
+                        payment = "DIRECT",
+                        discountprice = amount.toInt()!!,
+                        amount = amount.toInt()!!,
+                        reason = "CREDIT")
+                ).also {
+                    binding.root.findNavController().navigate(it)
+                }
+            } })
+    }
 
     private fun showSnackBar(msg: String) {
         val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager

@@ -15,7 +15,6 @@ import kotlinx.coroutines.delay
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
 class PaymentRepository @Inject constructor(private val remoteDataSource: PaymentRemoteDataSource) : BaseRepository() {
 
     private val _order = LiveEvent<Order>()

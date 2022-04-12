@@ -21,4 +21,6 @@ class HomeRemoteDataSource @Inject constructor(private val service: HomeService)
     suspend fun logout() = getResult { service.logout() }
 
     suspend fun fetchInstagram() = getResult { service.fetchInstagram() }
+
+    suspend fun getPendingAmount() = getResult { service.getPendingAmount() }
 }

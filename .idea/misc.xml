@@ -45,6 +45,7 @@
         <entry key="app/src/main/res/layout/fragment_coupon.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_create.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_create_address.xml" value="0.22138157894736843" />
+        <entry key="app/src/main/res/layout/fragment_credit.xml" value="0.22138157894736843" />
         <entry key="app/src/main/res/layout/fragment_dosage_calculator.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_edit_email_bottom_sheet.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_edit_mobile_bottom_sheet.xml" value="0.25" />
@@ -63,6 +64,7 @@
         <entry key="app/src/main/res/layout/fragment_onboarding5.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_order.xml" value="0.2680921052631579" />
         <entry key="app/src/main/res/layout/fragment_payment.xml" value="0.22138157894736843" />
+        <entry key="app/src/main/res/layout/fragment_pending_credit_bottom_sheet.xml" value="0.22138157894736843" />
         <entry key="app/src/main/res/layout/fragment_prescription.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_product.xml" value="0.2582501918649271" />
         <entry key="app/src/main/res/layout/fragment_product_image.xml" value="0.35052083333333334" />
@@ -71,7 +73,7 @@
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2796296296296296" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/fragment_support.xml" value="0.22138157894736843" />
-        <entry key="app/src/main/res/layout/fragment_tnl.xml" value="0.35052083333333334" />
+        <entry key="app/src/main/res/layout/fragment_tnl.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_upload_prescription.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_verify_mobile.xml" value="0.165" />
         <entry key="app/src/main/res/layout/item_address.xml" value="0.25" />

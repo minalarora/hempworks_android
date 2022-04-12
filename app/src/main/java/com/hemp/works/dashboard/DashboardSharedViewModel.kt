@@ -30,6 +30,8 @@ class DashboardSharedViewModel @Inject constructor(context: Context): BaseViewMo
     private val _paymentBundle: MutableLiveData<Bundle?> = LiveEvent()
     val paymentBundle: LiveData<Bundle?> = _paymentBundle
 
+    var isFirstTime: Boolean = true
+
     fun updatePaymentBundle(bundle: Bundle?) {
        _paymentBundle.postValue(bundle)
     }

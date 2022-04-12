@@ -18,11 +18,11 @@ import java.text.SimpleDateFormat
 
 @SuppressLint("SimpleDateFormat")
 val dateFormat = SimpleDateFormat(Constants.ONLY_DATE_FORMAT);
-class NotificationAdapter() : ListAdapter<Notification, NotificationAdapter.ViewHolder>(NotificationDiffCallback()) {
+class NotificationAdapter(val listener: NotificationItemListener) : ListAdapter<Notification, NotificationAdapter.ViewHolder>(NotificationDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(holder.adapterPosition)
-        holder.bind(item)
+        holder.bind(item, listener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,10 +31,12 @@ class NotificationAdapter() : ListAdapter<Notification, NotificationAdapter.View
 
     class ViewHolder private constructor(val binding: ItemNotificationBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: Notification) {
+        fun bind(item: Notification, listener: NotificationItemListener) {
             binding.title.text = item.text.toString()
             binding.date.text = if(DateUtils.isToday(item.date?.time ?: 0))
                 binding.root.context.getString(R.string.today) else dateFormat.format(item.date!!)
+
+            binding.root.setOnClickListener { listener.onNotificationClick(item) }
             binding.executePendingBindings()
         }
 

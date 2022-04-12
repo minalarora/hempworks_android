@@ -1,6 +1,5 @@
 package com.hemp.works.dashboard.payment.ui
 
-import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -49,7 +48,7 @@ class PaymentViewModel @Inject constructor(private val repository: PaymentReposi
                     )
                     repository.doOrder(requestOrder)
                 } else {
-                    repository.doCreditPayment(requestPayment?.amount!!)
+                    repository.doCreditPayment(if (BuildConfig.DEBUG) 1 else requestPayment?.amount!!)
                 }
             } catch (ex: Exception) {
                 error(Constants.PAYMENT_ISSUE)

@@ -11,7 +11,6 @@ import com.hemp.works.dashboard.address.ui.CreateAddressViewModel
 import com.hemp.works.dashboard.calculator.ui.DosageCalculatorViewModel
 import com.hemp.works.dashboard.cart.ui.CartViewModel
 import com.hemp.works.dashboard.cart.ui.CouponViewModel
-import com.hemp.works.dashboard.credit.ui.CreditViewModel
 import com.hemp.works.dashboard.home.ui.HomeViewModel
 import com.hemp.works.dashboard.home.ui.ProductListViewModel
 import com.hemp.works.dashboard.notification.ui.NotificationViewModel
@@ -103,10 +102,10 @@ abstract class DashboardViewModelModule {
     @ViewModelKey(PaymentViewModel::class)
     abstract fun bindPaymentViewModel(viewModel: PaymentViewModel): ViewModel
 
-    @Binds
-    @IntoMap
-    @ViewModelKey(CreditViewModel::class)
-    abstract fun bindCreditViewModel(viewModel: CreditViewModel): ViewModel
+//    @Binds
+//    @IntoMap
+//    @ViewModelKey(CreditViewModel::class)
+//    abstract fun bindCreditViewModel(viewModel: CreditViewModel): ViewModel
 
     @Binds
     @IntoMap

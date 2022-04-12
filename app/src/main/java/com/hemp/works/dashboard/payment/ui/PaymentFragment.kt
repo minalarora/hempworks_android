@@ -245,7 +245,7 @@ class PaymentFragment : Fragment(), Injectable {
         params[CFPaymentService.PARAM_CUSTOMER_PHONE] = customerPhone
         params[CFPaymentService.PARAM_CUSTOMER_EMAIL] = customerEmail
         params[CFPaymentService.PARAM_ORDER_CURRENCY] = "INR"
-        params[CFPaymentService.PARAM_NOTIFY_URL] = BuildConfig.BASE_URL + "/v1/order/webhook"
+        params[CFPaymentService.PARAM_NOTIFY_URL] = if (viewModel.requestPayment?.reason == "ORDER") BuildConfig.BASE_URL + "/v1/order/webhook" else BuildConfig.BASE_URL + "/v1/credithistory/webhook"
 
         return params
     }

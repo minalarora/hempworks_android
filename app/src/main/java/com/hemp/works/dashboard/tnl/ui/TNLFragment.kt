@@ -29,6 +29,7 @@ import com.hemp.works.databinding.FragmentPrescriptionBinding
 import com.hemp.works.databinding.FragmentTnlBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
+import com.hemp.works.utils.FileUtils
 import javax.inject.Inject
 
 
@@ -131,12 +132,20 @@ class TNLFragment : Fragment(), Injectable,
     }
 
     override fun onTutorialClick(tutorial: Tutorial) {
-        startActivity(
-            Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse(tutorial.url)
+        if (tutorial.type == "pdf") {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW
+                ).apply { setDataAndType( Uri.parse(tutorial.url), FileUtils.MIME_TYPE_PDF)}
             )
-        )
+        } else {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(tutorial.url)
+                )
+            )
+        }
     }
 
     override fun onTutorialReadMore(tutorial: Tutorial) {
@@ -156,9 +165,8 @@ class TNLFragment : Fragment(), Injectable,
     override fun onNewsLetterClick(newsLetter: NewsLetter) {
         startActivity(
             Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse(newsLetter.pdf)
-            )
+                Intent.ACTION_VIEW
+            ).apply { setDataAndType( Uri.parse(newsLetter.pdf), FileUtils.MIME_TYPE_PDF)}
         )
     }
 

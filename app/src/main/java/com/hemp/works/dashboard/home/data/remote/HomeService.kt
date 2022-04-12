@@ -1,10 +1,7 @@
 package com.hemp.works.dashboard.home.data.remote
 
 import com.hemp.works.base.BooleanResponse
-import com.hemp.works.dashboard.model.Banner
-import com.hemp.works.dashboard.model.Category
-import com.hemp.works.dashboard.model.Instagram
-import com.hemp.works.dashboard.model.Product
+import com.hemp.works.dashboard.model.*
 import com.hemp.works.login.data.model.User
 import retrofit2.Response
 import retrofit2.http.GET
@@ -32,5 +29,8 @@ interface HomeService {
 
     @GET("/v1/instagram")
     suspend fun fetchInstagram(): Response<List<Instagram>>
+
+    @GET("/v1/credithistory/pending")
+    suspend fun getPendingAmount(): Response<ResponsePendingAmount>
 
 }

@@ -6,10 +6,7 @@ import com.hemp.works.base.BaseRepository
 import com.hemp.works.base.Constants
 import com.hemp.works.base.LiveEvent
 import com.hemp.works.dashboard.home.data.remote.HomeRemoteDataSource
-import com.hemp.works.dashboard.model.Banner
-import com.hemp.works.dashboard.model.Category
-import com.hemp.works.dashboard.model.Instagram
-import com.hemp.works.dashboard.model.Product
+import com.hemp.works.dashboard.model.*
 import com.hemp.works.login.data.model.Credential
 import com.hemp.works.login.data.model.User
 import kotlinx.coroutines.async
@@ -48,6 +45,10 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
     val booleanResponse: LiveData<Boolean>
         get() = _booleanResponse
 
+    private val _pendingAmount = LiveEvent<ResponsePendingAmount>()
+    val pendingAmount: LiveData<ResponsePendingAmount>
+        get() = _pendingAmount
+
     suspend fun fetchHomeData() {
 
         coroutineScope {
@@ -84,6 +85,12 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
     suspend fun fetchProductsByCategory(category: Long) {
         getResult(Constants.GENERAL_ERROR_MESSAGE){ remoteDataSource.fetchProductsByCategory(category) }?.let {
             it.data?.let { list -> _productsByCategory.postValue(list) }
+        }
+    }
+
+    suspend fun fetchPendingAmount() {
+        getResult(handleLoading = false){ remoteDataSource.getPendingAmount() }?.let {
+            it.data?.let { it -> _pendingAmount.postValue(it) }
         }
     }
 
