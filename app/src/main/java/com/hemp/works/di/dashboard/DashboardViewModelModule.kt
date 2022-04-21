@@ -14,6 +14,7 @@ import com.hemp.works.dashboard.cart.ui.CouponViewModel
 import com.hemp.works.dashboard.home.ui.HomeViewModel
 import com.hemp.works.dashboard.home.ui.ProductListViewModel
 import com.hemp.works.dashboard.notification.ui.NotificationViewModel
+import com.hemp.works.dashboard.offer.ui.OfferViewModel
 import com.hemp.works.dashboard.order.ui.OrderViewModel
 import com.hemp.works.dashboard.payment.ui.PaymentViewModel
 import com.hemp.works.dashboard.prescription.ui.PrescriptionViewModel
@@ -126,5 +127,10 @@ abstract class DashboardViewModelModule {
     @IntoMap
     @ViewModelKey(NotificationViewModel::class)
     abstract fun bindNotificationViewModel(viewModel: NotificationViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(OfferViewModel::class)
+    abstract fun bindOfferViewModel(viewModel: OfferViewModel): ViewModel
 
 }

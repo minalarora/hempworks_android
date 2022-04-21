@@ -24,7 +24,7 @@ class ProductViewModel(context: Context, private val product: Product) {
 
     val subTitleBackgroundColor = when {
         !product.instock -> ContextCompat.getColor(context, R.color.dark_red)//#8B0000
-        else -> ContextCompat.getColor(context, R.color.black)
+        else -> ContextCompat.getColor(context, R.color.green_title)
     }
 
     val price: String = context.getString(R.string.product_price_from, product.variants.minOf { it.rate })

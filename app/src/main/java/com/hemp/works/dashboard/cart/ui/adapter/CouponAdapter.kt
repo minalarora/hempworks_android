@@ -9,11 +9,11 @@ import com.hemp.works.dashboard.cart.ui.CouponItemClickListener
 import com.hemp.works.dashboard.model.Coupon
 import com.hemp.works.databinding.ItemCouponBinding
 
-class CouponAdapter(private val listener: CouponItemClickListener) : ListAdapter<Coupon, CouponAdapter.ViewHolder>(CouponDiffCallback()) {
+class CouponAdapter(private val listener: CouponItemClickListener, private val isCoupon: Boolean = true) : ListAdapter<Coupon, CouponAdapter.ViewHolder>(CouponDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(holder.adapterPosition)
-        holder.bind(item, listener)
+        holder.bind(item, listener, isCoupon)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,10 +22,16 @@ class CouponAdapter(private val listener: CouponItemClickListener) : ListAdapter
 
     class ViewHolder private constructor(val binding: ItemCouponBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: Coupon, listener: CouponItemClickListener) {
-            binding.viewmodel = CouponViewModel(binding.root.context, item)
-            binding.apply.setOnClickListener {
-                listener.onItemClick(item)
+        fun bind(item: Coupon, listener: CouponItemClickListener, isCoupon: Boolean) {
+            binding.viewmodel = CouponViewModel(binding.root.context, item, isCoupon)
+            if (isCoupon) {
+                binding.apply.setOnClickListener {
+                    listener.onItemClick(item)
+                }
+            } else {
+                binding.root.setOnClickListener {
+                    listener.onItemClick(item)
+                }
             }
             binding.executePendingBindings()
         }

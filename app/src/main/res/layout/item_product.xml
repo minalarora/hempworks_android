@@ -20,7 +20,7 @@
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="4.5:5"
+        app:layout_constraintDimensionRatio="5:4.5"
         android:scaleType="centerCrop"
         app:glideImage="@{viewmodel.image}"
         tools:src="@drawable/dummy_product"
@@ -41,11 +41,11 @@
         android:text="@{viewmodel.subTitle}"
         android:background="@{viewmodel.subTitleBackgroundColor}"
         app:hideIfFalse="@{viewmodel.subTitleVisibility}"
-        android:paddingHorizontal="@dimen/_5sdp"
+        android:paddingHorizontal="@dimen/_3sdp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="BEST SELLER"
-        tools:background="@color/black"/>
+        tools:background="@color/green_title"/>
 
     <TextView
         android:id="@+id/title"
@@ -53,11 +53,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="@dimen/_10sdp"
+        android:textSize="@dimen/_9sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginHorizontal="@dimen/_2sdp"
         android:text="@{viewmodel.title}"
-        android:maxLines="4"
+        android:maxLines="2"
         android:ellipsize="end"
         app:layout_constraintTop_toBottomOf="@id/image"
         app:layout_constraintStart_toStartOf="parent"

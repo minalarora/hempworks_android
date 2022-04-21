@@ -72,6 +72,11 @@
             app:enterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_right" />
         <action
+            android:id="@+id/action_homeFragment_to_offerFragment"
+            app:destination="@id/offerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
             android:id="@+id/action_homeFragment_to_paymentFragment"
             app:destination="@id/paymentFragment"
             app:popUpTo="@id/homeFragment"
@@ -295,6 +300,10 @@
         android:id="@+id/notificationFragment"
         android:name="com.hemp.works.dashboard.notification.ui.NotificationFragment"
         android:label="NotificationFragment" />
+    <fragment
+        android:id="@+id/offerFragment"
+        android:name="com.hemp.works.dashboard.offer.ui.OfferFragment"
+        android:label="OfferFragment" />
 
 </navigation>
 <!--https://developer.android.com/guide/navigation/navigation-pass-data#supported_argument_types-->

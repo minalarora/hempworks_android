@@ -18,6 +18,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     val bestSellerProductList = repository.bestSellerProductList
     val allProductList = repository.allProductList
     val instagramList = repository.instagramList
+    val blogList = repository.blogList
     val booleanResponse = repository.
     booleanResponse
     val pendingAmount = repository.pendingAmount
@@ -39,6 +40,9 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
 
     private val _instagramVisibility= MutableLiveData(false)
     val instagramVisibility: LiveData<Boolean>  = _instagramVisibility
+
+    private val _blogVisibility= MutableLiveData(false)
+    val blogVisibility: LiveData<Boolean>  = _blogVisibility
 
     private var _job: Job? = null
 
@@ -92,6 +96,10 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
 
     fun handleInstagramVisibility(isEmpty: Boolean) {
         _instagramVisibility.postValue(!isEmpty)
+    }
+
+    fun handleBlogVisibility(isEmpty: Boolean) {
+        _blogVisibility.postValue(!isEmpty)
     }
 
 }

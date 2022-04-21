@@ -7,11 +7,13 @@ import com.hemp.works.dashboard.model.CartProduct
 import com.hemp.works.dashboard.model.Coupon
 import java.text.SimpleDateFormat
 
-class CouponViewModel(context: Context, private val coupon: Coupon) {
+class CouponViewModel(context: Context, private val coupon: Coupon, isCoupon: Boolean) {
 
     val title  = coupon.name.toString()
 
     val subtitle = coupon.description.toString()
+
+    val isCoupon = isCoupon
 
     @SuppressLint("SimpleDateFormat")
     private val dateFormat = SimpleDateFormat("dd MMM yy");
@@ -22,4 +24,6 @@ class CouponViewModel(context: Context, private val coupon: Coupon) {
         } catch (ex: Exception) {
             ""
         }
+
+    val dateVisibility = date.isNotBlank()
 }

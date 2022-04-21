@@ -58,13 +58,31 @@
                     android:layout_height="match_parent"
                     android:background="@color/grey_CDCDCD">
 
+                    <TextView
+                        android:id="@+id/search"
+                        android:layout_width="0dp"
+                        style="@style/textview_normal_medium"
+                        android:text="@string/search_products"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/green_title"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/edittext_black_corner_radius"
+                        android:layout_margin="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:drawableStartCompat="@drawable/ic_menu_search"
+                        app:drawableTint="@color/green_title" />
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/banner_recyclerview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         android:orientation="horizontal"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/search"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginVertical="@dimen/_10sdp"
@@ -74,7 +92,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/dosage_calculator"
                         android:layout_width="@dimen/_120sdp"
-                        android:layout_height="@dimen/_120sdp"
+                        android:layout_height="wrap_content"
                         android:foreground="@drawable/edittext_orange_corner_radius"
                         app:cardCornerRadius="@dimen/_8sdp"
                         android:layout_margin="@dimen/_10sdp"
@@ -83,28 +101,35 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/upload_prescription">
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="@dimen/_5sdp">
+
                          <ImageView
-                             android:layout_width="match_parent"
-                             android:layout_height="@dimen/_80sdp"
+                             android:layout_width="@dimen/_50sdp"
+                             android:layout_height="@dimen/_50sdp"
                              android:src="@drawable/ic_menu_calculator"
                              app:tint="@color/orange_F8AA37" />
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/textview_normal_medium"
-                            android:padding="@dimen/_10sdp"
-                            android:textColor="@color/orange_F8AA37"
+                            style="@style/textview_normal_small"
+                            android:textColor="@color/green_title"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_gravity="center_vertical"
                             android:text="@string/dosage_calculator"
-                            android:layout_gravity="bottom"
-                            android:gravity="center"/>
+                            android:gravity="start"/>
 
+                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/upload_prescription"
                         android:layout_width="@dimen/_120sdp"
-                        android:layout_height="@dimen/_120sdp"
+                        android:layout_height="wrap_content"
                         android:foreground="@drawable/edittext_orange_corner_radius"
                         app:cardCornerRadius="@dimen/_8sdp"
                         android:layout_margin="@dimen/_10sdp"
@@ -113,22 +138,52 @@
                         app:layout_constraintTop_toBottomOf="@id/banner_recyclerview"
                         app:layout_constraintEnd_toEndOf="parent">
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_70sdp"
-                            android:layout_marginVertical="@dimen/_5sdp"
-                            android:src="@drawable/ic_menu_prescription_upload"
-                            app:tint="@color/orange_F8AA37" />
-
-                        <TextView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            style="@style/textview_normal_medium"
-                            android:padding="@dimen/_10sdp"
-                            android:textColor="@color/orange_F8AA37"
-                            android:text="@string/upload_prescription"
-                            android:layout_gravity="bottom"
-                            android:gravity="center"/>
+                            android:orientation="horizontal"
+                            android:layout_margin="@dimen/_5sdp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_50sdp"
+                                android:src="@drawable/ic_menu_prescription_upload"
+                                app:tint="@color/orange_F8AA37" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/textview_normal_small"
+                                android:textColor="@color/green_title"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/upload_prescription"
+                                android:gravity="start"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/offer_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardPreventCornerOverlap="false"
+                        app:cardUseCompatPadding="false"
+                        app:hideIfFalse="@{usertype == UserType.APPROVED}"
+                        app:layout_constraintTop_toBottomOf="@id/dosage_calculator"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp">
+
+                        <ImageView
+                            android:id="@+id/image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/offer_banner"
+                            tools:src="@drawable/offer_banner" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -137,10 +192,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/textview_normal_medium"
-                        android:textColor="@color/orange_F8AA37"
+                        android:textColor="@color/green_title"
                         android:text="@string/categories"
                         android:singleLine="true"
-                        app:layout_constraintTop_toBottomOf="@id/dosage_calculator"
+                        app:layout_constraintTop_toBottomOf="@id/offer_banner"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_20sdp"
                         app:hideIfFalse="@{viewmodel.categoryVisibility}"/>
@@ -163,7 +218,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/textview_normal_medium"
-                        android:textColor="@color/orange_F8AA37"
+                        android:textColor="@color/green_title"
                         android:text="@string/trending_products"
                         android:singleLine="true"
                         app:layout_constraintTop_toBottomOf="@id/category_recyclerview"
@@ -186,14 +241,40 @@
                         tools:listitem="@layout/item_product"/>
 
                     <TextView
+                        android:id="@+id/instagram_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/textview_normal_medium"
+                        android:textColor="@color/green_title"
+                        android:text="@string/instagram_feed"
+                        android:singleLine="true"
+                        app:layout_constraintTop_toBottomOf="@id/trending_product_recyclerview"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        app:hideIfFalse="@{viewmodel.instagramVisibility}"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/instagram_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toBottomOf="@id/instagram_title"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        app:hideIfFalse="@{viewmodel.instagramVisibility}"
+                        tools:listitem="@layout/item_instagram"/>
+                    <TextView
                         android:id="@+id/all_product_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/textview_normal_medium"
-                        android:textColor="@color/orange_F8AA37"
+                        android:textColor="@color/green_title"
                         android:text="@string/all_products"
                         android:singleLine="true"
-                        app:layout_constraintTop_toBottomOf="@id/trending_product_recyclerview"
+                        app:layout_constraintTop_toBottomOf="@id/instagram_recyclerview"
                         android:layout_marginHorizontal="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_20sdp"
                         app:hideIfFalse="@{viewmodel.allProductVisibility}"/>
@@ -212,34 +293,57 @@
                         app:hideIfFalse="@{viewmodel.allProductVisibility}"
                         tools:listitem="@layout/item_product"/>
 
+
                     <TextView
-                        android:id="@+id/instagram_title"
+                        android:id="@+id/blog_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/textview_normal_medium"
-                        android:textColor="@color/orange_F8AA37"
-                        android:text="@string/instagram_feed"
+                        android:textColor="@color/green_title"
+                        android:text="@string/blogs"
                         android:singleLine="true"
                         app:layout_constraintTop_toBottomOf="@id/all_product_recyclerview"
                         android:layout_marginHorizontal="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_20sdp"
-                        app:hideIfFalse="@{viewmodel.instagramVisibility}"/>
+                        app:hideIfFalse="@{viewmodel.blogVisibility}"/>
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/instagram_recyclerview"
+                        android:id="@+id/blog_recyclerview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                        app:spanCount="1"
-                        app:layout_constraintTop_toBottomOf="@id/instagram_title"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toBottomOf="@id/blog_title"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginHorizontal="@dimen/_5sdp"
-                        app:hideIfFalse="@{viewmodel.instagramVisibility}"
-                        tools:listitem="@layout/item_instagram"/>
+                        app:hideIfFalse="@{viewmodel.blogVisibility}"
+                        tools:listitem="@layout/item_blog"/>
 
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="@dimen/_75sdp"
+                        android:src="@drawable/logo"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        app:layout_constraintTop_toBottomOf="@id/blog_recyclerview"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
 
+                    <TextView
+                        android:id="@+id/footer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/textview_normal_small"
+                        android:textColor="@color/green_title"
+                        android:text="@string/www_hempworks_in_info_hempworks_in"
+                        android:singleLine="true"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@id/logo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_margin="@dimen/_10sdp" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

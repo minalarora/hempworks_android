@@ -12,6 +12,8 @@ import com.hemp.works.dashboard.home.data.remote.HomeRemoteDataSource
 import com.hemp.works.dashboard.home.data.remote.HomeService
 import com.hemp.works.dashboard.notification.data.remote.NotificationRemoteDataSource
 import com.hemp.works.dashboard.notification.data.remote.NotificationService
+import com.hemp.works.dashboard.offer.data.remote.OfferRemoteDataSource
+import com.hemp.works.dashboard.offer.data.remote.OfferService
 import com.hemp.works.dashboard.order.data.remote.OrderRemoteDataSource
 import com.hemp.works.dashboard.order.data.remote.OrderService
 import com.hemp.works.dashboard.payment.data.remote.PaymentRemoteDataSource
@@ -169,5 +171,14 @@ class DashboardDataModule {
     @Provides
     fun provideNotificationRemoteDataSource(service: NotificationService)
             = NotificationRemoteDataSource(service)
+
+    @Singleton
+    @Provides
+    fun provideOfferService(retrofit: Retrofit): OfferService = retrofit.create(
+        OfferService::class.java)
+
+    @Provides
+    fun provideOfferRemoteDataSource(service: OfferService)
+            = OfferRemoteDataSource(service)
 
 }

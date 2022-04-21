@@ -182,6 +182,10 @@
     <string name="paying_amount">Paying Amount</string>
     <string name="proceed_to_pay">PROCEED TO PAY</string>
     <string name="pending_amount_title">Your credit amount of Rs. %1$s is pending. Kindly pay before %2$s to continue using this service.</string>
+    <string name="offers">Offers</string>
+    <string name="blogs">BLOGS</string>
+    <string name="www_hempworks_in_info_hempworks_in">www.hempworks.in | info@hempworks.in</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
 
 
     <string-array name="state_list">

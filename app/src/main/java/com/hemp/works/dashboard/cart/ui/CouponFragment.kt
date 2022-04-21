@@ -14,16 +14,12 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.DashboardSharedViewModel
-import com.hemp.works.dashboard.cart.ui.adapter.CartAdapter
 import com.hemp.works.dashboard.cart.ui.adapter.CouponAdapter
-import com.hemp.works.dashboard.model.CartProduct
 import com.hemp.works.dashboard.model.Coupon
-import com.hemp.works.databinding.FragmentCartBinding
 import com.hemp.works.databinding.FragmentCouponBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
@@ -31,7 +27,7 @@ import com.hemp.works.utils.onDone
 import javax.inject.Inject
 
 
-class CouponFragment : Fragment(), Injectable, CouponItemClickListener{
+class CouponFragment : Fragment(), Injectable, CouponItemClickListener {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

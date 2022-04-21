@@ -25,6 +25,10 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
     val categoryList: LiveData<List<Category>>
         get() = _categoryList
 
+    private val _blogList = MutableLiveData<List<Blog>>()
+    val blogList: LiveData<List<Blog>>
+        get() = _blogList
+
     private val _bestSellerProductList = MutableLiveData<List<Product>>()
     val bestSellerProductList: LiveData<List<Product>>
         get() = _bestSellerProductList
@@ -59,6 +63,7 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
             val deferredBestSellerProductList = async { getResult(handleLoading = false) { remoteDataSource.fetchBestSellerProducts() } }
             val deferredAllProductList = async { getResult(handleLoading = false) { remoteDataSource.fetchAllProducts() } }
             val deferredInstagramList = async { getResult(handleLoading = false) { remoteDataSource.fetchInstagram() } }
+            val deferredBlogList = async { getResult(handleLoading = false) { remoteDataSource.fetchAllBlogs() } }
 
 
             deferredBannerList.await()?.let {
@@ -76,6 +81,10 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
 
             deferredInstagramList.await()?.let {
                 it.data?.let { list -> _instagramList.postValue(list) }
+            }
+
+            deferredBlogList.await()?.let {
+                it.data?.let { list -> _blogList.postValue(list) }
             }
 
             _loading.postValue(false)

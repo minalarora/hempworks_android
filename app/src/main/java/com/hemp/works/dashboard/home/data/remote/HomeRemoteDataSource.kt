@@ -14,6 +14,8 @@ class HomeRemoteDataSource @Inject constructor(private val service: HomeService)
 
     suspend fun fetchAllProducts() = getResult { service.fetchAllProducts() }
 
+    suspend fun fetchAllBlogs() = getResult { service.fetchAllBlogs() }
+
     suspend fun fetchBestSellerProducts() = getResult { service.fetchBestSellerProducts() }
 
     suspend fun fetchProductsByCategory(category: Long) = getResult { service.fetchProductsByCategory(category) }

@@ -28,14 +28,8 @@ import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.dashboard.UserType
 import com.hemp.works.dashboard.address.ui.AddressFragmentDirections
 import com.hemp.works.dashboard.credit.ui.PendingCreditBottomSheet
-import com.hemp.works.dashboard.home.ui.adapters.BannerAdapter
-import com.hemp.works.dashboard.home.ui.adapters.CategoryAdapter
-import com.hemp.works.dashboard.home.ui.adapters.InstagramAdapter
-import com.hemp.works.dashboard.home.ui.adapters.ProductAdapter
-import com.hemp.works.dashboard.model.Instagram
-import com.hemp.works.dashboard.model.Product
-import com.hemp.works.dashboard.model.RequestPayment
-import com.hemp.works.dashboard.model.ResponsePendingAmount
+import com.hemp.works.dashboard.home.ui.adapters.*
+import com.hemp.works.dashboard.model.*
 import com.hemp.works.dashboard.product.ui.ProductItemClickListener
 import com.hemp.works.dashboard.profile.ui.EditMobileBottomSheetFragment
 import com.hemp.works.dashboard.search.ui.SearchFragmentDirections
@@ -105,11 +99,11 @@ class HomeFragment : Fragment(), Injectable {
 
         binding.toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
-                R.id.search -> {
-                    HomeFragmentDirections.actionHomeFragmentToSearchFragment().also {
-                        binding.root.findNavController().navigate(it)
-                    }
-                }
+//                R.id.search -> {
+//                    HomeFragmentDirections.actionHomeFragmentToSearchFragment().also {
+//                        binding.root.findNavController().navigate(it)
+//                    }
+//                }
                 R.id.notification -> {
                     HomeFragmentDirections.actionHomeFragmentToNotificationFragment().also {
                         binding.root.findNavController().navigate(it)
@@ -124,6 +118,13 @@ class HomeFragment : Fragment(), Injectable {
             }
            true
         }
+
+        binding.search.setOnClickListener {
+            HomeFragmentDirections.actionHomeFragmentToSearchFragment().also {
+                        binding.root.findNavController().navigate(it)
+                    }
+        }
+
 
         binding.bannerRecyclerview.adapter = BannerAdapter()
         ViewCompat.setNestedScrollingEnabled(binding.bannerRecyclerview, false);
@@ -173,6 +174,19 @@ class HomeFragment : Fragment(), Injectable {
         })
         ViewCompat.setNestedScrollingEnabled(binding.instagramRecyclerview, false)
 
+        binding.blogRecyclerview.adapter = BlogAdapter(object :
+            BlogItemClickListener {
+            override fun onItemClick(blog: Blog) {
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(blog.url)
+                    )
+                )
+            }
+        })
+        ViewCompat.setNestedScrollingEnabled(binding.blogRecyclerview, false)
+
         binding.uploadPrescription.setOnClickListener {
             HomeFragmentDirections.actionHomeFragmentToPrescriptionFragment().also {
                 binding.root.findNavController().navigate(it)
@@ -181,6 +195,12 @@ class HomeFragment : Fragment(), Injectable {
 
         binding.dosageCalculator.setOnClickListener {
             HomeFragmentDirections.actionHomeFragmentToDosageCalculatorFragment().also {
+                binding.root.findNavController().navigate(it)
+            }
+        }
+
+        binding.offerBanner.setOnClickListener {
+            HomeFragmentDirections.actionHomeFragmentToOfferFragment().also {
                 binding.root.findNavController().navigate(it)
             }
         }
@@ -209,6 +229,11 @@ class HomeFragment : Fragment(), Injectable {
         viewModel.instagramList.observe(viewLifecycleOwner) {
             (binding.instagramRecyclerview.adapter as InstagramAdapter).submitList(it)
             viewModel.handleInstagramVisibility(it.isEmpty())
+        }
+
+        viewModel.blogList.observe(viewLifecycleOwner) {
+            (binding.blogRecyclerview.adapter as BlogAdapter).submitList(it)
+            viewModel.handleBlogVisibility(it.isEmpty())
         }
 
         viewModel.scroll.observe(viewLifecycleOwner) {
@@ -357,6 +382,10 @@ class HomeFragment : Fragment(), Injectable {
 
 interface CategoryItemClickListener{
     fun onItemClick(categoryid: Long)
+}
+
+interface BlogItemClickListener{
+    fun onItemClick(blog: Blog)
 }
 
 interface InstagramItemClickListener{

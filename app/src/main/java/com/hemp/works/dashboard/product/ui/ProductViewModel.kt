@@ -1,12 +1,8 @@
 package com.hemp.works.dashboard.product.ui
 
-import android.content.Context
-import android.text.Html
-import android.text.SpannableString
 import android.text.Spanned
 import androidx.core.text.HtmlCompat
 import androidx.lifecycle.*
-import com.hemp.works.R
 import com.hemp.works.base.BaseViewModel
 import com.hemp.works.dashboard.UserType
 import com.hemp.works.dashboard.cart.data.repository.CartRepository
@@ -14,13 +10,11 @@ import com.hemp.works.dashboard.model.RequestProduct
 import com.hemp.works.dashboard.model.Variant
 import com.hemp.works.dashboard.product.data.repository.ProductRepository
 import com.hemp.works.login.data.model.Doctor
-import com.hemp.works.login.data.model.User
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.math.roundToInt
 
-class ProductViewModel @Inject constructor(private val repository: ProductRepository, private val cartRepository: CartRepository ) : BaseViewModel(repository, cartRepository) {
+class ProductViewModel @Inject constructor(private val repository: ProductRepository, private val cartRepository: CartRepository) : BaseViewModel(repository, cartRepository) {
 
     fun loadProduct(user: Doctor?, userType: UserType, id: String) {
         this.user = user

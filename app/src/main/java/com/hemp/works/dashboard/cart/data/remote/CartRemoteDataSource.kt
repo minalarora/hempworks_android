@@ -1,7 +1,6 @@
 package com.hemp.works.dashboard.cart.data.remote
 
 import com.hemp.works.base.BaseDataSource
-import com.hemp.works.dashboard.model.Coupon
 import com.hemp.works.dashboard.model.RequestProduct
 import javax.inject.Inject
 

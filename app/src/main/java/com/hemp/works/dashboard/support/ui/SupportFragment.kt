@@ -17,12 +17,8 @@ import com.hemp.works.R
 import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.dashboard.UserType
-import com.hemp.works.dashboard.cart.ui.adapter.CouponAdapter
 import com.hemp.works.dashboard.model.Message
-import com.hemp.works.dashboard.product.ui.ProductViewModel
 import com.hemp.works.dashboard.support.ui.adapters.SupportAdapter
-import com.hemp.works.databinding.FragmentLoginBinding
-import com.hemp.works.databinding.FragmentProductBinding
 import com.hemp.works.databinding.FragmentSupportBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel

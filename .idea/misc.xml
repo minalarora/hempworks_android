@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../layout/custom_preview.xml" value="0.365625" />
+        <entry key="app/src/main/res/drawable-hdpi/edittext_black_corner_radius.xml" value="0.2435" />
         <entry key="app/src/main/res/drawable/background_all_rounded_corners.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/background_bottomsheet_top_rounded_corners.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/background_orange_corner_radius.xml" value="0.36666666666666664" />
@@ -50,12 +51,13 @@
         <entry key="app/src/main/res/layout/fragment_edit_email_bottom_sheet.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_edit_mobile_bottom_sheet.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_forget_password.xml" value="0.2861111111111111" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19005930528099407" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.20499543100822418" />
         <entry key="app/src/main/res/layout/fragment_info_bottom_sheet.xml" value="0.4035897435897436" />
         <entry key="app/src/main/res/layout/fragment_info_confirm_dialog.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_info_dialog.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_notification.xml" value="0.22138157894736843" />
+        <entry key="app/src/main/res/layout/fragment_offer.xml" value="0.22138157894736843" />
         <entry key="app/src/main/res/layout/fragment_onboarding.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/fragment_onboarding1.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_onboarding2.xml" value="0.337037037037037" />
@@ -78,6 +80,7 @@
         <entry key="app/src/main/res/layout/fragment_verify_mobile.xml" value="0.165" />
         <entry key="app/src/main/res/layout/item_address.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_banner_image.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/item_blog.xml" value="0.22138157894736843" />
         <entry key="app/src/main/res/layout/item_cart.xml" value="0.125" />
         <entry key="app/src/main/res/layout/item_category.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_coupon.xml" value="0.25" />

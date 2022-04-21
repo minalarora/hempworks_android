@@ -3,7 +3,6 @@ package com.hemp.works.dashboard.cart.ui
 import androidx.core.text.HtmlCompat
 import androidx.lifecycle.*
 import com.hemp.works.base.BaseViewModel
-import com.hemp.works.dashboard.UserType
 import com.hemp.works.dashboard.cart.data.repository.CartRepository
 import com.hemp.works.dashboard.model.CartProduct
 import com.hemp.works.dashboard.model.Coupon

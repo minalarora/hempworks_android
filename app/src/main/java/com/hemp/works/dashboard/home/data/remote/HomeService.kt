@@ -18,6 +18,9 @@ interface HomeService {
     @GET("/v1/product/all")
     suspend fun fetchAllProducts(): Response<List<Product>>
 
+    @GET("/v1/blog")
+    suspend fun fetchAllBlogs(): Response<List<Blog>>
+
     @GET("/v1/product/bestseller")
     suspend fun fetchBestSellerProducts(): Response<List<Product>>
 
