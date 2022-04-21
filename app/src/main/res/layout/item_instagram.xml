@@ -10,7 +10,7 @@
             type="com.hemp.works.dashboard.model.Instagram" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/_225sdp"
         android:layout_height="wrap_content"
         android:background="@drawable/background_all_rounded_corners"
         android:elevation="@dimen/_2sdp"
