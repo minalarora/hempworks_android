@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
-import com.hemp.works.adminpanel.AdminPanelActivity
 import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.DashboardActivity
 import com.hemp.works.databinding.FragmentLoginBinding
@@ -27,6 +26,7 @@ import com.hemp.works.login.LoginSharedViewModel
 import com.hemp.works.login.ui.viewmodel.LoginViewModel
 import com.hemp.works.login.ui.viewmodel.SplashViewModel
 import com.hemp.works.utils.PreferenceManagerUtil
+import com.minal.admin.AdminActivity
 import com.onesignal.OneSignal
 import javax.inject.Inject
 
@@ -81,7 +81,7 @@ class LoginFragment : Fragment(), Injectable {
                     PreferenceManagerUtil.putString(requireContext(), Constants.AUTH_TOKEN, user.token)
                     PreferenceManagerUtil.putString(requireContext(), Constants.USER_TYPE, Constants.ADMIN)
                     PreferenceManagerUtil.putAdmin(requireContext(), it)
-                    Intent(requireActivity(), AdminPanelActivity::class.java).apply {
+                    Intent(requireActivity(), AdminActivity::class.java).apply {
                         startActivity(this)
                         requireActivity().finish()
                     }

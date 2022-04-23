@@ -13,7 +13,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.hemp.works.R
-import com.hemp.works.adminpanel.AdminPanelActivity
 import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.DashboardActivity
 import com.hemp.works.databinding.FragmentSplashBinding
@@ -22,6 +21,7 @@ import com.hemp.works.di.injectViewModel
 import com.hemp.works.login.LoginSharedViewModel
 import com.hemp.works.login.ui.viewmodel.SplashViewModel
 import com.hemp.works.utils.PreferenceManagerUtil
+import com.minal.admin.AdminActivity
 import javax.inject.Inject
 
 class SplashFragment : Fragment(), Injectable {
@@ -59,7 +59,7 @@ class SplashFragment : Fragment(), Injectable {
                 }
                 it.admin?.let { admin ->
                     PreferenceManagerUtil.putAdmin(requireContext(), admin)
-                    Intent(requireActivity(), AdminPanelActivity::class.java).apply {
+                    Intent(requireActivity(), AdminActivity::class.java).apply {
                         startActivity(this)
                         requireActivity().finish()
                     }
