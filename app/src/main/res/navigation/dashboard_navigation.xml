@@ -303,7 +303,15 @@
     <fragment
         android:id="@+id/offerFragment"
         android:name="com.hemp.works.dashboard.offer.ui.OfferFragment"
-        android:label="OfferFragment" />
+        android:label="OfferFragment" >
+
+        <action
+            android:id="@+id/action_offerFragment_to_productFragment"
+            app:destination="@id/productFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
 </navigation>
 <!--https://developer.android.com/guide/navigation/navigation-pass-data#supported_argument_types-->

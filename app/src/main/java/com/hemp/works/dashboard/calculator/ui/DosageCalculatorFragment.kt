@@ -76,7 +76,7 @@ class DosageCalculatorFragment : Fragment() , Injectable, AdapterView.OnItemSele
         viewModel.dosage.observe(viewLifecycleOwner) {
 //            InfoDialogFragment.newInstance(it).show(childFragmentManager, InfoDialogFragment.javaClass.simpleName)
             MaterialAlertDialogBuilder(requireContext())
-                .setTitle(resources.getString(R.string.result))
+                .setTitle(resources.getString(R.string.indication))
                 .setMessage(createResult(it))
                 .setPositiveButton(getString(R.string.ok)) { dialog, which ->
 
@@ -100,10 +100,11 @@ class DosageCalculatorFragment : Fragment() , Injectable, AdapterView.OnItemSele
 
     private fun createResult(res: String): String {
         return  "Product: " + binding.productSpinner.selectedItem.toString() + "\n" + "\n" +
-                "Product Type: " + binding.typeSpinner.selectedItem.toString() + "\n" + "\n" +
+                "Product Type: " + binding.typeSpinner.selectedItem.toString() + "\n" +
                 "Indication: " + binding.indicationSpinner.selectedItem.toString() + "\n" + "\n" +
                 "Weight: " + binding.weightSpinner.selectedItem.toString() + "\n" + "\n" +
                 "Result: " + res + "\n" + "\n" + "\n" + "\n" +
+                "Disclaimer: " + "\n" +
                 "Note: Dosage is for reference purposes only. The doctor is advised to prescribe patients as per the individual case requirements only. "
 
     }

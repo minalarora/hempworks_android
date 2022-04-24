@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../layout/custom_preview.xml" value="0.365625" />
+        <entry key="admin/src/main/res/layout/fragment_admin.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/drawable-hdpi/edittext_black_corner_radius.xml" value="0.2435" />
         <entry key="app/src/main/res/drawable/background_all_rounded_corners.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/background_bottomsheet_top_rounded_corners.xml" value="0.2125" />

@@ -93,13 +93,23 @@ class OfferFragment : Fragment(), Injectable, CouponItemClickListener{
     }
 
     override fun onItemClick(coupon: Coupon) {
-        val clipboardManager = getSystemService(requireContext(), ClipboardManager::class.java) as ClipboardManager
-        val clipData = ClipData.newPlainText(
-            "coupon",
-           coupon.name.toString()
-        )
-        clipboardManager.setPrimaryClip(clipData)
-        Toast.makeText(requireContext(), R.string.copied_to_clipboard, Toast.LENGTH_SHORT).show()
+        if (coupon.type == "quantity") {
+            coupon.product?.let {
+                OfferFragmentDirections.actionOfferFragmentToProductFragment(it.toString()).also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+        } else {
+            val clipboardManager =
+                getSystemService(requireContext(), ClipboardManager::class.java) as ClipboardManager
+            val clipData = ClipData.newPlainText(
+                "coupon",
+                coupon.name.toString()
+            )
+            clipboardManager.setPrimaryClip(clipData)
+            Toast.makeText(requireContext(), R.string.copied_to_clipboard, Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 }
 
