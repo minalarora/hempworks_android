@@ -99,13 +99,13 @@ class DosageCalculatorFragment : Fragment() , Injectable, AdapterView.OnItemSele
     }
 
     private fun createResult(res: String): String {
-        return  "Product: " + binding.productSpinner.selectedItem.toString() + "\n" + "\n" +
-                "Product Type: " + binding.typeSpinner.selectedItem.toString() + "\n" +
+        return  "Product: " + binding.productSpinner.selectedItem.toString() + "\n" +
+                "Product Type: " + binding.typeSpinner.selectedItem.toString() + "\n" + "\n" +
                 "Indication: " + binding.indicationSpinner.selectedItem.toString() + "\n" + "\n" +
                 "Weight: " + binding.weightSpinner.selectedItem.toString() + "\n" + "\n" +
                 "Result: " + res + "\n" + "\n" + "\n" + "\n" +
                 "Disclaimer: " + "\n" +
-                "Note: Dosage is for reference purposes only. The doctor is advised to prescribe patients as per the individual case requirements only. "
+                "Dosage is for reference purposes only. The doctor is advised to prescribe patients as per the individual case requirements only. "
 
     }
 
