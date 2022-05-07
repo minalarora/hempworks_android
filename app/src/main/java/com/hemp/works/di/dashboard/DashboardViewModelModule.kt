@@ -6,6 +6,7 @@ import dagger.multibindings.IntoMap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.hemp.works.dashboard.DashboardSharedViewModel
+import com.hemp.works.dashboard.account.ui.AccountViewModel
 import com.hemp.works.dashboard.address.ui.AddressViewModel
 import com.hemp.works.dashboard.address.ui.CreateAddressViewModel
 import com.hemp.works.dashboard.calculator.ui.DosageCalculatorViewModel
@@ -138,5 +139,10 @@ abstract class DashboardViewModelModule {
     @IntoMap
     @ViewModelKey(OfferViewModel::class)
     abstract fun bindOfferViewModel(viewModel: OfferViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AccountViewModel::class)
+    abstract fun bindAccountViewModel(viewModel: AccountViewModel): ViewModel
 
 }

@@ -360,10 +360,14 @@ class HomeFragment : Fragment(), Injectable {
                 }
             }
             R.id.support -> {
-
+                HomeFragmentDirections.actionHomeFragmentToAllSupportFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
             }
             R.id.account -> {
-
+                HomeFragmentDirections.actionHomeFragmentToAccountFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
             }
 
 

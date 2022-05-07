@@ -44,7 +44,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginHorizontal="@dimen/_5sdp"
             app:hideIfFalse="@{viewmodel.allProductVisibility}"
             tools:listitem="@layout/item_product"/>

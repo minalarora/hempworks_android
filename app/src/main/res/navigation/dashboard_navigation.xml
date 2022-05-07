@@ -87,6 +87,12 @@
             app:popUpTo="@id/homeFragment"
             app:enterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_allSupportFragment"
+            app:destination="@id/allSupportFragment" />
 
     </fragment>
     <fragment
@@ -328,7 +334,51 @@
         <action
             android:id="@+id/action_allProductListFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_allProductListFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_allProductListFragment_to_allSupportFragment"
+            app:destination="@id/allSupportFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.hemp.works.dashboard.account.ui.AccountFragment"
+        android:label="AccountFragment" >
+        <action
+            android:id="@+id/action_accountFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_allProductListFragment"
+            app:destination="@id/allProductListFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_allSupportFragment"
+            app:destination="@id/allSupportFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/allSupportFragment"
+        android:name="com.hemp.works.dashboard.support.ui.AllSupportFragment"
+        android:label="AllSupportFragment" >
+        <action
+            android:id="@+id/action_allSupportFragment_to_supportFragment"
+            app:destination="@id/supportFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_allSupportFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_allSupportFragment_to_allProductListFragment"
+            app:destination="@id/allProductListFragment" />
+        <action
+            android:id="@+id/action_allSupportFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+
+    </fragment>
+
+
 
 </navigation>
 <!--https://developer.android.com/guide/navigation/navigation-pass-data#supported_argument_types-->

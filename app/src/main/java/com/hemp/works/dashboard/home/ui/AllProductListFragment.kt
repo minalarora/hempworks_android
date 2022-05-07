@@ -93,10 +93,14 @@ class  AllProductListFragment : Fragment(), Injectable {
 
             }
             R.id.support -> {
-
+                AllProductListFragmentDirections.actionAllProductListFragmentToAllSupportFragment().let {
+                    binding.root.findNavController().navigate(it)
+                }
             }
             R.id.account -> {
-
+                AllProductListFragmentDirections.actionAllProductListFragmentToAccountFragment().let {
+                    binding.root.findNavController().navigate(it)
+                }
             }
 
 

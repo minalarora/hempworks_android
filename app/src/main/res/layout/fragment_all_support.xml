@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_marginVertical="@dimen/_30sdp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_fileName="help.json"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+        <LinearLayout
+            android:id="@+id/support_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/animationView">
+
+            <LinearLayout
+                android:id="@+id/whatsapp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="@dimen/_20sdp">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:padding="@dimen/_12sdp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_fileName="whatsapp.json" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/textview_bold_medium"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:textColor="@color/black"
+                    android:text="@string/whatsapp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:drawablePadding="@dimen/_88sdp"
+                    app:drawableEndCompat="@drawable/ic_right_arrow"
+                    app:drawableTint="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="@dimen/_20sdp">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:padding="@dimen/_12sdp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_fileName="email.json" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/textview_bold_medium"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:textColor="@color/black"
+                    android:text="@string/email_us"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:drawablePadding="@dimen/_120sdp"
+                    app:drawableEndCompat="@drawable/ic_right_arrow"
+                    app:drawableTint="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/chat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="@dimen/_20sdp">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:padding="@dimen/_12sdp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_fileName="chat.json" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/textview_bold_medium"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:textColor="@color/black"
+                    android:text="@string/chat_us"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:drawablePadding="@dimen/_125sdp"
+                    app:drawableEndCompat="@drawable/ic_right_arrow"
+                    app:drawableTint="@color/black" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:itemIconSize="@dimen/_24sdp"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/bottom_navigation_menu" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

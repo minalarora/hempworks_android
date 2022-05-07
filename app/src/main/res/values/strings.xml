@@ -192,6 +192,26 @@
     <string name="products">Products</string>
     <string name="my_account">My Account</string>
 
+    <string name="account_profile">Profile</string>
+    <string name="account_orders">Orders</string>
+    <string name="account_payment">Payment History</string>
+    <string name="account_prescriptions">My Prescriptions</string>
+    <string name="account_credit">Credit Notes Earned</string>
+    <string name="account_ledger">Ledger</string>
+    <string name="account_logout">Logout</string>
+    <string name="chat_us">CHAT</string>
+    <string name="email_us">EMAIL</string>
+    <string name="whatsapp">WHATSAPP</string>
+
+    <string-array name="account_list">
+        <item>Profile</item>
+        <item>Orders</item>
+        <item>Payment History</item>
+        <item>My Prescriptions</item>
+        <item>Credit Notes Earned</item>
+        <item>Ledger</item>
+        <item>Logout</item>
+    </string-array>
 
     <string-array name="state_list">
         <item><b>Select State</b></item>

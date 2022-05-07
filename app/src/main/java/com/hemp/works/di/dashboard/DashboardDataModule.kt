@@ -1,5 +1,7 @@
 package com.hemp.works.di.dashboard
 
+import com.hemp.works.dashboard.account.data.remote.AccountRemoteDataSource
+import com.hemp.works.dashboard.account.data.remote.AccountService
 import com.hemp.works.dashboard.address.data.remote.AddressRemoteDataSource
 import com.hemp.works.dashboard.address.data.remote.AddressService
 import com.hemp.works.dashboard.calculator.data.remote.CalculatorRemoteDataSource
@@ -180,5 +182,14 @@ class DashboardDataModule {
     @Provides
     fun provideOfferRemoteDataSource(service: OfferService)
             = OfferRemoteDataSource(service)
+
+    @Singleton
+    @Provides
+    fun provideAccountService(retrofit: Retrofit): AccountService = retrofit.create(
+        AccountService::class.java)
+
+    @Provides
+    fun provideAccountRemoteDataSource(service: AccountService)
+            = AccountRemoteDataSource(service)
 
 }
