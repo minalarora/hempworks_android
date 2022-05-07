@@ -14,6 +14,11 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
+    buildFeatures {
+        // for view binding:
+        viewBinding = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -38,4 +43,38 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
+    //koin dependencies [https://insert-koin.io/]
+    implementation koinDI.core
+    implementation koinDI.scope
+    implementation koinDI.viewModel
+
+    // Retrofit
+    implementation networkDependencies.retrofit2
+    implementation networkDependencies.retrofit2_converter_gson
+    //send plain text as the request payload
+    implementation networkDependencies.retrofit2_converter_scalars
+    implementation networkDependencies.okhttp_logging
+
+    implementation "com.squareup.retrofit2:converter-moshi:2.1.0"
+    implementation "com.squareup.moshi:moshi-kotlin:1.8.0"
+
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation 'androidx.lifecycle:lifecycle-common:2.3.1'
+
+    //Kotlin  dependencies &   Coroutines [https://github.com/Kotlin/kotlinx.coroutines]
+    implementation kotlinDependencies.coroutinesCore
+    implementation kotlinDependencies.coroutinesAndroid
+
+    //viewmodel lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0"
+
+    debugImplementation "com.github.chuckerteam.chucker:library:3.4.0"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.4.0"
+
+    implementation 'com.github.iknow4:android-utils-sdk:1.1.2'
+
 }

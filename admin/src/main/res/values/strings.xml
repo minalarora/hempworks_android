@@ -1,1 +1,5 @@
-<resources></resources>
+<resources>
+    <string name="error_server_not_reachable">error server not reachable</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="un_authorized">Un authorized</string>
+</resources>
