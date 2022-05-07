@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.hemp.works.dashboard.wallet.ui.WalletViewModel" />
+
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_CDCDCD">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:minHeight="?attr/actionBarSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleTextColor="@android:color/white"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:src="@drawable/ic_back"
+                android:elevation="1dp"
+                app:tint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/textview_normal_big"
+                android:textColor="@color/white"
+                android:text="@string/wallet_history"/>
+
+            <ImageView
+                android:id="@+id/filter"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:src="@drawable/ic_menu_filter"
+                android:elevation="1dp"
+                android:layout_gravity="end"
+                app:tint="@color/white" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/grey_CDCDCD"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+
+            <TextView
+                android:id="@+id/date_range"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textview_italic_small"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginVertical="@dimen/_15sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="@{viewmodel.dateRangeText}"
+                app:hideIfFalse="@{viewmodel.dateRangeVisibility}"
+                tools:text="Showing results for 17 DEC 21 - 30 jan 21"/>
+
+            <ImageView
+                android:id="@+id/date_range_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close_fill"
+                android:layout_margin="@dimen/_5sdp"
+                app:layout_constraintTop_toTopOf="@id/date_range"
+                app:layout_constraintBottom_toBottomOf="@id/date_range"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:hideIfFalse="@{viewmodel.dateRangeVisibility}"
+                app:tint="@color/dark_red" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/order_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/date_range"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="@dimen/_5sdp"
+                app:hideIfTrue="@{viewmodel.loading}"
+                android:background="@color/grey_CDCDCD"
+                tools:listitem="@layout/item_wallet"
+                />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_200sdp"
+                android:layout_marginVertical="@dimen/_50sdp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_fileName="empty_cart.json"
+                app:hideIfFalse="@{viewmodel.loading == false &amp;&amp; viewmodel.ordersVisibility == false ? true : false}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            layout="@layout/progress_bar_white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:isVisible="@{viewmodel.loading}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

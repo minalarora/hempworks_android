@@ -72,6 +72,7 @@
         <entry key="app/src/main/res/layout/fragment_onboarding5.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_order.xml" value="0.2680921052631579" />
         <entry key="app/src/main/res/layout/fragment_payment.xml" value="0.22138157894736843" />
+        <entry key="app/src/main/res/layout/fragment_payment_history.xml" value="0.3484375" />
         <entry key="app/src/main/res/layout/fragment_pending_credit_bottom_sheet.xml" value="0.22138157894736843" />
         <entry key="app/src/main/res/layout/fragment_prescription.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_product.xml" value="0.2582501918649271" />
@@ -84,6 +85,7 @@
         <entry key="app/src/main/res/layout/fragment_tnl.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_upload_prescription.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_verify_mobile.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_wallet.xml" value="0.3484375" />
         <entry key="app/src/main/res/layout/item_account.xml" value="0.3484375" />
         <entry key="app/src/main/res/layout/item_address.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_banner_image.xml" value="0.375" />
@@ -97,6 +99,7 @@
         <entry key="app/src/main/res/layout/item_no_product.xml" value="0.2611111111111111" />
         <entry key="app/src/main/res/layout/item_notification.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_order.xml" value="0.35052083333333334" />
+        <entry key="app/src/main/res/layout/item_payment_history.xml" value="0.3484375" />
         <entry key="app/src/main/res/layout/item_prescription.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/item_product.xml" value="0.2611111111111111" />
         <entry key="app/src/main/res/layout/item_product_image.xml" value="0.35052083333333334" />
@@ -105,6 +108,7 @@
         <entry key="app/src/main/res/layout/item_sent.xml" value="0.22138157894736843" />
         <entry key="app/src/main/res/layout/item_size.xml" value="0.45" />
         <entry key="app/src/main/res/layout/item_tutorial.xml" value="0.35052083333333334" />
+        <entry key="app/src/main/res/layout/item_wallet.xml" value="0.3484375" />
         <entry key="app/src/main/res/layout/layout_no_product.xml" value="0.25" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.25555555555555554" />

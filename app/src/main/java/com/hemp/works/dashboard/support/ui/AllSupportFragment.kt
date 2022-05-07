@@ -56,7 +56,7 @@ class AllSupportFragment : Fragment() {
             try {
                 val i = Intent(Intent.ACTION_VIEW)
                 val url =
-                    "https://api.whatsapp.com/send?phone=" + "+918871748278"
+                    "https://api.whatsapp.com/send?phone=" + "+918851293570"
                 i.setPackage("com.whatsapp")
                 i.data = Uri.parse(url)
                 startActivity(i)

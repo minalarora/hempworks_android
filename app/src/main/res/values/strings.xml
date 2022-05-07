@@ -164,6 +164,8 @@
     <string name="contact_support">CONTACT SUPPORT</string>
     <string name="product_added">PRODUCT ADDED IN CART</string>
     <string name="empty_string"></string>
+    <string name="transaction_amount">Rs. #%1$s</string>
+    <string name="transaction_subtitle">FOR #%1$s #%2$s</string>
     <string name="success">SUCCESS</string>
     <string name="txStatus">txStatus</string>
     <string name="orderId">orderId</string>
@@ -172,10 +174,14 @@
     <string name="credit_dialog_text">CREDIT</string>
     <string name="pay_now">PAY NOW</string>
     <string name="order_id">Order #%1$s</string>
+    <string name="transaction_id">Transaction #%1$s</string>
+    <string name="wallethistory_id">Reference ID: #%1$s</string>
     <string name="order_price">Rs %1$s</string>
     <string name="order_quantity">Qty: %1$s</string>
     <string name="request_cancellation">REQUEST_CANCELLATION</string>
     <string name="canceled">CANCELLED</string>
+    <string name="add">ADD</string>
+    <string name="failed">FAILED</string>
     <string name="completed">COMPLETED</string>
     <string name="your_message_has_failed_retry">Your message has failed. Retry</string>
     <string name="send_message">Send Message...</string>
@@ -202,6 +208,8 @@
     <string name="chat_us">CHAT</string>
     <string name="email_us">EMAIL</string>
     <string name="whatsapp">WHATSAPP</string>
+    <string name="payment_history">Payment History</string>
+    <string name="wallet_history">Credit Notes History</string>
 
     <string-array name="account_list">
         <item>Profile</item>
