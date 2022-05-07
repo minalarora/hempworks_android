@@ -218,7 +218,7 @@ class PaymentFragment : Fragment(), Injectable {
         val token = responsePayment.token
         val cfPaymentService = CFPaymentService.getCFPaymentServiceInstance()
         cfPaymentService.setOrientation(0)
-        cfPaymentService.doPayment(requireActivity(), getInputParams(responsePayment.id, if (BuildConfig.DEBUG) "1" else requestPayment.discountprice.toString(), requestPayment.reason ), token, stage, "#f8aa37", "#FFFFFF", true);
+        cfPaymentService.doPayment(requireActivity(), getInputParams(responsePayment.id, if (!BuildConfig.DEBUG) "1" else requestPayment.discountprice.toString(), requestPayment.reason ), token, stage, "#f8aa37", "#FFFFFF", true);
         //cfPaymentService.upiPayment(this, getInputParams(), token, stage);
 
     }

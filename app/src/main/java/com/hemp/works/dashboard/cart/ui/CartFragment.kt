@@ -80,6 +80,7 @@ class CartFragment : Fragment(), Injectable, CartItemClickListener {
         }
 
         viewModel.error.observe(viewLifecycleOwner) {
+            viewModel.fetchCartDetails()
             showSnackBar(it)
         }
 

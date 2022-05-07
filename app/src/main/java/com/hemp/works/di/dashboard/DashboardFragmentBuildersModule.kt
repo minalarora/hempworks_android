@@ -5,6 +5,7 @@ import com.hemp.works.dashboard.address.ui.CreateAddressFragment
 import com.hemp.works.dashboard.calculator.ui.DosageCalculatorFragment
 import com.hemp.works.dashboard.cart.ui.CartFragment
 import com.hemp.works.dashboard.cart.ui.CouponFragment
+import com.hemp.works.dashboard.home.ui.AllProductListFragment
 import com.hemp.works.dashboard.home.ui.HomeFragment
 import com.hemp.works.dashboard.home.ui.ProductListFragment
 import com.hemp.works.dashboard.notification.ui.NotificationFragment
@@ -31,6 +32,9 @@ abstract class DashboardFragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeProductListFragment(): ProductListFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeAllProductListFragment(): AllProductListFragment
 
     @ContributesAndroidInjector
     abstract fun contributeProductFragment(): ProductFragment

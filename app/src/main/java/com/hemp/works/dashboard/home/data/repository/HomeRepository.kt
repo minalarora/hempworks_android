@@ -97,6 +97,13 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
         }
     }
 
+    suspend fun fetchAllProducts() {
+
+        getResult(Constants.GENERAL_ERROR_MESSAGE){ remoteDataSource.fetchAllProducts() }?.let {
+            it.data?.let { list -> _allProductList.postValue(list) }
+        }
+    }
+
     suspend fun fetchPendingAmount() {
         getResult(handleLoading = false){ remoteDataSource.getPendingAmount() }?.let {
             it.data?.let { it -> _pendingAmount.postValue(it) }

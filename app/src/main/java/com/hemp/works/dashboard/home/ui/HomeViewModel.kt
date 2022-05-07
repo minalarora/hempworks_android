@@ -47,6 +47,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     private var _job: Job? = null
 
     init {
+        loading.value = true
         viewModelScope.launch {
             repository.fetchHomeData()
         }

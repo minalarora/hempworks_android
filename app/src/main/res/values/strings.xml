@@ -76,6 +76,7 @@
     <string name="product_category_in">in %1$s</string>
     <string name="trending_products">BEST RATED PRODUCTS</string>
     <string name="all_products">ALL PRODUCTS</string>
+    <string name="all_products_small">All Products</string>
     <string name="search_products">Search Products...</string>
     <string name="no_products_found">NO PRODUCTS FOUND</string>
     <string name="cart">Cart</string>
@@ -187,6 +188,9 @@
     <string name="blogs">BLOGS</string>
     <string name="www_hempworks_in_info_hempworks_in">www.hempworks.in | info@hempworks.in</string>
     <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="approved_alert">YOUR ACCOUNT IS NOT APPROVED YET!</string>
+    <string name="products">Products</string>
+    <string name="my_account">My Account</string>
 
 
     <string-array name="state_list">

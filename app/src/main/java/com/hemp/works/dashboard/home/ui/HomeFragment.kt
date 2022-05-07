@@ -90,6 +90,11 @@ class HomeFragment : Fragment(), Injectable {
             false
         }
 
+        binding.bottomNavigation.setOnNavigationItemSelectedListener{
+            selectBottomItem(it)
+            true
+        }
+
         ActionBarDrawerToggle(requireActivity(), binding.drawer, binding.toolbar, R.string.open, R.string.close).let {
             binding.drawer.addDrawerListener(it)
             it.isDrawerIndicatorEnabled = true
@@ -262,6 +267,10 @@ class HomeFragment : Fragment(), Injectable {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.bottomNavigation.selectedItemId = R.id.home
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -337,6 +346,29 @@ class HomeFragment : Fragment(), Injectable {
         }
 
         binding.drawer.closeDrawers()
+    }
+
+    private fun selectBottomItem(menuItem: MenuItem) {
+
+        when(menuItem.itemId) {
+            R.id.home -> {
+
+            }
+            R.id.products -> {
+                HomeFragmentDirections.actionHomeFragmentToAllProductListFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            R.id.support -> {
+
+            }
+            R.id.account -> {
+
+            }
+
+
+            //TODO: NAVIGATE TO DIFF FRAGMENTS
+        }
     }
 
 

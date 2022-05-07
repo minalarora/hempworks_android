@@ -28,6 +28,11 @@
             app:enterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/homeFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_allProductListFragment"
+            app:destination="@id/allProductListFragment" />
+
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment"
@@ -311,6 +316,18 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_right"
             app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/allProductListFragment"
+        android:name="com.hemp.works.dashboard.home.ui.AllProductListFragment"
+        android:label="AllProductListFragment" >
+        <action
+            android:id="@+id/action_allProductListFragment_to_productFragment"
+            app:destination="@id/productFragment"
+            app:popUpTo="@id/allProductListFragment" />
+        <action
+            android:id="@+id/action_allProductListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 
 </navigation>

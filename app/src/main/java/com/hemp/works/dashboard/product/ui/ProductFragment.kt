@@ -122,13 +122,19 @@ class ProductFragment : Fragment(), Injectable {
         ViewCompat.setNestedScrollingEnabled(binding.extraRecyclerview, false);
 
         binding.addCart.setOnClickListener {
-            if (sharedViewModel.userType == UserType.ANONYMOUS) navigateToLogin()
-            else viewModel.addProduct(false)
+            when (sharedViewModel.userType) {
+                UserType.ANONYMOUS -> navigateToLogin()
+                UserType.APPROVED -> viewModel.addProduct(false)
+                else -> showSuccessSnackBar(getString(R.string.approved_alert))
+            }
         }
 
         binding.buyNow.setOnClickListener {
-            if (sharedViewModel.userType == UserType.ANONYMOUS) navigateToLogin()
-            else viewModel.addProduct(true)
+            when (sharedViewModel.userType) {
+                UserType.ANONYMOUS -> navigateToLogin()
+                UserType.APPROVED -> viewModel.addProduct(true)
+                else -> showSuccessSnackBar(getString(R.string.approved_alert))
+            }
         }
 
         binding.pdfDownload.setOnClickListener {

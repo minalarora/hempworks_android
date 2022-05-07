@@ -21,6 +21,7 @@ class AddressViewModel  @Inject constructor(private val repository: AddressRepos
 
     val totalprice = cartRepository.cart.value?.totalprice
     val discountprice = cartRepository.cart.value?.discountprice
+    val walletprice = cartRepository.cart.value?.walletprice
 
     fun fetchAddressList() {
         viewModelScope.launch {

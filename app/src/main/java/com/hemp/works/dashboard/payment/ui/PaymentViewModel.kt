@@ -43,8 +43,9 @@ class PaymentViewModel @Inject constructor(private val repository: PaymentReposi
                     val requestOrder = RequestOrder(
                         address = requestPayment?.address!!,
                         payment = requestPayment?.payment!!,
-                        totalprice =  if (BuildConfig.DEBUG) 1 else requestPayment?.totalprice!!,
-                        discountprice =  if (BuildConfig.DEBUG) 1 else requestPayment?.discountprice!!
+                        totalprice =  if (!BuildConfig.DEBUG && requestPayment?.payment == "DIRECT") 1 else requestPayment?.totalprice!!,
+                        discountprice =  if (!BuildConfig.DEBUG && requestPayment?.payment == "DIRECT") 1 else requestPayment?.discountprice!!,
+                        walletprice = requestPayment?.walletprice!!
                     )
                     repository.doOrder(requestOrder)
                 } else {
