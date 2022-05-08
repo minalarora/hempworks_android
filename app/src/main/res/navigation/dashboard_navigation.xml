@@ -354,6 +354,37 @@
         <action
             android:id="@+id/action_accountFragment_to_allSupportFragment"
             app:destination="@id/allSupportFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_accountFragment_to_orderFragment"
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_accountFragment_to_paymentHistoryFragment"
+            app:destination="@id/paymentHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_accountFragment_to_prescriptionFragment"
+            app:destination="@id/prescriptionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_accountFragment_to_walletFragment"
+            app:destination="@id/walletFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+
 
     </fragment>
     <fragment
@@ -377,7 +408,14 @@
             app:destination="@id/accountFragment" />
 
     </fragment>
-
+    <fragment
+        android:id="@+id/paymentHistoryFragment"
+        android:name="com.hemp.works.dashboard.payment.ui.PaymentHistoryFragment"
+        android:label="PaymentHistoryFragment" />
+    <fragment
+        android:id="@+id/walletFragment"
+        android:name="com.hemp.works.dashboard.wallet.ui.WalletFragment"
+        android:label="WalletFragment" />
 
 
 </navigation>

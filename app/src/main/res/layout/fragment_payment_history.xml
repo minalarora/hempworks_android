@@ -118,7 +118,7 @@
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_fileName="empty_cart.json"
-                app:hideIfFalse="@{viewmodel.loading == false &amp;&amp; viewmodel.ordersVisibility == false ? true : false}"
+                app:hideIfFalse="@{viewmodel.loading == false &amp;&amp; viewmodel.paymentListVisibility == false ? true : false}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

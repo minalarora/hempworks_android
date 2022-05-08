@@ -17,7 +17,7 @@ class WalletHistoryViewModel(context: Context, private val walletHistory: Wallet
     private val dateFormat = SimpleDateFormat(Constants.DATE_FORMAT);
     val date: String = dateFormat.format(walletHistory.date!!)
 
-    val status: String = walletHistory.operation.toString()
+    val status: String = walletHistory.operation.toString().uppercase()
 
     val statusTextColor = when(status) {
         context.getString(R.string.add) -> ContextCompat.getColor(context, R.color.green)

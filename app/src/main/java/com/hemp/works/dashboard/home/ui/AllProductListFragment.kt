@@ -15,12 +15,15 @@ import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.dashboard.DashboardSharedViewModel
+import com.hemp.works.dashboard.UserType
 import com.hemp.works.dashboard.home.ui.adapters.ProductAdapter
 import com.hemp.works.dashboard.model.Product
 import com.hemp.works.dashboard.product.ui.ProductItemClickListener
 import com.hemp.works.databinding.FragmentAllProductListBinding
 import com.hemp.works.di.Injectable
 import com.hemp.works.di.injectViewModel
+import com.hemp.works.login.LoginActivity
+import com.hemp.works.utils.PreferenceManagerUtil
 import javax.inject.Inject
 
 class  AllProductListFragment : Fragment(), Injectable {
@@ -98,8 +101,12 @@ class  AllProductListFragment : Fragment(), Injectable {
                 }
             }
             R.id.account -> {
-                AllProductListFragmentDirections.actionAllProductListFragmentToAccountFragment().let {
-                    binding.root.findNavController().navigate(it)
+                if (sharedViewModel.userType == UserType.ANONYMOUS) {
+                    navigateToLogin()
+                } else {
+                    AllProductListFragmentDirections.actionAllProductListFragmentToAccountFragment().let {
+                        binding.root.findNavController().navigate(it)
+                    }
                 }
             }
 
@@ -112,6 +119,12 @@ class  AllProductListFragment : Fragment(), Injectable {
         val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun navigateToLogin() {
+        PreferenceManagerUtil.clear(requireContext())
+        LoginActivity.getPendingIntent(requireContext(), R.id.loginFragment).send()
+        requireActivity().finish()
     }
 
     companion object {

@@ -13,14 +13,18 @@ import com.hemp.works.dashboard.notification.ui.NotificationFragment
 import com.hemp.works.dashboard.offer.ui.OfferFragment
 import com.hemp.works.dashboard.order.ui.OrderFragment
 import com.hemp.works.dashboard.payment.ui.PaymentFragment
+import com.hemp.works.dashboard.payment.ui.PaymentHistoryFragment
 import com.hemp.works.dashboard.prescription.ui.PrescriptionFragment
 import com.hemp.works.dashboard.prescription.ui.UploadPrescriptionFragment
 import com.hemp.works.dashboard.product.ui.ProductFragment
 import com.hemp.works.dashboard.product.ui.ProductImageFragment
 import com.hemp.works.dashboard.profile.ui.ProfileFragment
 import com.hemp.works.dashboard.search.ui.SearchFragment
+import com.hemp.works.dashboard.support.ui.AllSupportFragment
+import com.hemp.works.dashboard.support.ui.AllSupportFragmentDirections
 import com.hemp.works.dashboard.support.ui.SupportFragment
 import com.hemp.works.dashboard.tnl.ui.TNLFragment
+import com.hemp.works.dashboard.wallet.ui.WalletFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -93,5 +97,14 @@ abstract class DashboardFragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeAccountFragment(): AccountFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeWalletFragment(): WalletFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributePaymentHistoryFragment(): PaymentHistoryFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeAllSupportFragment(): AllSupportFragment
 
 }

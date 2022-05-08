@@ -18,6 +18,7 @@ import com.hemp.works.dashboard.home.ui.ProductListViewModel
 import com.hemp.works.dashboard.notification.ui.NotificationViewModel
 import com.hemp.works.dashboard.offer.ui.OfferViewModel
 import com.hemp.works.dashboard.order.ui.OrderViewModel
+import com.hemp.works.dashboard.payment.ui.PaymentHistoryViewModel
 import com.hemp.works.dashboard.payment.ui.PaymentViewModel
 import com.hemp.works.dashboard.prescription.ui.PrescriptionViewModel
 import com.hemp.works.dashboard.prescription.ui.UploadPrescriptionViewModel
@@ -26,6 +27,7 @@ import com.hemp.works.dashboard.profile.ui.ProfileViewModel
 import com.hemp.works.dashboard.search.ui.SearchViewModel
 import com.hemp.works.dashboard.support.ui.SupportViewModel
 import com.hemp.works.dashboard.tnl.ui.TNLViewModel
+import com.hemp.works.dashboard.wallet.ui.WalletViewModel
 import com.hemp.works.di.ViewModelKey
 import com.hemp.works.login.LoginSharedViewModel
 import com.hemp.works.login.ui.viewmodel.*
@@ -144,5 +146,15 @@ abstract class DashboardViewModelModule {
     @IntoMap
     @ViewModelKey(AccountViewModel::class)
     abstract fun bindAccountViewModel(viewModel: AccountViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(WalletViewModel::class)
+    abstract fun bindWalletViewModel(viewModel: WalletViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PaymentHistoryViewModel::class)
+    abstract fun bindPaymentHistoryViewModel(viewModel: PaymentHistoryViewModel): ViewModel
 
 }

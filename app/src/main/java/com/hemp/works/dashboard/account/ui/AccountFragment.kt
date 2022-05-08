@@ -13,11 +13,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.base.MyAppGlideModule
 import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.dashboard.account.ui.adapters.AccountAdapter
+import com.hemp.works.dashboard.home.ui.AllProductListFragmentDirections
 import com.hemp.works.dashboard.home.ui.HomeFragmentDirections
 import com.hemp.works.dashboard.home.ui.HomeViewModel
 import com.hemp.works.dashboard.home.ui.adapters.BannerAdapter
@@ -85,10 +87,9 @@ class AccountFragment : Fragment(), Injectable, AccountItemClickListener {
 
 
         viewModel.booleanResponse.observe(viewLifecycleOwner) {
-            PreferenceManagerUtil.clear(requireContext())
-            LoginActivity.getPendingIntent(requireContext(), R.id.loginFragment).send()
-            requireActivity().finish()
+            navigateToLogin()
         }
+
 
         return binding.root
     }
@@ -102,20 +103,24 @@ class AccountFragment : Fragment(), Injectable, AccountItemClickListener {
 
         when(menuItem.itemId) {
             R.id.home -> {
-
+                AccountFragmentDirections.actionAccountFragmentToHomeFragment().let {
+                    binding.root.findNavController().navigate(it)
+                }
             }
             R.id.products -> {
-
+                AccountFragmentDirections.actionAccountFragmentToAllProductListFragment().let {
+                    binding.root.findNavController().navigate(it)
+                }
             }
             R.id.support -> {
-
+                AccountFragmentDirections.actionAccountFragmentToAllSupportFragment().let {
+                    binding.root.findNavController().navigate(it)
+                }
             }
             R.id.account -> {
 
             }
 
-
-            //TODO: NAVIGATE TO DIFF FRAGMENTS
         }
     }
 
@@ -125,6 +130,13 @@ class AccountFragment : Fragment(), Injectable, AccountItemClickListener {
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
     }
 
+    private fun navigateToLogin() {
+        PreferenceManagerUtil.clear(requireContext())
+        LoginActivity.getPendingIntent(requireContext(), R.id.loginFragment).send()
+        requireActivity().finish()
+    }
+
+
     companion object {
 
         @JvmStatic
@@ -133,7 +145,48 @@ class AccountFragment : Fragment(), Injectable, AccountItemClickListener {
     }
 
     override fun onItemClick(string: String) {
+        when(string) {
+            getString(R.string.account_profile) -> {
+                AccountFragmentDirections.actionAccountFragmentToProfileFragment().let {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            getString(R.string.account_orders) -> {
+                AccountFragmentDirections.actionAccountFragmentToOrderFragment().let {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            getString(R.string.account_payment) -> {
+                AccountFragmentDirections.actionAccountFragmentToPaymentHistoryFragment().let {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            getString(R.string.account_prescriptions) -> {
+                AccountFragmentDirections.actionAccountFragmentToPrescriptionFragment().let {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            getString(R.string.account_credit) -> {
+                AccountFragmentDirections.actionAccountFragmentToWalletFragment().let {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            getString(R.string.account_ledger) -> {
 
+            }
+            getString(R.string.account_logout) -> {
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(resources.getString(R.string.log_out))
+                    .setMessage(resources.getString(R.string.confirm_logout_account))
+                    .setNegativeButton(getString(R.string.no)) { dialog, which ->
+
+                    }
+                    .setPositiveButton(getString(R.string.yes)) { dialog, which ->
+                        viewModel.logout()
+                    }
+                    .show()
+            }
+        }
     }
 }
 

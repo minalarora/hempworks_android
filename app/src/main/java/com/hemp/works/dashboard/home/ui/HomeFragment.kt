@@ -365,8 +365,12 @@ class HomeFragment : Fragment(), Injectable {
                 }
             }
             R.id.account -> {
-                HomeFragmentDirections.actionHomeFragmentToAccountFragment().also {
-                    binding.root.findNavController().navigate(it)
+                if (sharedViewModel.userType == UserType.ANONYMOUS) {
+                    navigateToLogin()
+                } else {
+                    HomeFragmentDirections.actionHomeFragmentToAccountFragment().also {
+                        binding.root.findNavController().navigate(it)
+                    }
                 }
             }
 
@@ -408,6 +412,12 @@ class HomeFragment : Fragment(), Injectable {
         val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun navigateToLogin() {
+        PreferenceManagerUtil.clear(requireContext())
+        LoginActivity.getPendingIntent(requireContext(), R.id.loginFragment).send()
+        requireActivity().finish()
     }
 
     companion object {

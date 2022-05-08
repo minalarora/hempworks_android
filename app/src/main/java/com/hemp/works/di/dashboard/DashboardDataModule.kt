@@ -32,6 +32,8 @@ import com.hemp.works.dashboard.support.data.remote.SupportRemoteDataSource
 import com.hemp.works.dashboard.support.data.remote.SupportService
 import com.hemp.works.dashboard.tnl.data.remote.TNLRemoteDataSource
 import com.hemp.works.dashboard.tnl.data.remote.TNLService
+import com.hemp.works.dashboard.wallet.data.remote.WalletRemoteDataSource
+import com.hemp.works.dashboard.wallet.data.remote.WalletService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -191,5 +193,17 @@ class DashboardDataModule {
     @Provides
     fun provideAccountRemoteDataSource(service: AccountService)
             = AccountRemoteDataSource(service)
+
+    @Singleton
+    @Provides
+    fun provideWalletService(retrofit: Retrofit): WalletService = retrofit.create(
+        WalletService::class.java)
+
+    @Provides
+    fun provideWalletRemoteDataSource(service: WalletService)
+            = WalletRemoteDataSource(service)
+
+
+
 
 }
