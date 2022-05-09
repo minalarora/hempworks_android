@@ -172,6 +172,9 @@ class AccountFragment : Fragment(), Injectable, AccountItemClickListener {
                 }
             }
             getString(R.string.account_ledger) -> {
+                AccountFragmentDirections.actionAccountFragmentToLedgerFragment().let {
+                    binding.root.findNavController().navigate(it)
+                }
 
             }
             getString(R.string.account_logout) -> {

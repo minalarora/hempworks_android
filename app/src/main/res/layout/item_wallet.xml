@@ -23,7 +23,7 @@
             android:textSize="@dimen/_12sdp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/grey_AAAAAA"
+            android:textColor="@{viewmodel.statusTextColor}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_margin="@dimen/_5sdp"
@@ -46,20 +46,20 @@
             android:text="@{viewmodel.date}"
             tools:text="23 Feb 2021, 08:02 PM"/>
 
-        <TextView
-            android:id="@+id/status"
-            style="@style/textview_bold_small"
-            android:textSize="@dimen/_11sdp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_margin="@dimen/_5sdp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:text="@{viewmodel.status}"
-            android:textColor="@{viewmodel.statusTextColor}"
-            tools:text="SUCCESS"/>
+<!--        <TextView-->
+<!--            android:id="@+id/status"-->
+<!--            style="@style/textview_bold_small"-->
+<!--            android:textSize="@dimen/_11sdp"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:layout_margin="@dimen/_5sdp"-->
+<!--            android:maxLines="1"-->
+<!--            android:ellipsize="end"-->
+<!--            android:text="@{viewmodel.status}"-->
+<!--            android:textColor="@{viewmodel.statusTextColor}"-->
+<!--            tools:text="SUCCESS"/>-->
 
 
         <TextView

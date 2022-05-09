@@ -133,16 +133,48 @@
             android:alpha="0.4"
             android:background="@color/grey_AAAAAA"
             android:layout_margin="@dimen/_10sdp"
-            app:layout_constraintBottom_toTopOf="@id/price_imageview"/>
+            app:layout_constraintBottom_toTopOf="@id/coins_imageview"/>
 
-        <ImageView
-            android:id="@+id/price_imageview"
-            android:layout_width="@dimen/_16sdp"
-            android:layout_height="@dimen/_16sdp"
-            android:src="@drawable/ic_rupee"
-            app:layout_constraintBottom_toTopOf="@id/buy_now"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="@dimen/_8sdp"/>
+            <ImageView
+                android:id="@+id/coins_imageview"
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_16sdp"
+                android:src="@drawable/ic_coins"
+                app:layout_constraintBottom_toTopOf="@id/price_imageview"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="@dimen/_8sdp"/>
+
+            <TextView
+                android:id="@+id/coins_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/textview_normal_small"
+                android:text="@string/credit_coins_used"
+                app:layout_constraintTop_toBottomOf="@id/border"
+                app:layout_constraintStart_toEndOf="@id/coins_imageview"
+                app:layout_constraintBottom_toTopOf="@id/price_title"
+                android:layout_margin="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/coins_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/textview_normal_small"
+                android:text="@{viewmodel.coinprice}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/border"
+                app:layout_constraintBottom_toTopOf="@id/price_value"
+                android:layout_margin="@dimen/_10sdp"/>
+
+
+            <ImageView
+                android:id="@+id/price_imageview"
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_16sdp"
+                android:src="@drawable/ic_rupee"
+                app:layout_constraintBottom_toTopOf="@id/buy_now"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="@dimen/_8sdp"/>
 
         <TextView
             android:id="@+id/price_title"

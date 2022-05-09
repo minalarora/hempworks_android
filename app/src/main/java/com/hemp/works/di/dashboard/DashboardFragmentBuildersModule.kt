@@ -9,6 +9,8 @@ import com.hemp.works.dashboard.cart.ui.CouponFragment
 import com.hemp.works.dashboard.home.ui.AllProductListFragment
 import com.hemp.works.dashboard.home.ui.HomeFragment
 import com.hemp.works.dashboard.home.ui.ProductListFragment
+import com.hemp.works.dashboard.ledger.ui.LedgerFragment
+import com.hemp.works.dashboard.ledger.ui.LedgerFragmentDirections
 import com.hemp.works.dashboard.notification.ui.NotificationFragment
 import com.hemp.works.dashboard.offer.ui.OfferFragment
 import com.hemp.works.dashboard.order.ui.OrderFragment
@@ -106,5 +108,8 @@ abstract class DashboardFragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeAllSupportFragment(): AllSupportFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeLedgerFragment(): LedgerFragment
 
 }

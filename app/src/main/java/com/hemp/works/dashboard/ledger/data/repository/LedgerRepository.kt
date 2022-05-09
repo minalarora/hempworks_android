@@ -29,6 +29,10 @@ class LedgerRepository  @Inject constructor(private val remoteDataSource: Ledger
     val creditList: LiveData<List<CreditHistory>>
         get() = _creditList
 
+    private val _ledgerList = MutableLiveData<List<Ledger>>()
+    val ledgerList: LiveData<List<Ledger>>
+        get() = _ledgerList
+
     private val _paymentResponse = MutableLiveData<ResponsePendingAmount>()
     val paymentResponse: LiveData<ResponsePendingAmount>
         get() = _paymentResponse
@@ -44,22 +48,49 @@ class LedgerRepository  @Inject constructor(private val remoteDataSource: Ledger
             val deferredPaymentList = async { getResult(handleLoading = false) { remoteDataSource.getPaymentHistory() } }
             val deferredPaymentResponse = async { getResult(handleLoading = false) { remoteDataSource.getPendingAmount() } }
 
+            val localLedgerList: ArrayList<Ledger> = ArrayList();
+
             deferredOrderList.await()?.let {
-                it.data?.let { list -> _orderList.postValue(list) }
+                it.data?.let { list ->
+                    val expandedList = mutableListOf<Order>()
+                    for (orderObject in list) {
+                        if (orderObject.order.isNullOrEmpty()) continue
+                        for (orderProduct in orderObject.order) {
+                            val order = orderObject.copy(order = listOf(orderProduct))
+                            expandedList.add(order)
+                        }
+                    }
+                    _orderList.value = expandedList
+                    localLedgerList.addAll(expandedList.map { it -> Ledger(it.date, it) })
+                }
             }
             deferredWalletList.await()?.let {
-                it.data?.let { list -> _walletList.postValue(list) }
+                it.data?.let { list ->
+                    _walletList.value = list
+                    localLedgerList.addAll(list.map { it -> Ledger(it.date, it) })
+                }
             }
             deferredCreditList.await()?.let {
-                it.data?.let { list -> _creditList.postValue(list) }
+                it.data?.let { list ->
+                    _creditList.value = list
+                    localLedgerList.addAll(list.map { it -> Ledger(it.date, it) })
+                }
             }
             deferredPaymentList.await()?.let {
-                it.data?.let { list -> _paymentList.postValue(list) }
+                it.data?.let { list ->
+                    _paymentList.value = list
+                    localLedgerList.addAll(list.map { it -> Ledger(it.date, it) })
+                }
             }
 
             deferredPaymentResponse.await()?.let {
-                it.data?.let { list -> _paymentResponse.postValue(list) }
+                it.data?.let { list ->
+                    _paymentResponse.value = list
+                }
             }
+
+            localLedgerList.sortByDescending { it.date }
+            _ledgerList.postValue(localLedgerList)
 
             _loading.postValue(false)
         }

@@ -10,39 +10,39 @@ import java.text.SimpleDateFormat
 
 class CreditHistoryViewModel(context: Context, private val creditHistory: CreditHistory) {
 
-    val creditId: String = context.getString(R.string.credithistory_id, creditHistory.id?.toString())
+    val creditId: String = if (creditHistory.operation == "sub") "Credit Amount Added" else "Credit Amount Used"
 
     @SuppressLint("SimpleDateFormat")
     private val dateFormat = SimpleDateFormat(Constants.DATE_FORMAT);
     val date: String = dateFormat.format(creditHistory.date!!)
 
-    val status: String =
-        if (creditHistory.operation == "sub") "DONE"
-         else {
-            if (creditHistory.paid == true) "PAID" else "PENDING RS." + creditHistory.pendingamount
-            }
-
+//    val status: String =
+//        if (creditHistory.operation == "sub") "ADDED"
+//         else "USED"
+//
     val statusTextColor =
         if (creditHistory.operation == "sub") ContextCompat.getColor(
             context,
             R.color.green
         )
-        else {
-            if (creditHistory.paid == true) ContextCompat.getColor(
-                context,
-                R.color.green
-            ) else ContextCompat.getColor(context, R.color.dark_red)
-        }
+        else  ContextCompat.getColor(context, R.color.dark_red)
+
 
     val title: String = if (creditHistory.operation == "sub")
-        "Repayment of Rs. " + creditHistory.amount + " is done successfully by " + creditHistory.who
+        "Rs. " + creditHistory.amount + " by " + creditHistory.who
     else {
         if (creditHistory.paid == true)
-            "Credit of Rs. " + creditHistory.amount + " is used for Order #" + creditHistory.order?.id.toString()
+            "Rs. " + creditHistory.amount + "."
         else
-            "Credit of Rs. " + creditHistory.amount + " is used for Order #" + creditHistory.order?.id.toString() +
-                    ". Due amount of Rs. " + creditHistory.pendingamount
+            "Rs. " + creditHistory.amount  +
+                    ". Due amount is Rs. " + creditHistory.pendingamount
 
     }
+
+    val subTitle: String = if (creditHistory.operation != "sub") context.getString(
+        R.string.transaction_subtitle,
+         "ORDER",
+        creditHistory.orderid.toString()) else ""
+    //for Order #" + creditHistory.order?.id.toString()
 
 }

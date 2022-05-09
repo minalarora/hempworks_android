@@ -389,7 +389,7 @@ class HomeFragment : Fragment(), Injectable {
         val dateFormat = SimpleDateFormat(Constants.ONLY_DATE_FORMAT);
         val date = dateFormat.format(response.date!!)
 
-        PendingCreditBottomSheet.newInstance(response.pendingamount.toString(), date)
+        PendingCreditBottomSheet.newInstance(response.pendingamount.toString(), date, "HOME")
             .show(requireActivity().supportFragmentManager, PendingCreditBottomSheet.javaClass.simpleName)
 
         requireActivity().supportFragmentManager.setFragmentResultListener(getString(R.string.pending_amount_title), this, object :

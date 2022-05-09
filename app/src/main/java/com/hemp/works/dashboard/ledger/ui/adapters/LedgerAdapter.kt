@@ -16,11 +16,11 @@ import com.hemp.works.databinding.ItemOrderBinding
 import com.hemp.works.databinding.ItemPaymentHistoryBinding
 import com.hemp.works.databinding.ItemWalletBinding
 
-class LedgerAdapter(private var list: ArrayList<Any> = mutableListOf<Any>() as ArrayList<Any>) :
+class LedgerAdapter(private var list: ArrayList<Ledger> = mutableListOf<Ledger>() as ArrayList<Ledger>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
-        return when(list[position]) {
+        return when(list[position].value) {
             is Order -> 1
             is Transaction -> 2
             is CreditHistory -> 3
@@ -40,7 +40,7 @@ class LedgerAdapter(private var list: ArrayList<Any> = mutableListOf<Any>() as A
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when(val item = list[holder.adapterPosition]) {
+        when(val item = list[holder.adapterPosition].value) {
             is Order -> (holder as OrderViewHolder).bind(item)
             is Transaction -> (holder as PaymentViewHolder).bind(item)
             is CreditHistory -> (holder as CreditViewHolder).bind(item)
@@ -117,7 +117,7 @@ class LedgerAdapter(private var list: ArrayList<Any> = mutableListOf<Any>() as A
         }
     }
 
-    fun submitList(newList: ArrayList<Any>) {
+    fun submitList(newList: List<Ledger>) {
         list.clear()
         list.addAll(newList)
         this.notifyDataSetChanged()

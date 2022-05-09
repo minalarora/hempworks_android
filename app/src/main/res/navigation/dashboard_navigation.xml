@@ -384,6 +384,12 @@
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_out_right"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_accountFragment_to_ledgerFragment"
+            app:destination="@id/ledgerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
 
 
     </fragment>
@@ -416,6 +422,19 @@
         android:id="@+id/walletFragment"
         android:name="com.hemp.works.dashboard.wallet.ui.WalletFragment"
         android:label="WalletFragment" />
+    <fragment
+        android:id="@+id/ledgerFragment"
+        android:name="com.hemp.works.dashboard.ledger.ui.LedgerFragment"
+        android:label="LedgerFragment" >
+
+        <action
+            android:id="@+id/action_ledgerFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment"
+            app:popUpTo="@id/accountFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
 
 
 </navigation>

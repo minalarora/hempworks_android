@@ -11,15 +11,15 @@ import java.text.SimpleDateFormat
 
 class WalletHistoryViewModel(context: Context, private val walletHistory: WalletHistory) {
 
-    val walletId: String = context.getString(R.string.wallethistory_id, walletHistory.id?.toString())
+    val walletId: String = if (walletHistory.operation == "add") "Credit Coins Earned" else "Credit Coins Used"
 
     @SuppressLint("SimpleDateFormat")
     private val dateFormat = SimpleDateFormat(Constants.DATE_FORMAT);
     val date: String = dateFormat.format(walletHistory.date!!)
 
-    val status: String = walletHistory.operation.toString().uppercase()
+//    val status: String = walletHistory.operation.toString().uppercase()
 
-    val statusTextColor = when(status) {
+    val statusTextColor = when(walletHistory.operation.toString().uppercase()) {
         context.getString(R.string.add) -> ContextCompat.getColor(context, R.color.green)
         else -> ContextCompat.getColor(context, R.color.dark_red)
     }
