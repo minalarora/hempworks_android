@@ -22,7 +22,10 @@
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.36102564102564105" />
         <entry key="app/src/main/res/drawable/ic_india.xml" value="0.36666666666666664" />
+        <entry key="app/src/main/res/drawable/ic_info.xml" value="0.2485" />
+        <entry key="app/src/main/res/drawable/ic_menu_condition.xml" value="0.2485" />
         <entry key="app/src/main/res/drawable/ic_menu_prescription_upload.xml" value="0.2125" />
+        <entry key="app/src/main/res/drawable/ic_menu_privacy.xml" value="0.2485" />
         <entry key="app/src/main/res/drawable/ic_menu_support.xml" value="0.31" />
         <entry key="app/src/main/res/drawable/ic_menu_tutorials.xml" value="0.36102564102564105" />
         <entry key="app/src/main/res/drawable/ic_minus.xml" value="0.31" />
@@ -75,7 +78,8 @@
         <entry key="app/src/main/res/layout/fragment_payment.xml" value="0.22138157894736843" />
         <entry key="app/src/main/res/layout/fragment_payment_history.xml" value="0.3484375" />
         <entry key="app/src/main/res/layout/fragment_pending_credit_bottom_sheet.xml" value="0.22138157894736843" />
-        <entry key="app/src/main/res/layout/fragment_prescription.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_prescription.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_privacy.xml" value="0.3484375" />
         <entry key="app/src/main/res/layout/fragment_product.xml" value="0.2582501918649271" />
         <entry key="app/src/main/res/layout/fragment_product_image.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_product_list.xml" value="0.2796296296296296" />
@@ -83,6 +87,7 @@
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2796296296296296" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.337037037037037" />
         <entry key="app/src/main/res/layout/fragment_support.xml" value="0.22138157894736843" />
+        <entry key="app/src/main/res/layout/fragment_t_a_c.xml" value="0.3484375" />
         <entry key="app/src/main/res/layout/fragment_tnl.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_upload_prescription.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_verify_mobile.xml" value="0.165" />

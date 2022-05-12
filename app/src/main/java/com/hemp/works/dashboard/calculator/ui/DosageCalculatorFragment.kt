@@ -11,6 +11,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.core.content.ContextCompat
+import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -76,8 +77,13 @@ class DosageCalculatorFragment : Fragment() , Injectable, AdapterView.OnItemSele
         viewModel.dosage.observe(viewLifecycleOwner) {
 //            InfoDialogFragment.newInstance(it).show(childFragmentManager, InfoDialogFragment.javaClass.simpleName)
             MaterialAlertDialogBuilder(requireContext())
-                .setTitle(resources.getString(R.string.indication))
-                .setMessage(createResult(it))
+                .setTitle(
+                    HtmlCompat.fromHtml("<b>"+ resources.getString(R.string.indication) +"</b>",
+                        HtmlCompat.FROM_HTML_MODE_LEGACY)
+                )
+                .setMessage(
+                    HtmlCompat.fromHtml(createResult(it),
+                        HtmlCompat.FROM_HTML_MODE_LEGACY))
                 .setPositiveButton(getString(R.string.ok)) { dialog, which ->
 
                 }
@@ -100,12 +106,12 @@ class DosageCalculatorFragment : Fragment() , Injectable, AdapterView.OnItemSele
 
     private fun createResult(res: String): String {
         return  "Product: " + binding.productSpinner.selectedItem.toString() + "\n" +
-                "Product Type: " + binding.typeSpinner.selectedItem.toString() + "\n" + "\n" +
-                "Indication: " + binding.indicationSpinner.selectedItem.toString() + "\n" + "\n" +
-                "Weight: " + binding.weightSpinner.selectedItem.toString() + "\n" + "\n" +
-                "Result: " + res + "\n" + "\n" + "\n" + "\n" +
-                "Disclaimer: " + "\n" +
-                "Dosage is for reference purposes only. The doctor is advised to prescribe patients as per the individual case requirements only. "
+                "<br>Product Type: " + binding.typeSpinner.selectedItem.toString() + "\n" +
+                "<br>Indication: " + binding.indicationSpinner.selectedItem.toString() + "\n" +
+                "<br>Weight: " + binding.weightSpinner.selectedItem.toString() + "\n" + "\n" +
+                "<br><br><b><font color=\"#000000\">SUGGESTED DOSAGE:</b></font><br> " + "\n" + res + "\n" + "\n" + "\n" + "\n" +
+                "<br><br><br><b><font color=\"#000000\">DISCLAIMER:</b></font><br> " + "\n" +
+                "The recommended dosage is explicitly for the purpose of reference only and the doctors are advised to exercise their own judgment whilst prescribing the product(s) listed on the application. Ananta Hemp Works has no bearing or liability in connection with their consumption and the doctor’s recommendations to the patients are basis their own discretion."
 
     }
 

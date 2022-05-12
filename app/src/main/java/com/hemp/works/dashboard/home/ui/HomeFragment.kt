@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
+import androidx.core.text.HtmlCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
@@ -210,6 +211,8 @@ class HomeFragment : Fragment(), Injectable {
             }
         }
 
+        binding.disclaimer.text = HtmlCompat.fromHtml("<b>DISCLAIMER</b><br>" + requireContext().getString(R.string.disclaimer_home), HtmlCompat.FROM_HTML_MODE_LEGACY)
+
         viewModel.bannerList.observe(viewLifecycleOwner) {
             (binding.bannerRecyclerview.adapter as BannerAdapter).submitList(it)
             viewModel.handleBannerVisibility(it.isEmpty())
@@ -341,7 +344,16 @@ class HomeFragment : Fragment(), Injectable {
                     binding.root.findNavController().navigate(it)
                 }
             }
-
+            R.id.privacy -> {
+                HomeFragmentDirections.actionHomeFragmentToPrivacyFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            R.id.tac -> {
+                HomeFragmentDirections.actionHomeFragmentToTACFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
             //TODO: NAVIGATE TO DIFF FRAGMENTS
         }
 

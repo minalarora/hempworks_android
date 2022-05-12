@@ -19,6 +19,17 @@
             android:id="@+id/support"
             android:icon="@drawable/ic_menu_support"
             android:title="@string/support" />
+
+        <item
+            android:id="@+id/privacy"
+            android:icon="@drawable/ic_menu_privacy"
+            android:title="@string/privacy_policies" />
+
+        <item
+            android:id="@+id/tac"
+            android:icon="@drawable/ic_menu_condition"
+            android:title="@string/terms_and_conditions" />
+
         <item
             android:id="@+id/log_out"
             android:icon="@drawable/ic_menu_log_out"

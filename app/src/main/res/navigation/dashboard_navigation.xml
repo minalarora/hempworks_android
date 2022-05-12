@@ -93,6 +93,18 @@
         <action
             android:id="@+id/action_homeFragment_to_allSupportFragment"
             app:destination="@id/allSupportFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_privacyFragment"
+            app:destination="@id/privacyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_TACFragment"
+            app:destination="@id/TACFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
     <fragment
@@ -435,6 +447,14 @@
             app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
+    <fragment
+        android:id="@+id/privacyFragment"
+        android:name="com.hemp.works.dashboard.info.PrivacyFragment"
+        android:label="PrivacyFragment" />
+    <fragment
+        android:id="@+id/TACFragment"
+        android:name="com.hemp.works.dashboard.info.TACFragment"
+        android:label="TACFragment" />
 
 
 </navigation>

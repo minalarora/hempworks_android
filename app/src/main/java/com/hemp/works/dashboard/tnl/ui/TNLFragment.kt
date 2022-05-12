@@ -10,9 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
+import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.dashboard.DashboardSharedViewModel
@@ -53,21 +55,22 @@ class TNLFragment : Fragment(), Injectable,
         viewModel = injectViewModel(viewModelFactory)
         sharedViewModel = requireActivity().injectViewModel(viewModelFactory)
 
+        viewModel.updateFragmentType(TNLType.getTNLTypeFromString(TNLFragmentArgs.fromBundle(requireArguments()).type))
+
         binding = DataBindingUtil.inflate<FragmentTnlBinding>(
             inflater, R.layout.fragment_tnl, container, false).apply {
             this.viewmodel = viewModel
             lifecycleOwner = this@TNLFragment
         }
 
-        viewModel.updateFragmentType(TNLType.getTNLTypeFromString(TNLFragmentArgs.fromBundle(requireArguments()).type))
-
         binding.back.setOnClickListener { binding.root.findNavController().popBackStack() }
+
+        binding.info.setOnClickListener {  showInfo() }
 
         binding.recyclerview.adapter = TNLAdapter(this, viewModel.fragmentType)
 
         binding.search.setOnQueryTextListener(this)
         binding.search.setOnCloseListener(this)
-
 
         viewModel.tutorialList.observe(viewLifecycleOwner) {
             if (viewModel.fragmentType == TNLType.TUTORIAL) {
@@ -168,6 +171,21 @@ class TNLFragment : Fragment(), Injectable,
                 Intent.ACTION_VIEW
             ).apply { setDataAndType( Uri.parse(newsLetter.pdf), FileUtils.MIME_TYPE_PDF)}
         )
+    }
+
+    private fun showInfo() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(
+                HtmlCompat.fromHtml("<b>"+ resources.getString(R.string.disclaimer) +"</b>",
+                    HtmlCompat.FROM_HTML_MODE_LEGACY)
+            )
+            .setMessage(
+                HtmlCompat.fromHtml(getString(R.string.disclaimer_tutorial),
+                    HtmlCompat.FROM_HTML_MODE_LEGACY))
+            .setPositiveButton(getString(R.string.ok)) { dialog, which ->
+
+            }
+            .show()
     }
 
     companion object {

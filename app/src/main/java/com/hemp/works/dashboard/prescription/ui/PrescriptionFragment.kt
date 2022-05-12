@@ -11,12 +11,14 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
 import androidx.core.content.ContextCompat
+import androidx.core.text.HtmlCompat
 import androidx.core.util.Pair
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
 import com.hemp.works.dashboard.DashboardSharedViewModel
@@ -66,6 +68,10 @@ class PrescriptionFragment : Fragment(), Injectable,
             val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
             showDatePicker()
+        }
+
+        binding.info.setOnClickListener {
+            showInfo()
         }
 
         binding.search.setOnQueryTextListener(this)
@@ -134,6 +140,21 @@ class PrescriptionFragment : Fragment(), Injectable,
             val endDateInMilliSeconds  = selection?.second ?: 0
             viewModel.updateDateRange(startDateInMilliSeconds, endDateInMilliSeconds)
         }
+    }
+
+    private fun showInfo() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(
+                HtmlCompat.fromHtml("<b>"+ resources.getString(R.string.disclaimer) +"</b>",
+                    HtmlCompat.FROM_HTML_MODE_LEGACY)
+            )
+            .setMessage(
+                HtmlCompat.fromHtml(getString(R.string.disclaimer_pres),
+                    HtmlCompat.FROM_HTML_MODE_LEGACY))
+            .setPositiveButton(getString(R.string.ok)) { dialog, which ->
+
+            }
+            .show()
     }
 
     companion object {
