@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
@@ -17,6 +18,7 @@ import androidx.navigation.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.hemp.works.R
+import com.hemp.works.base.Constants
 import com.hemp.works.dashboard.DashboardSharedViewModel
 import com.hemp.works.dashboard.info.InfoBottomSheetFragment
 import com.hemp.works.dashboard.info.InfoDialogFragment
@@ -135,42 +137,58 @@ class TNLFragment : Fragment(), Injectable,
     }
 
     override fun onTutorialClick(tutorial: Tutorial) {
-        if (tutorial.type == "pdf") {
-            startActivity(
-                Intent(
-                    Intent.ACTION_VIEW
-                ).apply { setDataAndType( Uri.parse(tutorial.url), FileUtils.MIME_TYPE_PDF)}
-            )
-        } else {
-            startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse(tutorial.url)
+        try {
+            if (tutorial.type == "pdf") {
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW
+                    ).apply { setDataAndType( Uri.parse(tutorial.url), FileUtils.MIME_TYPE_PDF)}
                 )
-            )
+            } else {
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(tutorial.url)
+                    )
+                )
+            }
+        } catch (ex: Exception) {
+            Toast.makeText(requireContext(),Constants.GENERAL_ERROR_MESSAGE , Toast.LENGTH_SHORT).show()
         }
+
     }
 
     override fun onTutorialReadMore(tutorial: Tutorial) {
+
         InfoBottomSheetFragment.newInstance(tutorial.description.toString())
             .show(childFragmentManager, InfoBottomSheetFragment.javaClass.simpleName)
     }
 
     override fun onLiveSessionClick(liveSession: LiveSession) {
-        startActivity(
-            Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse(liveSession.url)
+        try {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(liveSession.url)
+                )
             )
-        )
+        } catch (ex: Exception) {
+            Toast.makeText(requireContext(),Constants.GENERAL_ERROR_MESSAGE , Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     override fun onNewsLetterClick(newsLetter: NewsLetter) {
-        startActivity(
-            Intent(
-                Intent.ACTION_VIEW
-            ).apply { setDataAndType( Uri.parse(newsLetter.pdf), FileUtils.MIME_TYPE_PDF)}
-        )
+        try {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW
+                ).apply { setDataAndType( Uri.parse(newsLetter.pdf), FileUtils.MIME_TYPE_PDF)}
+            )
+        } catch (ex: Exception) {
+            Toast.makeText(requireContext(),Constants.GENERAL_ERROR_MESSAGE , Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun showInfo() {
