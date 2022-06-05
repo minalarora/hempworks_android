@@ -10,7 +10,7 @@ import com.hemp.works.dashboard.model.Course
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class CourseViewModel  @Inject constructor(private val repository: CourseRepository): BaseViewModel(repository) {
+class CourseViewModel @Inject constructor(private val repository: CourseRepository): BaseViewModel(repository) {
 
     init {
         fetchCourseList()
@@ -31,7 +31,7 @@ class CourseViewModel  @Inject constructor(private val repository: CourseReposit
         }
     }
 
-    fun fetchCourseList() {
+    private fun fetchCourseList() {
         viewModelScope.launch {
             repository.fetchCourses()
         }

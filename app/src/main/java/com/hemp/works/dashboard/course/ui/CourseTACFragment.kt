@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
@@ -43,6 +44,7 @@ class CourseTACFragment : Fragment(), Injectable {
 
         binding = DataBindingUtil.inflate<FragmentCourseTACBinding>(
             inflater, R.layout.fragment_course_t_a_c, container, false).apply {
+            this.viewmodel = viewmodel
             lifecycleOwner = this@CourseTACFragment
         }
 
@@ -56,7 +58,11 @@ class CourseTACFragment : Fragment(), Injectable {
 
         viewModel.booleanResponse.observe(viewLifecycleOwner) {
             if (it) {
-                showSnackBar(getString(R.string.thank_you_for_apply))
+                sharedViewModel.user?.apply {
+                    course = "apply"
+                }
+                Toast.makeText(requireContext(), getString(R.string.thank_you_for_apply), Toast.LENGTH_LONG).show()
+                binding.root.findNavController().popBackStack()
             } else {
                 showSnackBar(Constants.GENERAL_ERROR_MESSAGE)
             }

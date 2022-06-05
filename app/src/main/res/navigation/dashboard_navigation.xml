@@ -115,7 +115,7 @@
             android:id="@+id/action_homeFragment_to_courseTACFragment"
             app:destination="@id/courseTACFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_out_right"
+            app:exitAnim="@anim/slide_out_right"
             app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
