@@ -11,5 +11,6 @@ data class Doctor(
     var email       : String,
     var certificate : String,
     var id          : String,
+    var course      : String,
     var discount    : ArrayList<Discount>
 )

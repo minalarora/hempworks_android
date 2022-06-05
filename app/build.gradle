@@ -16,8 +16,8 @@ android {
         applicationId "com.hemp.works"
         minSdk 23
         targetSdk 31
-        versionCode 15
-        versionName "1.1.8"
+        versionCode 16
+        versionName "1.1.9"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

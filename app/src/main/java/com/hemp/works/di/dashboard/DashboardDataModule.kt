@@ -8,6 +8,8 @@ import com.hemp.works.dashboard.calculator.data.remote.CalculatorRemoteDataSourc
 import com.hemp.works.dashboard.calculator.data.remote.CalculatorService
 import com.hemp.works.dashboard.cart.data.remote.CartRemoteDataSource
 import com.hemp.works.dashboard.cart.data.remote.CartService
+import com.hemp.works.dashboard.course.data.remote.CourseRemoteDataSource
+import com.hemp.works.dashboard.course.data.remote.CourseService
 import com.hemp.works.dashboard.credit.data.remote.CreditRemoteDataSource
 import com.hemp.works.dashboard.credit.data.remote.CreditService
 import com.hemp.works.dashboard.home.data.remote.HomeRemoteDataSource
@@ -213,6 +215,15 @@ class DashboardDataModule {
     @Provides
     fun provideLedgerRemoteDataSource(service: LedgerService)
             = LedgerRemoteDataSource(service)
+
+    @Singleton
+    @Provides
+    fun provideCourseService(retrofit: Retrofit): CourseService = retrofit.create(
+        CourseService::class.java)
+
+    @Provides
+    fun provideCourseRemoteDataSource(service: CourseService)
+            = CourseRemoteDataSource(service)
 
 
 

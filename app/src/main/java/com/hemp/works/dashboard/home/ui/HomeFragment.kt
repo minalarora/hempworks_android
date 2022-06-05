@@ -132,7 +132,15 @@ class HomeFragment : Fragment(), Injectable {
         }
 
 
-        binding.bannerRecyclerview.adapter = BannerAdapter()
+        binding.bannerRecyclerview.adapter = BannerAdapter(listener = object :
+            BannerItemClickListener {
+            override fun onItemClick(banner: Banner) {
+                if (banner.url == "https://image.techhempworks.co.in/piyush-juneja.jpg") {
+                    navigateToCourse()
+                }
+            }
+            }
+        )
         ViewCompat.setNestedScrollingEnabled(binding.bannerRecyclerview, false);
 
         binding.categoryRecyclerview.adapter = CategoryAdapter(listener = object :
@@ -354,6 +362,9 @@ class HomeFragment : Fragment(), Injectable {
                     binding.root.findNavController().navigate(it)
                 }
             }
+            R.id.courses -> {
+                navigateToCourse()
+            }
             //TODO: NAVIGATE TO DIFF FRAGMENTS
         }
 
@@ -430,6 +441,20 @@ class HomeFragment : Fragment(), Injectable {
         PreferenceManagerUtil.clear(requireContext())
         LoginActivity.getPendingIntent(requireContext(), R.id.loginFragment).send()
         requireActivity().finish()
+    }
+
+    private fun navigateToCourse() {
+        if (sharedViewModel.user?.course == "enable") {
+            HomeFragmentDirections.actionHomeFragmentToCourseFragment().also {
+                binding.root.findNavController().navigate(it)
+            }
+        } else if (sharedViewModel.user?.course == "disable") {
+            HomeFragmentDirections.actionHomeFragmentToCourseTACFragment().also {
+                binding.root.findNavController().navigate(it)
+            }
+        } else {
+            showSnackBar(getString(R.string.course_snackbar))
+        }
     }
 
     companion object {

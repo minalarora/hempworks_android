@@ -12,6 +12,7 @@ import com.hemp.works.dashboard.address.ui.CreateAddressViewModel
 import com.hemp.works.dashboard.calculator.ui.DosageCalculatorViewModel
 import com.hemp.works.dashboard.cart.ui.CartViewModel
 import com.hemp.works.dashboard.cart.ui.CouponViewModel
+import com.hemp.works.dashboard.course.ui.CourseViewModel
 import com.hemp.works.dashboard.home.ui.AllProductListViewModel
 import com.hemp.works.dashboard.home.ui.HomeViewModel
 import com.hemp.works.dashboard.home.ui.ProductListViewModel
@@ -162,5 +163,10 @@ abstract class DashboardViewModelModule {
     @IntoMap
     @ViewModelKey(LedgerViewModel::class)
     abstract fun bindLedgerViewModel(viewModel: LedgerViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CourseViewModel::class)
+    abstract fun bindCourseViewModel(viewModel: CourseViewModel): ViewModel
 
 }

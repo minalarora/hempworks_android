@@ -105,6 +105,18 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_right"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_courseFragment"
+            app:destination="@id/courseFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_courseTACFragment"
+            app:destination="@id/courseTACFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
     <fragment
@@ -455,6 +467,14 @@
         android:id="@+id/TACFragment"
         android:name="com.hemp.works.dashboard.info.TACFragment"
         android:label="TACFragment" />
+    <fragment
+        android:id="@+id/courseFragment"
+        android:name="com.hemp.works.dashboard.course.ui.CourseFragment"
+        android:label="CourseFragment" />
+    <fragment
+        android:id="@+id/courseTACFragment"
+        android:name="com.hemp.works.dashboard.course.ui.CourseTACFragment"
+        android:label="CourseTACFragment" />
 
 
 </navigation>
