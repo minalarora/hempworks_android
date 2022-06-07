@@ -69,8 +69,31 @@ class OfferFragment : Fragment(), Injectable, CouponItemClickListener{
         }
 
 
+        viewModel.booleanResponse.observe(viewLifecycleOwner) {
+            if (viewModel.currentStage == OfferState.ADD) {
+                if (it) {
+                    viewModel.addCoupon(viewModel.coupon?.name)
+                } else {
+                    viewModel.currentStage = OfferState.NONE
+                    viewModel.emptyCart()
+                    showSnackBar(Constants.GENERAL_ERROR_MESSAGE)
+                }
+            } else if (viewModel.currentStage == OfferState.COUPON) {
+                viewModel.currentStage = OfferState.NONE
+                if (it) {
+                    OfferFragmentDirections.actionOfferFragmentToCartFragment(false).also {
+                    binding.root.findNavController().navigate(it)
+                  }
+                } else {
+                    viewModel.emptyCart()
+                    showSnackBar(Constants.GENERAL_ERROR_MESSAGE)
+                }
+            }
+        }
         viewModel.error.observe(viewLifecycleOwner) {
+            viewModel.currentStage = OfferState.NONE
             showSnackBar(it)
+            viewModel.emptyCart()
         }
 
         return binding.root
@@ -94,11 +117,8 @@ class OfferFragment : Fragment(), Injectable, CouponItemClickListener{
 
     override fun onItemClick(coupon: Coupon) {
         if (coupon.type == "quantity") {
-            coupon.product?.let {
-                OfferFragmentDirections.actionOfferFragmentToProductFragment(it.toString()).also {
-                    binding.root.findNavController().navigate(it)
-                }
-            }
+            viewModel.coupon = coupon
+            viewModel.addProduct(coupon.product!!, coupon.variant!!, coupon.value!!.split(":")[0].toInt())
         } else {
             val clipboardManager =
                 getSystemService(requireContext(), ClipboardManager::class.java) as ClipboardManager

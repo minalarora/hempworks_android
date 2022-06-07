@@ -70,7 +70,7 @@ class ProductFragment : Fragment(), Injectable {
         binding.toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.cart -> {
-                   ProductFragmentDirections.actionProductFragmentToCartFragment().also {
+                   ProductFragmentDirections.actionProductFragmentToCartFragment(true).also {
                        binding.root.findNavController().navigate(it)
                    }
                 }
@@ -157,7 +157,7 @@ class ProductFragment : Fragment(), Injectable {
         viewModel.booleanResponse.observe(viewLifecycleOwner) {
             if (it) {
                 if (viewModel.goToCart) {
-                    ProductFragmentDirections.actionProductFragmentToCartFragment().also {
+                    ProductFragmentDirections.actionProductFragmentToCartFragment(true).also {
                         binding.root.findNavController().navigate(it)
                     }
                 } else {

@@ -116,7 +116,7 @@ class HomeFragment : Fragment(), Injectable {
                     }
                 }
                 R.id.cart -> {
-                    HomeFragmentDirections.actionHomeFragmentToCartFragment().also {
+                    HomeFragmentDirections.actionHomeFragmentToCartFragment(true).also {
                         binding.root.findNavController().navigate(it)
                     }
                 }
@@ -135,8 +135,14 @@ class HomeFragment : Fragment(), Injectable {
         binding.bannerRecyclerview.adapter = BannerAdapter(listener = object :
             BannerItemClickListener {
             override fun onItemClick(banner: Banner) {
-                if (banner.url == "https://image.techhempworks.co.in/piyush-juneja.jpg") {
-                    navigateToCourse()
+                if (sharedViewModel.userType == UserType.APPROVED) {
+                    if (banner.url == "https://image.techhempworks.co.in/piyush-juneja.jpg") {
+                        navigateToCourse()
+                    } else {
+                        HomeFragmentDirections.actionHomeFragmentToOfferFragment().also {
+                            binding.root.findNavController().navigate(it)
+                        }
+                    }
                 }
             }
             }
