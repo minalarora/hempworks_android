@@ -11,6 +11,7 @@ import com.hemp.works.dashboard.prescription.data.repository.PrescriptionReposit
 import com.hemp.works.utils.FileUtils
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -98,7 +99,7 @@ class UploadPrescriptionViewModel  @Inject constructor(private val repository: P
     }
 
     private fun prepareFilePart(partName: String, outputFile: File): MultipartBody.Part {
-        val requestFile = RequestBody.create(MediaType.parse(FileUtils.SERVER_FILE_TYPE), outputFile)
+        val requestFile = RequestBody.create(FileUtils.SERVER_FILE_TYPE.toMediaTypeOrNull(), outputFile)
         return MultipartBody.Part.createFormData(partName, fileName, requestFile)
     }
 

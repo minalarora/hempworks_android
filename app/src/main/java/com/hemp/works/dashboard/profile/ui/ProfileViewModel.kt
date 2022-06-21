@@ -13,6 +13,7 @@ import com.hemp.works.utils.FileUtils
 import com.hemp.works.utils.PreferenceManagerUtil
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -47,7 +48,7 @@ class ProfileViewModel  @Inject constructor(private val repository: ProfileRepos
     }
 
     private fun prepareFilePart(partName: String, outputFile: File): MultipartBody.Part {
-        val requestFile = RequestBody.create(MediaType.parse(FileUtils.SERVER_FILE_TYPE), outputFile)
+        val requestFile = RequestBody.create(FileUtils.SERVER_FILE_TYPE.toMediaTypeOrNull(), outputFile)
         return MultipartBody.Part.createFormData(partName, fileName, requestFile)
     }
 

@@ -14,6 +14,7 @@ import com.hemp.works.utils.FileUtils.SERVER_FILE_TYPE
 import com.hemp.works.utils.FileUtils.SERVER_IMAGE_KEY_NAME
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -124,7 +125,7 @@ class CreateViewModel @Inject constructor(private val repository: LoginRepositor
     }
 
     private fun prepareFilePart(partName: String, outputFile: File): MultipartBody.Part {
-        val requestFile = RequestBody.create(MediaType.parse(SERVER_FILE_TYPE), outputFile)
+        val requestFile = RequestBody.create(SERVER_FILE_TYPE.toMediaTypeOrNull(), outputFile)
         return MultipartBody.Part.createFormData(partName, fileName, requestFile)
     }
 
