@@ -219,6 +219,9 @@
 </string>
     <string name="disclaimer_home">This application\'s content including the dosage calculator is solely for the purpose of providing general information to the doctors. All products should only be purchased and/or prescribed by the respective doctors as per their judgment and Ananta Hemp Works has no bearing or liability in this regard. The products advertised herein are not intended for use or sale by anyone under the age of eighteen.
 </string>
+    <string name="disclaimer_home_2">
+        Ananta Hempworks manufactures Vijaya Leaf Extract Medicines under a valid Loan Manufacturing License under Ayurveda in the state of Madhya Pradesh. Our Products are made strictly for Medicinal use only. We don’t promote or advocate recreational use of our products on any online or offline platform. Some of our products are Schedule E 1 Medicines, which are sold only under a Valid Prescription from a registered Ayurveda practitioner.
+    </string>
     <string name="disclaimer_tutorial">The live Sambhasha Sessions are purely for general guidance and information to the viewer(s) on the hemp-based products. These sessions are neither intended to act as a guide or a prescription for the purpose of purchase or consumption of the product(s) of Ananta Hempworks Solutions Private Limited.</string>
     <string name="privacy_policies">Privacy Policy</string>
     <string name="terms_and_conditions">Terms And Conditions</string>
@@ -402,18 +405,18 @@
 <p><span style="font-weight: 400;">If You have any questions regarding these Terms and Conditions, please email Us at:&nbsp;</span><a href="mailto:info@hempworks.in"><strong>info@hempworks.in</strong></a><span style="font-weight: 400;">.&nbsp;</span></p>
     ]]></string>
     <string name="course_tac_desc"><![CDATA[
-        <div><p style="text-align: center;"><strong>CERTIFICATION FOR MEDICAL CANNABIS PRACTITIONER</strong></p>
+        <div><p style="text-align: center;"><strong>CERTIFICATION FOR  PRACTICING VIJAYA LEAF EXTRACT BASED MEDICINES</strong></p>
     <p><strong>Terms &amp; Conditions</strong></p>
     <ol>
     <li><strong><span style="font-weight: 400;">On purchase of Ananta Products for only </span>Rs. 7,500/- (seven thousand five hundred only)<span style="font-weight: 400;"> the course shall be exclusively provided on the &ldquo;</span>ANANTA PARTNERS APP<span style="font-weight: 400;">&rdquo; platform &ldquo;</span>FREE OF ANY COST TO OUR ANANTA DOCTORS&rdquo;.</strong></li>
-    <li><span style="font-weight: 400;">This course has been designed by Dr. Piyush Juneja for all Ayurvedic doctors, who want to enhance their knowledge on how to practice Medical Cannabis in Ayurved.</span></li>
-    <li><span style="font-weight: 400;">This course gives you knowledge on the legality, molecular biology and effects of cannabis on humans.</span></li>
+    <li><span style="font-weight: 400;">This course has been designed by Dr. Piyush Juneja,who want to enhance their knowledge on how to practice Vijaya Leaf Extract based Medicine in Ayurveda.</span></li>
+    <li><span style="font-weight: 400;">This course gives you knowledge on the legality, molecular biology and effects of Vijaya Leaf Extract based Medicine on humans.</span></li>
     <li><span style="font-weight: 400;">This course should ideally be completed within 90 days.</span></li>
-    <li><span style="font-weight: 400;">After you complete reading and learning from the course, an evaluation of your understanding shall be officially carried out by Dr. Piyush Juneja, and based on his evaluation, a certificate as a Medical Cannabis Practitioner shall be handed over to you.</span></li>
+    <li><span style="font-weight: 400;">After you complete reading and learning from the course, an evaluation of your understanding shall be officially carried out by Dr. Piyush Juneja, and based on his evaluation, a certificate as a Vijaya Leaf Extract based Medicine Practitioner shall be handed over to you.</span></li>
     <li><span style="font-weight: 400;">This course is intended to be for registered Ananta Doctors Only.</span>&nbsp;</li>
     </ol>
     <p><strong>Disclaimer</strong><span style="font-weight: 400;">:</span></p>
-    <p><span style="font-weight: 400;">Course Material has been designed by a team of Doctors, under the guidance and supervision of Dr Piyush Juneja, Founder of Indian Vaishyas and Cannabis Vaidyas. Ananta Hempwork&rsquo;s application &ldquo;ANANTA PARTNERS&rdquo; is only a digital partner and has no role to play on the information provided in the course material. Listing of this course is only for the purpose to help assist doctors to get easy access to the course and certification to freely practice Cannabis Medicine in Ayurved.</span></p>
+    <p><span style="font-weight: 400;">Course Material has been designed by a team of Doctors, under the guidance and supervision of Dr Piyush Juneja, Founder of Indian Vaidyas. Ananta Hempwork’s application “ANANTA PARTNERS” is only a digital partner and has no role to play on the information provided in the course material. Listing of this course is only for the purpose to help assist doctors to get easy access to the course and certification to freely and confidently practice Vijaya Leaf Extract based Medicine in Ayurved.</span></p>
     </div>
     ]]></string>
     <string name="courses">Courses</string>

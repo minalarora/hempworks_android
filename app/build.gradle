@@ -16,8 +16,8 @@ android {
         applicationId "com.hemp.works"
         minSdk 23
         targetSdk 31
-        versionCode 17
-        versionName "1.2.0"
+        versionCode 19
+        versionName "1.2.2"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -136,6 +136,10 @@ dependencies {
 
     //payment
     implementation "com.cashfree.pg:android-sdk:1.7.15"
+
+    //in-app updates
+    implementation "com.google.android.play:app-update:2.0.0"
+    implementation "com.google.android.play:app-update-ktx:2.0.0"
 
     //one signal
     implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'

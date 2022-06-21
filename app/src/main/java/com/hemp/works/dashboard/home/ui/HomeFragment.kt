@@ -225,7 +225,9 @@ class HomeFragment : Fragment(), Injectable {
             }
         }
 
-        binding.disclaimer.text = HtmlCompat.fromHtml("<b>DISCLAIMER</b><br>" + requireContext().getString(R.string.disclaimer_home), HtmlCompat.FROM_HTML_MODE_LEGACY)
+        binding.disclaimer.text = HtmlCompat.fromHtml("<b>DISCLAIMER</b><br>"
+                + requireContext().getString(R.string.disclaimer_home)
+                + "<br><br>" + requireContext().getString(R.string.disclaimer_home_2), HtmlCompat.FROM_HTML_MODE_LEGACY)
 
         viewModel.bannerList.observe(viewLifecycleOwner) {
             (binding.bannerRecyclerview.adapter as BannerAdapter).submitList(it)
