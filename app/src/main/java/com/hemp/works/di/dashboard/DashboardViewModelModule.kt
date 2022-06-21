@@ -6,16 +6,21 @@ import dagger.multibindings.IntoMap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.hemp.works.dashboard.DashboardSharedViewModel
+import com.hemp.works.dashboard.account.ui.AccountViewModel
 import com.hemp.works.dashboard.address.ui.AddressViewModel
 import com.hemp.works.dashboard.address.ui.CreateAddressViewModel
 import com.hemp.works.dashboard.calculator.ui.DosageCalculatorViewModel
 import com.hemp.works.dashboard.cart.ui.CartViewModel
 import com.hemp.works.dashboard.cart.ui.CouponViewModel
+import com.hemp.works.dashboard.course.ui.CourseViewModel
+import com.hemp.works.dashboard.home.ui.AllProductListViewModel
 import com.hemp.works.dashboard.home.ui.HomeViewModel
 import com.hemp.works.dashboard.home.ui.ProductListViewModel
+import com.hemp.works.dashboard.ledger.ui.LedgerViewModel
 import com.hemp.works.dashboard.notification.ui.NotificationViewModel
 import com.hemp.works.dashboard.offer.ui.OfferViewModel
 import com.hemp.works.dashboard.order.ui.OrderViewModel
+import com.hemp.works.dashboard.payment.ui.PaymentHistoryViewModel
 import com.hemp.works.dashboard.payment.ui.PaymentViewModel
 import com.hemp.works.dashboard.prescription.ui.PrescriptionViewModel
 import com.hemp.works.dashboard.prescription.ui.UploadPrescriptionViewModel
@@ -24,6 +29,7 @@ import com.hemp.works.dashboard.profile.ui.ProfileViewModel
 import com.hemp.works.dashboard.search.ui.SearchViewModel
 import com.hemp.works.dashboard.support.ui.SupportViewModel
 import com.hemp.works.dashboard.tnl.ui.TNLViewModel
+import com.hemp.works.dashboard.wallet.ui.WalletViewModel
 import com.hemp.works.di.ViewModelKey
 import com.hemp.works.login.LoginSharedViewModel
 import com.hemp.works.login.ui.viewmodel.*
@@ -52,6 +58,11 @@ abstract class DashboardViewModelModule {
     @IntoMap
     @ViewModelKey(ProductListViewModel::class)
     abstract fun bindProductListViewModel(viewModel: ProductListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AllProductListViewModel::class)
+    abstract fun bindAllProductListViewModel(viewModel: AllProductListViewModel): ViewModel
 
     @Binds
     @IntoMap
@@ -132,5 +143,30 @@ abstract class DashboardViewModelModule {
     @IntoMap
     @ViewModelKey(OfferViewModel::class)
     abstract fun bindOfferViewModel(viewModel: OfferViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AccountViewModel::class)
+    abstract fun bindAccountViewModel(viewModel: AccountViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(WalletViewModel::class)
+    abstract fun bindWalletViewModel(viewModel: WalletViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PaymentHistoryViewModel::class)
+    abstract fun bindPaymentHistoryViewModel(viewModel: PaymentHistoryViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LedgerViewModel::class)
+    abstract fun bindLedgerViewModel(viewModel: LedgerViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CourseViewModel::class)
+    abstract fun bindCourseViewModel(viewModel: CourseViewModel): ViewModel
 
 }

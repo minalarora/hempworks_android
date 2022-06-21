@@ -15,6 +15,8 @@ class PaymentRemoteDataSource @Inject constructor(private val service: PaymentSe
 
     suspend fun getSingleCreditHistory(id: Long) = getResult { service.getSingleCreditHistory(id) }
 
+    suspend fun getPaymentHistory()  = getResult { service.getPaymentHistory() }
+
 //    suspend fun requestCancellationForOrder(id: Long) = getResult { service.requestCancellationForOrder(id) }
 //
 //    suspend fun getAllOrder() = getResult { service.getAllOrder() }

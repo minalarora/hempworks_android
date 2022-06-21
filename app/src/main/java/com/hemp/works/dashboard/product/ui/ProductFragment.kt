@@ -70,7 +70,7 @@ class ProductFragment : Fragment(), Injectable {
         binding.toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.cart -> {
-                   ProductFragmentDirections.actionProductFragmentToCartFragment().also {
+                   ProductFragmentDirections.actionProductFragmentToCartFragment(true).also {
                        binding.root.findNavController().navigate(it)
                    }
                 }
@@ -122,13 +122,19 @@ class ProductFragment : Fragment(), Injectable {
         ViewCompat.setNestedScrollingEnabled(binding.extraRecyclerview, false);
 
         binding.addCart.setOnClickListener {
-            if (sharedViewModel.userType == UserType.ANONYMOUS) navigateToLogin()
-            else viewModel.addProduct(false)
+            when (sharedViewModel.userType) {
+                UserType.ANONYMOUS -> navigateToLogin()
+                UserType.APPROVED -> viewModel.addProduct(false)
+                else -> showSuccessSnackBar(getString(R.string.approved_alert))
+            }
         }
 
         binding.buyNow.setOnClickListener {
-            if (sharedViewModel.userType == UserType.ANONYMOUS) navigateToLogin()
-            else viewModel.addProduct(true)
+            when (sharedViewModel.userType) {
+                UserType.ANONYMOUS -> navigateToLogin()
+                UserType.APPROVED -> viewModel.addProduct(true)
+                else -> showSuccessSnackBar(getString(R.string.approved_alert))
+            }
         }
 
         binding.pdfDownload.setOnClickListener {
@@ -151,7 +157,7 @@ class ProductFragment : Fragment(), Injectable {
         viewModel.booleanResponse.observe(viewLifecycleOwner) {
             if (it) {
                 if (viewModel.goToCart) {
-                    ProductFragmentDirections.actionProductFragmentToCartFragment().also {
+                    ProductFragmentDirections.actionProductFragmentToCartFragment(true).also {
                         binding.root.findNavController().navigate(it)
                     }
                 } else {

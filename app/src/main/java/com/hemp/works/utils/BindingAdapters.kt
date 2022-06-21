@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -39,7 +40,6 @@ import de.hdodenhof.circleimageview.CircleImageView
     fun invisibleIfTrue(view: View, boo: Boolean) {
         if (!boo) view.visibility = View.VISIBLE else view.visibility = View.INVISIBLE
     }
-
     @BindingAdapter("load_image")
     fun loadImage(view: ImageView, imageId: Int) {
         view.setImageResource(imageId)

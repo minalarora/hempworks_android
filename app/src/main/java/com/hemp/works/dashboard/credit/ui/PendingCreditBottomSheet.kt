@@ -23,11 +23,14 @@ import com.hemp.works.databinding.FragmentPendingCreditBottomSheetBinding
 
 private const val AMOUNT = "amount"
 private const val DATE = "date"
+private const val FROM = "from"
 
 class PendingCreditBottomSheet : BottomSheetDialogFragment() {
 
     private var amount: String? = null
     private var date: String? = null
+    private var from: String? = null
+
     private lateinit var binding: FragmentPendingCreditBottomSheetBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +38,7 @@ class PendingCreditBottomSheet : BottomSheetDialogFragment() {
         arguments?.let {
             amount = it.getString(AMOUNT)
             date = it.getString(DATE)
+            from = it.getString(FROM)
         }
     }
 
@@ -48,7 +52,9 @@ class PendingCreditBottomSheet : BottomSheetDialogFragment() {
             lifecycleOwner = this@PendingCreditBottomSheet
         }
 
-        binding.title.text = getString(R.string.pending_amount_title, amount, date)
+        binding.title.text = if (from == "HOME") getString(R.string.pending_amount_title, amount, date)
+                              else  getString(R.string.ledger_amount_title, amount, date)
+
 
         binding.amount.setText(amount.toString())
 
@@ -76,10 +82,17 @@ class PendingCreditBottomSheet : BottomSheetDialogFragment() {
                 else if (binding.amount.text.toString().toInt() <= 0) binding.amountContainer.error = getString(R.string.invalid_amount)
                 else if (binding.amount.text.toString().toInt() > amount!!.toInt()) binding.amountContainer.error = getString(R.string.invalid_amount)
                 else {
-                    requireActivity().supportFragmentManager.setFragmentResult(
-                        getString(R.string.pending_amount_title),
-                        Bundle().apply { putString("amount", binding.amount.text.toString()) }
-                    )
+                    if (from == "HOME") {
+                        requireActivity().supportFragmentManager.setFragmentResult(
+                            getString(R.string.pending_amount_title),
+                            Bundle().apply { putString("amount", binding.amount.text.toString()) }
+                        )
+                    } else {
+                        requireActivity().supportFragmentManager.setFragmentResult(
+                            getString(R.string.ledger_amount_title),
+                            Bundle().apply { putString("amount", binding.amount.text.toString()) }
+                        )
+                    }
                     dismiss()
                 }
             } catch (ex: Exception) {
@@ -109,11 +122,12 @@ class PendingCreditBottomSheet : BottomSheetDialogFragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance(amount: String, date: String) =
+        fun newInstance(amount: String, date: String, from: String) =
             PendingCreditBottomSheet().apply {
                 arguments = Bundle().apply {
                     putString(AMOUNT, amount)
                     putString(DATE, date)
+                    putString(FROM, from)
                 }
             }
     }

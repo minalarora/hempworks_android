@@ -8,5 +8,7 @@ data class Coupon(
     val type: String,
     val description: String?,
     val value: String?,
-    val expiry: Date?
+    val expiry: Date?,
+    val product: Long?,
+    val variant: Long?
 )

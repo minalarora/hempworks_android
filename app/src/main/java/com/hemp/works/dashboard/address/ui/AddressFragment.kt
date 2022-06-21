@@ -108,6 +108,7 @@ class AddressFragment : Fragment(), Injectable, AddressItemClickListener {
                     payment = "CREDIT",
                     totalprice = viewModel.totalprice?.toInt()!!,
                     discountprice = viewModel.discountprice?.toInt()!!,
+                    walletprice = viewModel.walletprice?.toInt()!!,
                     reason = "ORDER")
                 ).also {
                     binding.root.findNavController().navigate(it)
@@ -119,6 +120,7 @@ class AddressFragment : Fragment(), Injectable, AddressItemClickListener {
                         payment = "DIRECT",
                         totalprice = viewModel.totalprice?.toInt()!!,
                         discountprice = viewModel.discountprice?.toInt()!!,
+                        walletprice = viewModel.walletprice?.toInt()!!,
                         reason = "ORDER")
                 ).also {
                     binding.root.findNavController().navigate(it)

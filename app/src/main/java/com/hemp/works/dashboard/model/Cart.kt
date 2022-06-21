@@ -9,5 +9,6 @@ data class Cart(
     val id: Long? = null,
     val date: Date? = null,
     val totalprice: Long = 0,
-    val discountprice: Long = 0
+    val discountprice: Long = 0,
+    val walletprice: Long = 0
 )

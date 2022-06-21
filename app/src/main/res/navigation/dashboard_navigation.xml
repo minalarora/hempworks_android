@@ -28,6 +28,11 @@
             app:enterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/homeFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_allProductListFragment"
+            app:destination="@id/allProductListFragment" />
+
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment"
@@ -81,6 +86,36 @@
             app:destination="@id/paymentFragment"
             app:popUpTo="@id/homeFragment"
             app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_allSupportFragment"
+            app:destination="@id/allSupportFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_privacyFragment"
+            app:destination="@id/privacyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_TACFragment"
+            app:destination="@id/TACFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_courseFragment"
+            app:destination="@id/courseFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_courseTACFragment"
+            app:destination="@id/courseTACFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
             app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
@@ -214,6 +249,12 @@
         android:id="@+id/cartFragment"
         android:name="com.hemp.works.dashboard.cart.ui.CartFragment"
         android:label="CartFragment" >
+
+        <argument
+            android:name="removeCoupon"
+            app:argType="boolean"
+            app:nullable="false" />
+
         <action
             android:id="@+id/action_cartFragment_to_couponFragment"
             app:destination="@id/couponFragment"
@@ -303,7 +344,144 @@
     <fragment
         android:id="@+id/offerFragment"
         android:name="com.hemp.works.dashboard.offer.ui.OfferFragment"
-        android:label="OfferFragment" />
+        android:label="OfferFragment" >
+
+        <action
+            android:id="@+id/action_offerFragment_to_cartFragment"
+            app:destination="@id/cartFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/allProductListFragment"
+        android:name="com.hemp.works.dashboard.home.ui.AllProductListFragment"
+        android:label="AllProductListFragment" >
+        <action
+            android:id="@+id/action_allProductListFragment_to_productFragment"
+            app:destination="@id/productFragment"
+            app:popUpTo="@id/allProductListFragment" />
+        <action
+            android:id="@+id/action_allProductListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_allProductListFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_allProductListFragment_to_allSupportFragment"
+            app:destination="@id/allSupportFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.hemp.works.dashboard.account.ui.AccountFragment"
+        android:label="AccountFragment" >
+        <action
+            android:id="@+id/action_accountFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_allProductListFragment"
+            app:destination="@id/allProductListFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_allSupportFragment"
+            app:destination="@id/allSupportFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_accountFragment_to_orderFragment"
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_accountFragment_to_paymentHistoryFragment"
+            app:destination="@id/paymentHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_accountFragment_to_prescriptionFragment"
+            app:destination="@id/prescriptionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_accountFragment_to_walletFragment"
+            app:destination="@id/walletFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_accountFragment_to_ledgerFragment"
+            app:destination="@id/ledgerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/allSupportFragment"
+        android:name="com.hemp.works.dashboard.support.ui.AllSupportFragment"
+        android:label="AllSupportFragment" >
+        <action
+            android:id="@+id/action_allSupportFragment_to_supportFragment"
+            app:destination="@id/supportFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_allSupportFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_allSupportFragment_to_allProductListFragment"
+            app:destination="@id/allProductListFragment" />
+        <action
+            android:id="@+id/action_allSupportFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/paymentHistoryFragment"
+        android:name="com.hemp.works.dashboard.payment.ui.PaymentHistoryFragment"
+        android:label="PaymentHistoryFragment" />
+    <fragment
+        android:id="@+id/walletFragment"
+        android:name="com.hemp.works.dashboard.wallet.ui.WalletFragment"
+        android:label="WalletFragment" />
+    <fragment
+        android:id="@+id/ledgerFragment"
+        android:name="com.hemp.works.dashboard.ledger.ui.LedgerFragment"
+        android:label="LedgerFragment" >
+
+        <action
+            android:id="@+id/action_ledgerFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment"
+            app:popUpTo="@id/accountFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/privacyFragment"
+        android:name="com.hemp.works.dashboard.info.PrivacyFragment"
+        android:label="PrivacyFragment" />
+    <fragment
+        android:id="@+id/TACFragment"
+        android:name="com.hemp.works.dashboard.info.TACFragment"
+        android:label="TACFragment" />
+    <fragment
+        android:id="@+id/courseFragment"
+        android:name="com.hemp.works.dashboard.course.ui.CourseFragment"
+        android:label="CourseFragment" />
+    <fragment
+        android:id="@+id/courseTACFragment"
+        android:name="com.hemp.works.dashboard.course.ui.CourseTACFragment"
+        android:label="CourseTACFragment" />
+
 
 </navigation>
 <!--https://developer.android.com/guide/navigation/navigation-pass-data#supported_argument_types-->

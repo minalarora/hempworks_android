@@ -19,5 +19,15 @@
             android:id="@+id/create_account"
             android:icon="@drawable/ic_menu_create"
             android:title="@string/sign_up_sign_in" />
+
+        <item
+            android:id="@+id/privacy"
+            android:icon="@drawable/ic_menu_privacy"
+            android:title="@string/privacy_policies" />
+
+        <item
+            android:id="@+id/tac"
+            android:icon="@drawable/ic_menu_condition"
+            android:title="@string/terms_and_conditions" />
     </group>
 </menu>

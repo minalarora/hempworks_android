@@ -12,13 +12,14 @@ import com.bumptech.glide.Priority
 import com.hemp.works.R
 import com.hemp.works.base.MyAppGlideModule
 import com.hemp.works.dashboard.model.Banner
+import com.hemp.works.dashboard.model.Course
 import com.hemp.works.databinding.ItemBannerImageBinding
 
-class BannerAdapter : ListAdapter<Banner, BannerAdapter.ViewHolder>(BannerDiffCallback()) {
+class BannerAdapter(private val listener: BannerItemClickListener? = null) : ListAdapter<Banner, BannerAdapter.ViewHolder>(BannerDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(holder.adapterPosition)
-        holder.bind(item)
+        holder.bind(item, listener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,7 +28,7 @@ class BannerAdapter : ListAdapter<Banner, BannerAdapter.ViewHolder>(BannerDiffCa
 
     class ViewHolder private constructor(val binding: ItemBannerImageBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: Banner) {
+        fun bind(item: Banner, listener: BannerItemClickListener?) {
             Glide.with(binding.root.context)
                 .load(item.url)
                 .placeholder(ColorDrawable(ContextCompat.getColor(binding.root.context, R.color.white)))
@@ -36,6 +37,7 @@ class BannerAdapter : ListAdapter<Banner, BannerAdapter.ViewHolder>(BannerDiffCa
                 .priority(Priority.IMMEDIATE)
                 .into(binding.image);
 
+            binding.root.setOnClickListener { listener?.onItemClick(item) }
             binding.executePendingBindings()
         }
 
@@ -62,4 +64,8 @@ class BannerAdapter : ListAdapter<Banner, BannerAdapter.ViewHolder>(BannerDiffCa
         }
 
 
+}
+
+interface BannerItemClickListener {
+    fun onItemClick(banner: Banner)
 }

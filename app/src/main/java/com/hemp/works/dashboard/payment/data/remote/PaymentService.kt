@@ -1,10 +1,7 @@
 package com.hemp.works.dashboard.payment.data.remote
 
 import com.hemp.works.base.BooleanResponse
-import com.hemp.works.dashboard.model.CreditHistory
-import com.hemp.works.dashboard.model.Order
-import com.hemp.works.dashboard.model.RequestOrder
-import com.hemp.works.dashboard.model.Payment
+import com.hemp.works.dashboard.model.*
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -24,6 +21,9 @@ interface PaymentService {
 
     @GET("/v1/credithistory/single")
     suspend fun getSingleCreditHistory(@Query("id") creditHistoryId: Long) : Response<CreditHistory>
+
+    @GET("/v1/transaction/all")
+    suspend fun getPaymentHistory() : Response<List<Transaction>>
 
 //    @GET("/v1/order/all")
 //    suspend fun getAllOrder() : Response<List<Order>>

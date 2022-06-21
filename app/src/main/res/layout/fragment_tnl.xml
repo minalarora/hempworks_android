@@ -9,6 +9,7 @@
             name="viewmodel"
             type="com.hemp.works.dashboard.tnl.ui.TNLViewModel" />
 
+        <import type="com.hemp.works.dashboard.tnl.ui.TNLType"/>
         <import type="com.hemp.works.dashboard.UserType"/>
 
     </data>
@@ -46,6 +47,16 @@
                     style="@style/textview_normal_big"
                     android:textColor="@color/white" />
 
+                <ImageView
+                    android:id="@+id/info"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:src="@drawable/ic_info"
+                    android:elevation="1dp"
+                    app:hideIfFalse="@{viewmodel.fragmentType == TNLType.TUTORIAL}"
+                    android:layout_gravity="end"
+                    app:tint="@color/white" />
 <!--                <ImageView-->
 <!--                    android:id="@+id/filter"-->
 <!--                    android:layout_width="@dimen/_24sdp"-->

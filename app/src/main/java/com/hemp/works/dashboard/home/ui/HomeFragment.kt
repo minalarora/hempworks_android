@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
+import androidx.core.text.HtmlCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
@@ -90,6 +91,11 @@ class HomeFragment : Fragment(), Injectable {
             false
         }
 
+        binding.bottomNavigation.setOnNavigationItemSelectedListener{
+            selectBottomItem(it)
+            true
+        }
+
         ActionBarDrawerToggle(requireActivity(), binding.drawer, binding.toolbar, R.string.open, R.string.close).let {
             binding.drawer.addDrawerListener(it)
             it.isDrawerIndicatorEnabled = true
@@ -110,7 +116,7 @@ class HomeFragment : Fragment(), Injectable {
                     }
                 }
                 R.id.cart -> {
-                    HomeFragmentDirections.actionHomeFragmentToCartFragment().also {
+                    HomeFragmentDirections.actionHomeFragmentToCartFragment(true).also {
                         binding.root.findNavController().navigate(it)
                     }
                 }
@@ -126,7 +132,21 @@ class HomeFragment : Fragment(), Injectable {
         }
 
 
-        binding.bannerRecyclerview.adapter = BannerAdapter()
+        binding.bannerRecyclerview.adapter = BannerAdapter(listener = object :
+            BannerItemClickListener {
+            override fun onItemClick(banner: Banner) {
+                if (sharedViewModel.userType == UserType.APPROVED) {
+                    if (banner.url == "https://image.techhempworks.co.in/piyush-juneja.jpg") {
+                        navigateToCourse()
+                    } else {
+                        HomeFragmentDirections.actionHomeFragmentToOfferFragment().also {
+                            binding.root.findNavController().navigate(it)
+                        }
+                    }
+                }
+            }
+            }
+        )
         ViewCompat.setNestedScrollingEnabled(binding.bannerRecyclerview, false);
 
         binding.categoryRecyclerview.adapter = CategoryAdapter(listener = object :
@@ -205,6 +225,10 @@ class HomeFragment : Fragment(), Injectable {
             }
         }
 
+        binding.disclaimer.text = HtmlCompat.fromHtml("<b>DISCLAIMER</b><br>"
+                + requireContext().getString(R.string.disclaimer_home)
+                + "<br><br>" + requireContext().getString(R.string.disclaimer_home_2), HtmlCompat.FROM_HTML_MODE_LEGACY)
+
         viewModel.bannerList.observe(viewLifecycleOwner) {
             (binding.bannerRecyclerview.adapter as BannerAdapter).submitList(it)
             viewModel.handleBannerVisibility(it.isEmpty())
@@ -262,6 +286,10 @@ class HomeFragment : Fragment(), Injectable {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.bottomNavigation.selectedItemId = R.id.home
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -332,11 +360,54 @@ class HomeFragment : Fragment(), Injectable {
                     binding.root.findNavController().navigate(it)
                 }
             }
-
+            R.id.privacy -> {
+                HomeFragmentDirections.actionHomeFragmentToPrivacyFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            R.id.tac -> {
+                HomeFragmentDirections.actionHomeFragmentToTACFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            R.id.courses -> {
+                navigateToCourse()
+            }
             //TODO: NAVIGATE TO DIFF FRAGMENTS
         }
 
         binding.drawer.closeDrawers()
+    }
+
+    private fun selectBottomItem(menuItem: MenuItem) {
+
+        when(menuItem.itemId) {
+            R.id.home -> {
+
+            }
+            R.id.products -> {
+                HomeFragmentDirections.actionHomeFragmentToAllProductListFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            R.id.support -> {
+                HomeFragmentDirections.actionHomeFragmentToAllSupportFragment().also {
+                    binding.root.findNavController().navigate(it)
+                }
+            }
+            R.id.account -> {
+                if (sharedViewModel.userType == UserType.ANONYMOUS) {
+                    navigateToLogin()
+                } else {
+                    HomeFragmentDirections.actionHomeFragmentToAccountFragment().also {
+                        binding.root.findNavController().navigate(it)
+                    }
+                }
+            }
+
+
+            //TODO: NAVIGATE TO DIFF FRAGMENTS
+        }
     }
 
 
@@ -349,7 +420,7 @@ class HomeFragment : Fragment(), Injectable {
         val dateFormat = SimpleDateFormat(Constants.ONLY_DATE_FORMAT);
         val date = dateFormat.format(response.date!!)
 
-        PendingCreditBottomSheet.newInstance(response.pendingamount.toString(), date)
+        PendingCreditBottomSheet.newInstance(response.pendingamount.toString(), date, "HOME")
             .show(requireActivity().supportFragmentManager, PendingCreditBottomSheet.javaClass.simpleName)
 
         requireActivity().supportFragmentManager.setFragmentResultListener(getString(R.string.pending_amount_title), this, object :
@@ -372,6 +443,26 @@ class HomeFragment : Fragment(), Injectable {
         val imm: InputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun navigateToLogin() {
+        PreferenceManagerUtil.clear(requireContext())
+        LoginActivity.getPendingIntent(requireContext(), R.id.loginFragment).send()
+        requireActivity().finish()
+    }
+
+    private fun navigateToCourse() {
+        if (sharedViewModel.user?.course == "enable") {
+            HomeFragmentDirections.actionHomeFragmentToCourseFragment().also {
+                binding.root.findNavController().navigate(it)
+            }
+        } else if (sharedViewModel.user?.course == "disable") {
+            HomeFragmentDirections.actionHomeFragmentToCourseTACFragment().also {
+                binding.root.findNavController().navigate(it)
+            }
+        } else {
+            showSnackBar(getString(R.string.course_snackbar))
+        }
     }
 
     companion object {

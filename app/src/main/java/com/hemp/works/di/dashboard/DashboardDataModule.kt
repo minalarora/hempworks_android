@@ -1,15 +1,21 @@
 package com.hemp.works.di.dashboard
 
+import com.hemp.works.dashboard.account.data.remote.AccountRemoteDataSource
+import com.hemp.works.dashboard.account.data.remote.AccountService
 import com.hemp.works.dashboard.address.data.remote.AddressRemoteDataSource
 import com.hemp.works.dashboard.address.data.remote.AddressService
 import com.hemp.works.dashboard.calculator.data.remote.CalculatorRemoteDataSource
 import com.hemp.works.dashboard.calculator.data.remote.CalculatorService
 import com.hemp.works.dashboard.cart.data.remote.CartRemoteDataSource
 import com.hemp.works.dashboard.cart.data.remote.CartService
+import com.hemp.works.dashboard.course.data.remote.CourseRemoteDataSource
+import com.hemp.works.dashboard.course.data.remote.CourseService
 import com.hemp.works.dashboard.credit.data.remote.CreditRemoteDataSource
 import com.hemp.works.dashboard.credit.data.remote.CreditService
 import com.hemp.works.dashboard.home.data.remote.HomeRemoteDataSource
 import com.hemp.works.dashboard.home.data.remote.HomeService
+import com.hemp.works.dashboard.ledger.data.remote.LedgerRemoteDataSource
+import com.hemp.works.dashboard.ledger.data.remote.LedgerService
 import com.hemp.works.dashboard.notification.data.remote.NotificationRemoteDataSource
 import com.hemp.works.dashboard.notification.data.remote.NotificationService
 import com.hemp.works.dashboard.offer.data.remote.OfferRemoteDataSource
@@ -30,6 +36,8 @@ import com.hemp.works.dashboard.support.data.remote.SupportRemoteDataSource
 import com.hemp.works.dashboard.support.data.remote.SupportService
 import com.hemp.works.dashboard.tnl.data.remote.TNLRemoteDataSource
 import com.hemp.works.dashboard.tnl.data.remote.TNLService
+import com.hemp.works.dashboard.wallet.data.remote.WalletRemoteDataSource
+import com.hemp.works.dashboard.wallet.data.remote.WalletService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -180,5 +188,44 @@ class DashboardDataModule {
     @Provides
     fun provideOfferRemoteDataSource(service: OfferService)
             = OfferRemoteDataSource(service)
+
+    @Singleton
+    @Provides
+    fun provideAccountService(retrofit: Retrofit): AccountService = retrofit.create(
+        AccountService::class.java)
+
+    @Provides
+    fun provideAccountRemoteDataSource(service: AccountService)
+            = AccountRemoteDataSource(service)
+
+    @Singleton
+    @Provides
+    fun provideWalletService(retrofit: Retrofit): WalletService = retrofit.create(
+        WalletService::class.java)
+
+    @Provides
+    fun provideWalletRemoteDataSource(service: WalletService)
+            = WalletRemoteDataSource(service)
+
+    @Singleton
+    @Provides
+    fun provideLedgerService(retrofit: Retrofit): LedgerService = retrofit.create(
+        LedgerService::class.java)
+
+    @Provides
+    fun provideLedgerRemoteDataSource(service: LedgerService)
+            = LedgerRemoteDataSource(service)
+
+    @Singleton
+    @Provides
+    fun provideCourseService(retrofit: Retrofit): CourseService = retrofit.create(
+        CourseService::class.java)
+
+    @Provides
+    fun provideCourseRemoteDataSource(service: CourseService)
+            = CourseRemoteDataSource(service)
+
+
+
 
 }

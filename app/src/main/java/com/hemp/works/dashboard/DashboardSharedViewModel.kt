@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 class DashboardSharedViewModel @Inject constructor(context: Context): BaseViewModel() {
 
-    var user =  PreferenceManagerUtil.getDoctor(context)
+    var user = PreferenceManagerUtil.getDoctor(context)
 
     val userType: UserType
         get() {

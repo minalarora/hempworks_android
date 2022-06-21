@@ -9,7 +9,7 @@ import com.hemp.works.dashboard.model.Order
 import com.hemp.works.dashboard.order.ui.OrderItemClickListener
 import java.text.SimpleDateFormat
 
-class OrderViewModel(context: Context, private val order: Order, private val listener: OrderItemClickListener) {
+class OrderViewModel(context: Context, private val order: Order, private val listener: OrderItemClickListener?) {
 
     val orderId: String = context.getString(R.string.order_id, order.id?.toString())
 
@@ -25,16 +25,16 @@ class OrderViewModel(context: Context, private val order: Order, private val lis
         else -> ContextCompat.getColor(context, R.color.orange_F8AA37)
     }
 
-    val title: String = order.order?.get(0)?.productname.toString()
+    val title: String = order.order?.get(0)?.productname.toString() + " - " + order.order?.get(0)?.variantname.toString().uppercase()
 
-    val subTitle: String = order.order?.get(0)?.variantname.toString()
+    val subTitle: String = if(order.payment == "CREDIT") order.payment else order.transaction?.paymentmode.toString()
 
     val price: String  = context.getString(R.string.order_price, order.order?.get(0)?.price.toString())
 
     val quantity: String  = context.getString(R.string.order_quantity, order.order?.get(0)?.quantity.toString())
 
     fun onProductClick() {
-        listener.onOrderClick(order.order?.get(0)?.productid!!)
+        listener?.onOrderClick(order.order?.get(0)?.productid!!)
     }
 
 

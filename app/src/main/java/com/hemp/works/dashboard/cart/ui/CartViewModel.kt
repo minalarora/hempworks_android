@@ -23,6 +23,12 @@ class CartViewModel  @Inject constructor(private val repository: CartRepository)
             , HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 
+    val coinprice = Transformations.map(repository.cart) {
+        HtmlCompat.fromHtml(
+            "Rs. ${it.walletprice}"
+            , HtmlCompat.FROM_HTML_MODE_LEGACY)
+    }
+
     val cartListVisibility: LiveData<Boolean> = Transformations.map(repository.cart) {
         it.products?.isNotEmpty()
     }

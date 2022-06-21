@@ -1,24 +1,34 @@
 package com.hemp.works.di.dashboard
 
+import com.hemp.works.dashboard.account.ui.AccountFragment
 import com.hemp.works.dashboard.address.ui.AddressFragment
 import com.hemp.works.dashboard.address.ui.CreateAddressFragment
 import com.hemp.works.dashboard.calculator.ui.DosageCalculatorFragment
 import com.hemp.works.dashboard.cart.ui.CartFragment
 import com.hemp.works.dashboard.cart.ui.CouponFragment
+import com.hemp.works.dashboard.course.ui.CourseFragment
+import com.hemp.works.dashboard.course.ui.CourseTACFragment
+import com.hemp.works.dashboard.home.ui.AllProductListFragment
 import com.hemp.works.dashboard.home.ui.HomeFragment
 import com.hemp.works.dashboard.home.ui.ProductListFragment
+import com.hemp.works.dashboard.ledger.ui.LedgerFragment
+import com.hemp.works.dashboard.ledger.ui.LedgerFragmentDirections
 import com.hemp.works.dashboard.notification.ui.NotificationFragment
 import com.hemp.works.dashboard.offer.ui.OfferFragment
 import com.hemp.works.dashboard.order.ui.OrderFragment
 import com.hemp.works.dashboard.payment.ui.PaymentFragment
+import com.hemp.works.dashboard.payment.ui.PaymentHistoryFragment
 import com.hemp.works.dashboard.prescription.ui.PrescriptionFragment
 import com.hemp.works.dashboard.prescription.ui.UploadPrescriptionFragment
 import com.hemp.works.dashboard.product.ui.ProductFragment
 import com.hemp.works.dashboard.product.ui.ProductImageFragment
 import com.hemp.works.dashboard.profile.ui.ProfileFragment
 import com.hemp.works.dashboard.search.ui.SearchFragment
+import com.hemp.works.dashboard.support.ui.AllSupportFragment
+import com.hemp.works.dashboard.support.ui.AllSupportFragmentDirections
 import com.hemp.works.dashboard.support.ui.SupportFragment
 import com.hemp.works.dashboard.tnl.ui.TNLFragment
+import com.hemp.works.dashboard.wallet.ui.WalletFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -31,6 +41,9 @@ abstract class DashboardFragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeProductListFragment(): ProductListFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeAllProductListFragment(): AllProductListFragment
 
     @ContributesAndroidInjector
     abstract fun contributeProductFragment(): ProductFragment
@@ -85,5 +98,26 @@ abstract class DashboardFragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeOfferFragment(): OfferFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeAccountFragment(): AccountFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeWalletFragment(): WalletFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributePaymentHistoryFragment(): PaymentHistoryFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeAllSupportFragment(): AllSupportFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeLedgerFragment(): LedgerFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeCourseFragment(): CourseFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeCourseTACFragment(): CourseTACFragment
 
 }
