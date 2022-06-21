@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_height="match_parent">
+
+
+    <RadioGroup
+        android:id="@+id/idRG"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:weightSum="1"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/idRbApprove"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33"
+            android:includeFontPadding="true"
+            android:paddingLeft="8dp"
+            android:text="@string/approve"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+
+        <RadioButton
+            android:id="@+id/idRbReject"
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:includeFontPadding="true"
+            android:paddingLeft="8dp"
+            android:text="@string/reject"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <RadioButton
+            android:id="@+id/idRbPending"
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:includeFontPadding="true"
+            android:paddingLeft="8dp"
+            android:text="@string/pending"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+    </RadioGroup>
+
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/idIgProfile"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/idRG"
+            android:src="@drawable/ic_photo" />
+
+
+    <LinearLayout
+        android:id="@+id/idLlName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idIgProfile"
+        android:layout_marginTop="16dp"
+        android:weightSum="1"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:text="@string/nameD"
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/idTvName"
+            android:layout_width="0dp"
+            android:textColor="@color/black"
+            android:layout_weight="0.8"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_below="@+id/idIgProfile"
+            android:text="@string/name"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/idLlId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idLlName"
+        android:layout_marginTop="8dp"
+        android:weightSum="1"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="wrap_content"
+            android:text="@string/id"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/idTvId"
+            android:layout_width="0dp"
+            android:textColor="@color/black"
+            android:layout_weight="0.8"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_below="@+id/idIgProfile"
+            android:text="@string/name"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/idLlClinic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idLlId"
+        android:weightSum="1"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="wrap_content"
+            android:text="@string/clinic"
+            android:textColor="@color/black"
+
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/idTvClinic"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_below="@+id/idIgProfile"
+            android:text="@string/name"            android:textColor="@color/black"
+
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/idLlEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idLlClinic"
+        android:layout_marginTop="8dp"
+        android:weightSum="1"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textColor="@color/black"
+
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/idTvEmail"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:textColor="@color/black"
+
+            android:layout_below="@+id/idIgProfile"
+            android:text="@string/name"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/idLlMobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idLlEmail"
+        android:layout_marginTop="8dp"
+        android:weightSum="1"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="wrap_content"
+            android:text="@string/mobile"
+            android:textColor="@color/black"
+
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/idTvMobile"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:textColor="@color/black"
+
+            android:layout_below="@+id/idIgProfile"
+            android:text="@string/name"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/idLlBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idLlMobile"
+        android:layout_marginTop="16dp"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/idTvCertificate"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_fill_orange"
+            android:gravity="center"
+            android:layout_weight="0.33"
+            android:text="Certificate"
+            android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/idTvManOrder"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="0.33"
+            android:background="@drawable/bg_fill_orange"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:text="Manual order"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/idTvManCredit"
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_marginLeft="5dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_fill_orange"
+            android:gravity="center"
+            android:text="Manual Credit"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/idTvDis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idLlBtn"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+
+        android:text="@string/discount_list"
+        android:textSize="18dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/idRvItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idTvDis"
+        android:clipToPadding="false"
+        android:scrollbarStyle="outsideOverlay" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/idTvOrder"
+            android:layout_width="0dp"
+            android:text="Order"
+            android:gravity="center"
+            android:background="@drawable/bg_fill_orange"
+            android:layout_weight="0.5"
+            android:textColor="@color/white"
+            android:layout_height="44dp"/>
+
+        <TextView
+            android:id="@+id/idTvPres"
+            android:layout_width="0dp"
+            android:text="Prescription"
+            android:background="@drawable/bg_fill_orange"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            android:layout_height="44dp"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

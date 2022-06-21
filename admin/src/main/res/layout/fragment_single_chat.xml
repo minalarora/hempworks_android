@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="12dp"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/idRvChat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/idLl"
+        android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:reverseLayout="false"
+        app:stackFromEnd="true"
+         />
+
+
+    <LinearLayout
+        android:id="@+id/idLl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="16dp"
+        android:weightSum="1"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/idEdtName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idTvTitle"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_orange_corner_radius"
+            android:hint="@string/enter_coupon_name"
+            android:inputType="textCapCharacters"
+            android:padding="12dp"
+            android:layout_weight="0.8"
+            android:textSize="16dp" />
+
+
+        <ImageView
+            android:id="@+id/idTvSend"
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_baseline_send_24"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

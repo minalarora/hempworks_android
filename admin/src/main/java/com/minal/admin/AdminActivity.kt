@@ -8,6 +8,10 @@ import com.hoobio.base.BaseActivity
 import com.minal.admin.databinding.ActivityAdminBinding
 import com.minal.admin.ext_fun.replaceFragment
 import com.minal.admin.ui.AdminFragment
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
+import org.koin.core.logger.EmptyLogger
+import org.koin.core.logger.Logger
 
 class AdminActivity : BaseActivity<ActivityAdminBinding>() {
 
@@ -25,6 +29,7 @@ class AdminActivity : BaseActivity<ActivityAdminBinding>() {
     override fun getViewBinding() = ActivityAdminBinding.inflate(layoutInflater)
 
     override fun onViewInitialized() {
+        initDI()
         initFragment()
 
 
@@ -35,6 +40,25 @@ class AdminActivity : BaseActivity<ActivityAdminBinding>() {
             R.id.idFcvAdmin,
             AdminFragment.getInstance(),
             AdminFragment.TAG)
+    }
+
+    private fun initDI() {
+        startKoin {
+            koin._logger = koinLogger()
+            //declare application context
+            androidContext(this@AdminActivity)
+            //declare all modules here
+        }
+    }
+
+    /**
+     * [androidLogger] will display logs in release mode
+     * [koinLogger] will display logs only when [AppConfig.LOG_ENABLE] is @true
+     * else it will return empty log*/
+    private fun koinLogger(): Logger {
+        return if (false)
+            org.koin.android.logger.AndroidLogger() else
+            EmptyLogger()
     }
 
 }

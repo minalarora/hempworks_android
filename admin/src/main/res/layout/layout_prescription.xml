@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_centerHorizontal="true"
+    android:clipToPadding="false"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    app:cardPreventCornerOverlap="false"
+    android:background="?selectableItemBackground">
+
+    <RelativeLayout
+        android:id="@+id/idRlDoctor"
+        android:layout_width="match_parent"
+        android:padding="12dp"
+        android:background="@color/white"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/idTvOId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/idIgDownload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_baseline_arrow_circle_down_24"
+            />
+
+        <ImageView
+            android:id="@+id/idIgTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idTvOId"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_baseline_access_time_24"
+             />
+        <TextView
+            android:id="@+id/idTvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:layout_toRightOf="@+id/idIgTime"
+            android:layout_below="@+id/idTvOId"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="4dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

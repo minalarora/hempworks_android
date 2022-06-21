@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true">
+
+
+    <EditText
+        android:id="@+id/idEdtTPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:hint="@string/enter_total_price"
+        android:inputType="number"
+        android:padding="12dp"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/idEdtPPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdtTPrice"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:hint="@string/enter_pending_price"
+        android:inputType="number"
+        android:padding="12dp"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/idEdtDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdtPPrice"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:clickable="true"
+        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+        android:focusable="false"
+        android:hint="jan, 01,2022"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/idTvItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/idEdtDate"
+        android:text="@string/add_products_item"/>
+
+    <Spinner
+        android:id="@+id/idEdtProduct"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_below="@+id/idTvItems"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:padding="12dp"
+        android:popupBackground="@android:color/white"
+        android:scrollbars="none"
+        android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:id="@+id/idEdtVariant"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_below="@+id/idEdtProduct"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:padding="12dp"
+        android:popupBackground="@android:color/white"
+        android:scrollbars="none"
+        android:spinnerMode="dropdown" />
+
+    <LinearLayout
+        android:id="@+id/idll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdtVariant"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <EditText
+            android:id="@+id/idEdtQuant"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/edittext_orange_corner_radius"
+            android:hint="@string/quantity"
+            android:inputType="number"
+            android:padding="12dp"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/idEdtPri"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/edittext_orange_corner_radius"
+            android:hint="@string/price"
+            android:inputType="number"
+            android:padding="12dp"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/idBtnAdd"
+        android:layout_width="150dp"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_fill_orange"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/idll"
+        android:text="Add item"
+        android:textColor="@color/white" />
+
+
+    <LinearLayout
+        android:id="@+id/idButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/idBtnCreate"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_fill_orange"
+            android:gravity="center"
+            android:text="@string/submit"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+
+</RelativeLayout>

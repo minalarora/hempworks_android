@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/idButton"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            >
+
+            <TextView
+                android:id="@+id/idTvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/create_coupon"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/idEdtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idTvTitle"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_orange_corner_radius"
+                android:hint="@string/enter_coupon_name"
+                android:inputType="textCapCharacters"
+                android:padding="12dp"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/idEdtDis"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@+id/idEdtName"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_orange_corner_radius"
+                android:gravity="start"
+                android:hint="@string/discription"
+                android:padding="12dp"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/idEdtUse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idEdtDis"
+                android:layout_marginTop="16dp"
+                android:inputType="number"
+                android:background="@drawable/edittext_orange_corner_radius"
+                android:hint="@string/how_many_time_use"
+                android:padding="12dp"
+                android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/idTvCpType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdtUse"
+        android:layout_marginTop="16dp"
+        android:text="@string/coupon_will_be_public_or_private"
+        android:textSize="18dp" />
+
+    <RadioGroup
+        android:id="@+id/idRG"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:weightSum="1"
+        android:layout_below="@+id/idTvCpType"
+        android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/idRbPublic"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:includeFontPadding="true"
+                android:paddingLeft="10dp"
+                android:text="@string/publics"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+            <RadioButton
+                android:id="@+id/idRbPrivate"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:includeFontPadding="true"
+                android:paddingLeft="10dp"
+                android:text="@string/privates"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/idTvCpDis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idRG"
+        android:layout_marginTop="16dp"
+        android:textSize="18dp"
+        android:text="@string/coupon_discount_type" />
+
+    <RadioGroup
+        android:id="@+id/idRGType"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/idTvCpDis"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/idRbPercentage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:includeFontPadding="true"
+                android:text="@string/percentage"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <RadioButton
+                android:id="@+id/idRbValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:includeFontPadding="true"
+                android:text="@string/value"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <RadioButton
+                android:id="@+id/idRbQuantity"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="true"
+                android:text="@string/quantity"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+            <RadioButton
+                android:id="@+id/idRbCredit"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="true"
+                android:text="@string/credit"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+
+
+
+    </RadioGroup>
+
+            <EditText
+                android:id="@+id/idEdtValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idRGType"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_orange_corner_radius"
+                android:hint="@string/value"
+                android:padding="12dp" />
+
+    <RelativeLayout
+        android:id="@+id/idRlQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdtValue"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        >
+
+        <Spinner
+            android:id="@+id/idEdtPro"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:padding="12dp"
+            android:popupBackground="@android:color/white"
+            android:scrollbars="none"
+            android:background="@drawable/edittext_orange_corner_radius"
+            android:spinnerMode="dropdown" />
+
+
+
+        <Spinner
+            android:id="@+id/idEdtVar"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            android:layout_below="@+id/idEdtPro"
+            android:popupBackground="@android:color/white"
+            android:scrollbars="none"
+            android:background="@drawable/edittext_orange_corner_radius"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/idEdtAddPro"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            android:layout_below="@+id/idEdtVar"
+            android:popupBackground="@android:color/white"
+            android:scrollbars="none"
+            android:background="@drawable/edittext_orange_corner_radius"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/idEdtAddVar"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            android:layout_below="@+id/idEdtAddPro"
+            android:popupBackground="@android:color/white"
+            android:scrollbars="none"
+            android:background="@drawable/edittext_orange_corner_radius"
+            android:spinnerMode="dropdown" />
+
+    </RelativeLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/idButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
+        >
+        <TextView
+            android:id="@+id/idBtnCreate"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_fill_orange"
+            android:gravity="center"
+            android:text="@string/create_coupon"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+
+</RelativeLayout>

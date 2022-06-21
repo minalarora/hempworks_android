@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true">
+
+
+    <EditText
+        android:id="@+id/idEdtAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:hint="@string/enter_price"
+        android:inputType="number"
+        android:padding="12dp"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/idEdtDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdtAmount"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:clickable="true"
+        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+        android:focusable="false"
+        android:hint="jan, 1,2022"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textSize="16dp" />
+
+    <LinearLayout
+        android:id="@+id/idButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
+        >
+        <TextView
+            android:id="@+id/idBtnCreate"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_fill_orange"
+            android:gravity="center"
+            android:text="@string/submit"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+
+</RelativeLayout>
