@@ -52,4 +52,7 @@ interface RestApi {
     @POST(RestConstant.API_CHAT_MESSAGE)
     suspend fun sendMsg(@Header("Authorization") token: String,@Body obj: RequestSendMsg): Response<ResponseSendMsg>
 
+    @GET(RestConstant.API_ALL_ORDER)
+    suspend fun getAllOrder(@Header("Authorization") token: String) : Response<ArrayList<OrderList>>
+
 }

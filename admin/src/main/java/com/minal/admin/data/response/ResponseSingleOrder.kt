@@ -1,6 +1,7 @@
 package com.minal.admin.data.response
 
 
+import android.view.SurfaceControl
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -41,9 +42,9 @@ data class ResponseSingleOrder(
     @Json(name = "totalprice")
     var totalprice: Int,
     @Json(name = "transaction")
-    var transaction: Any,
+    var transaction: Transaction,
     @Json(name = "transactionid")
-    var transactionid: Any,
+    var transactionid: Long,
     @Json(name = "updatedAt")
     var updatedAt: String,
     @Json(name = "__v")
@@ -51,6 +52,25 @@ data class ResponseSingleOrder(
     @Json(name = "walletprice")
     var walletprice: Int
 ) {
+    data class Transaction(
+        var orderid: Long,
+        var creditid: Long,
+        var paymentmode: String,
+        var referenceid: Long,
+        var message: String,
+        var signature: String,
+        var amount: Double,
+        var _id: String,
+        var doctorid: String,
+        var status: String,
+        var reason: String,
+        var id: Long,
+        var createdAt: String,
+        var updatedAt: String,
+        var date: String,
+        var __v: Int
+    )
+
     @JsonClass(generateAdapter = true)
     data class Address(
         @Json(name = "active")

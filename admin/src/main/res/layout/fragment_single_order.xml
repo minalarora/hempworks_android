@@ -7,13 +7,114 @@
     android:padding="12dp"
     android:layout_height="match_parent">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <RelativeLayout
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+<LinearLayout
+    android:id="@+id/idLlRb"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:weightSum="1"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/idRbInitiated"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:includeFontPadding="true"
+                    android:text="Initiated"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+
+                <RadioButton
+                    android:id="@+id/idRbDispatched"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.34"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:includeFontPadding="true"
+                    android:text="Dispatched"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/idRbCompleted"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.35"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:includeFontPadding="true"
+                    android:text="Completed"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/idRbInvalid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:includeFontPadding="true"
+            android:text="Invalid"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+
+        <RadioButton
+            android:id="@+id/idRbRequestCancellation"
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:includeFontPadding="true"
+            android:text="Request_cancellation"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+
+
+    </LinearLayout>
+
+    <RadioButton
+        android:id="@+id/idRbCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="true"
+        android:text="Cancelled"
+        android:textColor="@color/black"
+        android:textSize="16dp" />
+
+</LinearLayout>
+
+            <RelativeLayout
         android:id="@+id/idRlDoctor"
         android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/idLlRb"
         android:padding="12dp"
         android:background="@drawable/edittext_orange_corner_radius"
         android:layout_height="wrap_content">
+
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/idIgProfile"
@@ -88,127 +189,12 @@
 
 
     </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/idRlOrder"
-            android:layout_width="match_parent"
-            android:layout_below="@+id/idRlDoctor"
-            android:layout_marginTop="16dp"
-            android:padding="12dp"
-            android:background="@drawable/edittext_orange_corner_radius"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/idTvIds"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Order"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/idTvOId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@+id/idTvIds"
-                android:text="@string/name"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/idTvStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="@string/name"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/idTvTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/idTvIds"
-                android:layout_marginTop="12dp"
-                android:text="@string/name"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-
-                />
-
-            <TextView
-                android:id="@+id/idTvNames"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/idTvTime"
-                android:layout_marginTop="12dp"
-                android:text="@string/name"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/idTvSize"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/idTvNames"
-                android:layout_marginTop="12dp"
-                android:text="@string/name"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/idTvRs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/idTvSize"
-                android:layout_marginTop="12dp"
-                android:text="Rs."
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/idTvPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/idTvSize"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="12dp"
-                android:layout_toRightOf="@+id/idTvRs"
-                android:text="@string/name"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/idTvSize"
-                android:layout_marginTop="12dp"
-                android:text="Qty:"
-                android:layout_toLeftOf="@+id/idTvQuantity"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/idTvQuantity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/idTvSize"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="12dp"
-                android:text="@string/name"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-
-
-
-        </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/idRlAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/idRlOrder"
+        android:layout_below="@+id/idRlDoctor"
         android:layout_marginTop="16dp"
         android:background="@drawable/edittext_orange_corner_radius"
         android:padding="12dp">
@@ -218,9 +204,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/address"
-            android:textSize="18dp"
             android:textColor="@color/black"
-            />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/idTvAddress"
@@ -233,7 +218,126 @@
             android:textSize="18dp" />
 
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/idRlTransaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idRlAddress"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:padding="12dp">
+
+
+        <TextView
+            android:id="@+id/idTvTra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transaction :"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:id="@+id/idTvTraId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idTvTra"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Referenceid :"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/idTvReference"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transaction :"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/idLlAmmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idTvTraId"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount :"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/idTvAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transaction :"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/idLlStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idLlAmmount"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status :"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/idTvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transaction :"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
 
     </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/idTvOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idRlTransaction"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:text="@string/order_list" />
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/idRvOrders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idTvOrder"
+        android:layout_marginTop="10dp"
+        android:clipToPadding="false"
+        android:scrollbarStyle="outsideOverlay"
+        />
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

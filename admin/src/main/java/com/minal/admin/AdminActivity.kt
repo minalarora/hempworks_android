@@ -4,16 +4,18 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.hoobio.base.BaseActivity
 import com.minal.admin.databinding.ActivityAdminBinding
 import com.minal.admin.ext_fun.replaceFragment
 import com.minal.admin.ui.AdminFragment
+import com.minal.admin.ui.Logout
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.logger.EmptyLogger
 import org.koin.core.logger.Logger
 
-class AdminActivity : BaseActivity<ActivityAdminBinding>() {
+class AdminActivity : BaseActivity<ActivityAdminBinding>(),Logout{
 
     companion object {
         val TAG: String = AdminActivity::class.java.simpleName
@@ -60,5 +62,10 @@ class AdminActivity : BaseActivity<ActivityAdminBinding>() {
             org.koin.android.logger.AndroidLogger() else
             EmptyLogger()
     }
+
+    override fun logoutAdmin() {
+        Log.d("d","d")
+    }
+
 
 }

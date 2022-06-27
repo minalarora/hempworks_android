@@ -25,6 +25,7 @@ import com.minal.admin.databinding.FragmentAdminBinding
 import com.minal.admin.databinding.FragmentDoctorListBinding
 import com.minal.admin.ext_fun.addFragment
 import com.minal.admin.ext_fun.hide
+import com.minal.admin.ext_fun.replaceFragment
 import com.minal.admin.ext_fun.show
 import com.minal.admin.utils.DoctorCardListener
 
@@ -117,7 +118,7 @@ class DoctorListFragment: BaseFragment<FragmentDoctorListBinding>(), DoctorCardL
         when(v?.id){
 
             R.id.idRlDoctor->{
-                addFragment(isAddToBackStack = true,
+                replaceFragment(isAddToBackStack = true,
                     R.id.idFcvAdmin,
                     DoctorDetailFragment.getInstance(data?.id),
                     DoctorDetailFragment.TAG)

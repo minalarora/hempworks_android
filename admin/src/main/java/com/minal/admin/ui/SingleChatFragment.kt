@@ -18,6 +18,9 @@ import com.minal.admin.data.response.Message
 import com.minal.admin.data.viewmodel.AdminViewModel
 import com.minal.admin.databinding.FragmentAdminBinding
 import com.minal.admin.databinding.FragmentSingleChatBinding
+import kotlinx.coroutines.delay
+import java.util.*
+import kotlin.concurrent.schedule
 
 class SingleChatFragment: BaseFragment<FragmentSingleChatBinding>(), ChatItemClickListener, SupportItemClickListener{
 
@@ -25,7 +28,7 @@ class SingleChatFragment: BaseFragment<FragmentSingleChatBinding>(), ChatItemCli
     private val mRequestSendMsg by lazy { RequestSendMsg() }
 
     var token:String?=null
-    var id:String?=null
+    var ids:String?=null
 
     companion object {
         val TAG: String = SingleChatFragment::class.java.simpleName
@@ -50,13 +53,18 @@ class SingleChatFragment: BaseFragment<FragmentSingleChatBinding>(), ChatItemCli
         token  = PreferenceManager.getDefaultSharedPreferences(context)?.
         getString(RestConstant.AUTH_TOKEN, "").toString()
 
-        id = arguments?.getString(BundleConstant.ID)
+        ids = arguments?.getString(BundleConstant.ID)
 
-        token?.let { it1 -> id?.let { viewModel.singleChat(it1, it) } }
+        token?.let { it1 -> ids?.let { viewModel.singleChat(it1, it) } }
+
+
+
+
 
         viewModel?.singleChats.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Success -> {
+
 
                     Log.d("data", it.data.toString())
 
@@ -65,6 +73,10 @@ class SingleChatFragment: BaseFragment<FragmentSingleChatBinding>(), ChatItemCli
                     (mBinding.idRvChat.adapter as ChatAdapter).submitList(it.data.messages)
                     if((mBinding.idRvChat.layoutManager as LinearLayoutManager).findLastVisibleItemPosition() > (mBinding.idRvChat.adapter as ChatAdapter).itemCount - 2) {
                         mBinding.idRvChat.scrollToPosition((mBinding.idRvChat.adapter as ChatAdapter).itemCount - 1)
+                    }
+
+                    Timer().schedule(3000) {
+                        token?.let { it1 -> ids?.let { viewModel.singleChat(it1, it) } }
                     }
                 }
 
@@ -93,7 +105,7 @@ class SingleChatFragment: BaseFragment<FragmentSingleChatBinding>(), ChatItemCli
 
         mBinding.idTvSend.setOnClickListener {
             mRequestSendMsg.apply {
-                id = "CFCEDCIEBG"
+                id = ids
                 message = mBinding.idEdtName.text.toString()
                 type = "TEXT"
                 isDoctor = false
@@ -108,6 +120,8 @@ class SingleChatFragment: BaseFragment<FragmentSingleChatBinding>(), ChatItemCli
         TODO("Not yet implemented")
     }
 
+
+
 }
 
 interface ChatItemClickListener{
@@ -117,3 +131,4 @@ interface ChatItemClickListener{
 interface SupportItemClickListener{
     fun onRetry(message: Message)
 }
+

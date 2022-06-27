@@ -38,8 +38,8 @@
             android:layout_below="@+id/idTvTitle"
             android:layout_marginTop="20dp"
             android:background="@drawable/edittext_orange_corner_radius"
-            android:hint="@string/enter_coupon_name"
-            android:inputType="textCapCharacters"
+            android:hint="@string/enter_something"
+            android:inputType="text"
             android:padding="12dp"
             android:layout_weight="0.8"
             android:textSize="16dp" />

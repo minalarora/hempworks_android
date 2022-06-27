@@ -269,14 +269,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/idTvDis"
         android:clipToPadding="false"
+        android:layout_above="@+id/idLlButton"
         android:scrollbarStyle="outsideOverlay" />
 
 
 
     <LinearLayout
+        android:id="@+id/idLlButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingTop="8dp"
         android:layout_alignParentBottom="true"
         android:weightSum="1">
 

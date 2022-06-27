@@ -1,34 +1,25 @@
 package com.minal.admin.ui
 
+import android.content.Context
 import android.os.Bundle
-import android.preference.PreferenceManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hoobio.base.BaseFragment
-import com.hoobio.data.network.ApiResponse
 import com.minal.admin.AdminWorkListener
 import com.minal.admin.R
-import com.minal.admin.data.RetrofitHelper
-import com.minal.admin.data.remote.RestApi
-import com.minal.admin.data.remote.RestConstant
-import com.minal.admin.data.remote.Result
-import com.minal.admin.data.remote.RetrofitClient
-import com.minal.admin.data.response.ResponseProduct
-import com.minal.admin.data.viewmodel.AdminViewModel
-import com.minal.admin.data.viewmodel.ViewModelFactory
 import com.minal.admin.databinding.FragmentAdminBinding
-import com.minal.admin.ext_fun.addFragment
 import com.minal.admin.ext_fun.replaceFragment
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.net.HttpURLConnection
 
 class AdminFragment : BaseFragment<FragmentAdminBinding>(),AdminWorkListener {
 
+    var mLogout: Logout? = null
+
+    fun updateApi(listener: Logout) {
+        mLogout = listener
+    }
 
     companion object {
         val TAG: String = AdminFragment::class.java.simpleName
@@ -74,10 +65,10 @@ class AdminFragment : BaseFragment<FragmentAdminBinding>(),AdminWorkListener {
             DataArray("User Chat List")
 
         )
-//        modelClasses.add(
-//            DataArray(R.drawable.common_full_open_on_phone,"1")
-//
-//        )
+        modelClasses.add(
+            DataArray("All order list")
+
+        )
 //        modelClasses.add(
 //
 //            DataArray(R.drawable.common_full_open_on_phone,"1")
@@ -92,6 +83,9 @@ class AdminFragment : BaseFragment<FragmentAdminBinding>(),AdminWorkListener {
 
     private fun setListener() {
 
+        mBinding.idLlLogout.setOnClickListener {
+            mLogout?.logoutAdmin()
+        }
     }
 
     override fun dataPass(position: Int?, v: View?, data: DataArray?) {
@@ -129,8 +123,18 @@ class AdminFragment : BaseFragment<FragmentAdminBinding>(),AdminWorkListener {
                         ChatListFragment.getInstance(),
                         ChatListFragment.TAG)
                 }
+                else if (position == 5){
+                    replaceFragment(isAddToBackStack = true,
+                        R.id.idFcvAdmin,
+                        AllOrderAdminFragment.getInstance(),
+                        AllOrderAdminFragment.TAG)
+                }
             }
         }
     }
 
+}
+
+interface Logout{
+    fun logoutAdmin( )
 }

@@ -20,6 +20,7 @@ import android.widget.AdapterView
 import android.R
 
 import android.widget.ArrayAdapter
+import androidx.core.widget.doAfterTextChanged
 import com.minal.admin.data.response.ResponseProduct
 import com.minal.admin.ext_fun.baseActivity
 import com.minal.admin.ext_fun.showToast
@@ -37,9 +38,14 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
     var varId:Long?=null
     var addProId:Long?=null
     var addVarId:Long?=null
+    var canUse:Int?=null
 
-    var item:ArrayList<ResponseProduct>?=null
-    var itemVar:ArrayList<ResponseProduct.Variant>?=null
+    var variantListFirst: List<ResponseProduct.Variant?>?=null
+    var variantListSecond: List<ResponseProduct.Variant?>?=null
+
+    var itemFirst:ArrayList<ResponseProduct>?=null
+    var itemSecond:ArrayList<ResponseProduct>?=null
+
 
     var isQuantity:Boolean?=null
     var adapter: ArrayAdapter<String>?=null
@@ -72,31 +78,20 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
             viewModel?.getProductAll(it)
         }
 
+        viewModel?.loading?.observe(viewLifecycleOwner){
+            if (it){
+                baseActivity.showProgress()
+            }
+            else
+                baseActivity.hideProgress()
+        }
+
         viewModel?.homeCategory?.observe(viewLifecycleOwner){
             when(it){
                 is Result.Success->{
-                    Log.d("data",it.data.toString())
-                    item = it.data
-                    itemVar = it.data.getOrNull(0)?.variants as ArrayList<ResponseProduct.Variant>
+                    itemFirst = it.data
+                    itemSecond = it.data
 
-//                    mProductAdapter.addItems(it.data.getOrNull(0)?.variants)
-
-                    for (f in 0 until it.data.size){
-                        val Categorys = arrayOfNulls<String>(it.data.getOrNull(f)?.variants?.size!!)
-
-                        for (i in 0 until it.data.getOrNull(f)?.variants?.size!!) {
-                            Categorys[i]= it.data.getOrNull(i)?.variants?.get(i)?.size.toString()
-
-                            val spinnerArrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(
-                                requireContext(),
-                                android.R.layout.simple_spinner_item,
-                                Categorys
-                            )
-                            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) // The drop down view
-                            mBinding.idEdtVar.setAdapter(spinnerArrayAdapter)
-                            mBinding.idEdtAddVar.setAdapter(spinnerArrayAdapter)
-                        }
-                    }
 
 
                     val Category = arrayOfNulls<String>(it.data.size!!)
@@ -150,29 +145,74 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
          }
 
 
-        mBinding.idEdtVar.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                arg0: AdapterView<*>?, arg1: View?,
-                position: Int, id: Long
-            ) {
-
-                varId = itemVar?.get(position)?.id
-                Log.d("id",id.toString())
-            }
-
-            override fun onNothingSelected(arg0: AdapterView<*>?) {}
-        })
-
-
         mBinding.idEdtPro.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 arg0: AdapterView<*>?, arg1: View?,
                 position: Int, id: Long
             ) {
 
+                proId = itemFirst?.get(position)?.id
 
-                 proId = item?.get(position)?.id
+                variantListFirst = itemFirst?.get(position)?.variants
 
+                val Category =  arrayOfNulls<String>(variantListFirst?.size!!)
+
+
+                for (i in 0 until variantListFirst?.size!!) {
+
+                    Category[i] = "${variantListFirst?.get(i)?.size.toString()} ${variantListFirst?.get(i)?.type.toString()}"
+                    val spinnerArrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(
+                        requireContext(),
+                        R.layout.simple_spinner_item,
+                        Category
+                    )
+                    spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) // The drop down view
+                    mBinding.idEdtVar.setAdapter(spinnerArrayAdapter)
+                }
+
+            }
+
+            override fun onNothingSelected(arg0: AdapterView<*>?) {}
+        })
+
+
+        mBinding.idEdtVar.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                arg0: AdapterView<*>?, arg1: View?,
+                position: Int, id: Long
+            ) {
+
+                varId = variantListFirst?.get(position)?.id
+
+            }
+
+            override fun onNothingSelected(arg0: AdapterView<*>?) {}
+        })
+
+
+        mBinding.idEdtAddPro.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                arg0: AdapterView<*>?, arg1: View?,
+                position: Int, id: Long
+            ) {
+                addProId = itemSecond?.get(position)?.id
+
+                variantListSecond = itemSecond?.get(position)?.variants
+
+                val Category =  arrayOfNulls<String>(variantListSecond?.size!!)
+
+
+                for (i in 0 until variantListSecond?.size!!) {
+
+                    Category[i] = "${variantListSecond?.get(i)?.size.toString()} ${variantListSecond?.get(i)?.type.toString()}"
+                    val spinnerArrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(
+                        requireContext(),
+                        R.layout.simple_spinner_item,
+                        Category
+                    )
+                    spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) // The drop down view
+                    mBinding.idEdtAddVar.setAdapter(spinnerArrayAdapter)
+                }
             }
 
             override fun onNothingSelected(arg0: AdapterView<*>?) {}
@@ -185,23 +225,16 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
                 position: Int, id: Long
             ) {
 
-                addVarId = itemVar?.get(position)?.id
+                addVarId = variantListSecond?.get(position)?.id
+
+
             }
 
             override fun onNothingSelected(arg0: AdapterView<*>?) {}
         })
 
 
-        mBinding.idEdtAddPro.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                arg0: AdapterView<*>?, arg1: View?,
-                position: Int, id: Long
-            ) {
-                addProId = item?.get(position)?.id
-            }
 
-            override fun onNothingSelected(arg0: AdapterView<*>?) {}
-        })
 
 
 
@@ -231,7 +264,9 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
                 disType = "percentage"
                 isQuantity = false
                 mBinding.idRlQuantity.hide()
-//                mBinding.idEdtPercentage.hint = getString(com.minal.admin.R.string.percentage)
+                
+                mBinding.idEdtValue.setHint("Percentage (Not above 100)")
+
             }
         }
 
@@ -245,6 +280,9 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
                 isQuantity = false
 
                 mBinding.idRlQuantity.hide()
+
+                mBinding.idEdtValue.setHint("Value")
+
 
             }
         }
@@ -261,6 +299,7 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
                 isQuantity = true
 
                 mBinding.idRlQuantity.show()
+                mBinding.idEdtValue.setHint("Quantity (1:1)")
 
             }
         }
@@ -276,8 +315,13 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
                 isQuantity = false
 
                 mBinding.idRlQuantity.hide()
+                mBinding.idEdtValue.setHint("Credit value")
 
             }
+        }
+
+        mBinding.idEdtUse.doAfterTextChanged {
+            canUse = mBinding.idEdtUse.text.toString().toInt()
         }
 
     }
@@ -286,7 +330,7 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
         return mRequestCreateCoupon.apply {
             name  = mBinding.idEdtName.text.toString()
             description = mBinding.idEdtDis.text.toString()
-            canuse = 3
+            canuse = canUse
             public = couponType
             type = disType
             value = mBinding.idEdtValue.text.toString()
@@ -296,8 +340,6 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
                 variant = varId
                 addvariant = addVarId
             }
-
-
         }
     }
 

@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import com.hoobio.base.BaseFragment
@@ -15,13 +14,14 @@ import com.minal.admin.constant.BundleConstant
 import com.minal.admin.data.remote.RestConstant
 import com.minal.admin.data.remote.Result
 import com.minal.admin.data.request.ReqAddCreditManual
-import com.minal.admin.data.request.RequestDocUpStatus
 import com.minal.admin.data.viewmodel.AdminViewModel
-import com.minal.admin.databinding.FragmentDoctorDetailBinding
 import com.minal.admin.databinding.FragmentManualCreditBinding
 import com.minal.admin.ext_fun.baseActivity
+import com.minal.admin.ext_fun.showToast
 import com.minal.admin.utils.CalendarUtils
 import com.minal.admin.view.TextViewDatePicker
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ManualCreditFragment: BaseFragment<FragmentManualCreditBinding>() {
 
@@ -30,12 +30,20 @@ class ManualCreditFragment: BaseFragment<FragmentManualCreditBinding>() {
     private lateinit var viewModel: AdminViewModel
     var token: String? = null
     var selectedDate:String?=null
+    var finalDate:String?=null
     var price:String?=null
 
 
     private val mTimePicker by lazy {
         TextViewDatePicker(requireContext(), setMaxDate = true, setMinDate = false) { date ->
             selectedDate = date
+            val sdf = SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z")
+            val currentDateandTime: String = sdf.format(Date())
+            Log.d("datetime",currentDateandTime)
+            val time  = CalendarUtils.formatDate(currentDateandTime,"yyyy.MM.dd G 'at' HH:mm:ss z","HH:mm:ss")
+            Log.d("datetime1",time)
+
+            finalDate = "${selectedDate} ${time}"
             mBinding.idEdtDate.setText(CalendarUtils.getMonthName(date))
         }
     }
@@ -66,10 +74,19 @@ class ManualCreditFragment: BaseFragment<FragmentManualCreditBinding>() {
         token = PreferenceManager.getDefaultSharedPreferences(context)
             ?.getString(RestConstant.AUTH_TOKEN, "").toString()
 
+        viewModel?.loading?.observe(viewLifecycleOwner){
+            if (it){
+                baseActivity.showProgress()
+            }
+            else
+                baseActivity.hideProgress()
+        }
+
         viewModel?.creditManual?.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Success -> {
                     baseActivity.onBackPressed()
+                    baseActivity.showToast("You have successfully manual credited.")
                 }
 
                 is Result.Error -> {
@@ -98,12 +115,18 @@ class ManualCreditFragment: BaseFragment<FragmentManualCreditBinding>() {
 
          mBinding.idButton.setOnClickListener {
 
-             mReqAddCreditManual.apply {
-                 amount = price?.toInt()
-                 date = "${selectedDate} ${"16:49:27"}"
-                 doctor = docId
+             if (finalDate?.isNotEmpty() == true && price?.isNotEmpty() == true){
+                 mReqAddCreditManual.apply {
+                     amount = price?.toInt()
+                     date = finalDate
+                     doctor = docId
+                 }
+                 token?.let { viewModel.addCreditManual(it,mReqAddCreditManual) }
              }
-             token?.let { viewModel.addCreditManual(it,mReqAddCreditManual) }
+             else{
+                 baseActivity.showToast("Fill all the field")
+             }
+
 
          }
 

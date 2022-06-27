@@ -40,9 +40,9 @@ data class OrderList(
     @Json(name = "totalprice")
     var totalprice: Int,
     @Json(name = "transaction")
-    var transaction: Any,
+    var transaction: Transaction?=null,
     @Json(name = "transactionid")
-    var transactionid: Any,
+    var transactionid: Long?=null,
     @Json(name = "updatedAt")
     var updatedAt: String,
     @Json(name = "__v")
@@ -50,6 +50,26 @@ data class OrderList(
     @Json(name = "walletprice")
     var walletprice: Int
 ) {
+
+    data class Transaction(
+        var orderid: Long,
+        var creditid: Long,
+        var paymentmode: String,
+        var referenceid: Long,
+        var message: String,
+        var signature: String,
+        var amount: Double,
+        var _id: String,
+        var doctorid: String,
+        var status: String,
+        var reason: String,
+        var id: Long,
+        var createdAt: String,
+        var updatedAt: String,
+        var date: String,
+        var __v: Int
+    )
+
     @JsonClass(generateAdapter = true)
     data class Address(
         @Json(name = "active")

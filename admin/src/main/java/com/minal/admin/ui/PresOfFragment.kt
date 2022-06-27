@@ -98,11 +98,22 @@ class PresOfFragment: BaseFragment<FragmentPrescripBinding>(), PrescripListener 
     }
 
     override fun dataPass(position: Int?, v: View?, data: ResponsePresList?) {
-        startActivity(
-            Intent(
-                Intent.ACTION_VIEW
-            ).apply { setDataAndType(Uri.parse(data?.prescription), FileUtils.MIME_TYPES) }
-        )
+        if (data?.type == "image"){
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW
+                ).apply { setDataAndType(Uri.parse(data?.prescription), FileUtils.MIME_TYPES) }
+            )
+        }
+        else{
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(data?.prescription)
+                )
+            )
+        }
+
     }
 
 }

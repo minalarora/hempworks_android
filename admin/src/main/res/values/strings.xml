@@ -5,7 +5,7 @@
     <string name="create_coupon">Create coupon</string>
     <string name="enter_coupon_name">Enter coupon name</string>
     <string name="discription">Discription</string>
-    <string name="how_many_time_use">How many time can use</string>
+    <string name="how_many_time_use">How many time can use (0 for unlimited)</string>
     <string name="coupon_will_be_public_or_private">Coupon will be Public or Private</string>
     <string name="privates">Private</string>
     <string name="publics">Public</string>
@@ -47,4 +47,6 @@
     <string name="enter_quantity">Enter quantity</string>
     <string name="add_products_item">Add products item</string>
     <string name="your_message_has_failed_retry">Your message has failed. Retry</string>
+    <string name="enter_something">Enter something</string>
+    <string name="order_list">Order list :</string>
 </resources>

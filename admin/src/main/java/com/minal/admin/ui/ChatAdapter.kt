@@ -25,7 +25,7 @@ class ChatAdapter(private val listener: SupportItemClickListener) : ListAdapter<
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if(getItem(position).isDoctor == true) 0 else 1
+        return if(getItem(position).isDoctor == false) 0 else 1
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

@@ -3,6 +3,7 @@ package com.minal.admin.data.request
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import com.squareup.moshi.Types
 
 @JsonClass(generateAdapter = true)
 data class ReqAddManualOrder(
@@ -26,6 +27,6 @@ data class ReqAddManualOrder(
         @Json(name = "quantity")
         var quantity: Int?=null,
         @Json(name = "variantid")
-        var variantid: Long?=null
+        var variantid: Long?=null,
     )
 }

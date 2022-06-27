@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_centerHorizontal="true"
-    android:clipToPadding="false"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="3dp"
-    app:cardUseCompatPadding="true"
-    app:cardPreventCornerOverlap="false"
-    android:background="?selectableItemBackground">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/idRlOrder"
         android:layout_width="match_parent"
+        android:layout_marginTop="16dp"
         android:padding="12dp"
-        android:background="@color/white"
-        android:layout_height="match_parent">
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/idTvId"
+            android:id="@+id/idTvIds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Order"
@@ -31,69 +25,90 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@+id/idTvId"
+            android:layout_toRightOf="@+id/idTvIds"
             android:text="@string/name"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/idTvStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:text="@string/name"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/idTvTime"
+            android:id="@+id/idTvVarId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/idTvId"
+            android:layout_below="@+id/idTvIds"
             android:layout_marginTop="12dp"
             android:text="@string/name"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="16sp"
 
             />
 
         <TextView
-            android:id="@+id/idTvTransactionId"
+            android:id="@+id/idTvNames"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/idTvTime"
+            android:layout_below="@+id/idTvVarId"
             android:layout_marginTop="12dp"
             android:text="@string/name"
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="18sp" />
 
-
+        <TextView
+            android:id="@+id/idTvSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idTvNames"
+            android:layout_marginTop="12dp"
+            android:text="@string/name"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/idTvRs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/idTvTransactionId"
+            android:layout_below="@+id/idTvSize"
             android:layout_marginTop="12dp"
             android:text="Rs."
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/idTvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/idTvTransactionId"
-            android:layout_marginTop="12dp"
+            android:layout_below="@+id/idTvSize"
             android:layout_marginLeft="3dp"
-            android:text="@string/name"
+            android:layout_marginTop="12dp"
             android:layout_toRightOf="@+id/idTvRs"
+            android:text="@string/name"
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="18sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idTvSize"
+            android:layout_marginTop="12dp"
+            android:text="Qty:"
+            android:layout_toLeftOf="@+id/idTvQuantity"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/idTvQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idTvSize"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="12dp"
+            android:text="@string/name"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
 
 
 
     </RelativeLayout>
-</com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

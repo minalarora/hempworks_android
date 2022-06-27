@@ -20,6 +20,7 @@ object RestConstant {
     const val API_CHAT_LIST="/v1/chat/list"
     const val API_CHAT_ADMIN ="/v1/chat/admin/{id}"
     const val API_CHAT_MESSAGE ="/v1/chat/message"
+    const val API_ALL_ORDER="/v1/order/all/admin"
 
 
 

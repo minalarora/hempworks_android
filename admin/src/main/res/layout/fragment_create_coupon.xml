@@ -48,6 +48,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edittext_orange_corner_radius"
                 android:gravity="start"
+                android:inputType="text"
                 android:hint="@string/discription"
                 android:padding="12dp"
                 android:textSize="16dp" />
@@ -58,9 +59,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/idEdtDis"
                 android:layout_marginTop="16dp"
-                android:inputType="number"
                 android:background="@drawable/edittext_orange_corner_radius"
                 android:hint="@string/how_many_time_use"
+                android:inputType="number"
                 android:padding="12dp"
                 android:textSize="16dp" />
 

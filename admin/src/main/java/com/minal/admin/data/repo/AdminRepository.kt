@@ -79,4 +79,9 @@ class AdminRepository(private val apiClient: RestApi = RetrofitClient.apiInterfa
     {
         return safeApiCall(call = {apiClient.sendMsg(token,obj)})
     }
+
+    suspend fun getAllOrder(token: String): Result<ArrayList<OrderList>>
+    {
+        return safeApiCall(call = {apiClient.getAllOrder(token)})
+    }
 }

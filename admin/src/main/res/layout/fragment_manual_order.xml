@@ -8,12 +8,22 @@
     android:clickable="true"
     android:focusable="true">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:layout_marginTop="20dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
 
     <EditText
         android:id="@+id/idEdtTPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="@drawable/edittext_orange_corner_radius"
         android:hint="@string/enter_total_price"
         android:inputType="number"
@@ -55,17 +65,17 @@
         android:layout_below="@+id/idEdtDate"
         android:text="@string/add_products_item"/>
 
-    <Spinner
-        android:id="@+id/idEdtProduct"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:layout_below="@+id/idTvItems"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/edittext_orange_corner_radius"
-        android:padding="12dp"
-        android:popupBackground="@android:color/white"
-        android:scrollbars="none"
-        android:spinnerMode="dropdown" />
+            <Spinner
+                android:id="@+id/idEdtProduct"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_below="@+id/idTvItems"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_orange_corner_radius"
+                android:padding="12dp"
+                android:popupBackground="@android:color/white"
+                android:scrollbars="none"
+                android:spinnerMode="dropdown" />
 
     <Spinner
         android:id="@+id/idEdtVariant"
@@ -118,13 +128,28 @@
         android:id="@+id/idBtnAdd"
         android:layout_width="150dp"
         android:layout_height="44dp"
+        android:layout_below="@+id/idll"
+        android:layout_marginTop="16dp"
         android:background="@drawable/bg_fill_orange"
         android:gravity="center"
-        android:layout_marginTop="16dp"
-        android:layout_below="@+id/idll"
         android:text="Add item"
         android:textColor="@color/white" />
 
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/idRvItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idBtnAdd"
+            android:layout_marginTop="10dp"
+            android:clipToPadding="false"
+            android:scrollbarStyle="outsideOverlay"
+            />
+
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:id="@+id/idButton"

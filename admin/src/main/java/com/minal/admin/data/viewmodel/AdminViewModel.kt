@@ -64,6 +64,10 @@ class AdminViewModel() : ViewModel() {
         MutableLiveData<Result<ResponseSendMsg>>()
     }
 
+    val allOrderList: MutableLiveData<Result<ArrayList<OrderList>>> by lazy {
+        MutableLiveData<Result<ArrayList<OrderList>>>()
+    }
+
     val errorMessage: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
@@ -231,6 +235,18 @@ class AdminViewModel() : ViewModel() {
             loading.postValue(true)
             val result = AdminRepository().sendMsg(token,obj)
             sendMSG.postValue(result)
+            loading.postValue(false)
+
+        }
+    }
+
+
+    fun allOrder(token: String)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            val result = AdminRepository().getAllOrder(token)
+            allOrderList.postValue(result)
             loading.postValue(false)
 
         }
