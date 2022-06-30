@@ -15,10 +15,12 @@
         <entry key="..\:/SanTech/hempworks_android/admin/src/main/res/layout/layout_of_discount.xml" value="0.20416666666666666" />
         <entry key="..\:/SanTech/hempworks_android/admin/src/main/res/layout/layout_order.xml" value="0.20416666666666666" />
         <entry key="..\:/SanTech/hempworks_android/admin/src/main/res/layout/layout_product_of_order.xml" value="0.20416666666666666" />
+        <entry key="..\:/SanTech/hempworks_android/app/src/main/res/drawable/ic_menu_filter.xml" value="0.124" />
         <entry key="..\:/SanTech/hempworks_android/app/src/main/res/drawable/layout_manual_order_item.xml" value="0.114" />
+        <entry key="..\:/SanTech/hempworks_android/app/src/main/res/layout/fragment_order.xml" value="0.18703703703703703" />
         <entry key="..\:/SanTech/hempworks_android/app/src/main/res/layout/item_order.xml" value="0.33" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

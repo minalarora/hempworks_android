@@ -9,9 +9,18 @@
     android:layout_height="match_parent">
 
 
+    <ImageView
+        android:id="@+id/idFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/orange_F8AA37"
+        android:src="@drawable/ic_menu_filter"/>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idRvOrders"
+        android:layout_below="@+id/idFilter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

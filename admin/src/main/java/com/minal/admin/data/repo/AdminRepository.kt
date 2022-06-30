@@ -1,5 +1,6 @@
 package com.minal.admin.data.repo
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hoobio.data.network.ApiResponse
 import com.hoobio.data.network.DataFetchCall
@@ -13,6 +14,10 @@ import com.minal.admin.data.response.*
 import retrofit2.Response
 
 class AdminRepository(private val apiClient: RestApi = RetrofitClient.apiInterface) : SafeApiRequest {
+
+    private val _orderList = MutableLiveData<List<OrderList>>()
+    val orderList: LiveData<List<OrderList>>
+        get() = _orderList
 
     suspend fun getProduct(token:String): Result<ArrayList<ResponseProduct>>{
 
@@ -83,5 +88,10 @@ class AdminRepository(private val apiClient: RestApi = RetrofitClient.apiInterfa
     suspend fun getAllOrder(token: String): Result<ArrayList<OrderList>>
     {
         return safeApiCall(call = {apiClient.getAllOrder(token)})
+    }
+
+    suspend fun updateOrder(token: String,id: String,mRequestOrderUpdate: RequestOrderUpdate): Result<ResponseOrderUpdate>
+    {
+        return safeApiCall(call = {apiClient.updateOrder(token,id,mRequestOrderUpdate)})
     }
 }

@@ -13,6 +13,7 @@ class OrderViewModel(context: Context, private val order: Order, private val lis
 
     val orderId: String = context.getString(R.string.order_id, order.id?.toString())
 
+
     @SuppressLint("SimpleDateFormat")
     private val dateFormat = SimpleDateFormat(Constants.DATE_FORMAT);
     val date: String = dateFormat.format(order.date!!)

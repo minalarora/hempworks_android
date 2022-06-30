@@ -1,5 +1,7 @@
 package com.minal.admin.data.viewmodel
 
+import android.annotation.SuppressLint
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,6 +11,9 @@ import com.minal.admin.data.repo.AdminRepository
 import com.minal.admin.data.request.*
 import com.minal.admin.data.response.*
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class AdminViewModel() : ViewModel() {
 
@@ -66,6 +71,10 @@ class AdminViewModel() : ViewModel() {
 
     val allOrderList: MutableLiveData<Result<ArrayList<OrderList>>> by lazy {
         MutableLiveData<Result<ArrayList<OrderList>>>()
+    }
+
+    val updateOrder: MutableLiveData<Result<ResponseOrderUpdate>> by lazy {
+        MutableLiveData<Result<ResponseOrderUpdate>>()
     }
 
     val errorMessage: MutableLiveData<String> by lazy {
@@ -252,6 +261,74 @@ class AdminViewModel() : ViewModel() {
         }
     }
 
+
+
+    fun updateOrder(token: String,id:String,mRequestOrderUpdate: RequestOrderUpdate)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            val result = AdminRepository().updateOrder(token,id,mRequestOrderUpdate)
+            updateOrder.postValue(result)
+            loading.postValue(false)
+
+        }
+    }
+
+    private val _ordersVisibility= MutableLiveData(false)
+    val ordersVisibility: LiveData<Boolean> = _ordersVisibility
+
+    private val _dateRangeVisibility= MutableLiveData(false)
+    val dateRangeVisibility: LiveData<Boolean> = _dateRangeVisibility
+
+    private val _dateRangeText= MutableLiveData("")
+    val dateRangeText: LiveData<String> = _dateRangeText
+
+
+    @SuppressLint("SimpleDateFormat")
+    private val dateFormat = SimpleDateFormat("dd MMM yy");
+    private var dateRange: Pair<Date, Date>? = null
+
+//    private fun filterList(list: List<OrderList>): List<OrderList> {
+//        val filteredList = if (dateRange != null) {
+//            list.filter { order ->
+//                order.date!!.after(dateRange!!.first) && order.date!!.before(dateRange!!.second)
+//            }
+//        } else {
+//            list
+//        }
+//        val expandedList = mutableListOf<OrderList>()
+//        for (orderObject in filteredList) {
+//            if (orderObject.order.isNullOrEmpty()) continue
+//            for (orderProduct in orderObject.order) {
+//                val order = orderObject.copy(order = listOf(orderProduct))
+//                expandedList.add(order)
+//            }
+//        }
+//        return expandedList
+//
+//    }
+
+//    fun updateDateRange(startDateInMillis: Long, endDateInMillis: Long) {
+//        if (startDateInMillis < 1 || endDateInMillis < 1) {
+//            dateRange = null
+//            _dateRangeVisibility.postValue(false)
+//        }
+//        else {
+//            dateRange = Pair(
+//                Calendar.getInstance().apply {
+//                    timeInMillis = startDateInMillis
+//                    add(Calendar.HOUR, -5)
+//                }.time,
+//                Calendar.getInstance().apply {
+//                    timeInMillis = endDateInMillis
+//                    add(Calendar.HOUR, 18)
+//                }.time
+//            )
+//            _dateRangeText.postValue("Showing results for " + dateFormat.format(dateRange!!.first) + " - " + dateFormat.format(dateRange!!.second))
+//            _dateRangeVisibility.postValue(true)
+//        }
+//        orderList.postValue(filterList(orderList))
+//    }
 
 
 }

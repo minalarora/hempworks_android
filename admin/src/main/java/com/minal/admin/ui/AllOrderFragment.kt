@@ -8,9 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.util.Pair
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.hoobio.base.BaseFragment
 import com.minal.admin.R
 import com.minal.admin.constant.BundleConstant
@@ -25,6 +28,7 @@ import com.minal.admin.databinding.FragmentDoctorDetailBinding
 import com.minal.admin.ext_fun.addFragment
 import com.minal.admin.ext_fun.replaceFragment
 import com.minal.admin.utils.OrderListener
+import java.util.*
 
 class AllOrderFragment: BaseFragment<FragmentAllOrderBinding>(),OrderListener  {
 
@@ -101,6 +105,10 @@ class AllOrderFragment: BaseFragment<FragmentAllOrderBinding>(),OrderListener  {
 
     private fun setListener() {
 
+        mBinding.idFilter.setOnClickListener {
+            showDatePicker()
+
+        }
     }
 
     override fun dataPass(position: Int?, v: View?, data: OrderList?) {
@@ -114,6 +122,39 @@ class AllOrderFragment: BaseFragment<FragmentAllOrderBinding>(),OrderListener  {
                     SingleOrderFragment.TAG
                 )
             }
+        }
+    }
+
+    private fun showDatePicker()
+    {
+        val calendar = Calendar.getInstance();
+        calendar.time = Date()
+        val max = calendar.timeInMillis;
+
+        calendar.add(Calendar.YEAR, -6)
+        val min = calendar.timeInMillis;
+
+        // create the instance of the CalendarConstraints
+        // Builder
+        val calendarConstraintBuilder = CalendarConstraints.Builder()
+
+        // and set the start and end constraints (bounds)
+        calendarConstraintBuilder.setStart(min);
+        calendarConstraintBuilder.setEnd(max);
+
+        val datePicker = MaterialDatePicker.Builder.dateRangePicker()
+            .setTitleText(getString(R.string.select_dates))
+            .setTheme(R.style.MaterialCalendarTheme)
+            .setSelection(null)
+            .setCalendarConstraints(calendarConstraintBuilder.build())
+            .build()
+
+        datePicker.show(requireActivity().supportFragmentManager, "tag")
+
+        datePicker.addOnPositiveButtonClickListener { selection: Pair<Long, Long>? ->
+            val startDateInMilliSeconds  = selection?.first ?: 0
+            val endDateInMilliSeconds  = selection?.second ?: 0
+//            viewModel.updateDateRange(startDateInMilliSeconds, endDateInMilliSeconds)
         }
     }
 

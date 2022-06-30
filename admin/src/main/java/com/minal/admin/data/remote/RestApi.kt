@@ -55,4 +55,21 @@ interface RestApi {
     @GET(RestConstant.API_ALL_ORDER)
     suspend fun getAllOrder(@Header("Authorization") token: String) : Response<ArrayList<OrderList>>
 
+    @PATCH(RestConstant.API_ORDER_UPDATE)
+    suspend fun updateOrder(@Header("Authorization") token: String, @Query("id") id: String?,
+                            mRequestOrderUpdate: RequestOrderUpdate):Response<ResponseOrderUpdate>
+
+
+    @GET(RestConstant.API_WALLET_HISTORY)
+    suspend fun walletHistory(@Header("Authorization") token: String,@Query ("id") id:String?): Response<ResponseWalletHistory>
+
+    @GET(RestConstant.API_TRANSACTION_ALL)
+    suspend fun transactionAll(@Header("Authorization") token: String,@Query ("id") id:String?): Response<ResponseTransactionAll>
+
+    @GET(RestConstant.API_CREDIT_HISTORY)
+    suspend fun creditHistory(@Header("Authorization") token: String,@Query ("id") id:String?): Response<ResponseCreditHistory>
+
+    @GET(RestConstant.API_CREDIT_HISTORY_PENDIG)
+    suspend fun creditHistoryPending(@Header("Authorization") token: String,@Query ("id") id:String?): Response<ResponseCreditHistoryPending>
+
 }

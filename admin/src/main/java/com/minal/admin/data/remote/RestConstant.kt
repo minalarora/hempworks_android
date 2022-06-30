@@ -21,6 +21,13 @@ object RestConstant {
     const val API_CHAT_ADMIN ="/v1/chat/admin/{id}"
     const val API_CHAT_MESSAGE ="/v1/chat/message"
     const val API_ALL_ORDER="/v1/order/all/admin"
+    const val API_ORDER_UPDATE="/v1/order/update"
+    const val API_WALLET_HISTORY="/v1/wallethistory/admin"
+    const val API_TRANSACTION_ALL="/v1/transaction/all/admin"
+    const val API_CREDIT_HISTORY="/v1/credithistory/admin"
+    const val API_CREDIT_HISTORY_PENDIG="/v1/credithistory/pending/admin"
+    const val API_UPLOAD_IMAGE="/v1/upload/image"
+
 
 
 

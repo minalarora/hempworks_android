@@ -93,7 +93,8 @@ class OrderFragment : Fragment(), Injectable, OrderItemClickListener {
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
     }
 
-    private fun showDatePicker() {
+    private fun showDatePicker()
+    {
         val calendar = Calendar.getInstance();
         calendar.time = Date()
         val max = calendar.timeInMillis;
