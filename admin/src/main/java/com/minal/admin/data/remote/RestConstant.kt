@@ -1,12 +1,16 @@
 package com.minal.admin.data.remote
 
+import com.minal.admin.BuildConfig
+
 object RestConstant {
 
        const val AUTH_TOKEN = "auth_token"
 
     const val API_TIME_OUT = 50
 
-    const val BASE_URL=  "https://hempworks-web-l5hj7.ondigitalocean.app"
+    var BASE_URL=  if (BuildConfig.DEBUG) "https://hempworks-web-l5hj7.ondigitalocean.app"
+                        else "https://api.techhempworks.co.in"
+
     const val API_PRODUCT_ALL="/v1/product/all"
     const val API_CREATE_COUPON = "/v1/coupon"
     const val API_DOCTOR_LIST= "/v1/doctor/list"

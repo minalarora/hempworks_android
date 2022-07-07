@@ -66,7 +66,7 @@ class DoctorListFragment: BaseFragment<FragmentDoctorListBinding>(), DoctorCardL
         docType = arguments?.getString(BundleConstant.DOCTOR_TYPE)
 
         viewModel = ViewModelProvider(this).get(AdminViewModel::class.java)
-        token  = PreferenceManager.getDefaultSharedPreferences(context)?.
+        token  = PreferenceManager.getDefaultSharedPreferences(requireActivity().applicationContext)?.
         getString(RestConstant.AUTH_TOKEN, "").toString()
 
         mRequestAllDoctors.apply {
