@@ -2,6 +2,7 @@ package com.minal.admin.data.remote
 
 import com.minal.admin.data.request.*
 import com.minal.admin.data.response.*
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -56,7 +57,7 @@ interface RestApi {
     suspend fun getAllOrder(@Header("Authorization") token: String) : Response<ArrayList<OrderList>>
 
     @PATCH(RestConstant.API_ORDER_UPDATE)
-    suspend fun updateOrder(@Header("Authorization") token: String, @Query("id") id: String?,
+    suspend fun updateOrder(@Header("Authorization") token: String?, @Query("id") id: String?,
                             mRequestOrderUpdate: RequestOrderUpdate):Response<ResponseOrderUpdate>
 
 
@@ -71,5 +72,25 @@ interface RestApi {
 
     @GET(RestConstant.API_CREDIT_HISTORY_PENDIG)
     suspend fun creditHistoryPending(@Header("Authorization") token: String,@Query ("id") id:String?): Response<ResponseCreditHistoryPending>
+
+    @POST(RestConstant.API_CREATE_BANNER)
+    suspend fun createBanner(@Header("Authorization") token: String?,@Body mRequestCreateBanner: RequestCreateBanner): Response<ResponseCreateBanner>
+
+    @POST(RestConstant.API_BLOG)
+    suspend fun createBlog(@Header("Authorization") token: String?,@Body mRequestBlog: RequestBlog): Response<ResponseBlog>
+
+    @POST(RestConstant.API_LIVE_SESSION)
+    suspend fun liveSession(@Header("Authorization") token: String?,@Body mRequestLiveSession: RequestLiveSession): Response<ResponseLiveSession>
+
+    @POST(RestConstant.API_NEWS_PAPER)
+    suspend fun newsLetter(@Header("Authorization") token: String?,@Body mRequestNewsLetter: RequestNewsLetter): Response<ResponseNewsLetter>
+
+    @POST(RestConstant.API_TUTORIAL)
+    suspend fun tutorial(@Header("Authorization") token: String?,@Body mRequestTutorial: RequestTutorial): Response<ResponseTutorial>
+
+    @Multipart
+    @POST(RestConstant.API_UPLOAD_IMAGE)
+    suspend fun uploadImage(@Header("Authorization") token: String,@Part file: MultipartBody.Part): Response<ResponseUploadImage>
+
 
 }

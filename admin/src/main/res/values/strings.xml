@@ -50,4 +50,15 @@
     <string name="enter_something">Enter something</string>
     <string name="order_list">Order list :</string>
     <string name="select_dates">Select dates</string>
+    <string name="select_picture">Select picture</string>
+    <string name="banner_picture">Banner picture</string>
+    <string name="title">title</string>
+    <string name="enter_url">Enter url</string>
+    <string name="inStock">InStock</string>
+    <string name="active">Active</string>
+    <string name="done">Done</string>
+    <string name="video">Video</string>
+    <string name="pdf">Pdf</string>
+    <string name="enter_image_url">Enter image url</string>
+    <string name="enter_pdf_url">Enter Pdf url</string>
 </resources>

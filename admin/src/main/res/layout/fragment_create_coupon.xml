@@ -65,14 +65,14 @@
                 android:padding="12dp"
                 android:textSize="16dp" />
 
-    <TextView
-        android:id="@+id/idTvCpType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/idEdtUse"
-        android:layout_marginTop="16dp"
-        android:text="@string/coupon_will_be_public_or_private"
-        android:textSize="18dp" />
+            <TextView
+                android:id="@+id/idTvCpType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idEdtUse"
+                android:layout_marginTop="16dp"
+                android:text="@string/coupon_will_be_public_or_private"
+                android:textSize="18dp" />
 
     <RadioGroup
         android:id="@+id/idRG"

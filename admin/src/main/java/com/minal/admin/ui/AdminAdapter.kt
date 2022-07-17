@@ -24,7 +24,7 @@ class AdminAdapter(private val listdata: ArrayList<DataArray>?,val mAdminWorkLis
     }
 
     override fun getItemCount(): Int {
-        return 6
+        return 13
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

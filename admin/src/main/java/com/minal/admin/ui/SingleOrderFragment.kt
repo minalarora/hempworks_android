@@ -20,18 +20,24 @@ import com.minal.admin.R
 import com.minal.admin.constant.BundleConstant
 import com.minal.admin.data.remote.RestConstant
 import com.minal.admin.data.remote.Result
+import com.minal.admin.data.request.RequestOrderUpdate
 import com.minal.admin.data.request.RequestSingleOrder
 import com.minal.admin.data.viewmodel.AdminViewModel
 import com.minal.admin.databinding.FragmentSingleOrderBinding
+import com.minal.admin.ext_fun.baseActivity
 import com.minal.admin.ext_fun.hide
 import com.minal.admin.ext_fun.show
+import com.minal.admin.ext_fun.showToast
 
 class SingleOrderFragment: BaseFragment<FragmentSingleOrderBinding>() {
 
     private lateinit var viewModel : AdminViewModel
     private val mRequestSingleOrder by lazy { RequestSingleOrder() }
+    private val mRequestOrderUpdate by lazy { RequestOrderUpdate() }
+
     var token:String?=null
     var docType:String?=null
+    var orderStatusType:String?=null
 
     private val mSingleOrderListAdapter by lazy {
         SingleOrderListAdapter(requireContext())
@@ -103,6 +109,7 @@ class SingleOrderFragment: BaseFragment<FragmentSingleOrderBinding>() {
                            idTvEmail.text = doctorobject.email
                            idTvMobile.text = doctorobject.mobile
                            idTvAddress.text = "${address.address1}, ${address.city}, ${address.pincode}, ${address.state}"
+                           orderStatusType = status
 
                            if(it.data.order == null){
                               mBinding.idTvOrder.hide()
@@ -130,6 +137,30 @@ class SingleOrderFragment: BaseFragment<FragmentSingleOrderBinding>() {
                                adapter = mSingleOrderListAdapter
                            }
 
+                           if (it.data.status == "INITITATED"){
+                               mBinding.idRbInitiated.isChecked = true
+                           }
+                           else if(it.data.status == "DISPATCHED"){
+                               mBinding.idRbDispatched.isChecked = true
+
+                           }
+                           else if (it.data.status ==" COMPLETED"){
+                               mBinding.idRbCompleted.isChecked = true
+
+                           }
+                           else if(it.data.status == "INVALID"){
+                               mBinding.idRbInvalid.isChecked = true
+
+                           }
+                           else if (it.data.status == "REQUEST_CANCELLATION"){
+                               mBinding.idRbRequestCancellation.isChecked = true
+
+                           }
+                           else if (it.data.status == "CANCELLED"){
+                               mBinding.idRbCancel.isChecked = false
+
+                           }
+
                        }
                    }
 
@@ -141,8 +172,114 @@ class SingleOrderFragment: BaseFragment<FragmentSingleOrderBinding>() {
 
     private fun setListener() {
 
+        mBinding.idRbInitiated.setOnCheckedChangeListener { compoundButton, b ->
+            if (b) {
+                mBinding.idRbInitiated.isChecked = true
+                mBinding.idRbDispatched.isChecked = false
+                mBinding.idRbCompleted.isChecked = false
+                mBinding.idRbInvalid.isChecked = false
+                mBinding.idRbRequestCancellation.isChecked = false
+                mBinding.idRbCancel.isChecked = false
+
+                statusChange("INITITATED")
+            }
+        }
+
+        mBinding.idRbDispatched.setOnCheckedChangeListener { compoundButton, b ->
+            if (b) {
+                mBinding.idRbInitiated.isChecked = false
+                mBinding.idRbDispatched.isChecked = true
+                mBinding.idRbCompleted.isChecked = false
+                mBinding.idRbInvalid.isChecked = false
+                mBinding.idRbRequestCancellation.isChecked = false
+                mBinding.idRbCancel.isChecked = false
+
+                statusChange("DISPATCHED")
+
+            }
+        }
+
+        mBinding.idRbInitiated.setOnCheckedChangeListener { compoundButton, b ->
+            if (b) {
+                mBinding.idRbInitiated.isChecked = false
+                mBinding.idRbDispatched.isChecked = false
+                mBinding.idRbCompleted.isChecked = true
+                mBinding.idRbInvalid.isChecked = false
+                mBinding.idRbRequestCancellation.isChecked = false
+                mBinding.idRbCancel.isChecked = false
+
+                statusChange("COMPLETED")
+
+            }
+        }
+
+        mBinding.idRbInvalid.setOnCheckedChangeListener { compoundButton, b ->
+            if (b) {
+                mBinding.idRbInitiated.isChecked = false
+                mBinding.idRbDispatched.isChecked = false
+                mBinding.idRbCompleted.isChecked = false
+                mBinding.idRbInvalid.isChecked = true
+                mBinding.idRbRequestCancellation.isChecked = false
+                mBinding.idRbCancel.isChecked = false
+
+                statusChange("INVALID")
+
+            }
+        }
+
+        mBinding.idRbRequestCancellation.setOnCheckedChangeListener { compoundButton, b ->
+            if (b) {
+                mBinding.idRbInitiated.isChecked = false
+                mBinding.idRbDispatched.isChecked = false
+                mBinding.idRbCompleted.isChecked = false
+                mBinding.idRbInvalid.isChecked = false
+                mBinding.idRbRequestCancellation.isChecked = true
+                mBinding.idRbCancel.isChecked = false
+
+                statusChange("REQUEST_CANCELLATION")
+
+            }
+        }
+
+        mBinding.idRbCancel.setOnCheckedChangeListener { compoundButton, b ->
+            if (b) {
+                mBinding.idRbInitiated.isChecked = false
+                mBinding.idRbDispatched.isChecked = false
+                mBinding.idRbCompleted.isChecked = false
+                mBinding.idRbInvalid.isChecked = false
+                mBinding.idRbRequestCancellation.isChecked = false
+                mBinding.idRbCancel.isChecked = true
+
+                statusChange("CANCELLED")
+
+            }
+        }
 
 
+    }
+
+
+    private fun statusChange(type: String) {
+        mRequestOrderUpdate.apply {
+            status = type
+        }
+
+        token?.let {
+            viewModel?.updateOrder(it, docType, mRequestOrderUpdate)
+        }
+
+        viewModel?.updateOrder?.observe(viewLifecycleOwner) {
+            when (it) {
+                is Result.Success -> {
+                    baseActivity.showToast("you changed order status.")
+                }
+
+                is Result.Error -> {
+
+
+                }
+            }
+        }
     }
 
 

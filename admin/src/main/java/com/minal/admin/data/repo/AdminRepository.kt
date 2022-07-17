@@ -11,7 +11,12 @@ import com.minal.admin.data.remote.RetrofitClient
 import com.minal.admin.data.remote.SafeApiRequest
 import com.minal.admin.data.request.*
 import com.minal.admin.data.response.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.Response
+import java.io.File
 
 class AdminRepository(private val apiClient: RestApi = RetrofitClient.apiInterface) : SafeApiRequest {
 
@@ -90,8 +95,64 @@ class AdminRepository(private val apiClient: RestApi = RetrofitClient.apiInterfa
         return safeApiCall(call = {apiClient.getAllOrder(token)})
     }
 
-    suspend fun updateOrder(token: String,id: String,mRequestOrderUpdate: RequestOrderUpdate): Result<ResponseOrderUpdate>
+    suspend fun updateOrder(token: String?,id: String?,mRequestOrderUpdate: RequestOrderUpdate): Result<ResponseOrderUpdate>
     {
         return safeApiCall(call = {apiClient.updateOrder(token,id,mRequestOrderUpdate)})
     }
+
+    suspend fun walletHistory(token: String,id: String): Result<ResponseWalletHistory>
+    {
+        return safeApiCall(call = {apiClient.walletHistory(token,id)})
+    }
+
+    suspend fun transactionAll(token: String,id: String): Result<ResponseTransactionAll>
+    {
+        return safeApiCall(call = {apiClient.transactionAll(token,id)})
+    }
+
+    suspend fun creditHistory(token: String,id: String): Result<ResponseCreditHistory>
+    {
+        return safeApiCall(call = {apiClient.creditHistory(token,id)})
+    }
+
+    suspend fun creditHistoryPending(token: String,id: String): Result<ResponseCreditHistoryPending>
+    {
+        return safeApiCall(call = {apiClient.creditHistoryPending(token,id)})
+    }
+
+    suspend fun createBanner(token: String?,mRequestCreateBanner: RequestCreateBanner): Result<ResponseCreateBanner>
+    {
+        return safeApiCall(call = {apiClient.createBanner(token,mRequestCreateBanner)})
+    }
+
+    suspend fun createBlog(token: String?,mRequestBlog: RequestBlog): Result<ResponseBlog>
+    {
+        return safeApiCall(call = {apiClient.createBlog(token,mRequestBlog)})
+    }
+
+    suspend fun liveSession(token: String?,mRequestLiveSession: RequestLiveSession): Result<ResponseLiveSession>
+    {
+        return safeApiCall(call = {apiClient.liveSession(token,mRequestLiveSession)})
+    }
+
+    suspend fun newsLetter(token: String?,mRequestNewsLetter: RequestNewsLetter): Result<ResponseNewsLetter>
+    {
+        return safeApiCall(call = {apiClient.newsLetter(token,mRequestNewsLetter)})
+    }
+
+    suspend fun tutorial(token: String?,mRequestTutorial: RequestTutorial): Result<ResponseTutorial>
+    {
+        return safeApiCall(call = {apiClient.tutorial(token,mRequestTutorial)})
+    }
+
+    var mediaFile: RequestBody? = null
+    var body: MultipartBody.Part? = null
+    suspend fun uploadImage(token: String,mFile: File): Result<ResponseUploadImage>
+    {
+        mediaFile = mFile.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+        body = MultipartBody.Part.createFormData("image", mFile.name, mediaFile!!)
+        return safeApiCall(call = {apiClient.uploadImage(token,body!!)})
+    }
+
+
 }

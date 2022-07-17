@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/idEdtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:hint="@string/title"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/idEdtUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdtTitle"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:hint="@string/enter_url"
+        android:padding="12dp"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/idEdtDescription"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/idEdtUrl"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:gravity="start"
+        android:hint="@string/please_enter_discription"
+        android:padding="12dp"
+        android:textSize="16dp" />
+
+    <RadioGroup
+        android:id="@+id/idRG"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:weightSum="1"
+        android:layout_below="@+id/idEdtDescription"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/idRbVideo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:includeFontPadding="true"
+            android:paddingLeft="10dp"
+            android:text="@string/video"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+
+        <RadioButton
+            android:id="@+id/idRbPdf"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:includeFontPadding="true"
+            android:paddingLeft="10dp"
+            android:text="@string/pdf"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+    </RadioGroup>
+
+
+    <TextView
+        android:id="@+id/idBtnTutorial"
+        android:layout_width="200dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/bg_fill_orange"
+        android:gravity="center"
+        android:text="Create Tutorial"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

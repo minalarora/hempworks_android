@@ -11,6 +11,7 @@ import com.minal.admin.data.repo.AdminRepository
 import com.minal.admin.data.request.*
 import com.minal.admin.data.response.*
 import kotlinx.coroutines.launch
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -75,6 +76,30 @@ class AdminViewModel() : ViewModel() {
 
     val updateOrder: MutableLiveData<Result<ResponseOrderUpdate>> by lazy {
         MutableLiveData<Result<ResponseOrderUpdate>>()
+    }
+
+    val createBanner: MutableLiveData<Result<ResponseCreateBanner>> by lazy {
+        MutableLiveData<Result<ResponseCreateBanner>>()
+    }
+
+    val createBlog: MutableLiveData<Result<ResponseBlog>> by lazy {
+        MutableLiveData<Result<ResponseBlog>>()
+    }
+
+    val liveSession: MutableLiveData<Result<ResponseLiveSession>> by lazy {
+        MutableLiveData<Result<ResponseLiveSession>>()
+    }
+
+    val newsLetter: MutableLiveData<Result<ResponseNewsLetter>> by lazy {
+        MutableLiveData<Result<ResponseNewsLetter>>()
+    }
+
+    val tutorialData: MutableLiveData<Result<ResponseTutorial>> by lazy {
+        MutableLiveData<Result<ResponseTutorial>>()
+    }
+
+    val uploadImage: MutableLiveData<Result<ResponseUploadImage>> by lazy {
+        MutableLiveData<Result<ResponseUploadImage>>()
     }
 
     val errorMessage: MutableLiveData<String> by lazy {
@@ -263,7 +288,7 @@ class AdminViewModel() : ViewModel() {
 
 
 
-    fun updateOrder(token: String,id:String,mRequestOrderUpdate: RequestOrderUpdate)
+    fun updateOrder(token: String,id:String?,mRequestOrderUpdate: RequestOrderUpdate)
     {
         viewModelScope.launch {
             loading.postValue(true)
@@ -273,6 +298,94 @@ class AdminViewModel() : ViewModel() {
 
         }
     }
+
+    fun createBanner(token: String?,mRequestCreateBanner: RequestCreateBanner)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            val result = AdminRepository().createBanner(token,mRequestCreateBanner)
+            createBanner.postValue(result)
+            loading.postValue(false)
+
+        }
+    }
+
+    fun createBlog(token: String?,mRequestBlog: RequestBlog)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            val result = AdminRepository().createBlog(token,mRequestBlog)
+            createBlog.postValue(result)
+            loading.postValue(false)
+
+        }
+    }
+
+    fun liveSession(token: String?,mRequestLiveSession: RequestLiveSession)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            val result = AdminRepository().liveSession(token,mRequestLiveSession)
+            liveSession.postValue(result)
+            loading.postValue(false)
+
+        }
+    }
+
+    fun newsLetter(token: String?,mRequestNewsLetter: RequestNewsLetter)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            val result = AdminRepository().newsLetter(token,mRequestNewsLetter)
+            newsLetter.postValue(result)
+            loading.postValue(false)
+
+        }
+    }
+
+    fun tutorial(token: String?,mRequestTutorial: RequestTutorial)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            val result = AdminRepository().tutorial(token,mRequestTutorial)
+            tutorialData.postValue(result)
+            loading.postValue(false)
+
+        }
+    }
+
+    fun uploadImage(token: String,mFile: File)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            val result = AdminRepository().uploadImage(token,mFile)
+            uploadImage.postValue(result)
+            loading.postValue(false)
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private val _ordersVisibility= MutableLiveData(false)
     val ordersVisibility: LiveData<Boolean> = _ordersVisibility

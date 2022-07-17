@@ -116,7 +116,7 @@ class AllOrderFragment: BaseFragment<FragmentAllOrderBinding>(),OrderListener  {
         when(v?.id){
 
             R.id.idRlOrder->{
-                addFragment(isAddToBackStack = true,
+                replaceFragment(isAddToBackStack = true,
                     R.id.idFcvAdmin,
                     SingleOrderFragment.getInstance(orderId),
                     SingleOrderFragment.TAG

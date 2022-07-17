@@ -69,11 +69,41 @@ class AdminFragment : BaseFragment<FragmentAdminBinding>(),AdminWorkListener {
             DataArray("All order list")
 
         )
-//        modelClasses.add(
-//
-//            DataArray(R.drawable.common_full_open_on_phone,"1")
-//
-//        )
+        modelClasses.add(
+
+            DataArray("Create Banner")
+
+        )
+        modelClasses.add(
+
+            DataArray("Create Blog")
+
+        )
+        modelClasses.add(
+
+            DataArray("Create Live Session")
+
+        )
+        modelClasses.add(
+
+            DataArray("Create NewsLetter")
+
+        )
+        modelClasses.add(
+
+            DataArray("Create Tutorial")
+
+        )
+        modelClasses.add(
+
+            DataArray("Update Product")
+
+        )
+        modelClasses.add(
+
+            DataArray("Create Ledger")
+
+        )
 
 
         var adapter = AdminAdapter(modelClasses,this)
@@ -129,6 +159,56 @@ class AdminFragment : BaseFragment<FragmentAdminBinding>(),AdminWorkListener {
                         AllOrderAdminFragment.getInstance(),
                         AllOrderAdminFragment.TAG)
                 }
+                else if (position == 6){
+                    replaceFragment(isAddToBackStack = true,
+                        R.id.idFcvAdmin,
+                        CreateBannerFragment.getInstance(),
+                        CreateBannerFragment.TAG)
+                }
+
+                else if (position == 7){
+                    replaceFragment(isAddToBackStack = true,
+                        R.id.idFcvAdmin,
+                        CreateBlogFragment.getInstance(),
+                        CreateBlogFragment.TAG)
+                }
+
+                else if (position == 8){
+                    replaceFragment(isAddToBackStack = true,
+                        R.id.idFcvAdmin,
+                        CreateLiveSessionFragment.getInstance(),
+                        CreateLiveSessionFragment.TAG)
+                }
+
+                else if (position == 9){
+                    replaceFragment(isAddToBackStack = true,
+                        R.id.idFcvAdmin,
+                        CreateNewsLetterFragment.getInstance(),
+                        CreateNewsLetterFragment.TAG)
+                }
+
+                else if (position == 10){
+                    replaceFragment(isAddToBackStack = true,
+                        R.id.idFcvAdmin,
+                        CreateTutorialFragment.getInstance(),
+                        CreateTutorialFragment.TAG)
+                }
+
+                else if (position == 11){
+                    replaceFragment(isAddToBackStack = true,
+                        R.id.idFcvAdmin,
+                        ProductUpdateFragment.getInstance(),
+                        ProductUpdateFragment.TAG)
+                }
+
+                else if (position == 11){
+                    replaceFragment(isAddToBackStack = true,
+                        R.id.idFcvAdmin,
+                        ProductUpdateFragment.getInstance(),
+                        ProductUpdateFragment.TAG)
+                }
+
+
             }
         }
     }

@@ -1,30 +1,29 @@
 package com.minal.admin.ui
 
+import android.R
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.hoobio.base.BaseFragment
 import com.minal.admin.data.remote.RestConstant
 import com.minal.admin.data.remote.Result
 import com.minal.admin.data.request.RequestCreateCoupon
+import com.minal.admin.data.response.ResponseProduct
 import com.minal.admin.data.viewmodel.AdminViewModel
-import com.minal.admin.databinding.FragmentAdminBinding
 import com.minal.admin.databinding.FragmentCreateCouponBinding
+import com.minal.admin.ext_fun.baseActivity
 import com.minal.admin.ext_fun.hide
 import com.minal.admin.ext_fun.show
-import android.widget.AdapterView
-import android.R
-
-import android.widget.ArrayAdapter
-import androidx.core.widget.doAfterTextChanged
-import com.minal.admin.data.response.ResponseProduct
-import com.minal.admin.ext_fun.baseActivity
 import com.minal.admin.ext_fun.showToast
 import com.minal.admin.utils.AuthValidation
+import java.io.File
 
 
 class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
@@ -39,6 +38,7 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
     var addProId:Long?=null
     var addVarId:Long?=null
     var canUse:Int?=null
+    var imageFile: File?=null
 
     var variantListFirst: List<ResponseProduct.Variant?>?=null
     var variantListSecond: List<ResponseProduct.Variant?>?=null
@@ -70,6 +70,8 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
 
     private fun buildUi() {
 
+
+
         viewModel = ViewModelProvider(this).get(AdminViewModel::class.java)
         token  = PreferenceManager.getDefaultSharedPreferences(context)?.
         getString(RestConstant.AUTH_TOKEN, "").toString()
@@ -98,6 +100,7 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
 
                     for (i in 0 until it.data.size!!) {
                         Category[i]= it.data.get(i)?.title.toString()
+                        val compareValue = "some value"
 
                         val spinnerArrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(
                             requireContext(),
@@ -105,8 +108,11 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
                             Category
                         )
                         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) // The drop down view
-
                         mBinding.idEdtPro.setAdapter(spinnerArrayAdapter)
+                        if (compareValue != null) {
+                            val spinnerPosition = spinnerArrayAdapter.getPosition(compareValue)
+                            mBinding.idEdtPro.setSelection(spinnerPosition)
+                        }
                         mBinding.idEdtAddPro.setAdapter(spinnerArrayAdapter)
 
                     }
@@ -117,6 +123,7 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
 
             }
         }
+
 
 
         viewModel?.coupons?.observe(viewLifecycleOwner){
@@ -150,6 +157,7 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
                 arg0: AdapterView<*>?, arg1: View?,
                 position: Int, id: Long
             ) {
+                mBinding.idEdtPro.setSelection(position, false);
 
                 proId = itemFirst?.get(position)?.id
 
@@ -195,6 +203,7 @@ class CreateCouponFragment: BaseFragment<FragmentCreateCouponBinding>() {
                 arg0: AdapterView<*>?, arg1: View?,
                 position: Int, id: Long
             ) {
+
                 addProId = itemSecond?.get(position)?.id
 
                 variantListSecond = itemSecond?.get(position)?.variants

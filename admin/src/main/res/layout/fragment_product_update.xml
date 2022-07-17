@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:id="@+id/idEdtPro"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:padding="12dp"
+        android:popupBackground="@android:color/white"
+        android:scrollbars="none"
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:id="@+id/idEdtVar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:layout_below="@+id/idEdtPro"
+        android:popupBackground="@android:color/white"
+        android:scrollbars="none"
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:spinnerMode="dropdown" />
+
+
+    <TextView
+        android:id="@+id/idTvInStock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdtUse"
+        android:layout_marginTop="16dp"
+        android:text="@string/inStock"
+        android:textSize="18dp" />
+
+    <RadioGroup
+        android:id="@+id/idIS"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:weightSum="1"
+        android:layout_below="@+id/idTvCpType"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/idRbISTrue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:includeFontPadding="true"
+            android:paddingLeft="10dp"
+            android:text="True"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+
+        <RadioButton
+            android:id="@+id/idRbISFalse"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:includeFontPadding="true"
+            android:paddingLeft="10dp"
+            android:text="False"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/idTvActive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdtUse"
+        android:layout_marginTop="16dp"
+        android:text="@string/active"
+        android:textSize="18dp" />
+
+    <RadioGroup
+        android:id="@+id/idRGAt"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:weightSum="1"
+        android:layout_below="@+id/idTvCpType"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/idRbAtTrue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:includeFontPadding="true"
+            android:paddingLeft="10dp"
+            android:text="True"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+
+        <RadioButton
+            android:id="@+id/idRbAtFalse"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:includeFontPadding="true"
+            android:paddingLeft="10dp"
+            android:text="False"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/idButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"
+        >
+        <TextView
+            android:id="@+id/idBtnCreate"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_fill_orange"
+            android:gravity="center"
+            android:text="@string/done"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+</LinearLayout>

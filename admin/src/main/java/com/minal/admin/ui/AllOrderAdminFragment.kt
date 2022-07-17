@@ -20,6 +20,7 @@ import com.minal.admin.data.response.OrderList
 import com.minal.admin.data.viewmodel.AdminViewModel
 import com.minal.admin.databinding.FragmentAllOrderBinding
 import com.minal.admin.ext_fun.addFragment
+import com.minal.admin.ext_fun.replaceFragment
 import com.minal.admin.utils.OrderListener
 
 class AllOrderAdminFragment: BaseFragment<FragmentAllOrderBinding>(), OrderListener {
@@ -99,10 +100,10 @@ class AllOrderAdminFragment: BaseFragment<FragmentAllOrderBinding>(), OrderListe
         when(v?.id){
 
             R.id.idRlOrder->{
-                addFragment(isAddToBackStack = true,
+                replaceFragment(isAddToBackStack = true,
                     R.id.idFcvAdmin,
-                    SingleOrderFragment.getInstance(orderId),
-                    SingleOrderFragment.TAG
+                    SingleOrderAdminFragment.getInstance(orderId),
+                    SingleOrderAdminFragment.TAG
                 )
             }
         }

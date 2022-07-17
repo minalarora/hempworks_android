@@ -2,10 +2,8 @@ package com.minal.admin.data.remote
 
 object RestConstant {
 
-       const val AUTH_TOKEN = "auth_token"
-
+    const val AUTH_TOKEN = "auth_token"
     const val API_TIME_OUT = 50
-
     const val BASE_URL=  "https://hempworks-web-l5hj7.ondigitalocean.app"
     const val API_PRODUCT_ALL="/v1/product/all"
     const val API_CREATE_COUPON = "/v1/coupon"
@@ -26,6 +24,11 @@ object RestConstant {
     const val API_TRANSACTION_ALL="/v1/transaction/all/admin"
     const val API_CREDIT_HISTORY="/v1/credithistory/admin"
     const val API_CREDIT_HISTORY_PENDIG="/v1/credithistory/pending/admin"
+    const val API_CREATE_BANNER ="/v1/banner"
+    const val API_BLOG="/v1/blog"
+    const val API_LIVE_SESSION="/v1/livesession"
+    const val API_NEWS_PAPER="/v1/newspaper"
+    const val API_TUTORIAL = "/v1/tutorial"
     const val API_UPLOAD_IMAGE="/v1/upload/image"
 
 
