@@ -40,7 +40,8 @@ class CartFragment : Fragment(), Injectable, CartItemClickListener {
         requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.orange_F8AA37);
 
         viewModel = injectViewModel(viewModelFactory)
-        viewModel.isFirstTime = CartFragmentArgs.fromBundle(requireArguments()).removeCoupon
+        if (viewModel.isFirstTime == null)
+            viewModel.isFirstTime = CartFragmentArgs.fromBundle(requireArguments()).removeCoupon
         sharedViewModel = requireActivity().injectViewModel(viewModelFactory)
 
         binding = DataBindingUtil.inflate<FragmentCartBinding>(
