@@ -126,9 +126,9 @@ class SingleOrderAdminFragment: BaseFragment<FragmentSingleOrderBinding>() {
                             }
                             else{
                                 idRlTransaction.show()
-                                idTvReference.text = transaction.referenceid.toString()
-                                idTvAmount.text = transaction.amount.toString()
-                                idTvStatus.text = transaction.status
+                                idTvReference.text = transaction?.referenceid.toString()
+                                idTvAmount.text = transaction?.amount.toString()
+                                idTvStatus.text = transaction?.status
                             }
 
 

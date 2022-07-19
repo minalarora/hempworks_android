@@ -204,8 +204,8 @@ class AdminFragment : BaseFragment<FragmentAdminBinding>(),AdminWorkListener {
                 else if (position == 11){
                     replaceFragment(isAddToBackStack = true,
                         R.id.idFcvAdmin,
-                        ProductUpdateFragment.getInstance(),
-                        ProductUpdateFragment.TAG)
+                        LedgerFragment.getInstance(),
+                        LedgerFragment.TAG)
                 }
 
 

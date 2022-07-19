@@ -17,12 +17,13 @@ import com.minal.admin.data.remote.Result
 import com.minal.admin.data.request.RequestBlog
 import com.minal.admin.data.viewmodel.AdminViewModel
 import com.minal.admin.databinding.FragmentCreateBlogBinding
+import com.minal.admin.databinding.FragmentLedgerBinding
 import com.minal.admin.ext_fun.baseActivity
 import com.minal.admin.ext_fun.showToast
 import com.minal.admin.utils.FileUtils
 import java.io.File
 
-class LedgerFragment : BaseFragment<FragmentCreateBlogBinding>() {
+class LedgerFragment : BaseFragment<FragmentLedgerBinding>() {
 
     private val permissions = arrayOf(
         Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -39,13 +40,13 @@ class LedgerFragment : BaseFragment<FragmentCreateBlogBinding>() {
     private  val REQUEST_PERMISSIONS_CODE_WRITE_STORAGE = 101
 
     companion object {
-        val TAG: String = CreateBlogFragment::class.java.simpleName
-        fun getInstance() = CreateBlogFragment()
+        val TAG: String = LedgerFragment::class.java.simpleName
+        fun getInstance() = LedgerFragment()
     }
 
     override fun getViewBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): FragmentCreateBlogBinding {
-        return FragmentCreateBlogBinding.inflate(inflater, container, false)
+    ): FragmentLedgerBinding {
+        return FragmentLedgerBinding.inflate(inflater, container, false)
     }
 
     override fun onViewInitialized() {
@@ -71,133 +72,13 @@ class LedgerFragment : BaseFragment<FragmentCreateBlogBinding>() {
                 baseActivity.hideProgress()
         }
 
-        viewModel?.uploadImage?.observe(viewLifecycleOwner){
-            when(it){
-                is Result.Success->{
 
-                    mRequestBlog.apply {
-                        title = mBinding.idEdtTitle.text.toString()
-                        image = it.data.url
-                        url = mBinding.idEdtUrl.text.toString()
-                    }
-                    viewModel?.createBlog(token,mRequestBlog)
-
-                }
-                is Result.Error ->
-                {
-
-                }
-            }
-        }
-
-        viewModel?.createBlog?.observe(viewLifecycleOwner){
-            when(it){
-                is Result.Success->{
-
-                    baseActivity.showToast("You have successfully created blog.")
-
-                    baseActivity.onBackPressed()
-
-
-                }
-                is Result.Error ->
-                {
-                }
-
-            }
-        }
 
     }
 
     private fun setListener(){
 
-        mBinding.idBtnAdd.setOnClickListener {
-            chooseImage()
-        }
 
-        mBinding.idBtnBlog.setOnClickListener {
-            if (mBinding.idEdtTitle.text.isNotEmpty() && mBinding.idEdtUrl.text.isNotEmpty() && imageFile != null)
-                token?.let { it1 -> imageFile?.let { it2 -> viewModel.uploadImage(it1, it2) } }
-        }
-    }
-
-
-
-
-    private fun chooseImage() {
-        if (FileUtils.checkPermission(permissions, requireActivity())) {
-            openFileChooserDialog()
-        } else {
-            requestPermissions()
-        }
-    }
-
-
-    private fun requestPermissions() {
-        requestPermissions(permissions, REQUEST_PERMISSIONS_CODE_WRITE_STORAGE)
-    }
-
-    private fun isFileUploadAllowed(uri: Uri?, maxFileSize: Int): Boolean {
-        val mimeType: String? = uri?.let { requireContext().contentResolver.getType(it) }
-        if (mimeType != null) {
-            return when {
-                FileUtils.getFileSize(requireContext(), uri) > maxFileSize -> {
-                    baseActivity.showToast("The uploaded file is above the 10 MB size limit.")
-                    false
-                }
-                FileUtils.getFileSize(requireContext(), uri) == 0L -> {
-                    baseActivity.showToast("Please select a valid file.")
-
-                    false
-                }
-                !mimeType.contains("image") -> {
-                    baseActivity.showToast("Please select a valid file.")
-
-                    false
-                }
-                else -> {
-                    true
-                }
-            }
-        }
-        return false
-    }
-
-
-    private fun openFileChooserDialog() {
-        val mimeTypes =
-            arrayOf(FileUtils.MIME_TYPES)
-        val intent = Intent(Intent.ACTION_GET_CONTENT)
-        val chooser: Intent? = Intent.createChooser(intent, getString(R.string.select_picture))
-        intent.addCategory(Intent.CATEGORY_OPENABLE)
-        intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
-        intent.type = if (mimeTypes.size == 1) mimeTypes[0] else "*/*"
-        if (mimeTypes.isNotEmpty()) {
-            intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
-        }
-        this.startActivityForResult(
-            chooser,
-            PICK_FILE_REQUEST
-        )
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (data != null) {
-            if (resultCode == Activity.RESULT_OK && requestCode == PICK_FILE_REQUEST) {
-                if (isFileUploadAllowed(data.data, FileUtils.MAX_FILE_SIZE)) {
-                    // Get the Uri of the selected file
-                    FileUtils.getFileFromUri(
-                        requireContext(),
-                        data.data,
-                        getString(R.string.banner_picture),
-                        Environment.DIRECTORY_PICTURES
-                    )?.let {
-                        imageFile = it
-                    }
-                }
-            }
-        }
     }
 
 }

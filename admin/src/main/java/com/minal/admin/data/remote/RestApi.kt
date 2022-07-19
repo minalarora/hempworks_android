@@ -62,16 +62,16 @@ interface RestApi {
 
 
     @GET(RestConstant.API_WALLET_HISTORY)
-    suspend fun walletHistory(@Header("Authorization") token: String,@Query ("id") id:String?): Response<ResponseWalletHistory>
+    suspend fun walletHistory(@Header("Authorization") token: String): Response<List<ResponseWalletHistory>>
 
     @GET(RestConstant.API_TRANSACTION_ALL)
-    suspend fun transactionAll(@Header("Authorization") token: String,@Query ("id") id:String?): Response<ResponseTransactionAll>
+    suspend fun transactionAll(@Header("Authorization") token: String): Response<ArrayList<ResponseTransactionAll>>
 
     @GET(RestConstant.API_CREDIT_HISTORY)
-    suspend fun creditHistory(@Header("Authorization") token: String,@Query ("id") id:String?): Response<ResponseCreditHistory>
+    suspend fun creditHistory(@Header("Authorization") token: String): Response<ArrayList<ResponseCreditHistory>>
 
     @GET(RestConstant.API_CREDIT_HISTORY_PENDIG)
-    suspend fun creditHistoryPending(@Header("Authorization") token: String,@Query ("id") id:String?): Response<ResponseCreditHistoryPending>
+    suspend fun creditHistoryPending(@Header("Authorization") token: String): Response<ResponseCreditHistoryPending>
 
     @POST(RestConstant.API_CREATE_BANNER)
     suspend fun createBanner(@Header("Authorization") token: String?,@Body mRequestCreateBanner: RequestCreateBanner): Response<ResponseCreateBanner>

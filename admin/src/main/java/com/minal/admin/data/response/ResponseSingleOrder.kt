@@ -42,9 +42,9 @@ data class ResponseSingleOrder(
     @Json(name = "totalprice")
     var totalprice: Int,
     @Json(name = "transaction")
-    var transaction: Transaction,
+    var transaction: Transaction?=null,
     @Json(name = "transactionid")
-    var transactionid: Long,
+    var transactionid: Any,
     @Json(name = "updatedAt")
     var updatedAt: String,
     @Json(name = "__v")
@@ -52,6 +52,7 @@ data class ResponseSingleOrder(
     @Json(name = "walletprice")
     var walletprice: Int
 ) {
+
     data class Transaction(
         var orderid: Long,
         var creditid: Long,
@@ -70,6 +71,7 @@ data class ResponseSingleOrder(
         var date: String,
         var __v: Int
     )
+
 
     @JsonClass(generateAdapter = true)
     data class Address(
@@ -111,6 +113,8 @@ data class ResponseSingleOrder(
         var certificate: String,
         @Json(name = "clinic")
         var clinic: String,
+        @Json(name = "course")
+        var course: String,
         @Json(name = "createdAt")
         var createdAt: String,
         @Json(name = "credit")
@@ -158,7 +162,7 @@ data class ResponseSingleOrder(
         @Json(name = "price")
         var price: Int,
         @Json(name = "productid")
-        var productid: Int,
+        var productid: Long,
         @Json(name = "productname")
         var productname: String,
         @Json(name = "quantity")
@@ -170,4 +174,6 @@ data class ResponseSingleOrder(
         @Json(name = "variantname")
         var variantname: String
     )
+
+
 }

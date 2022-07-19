@@ -57,7 +57,7 @@ class AllOrderAdminAdapter(val mContext: Context, val mOrderListener: OrderListe
                 mBinding.apply {
                     idTvOId.text = id.toString()
                     idTvStatus.text = status
-                    idTvTime.text = CalendarUtils.formatDate(date, "yyyy-MM-dd HH:mm:ss", "dd MMM yyyy , hh:mm a")
+                    idTvTime.text = date.toString()
                     if (transactionid == null){
                         idTvTransactionId.text = "Any"
                     }

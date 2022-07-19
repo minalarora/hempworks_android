@@ -74,6 +74,19 @@ class AdminViewModel() : ViewModel() {
         MutableLiveData<Result<ArrayList<OrderList>>>()
     }
 
+    val walletHistory: MutableLiveData<Result<List<ResponseWalletHistory>>> by lazy {
+        MutableLiveData<Result<List<ResponseWalletHistory>>>()
+    }
+    val transactionAll: MutableLiveData<Result<ArrayList<ResponseTransactionAll>>> by lazy {
+        MutableLiveData<Result<ArrayList<ResponseTransactionAll>>>()
+    }
+    val creditHistory: MutableLiveData<Result<ArrayList<ResponseCreditHistory>>> by lazy {
+        MutableLiveData<Result<ArrayList<ResponseCreditHistory>>>()
+    }
+    val creditHistoryPending: MutableLiveData<Result<ResponseCreditHistoryPending>> by lazy {
+        MutableLiveData<Result<ResponseCreditHistoryPending>>()
+    }
+
     val updateOrder: MutableLiveData<Result<ResponseOrderUpdate>> by lazy {
         MutableLiveData<Result<ResponseOrderUpdate>>()
     }
@@ -299,6 +312,46 @@ class AdminViewModel() : ViewModel() {
         }
     }
 
+
+    fun ledger(token: String){
+        viewModelScope.launch {
+            loading.postValue(true)
+
+            val resultOrder = AdminRepository().getAllOrder(token)
+            val resultWallet = AdminRepository().walletHistory(token)
+            val resultTransaction = AdminRepository().transactionAll(token)
+            val resultCredit = AdminRepository().creditHistory(token)
+
+            val localLedgerList: ArrayList<Ledger> = ArrayList();
+
+            allOrderList.postValue(resultOrder)
+            walletHistory.postValue(resultWallet)
+            transactionAll.postValue(resultTransaction)
+            creditHistory.postValue(resultCredit)
+
+//                resultOrder?.let { list ->
+//                    val expandedList = mutableListOf<OrderList>()
+//                    for (orderObject in list) {
+//                        if (orderObject.order.isNullOrEmpty()) continue
+//                        for (orderProduct in orderObject.order) {
+//                            val order = orderObject.copy(order = listOf(orderProduct))
+//                            expandedList.add(order)
+//                        }
+//                    }
+//                    orderList.value = expandedList
+//                    localLedgerList.addAll(expandedList.map { it -> Ledger(it.date, it) })
+//                }
+
+
+
+
+
+
+
+
+        }
+    }
+
     fun createBanner(token: String?,mRequestCreateBanner: RequestCreateBanner)
     {
         viewModelScope.launch {
@@ -401,47 +454,47 @@ class AdminViewModel() : ViewModel() {
     private val dateFormat = SimpleDateFormat("dd MMM yy");
     private var dateRange: Pair<Date, Date>? = null
 
-//    private fun filterList(list: List<OrderList>): List<OrderList> {
-//        val filteredList = if (dateRange != null) {
-//            list.filter { order ->
-//                order.date!!.after(dateRange!!.first) && order.date!!.before(dateRange!!.second)
-//            }
-//        } else {
-//            list
-//        }
-//        val expandedList = mutableListOf<OrderList>()
-//        for (orderObject in filteredList) {
-//            if (orderObject.order.isNullOrEmpty()) continue
-//            for (orderProduct in orderObject.order) {
-//                val order = orderObject.copy(order = listOf(orderProduct))
-//                expandedList.add(order)
-//            }
-//        }
-//        return expandedList
-//
-//    }
+    private fun filterList(list: List<OrderList>): List<OrderList> {
+        val filteredList = if (dateRange != null) {
+            list.filter { order ->
+                order.date!!.after(dateRange!!.first) && order.date!!.before(dateRange!!.second)
+            }
+        } else {
+            list
+        }
+        val expandedList = mutableListOf<OrderList>()
+        for (orderObject in filteredList) {
+            if (orderObject.order.isNullOrEmpty()) continue
+            for (orderProduct in orderObject.order) {
+                val order = orderObject.copy(order = listOf(orderProduct))
+                expandedList.add(order)
+            }
+        }
+        return expandedList
 
-//    fun updateDateRange(startDateInMillis: Long, endDateInMillis: Long) {
-//        if (startDateInMillis < 1 || endDateInMillis < 1) {
-//            dateRange = null
-//            _dateRangeVisibility.postValue(false)
-//        }
-//        else {
-//            dateRange = Pair(
-//                Calendar.getInstance().apply {
-//                    timeInMillis = startDateInMillis
-//                    add(Calendar.HOUR, -5)
-//                }.time,
-//                Calendar.getInstance().apply {
-//                    timeInMillis = endDateInMillis
-//                    add(Calendar.HOUR, 18)
-//                }.time
-//            )
-//            _dateRangeText.postValue("Showing results for " + dateFormat.format(dateRange!!.first) + " - " + dateFormat.format(dateRange!!.second))
-//            _dateRangeVisibility.postValue(true)
-//        }
-//        orderList.postValue(filterList(orderList))
-//    }
+    }
+
+    fun updateDateRange(startDateInMillis: Long, endDateInMillis: Long) {
+        if (startDateInMillis < 1 || endDateInMillis < 1) {
+            dateRange = null
+            _dateRangeVisibility.postValue(false)
+        }
+        else {
+            dateRange = Pair(
+                Calendar.getInstance().apply {
+                    timeInMillis = startDateInMillis
+                    add(Calendar.HOUR, -5)
+                }.time,
+                Calendar.getInstance().apply {
+                    timeInMillis = endDateInMillis
+                    add(Calendar.HOUR, 18)
+                }.time
+            )
+            _dateRangeText.postValue("Showing results for " + dateFormat.format(dateRange!!.first) + " - " + dateFormat.format(dateRange!!.second))
+            _dateRangeVisibility.postValue(true)
+        }
+//        orderList.postValue(filterList(orderList.value))
+    }
 
 
 }

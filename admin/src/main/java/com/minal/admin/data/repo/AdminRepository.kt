@@ -100,24 +100,24 @@ class AdminRepository(private val apiClient: RestApi = RetrofitClient.apiInterfa
         return safeApiCall(call = {apiClient.updateOrder(token,id,mRequestOrderUpdate)})
     }
 
-    suspend fun walletHistory(token: String,id: String): Result<ResponseWalletHistory>
+    suspend fun walletHistory(token: String): Result<List<ResponseWalletHistory>>
     {
-        return safeApiCall(call = {apiClient.walletHistory(token,id)})
+        return safeApiCall(call = {apiClient.walletHistory(token)})
     }
 
-    suspend fun transactionAll(token: String,id: String): Result<ResponseTransactionAll>
+    suspend fun transactionAll(token: String): Result<ArrayList<ResponseTransactionAll>>
     {
-        return safeApiCall(call = {apiClient.transactionAll(token,id)})
+        return safeApiCall(call = {apiClient.transactionAll(token)})
     }
 
-    suspend fun creditHistory(token: String,id: String): Result<ResponseCreditHistory>
+    suspend fun creditHistory(token: String): Result<ArrayList<ResponseCreditHistory>>
     {
-        return safeApiCall(call = {apiClient.creditHistory(token,id)})
+        return safeApiCall(call = {apiClient.creditHistory(token)})
     }
 
-    suspend fun creditHistoryPending(token: String,id: String): Result<ResponseCreditHistoryPending>
+    suspend fun creditHistoryPending(token: String): Result<ResponseCreditHistoryPending>
     {
-        return safeApiCall(call = {apiClient.creditHistoryPending(token,id)})
+        return safeApiCall(call = {apiClient.creditHistoryPending(token)})
     }
 
     suspend fun createBanner(token: String?,mRequestCreateBanner: RequestCreateBanner): Result<ResponseCreateBanner>

@@ -18,7 +18,7 @@ data class OrderList(
     @Json(name = "createdAt")
     var createdAt: String,
     @Json(name = "date")
-    var date: String,
+    var date: Date,
     @Json(name = "discountprice")
     var discountprice: Int,
     @Json(name = "doctorid")

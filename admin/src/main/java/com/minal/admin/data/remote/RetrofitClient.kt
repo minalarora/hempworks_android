@@ -1,5 +1,6 @@
 package com.minal.admin.data.remote
 
+import com.google.gson.GsonBuilder
 import com.minal.admin.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -40,12 +41,12 @@ object RetrofitClient {
 //        httpClientBuilder.addInterceptor(loggingInterceptor)
 
         val httpClient: OkHttpClient = httpClientBuilder.build()
-
+        val gsonBuilder =GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create()
         Retrofit.Builder()
             .baseUrl(RestConstant.BASE_URL)
             .client(httpClient)
 //            .addCallAdapterFactory(CoroutineCa)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gsonBuilder))
     }
 
     val apiInterface: RestApi by lazy {
