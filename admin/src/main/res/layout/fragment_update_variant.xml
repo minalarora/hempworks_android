@@ -17,6 +17,17 @@
         android:background="@drawable/edittext_orange_corner_radius"
         android:spinnerMode="dropdown" />
 
+    <Spinner
+        android:id="@+id/idEdtVar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:layout_below="@+id/idEdtPro"
+        android:popupBackground="@android:color/white"
+        android:scrollbars="none"
+        android:background="@drawable/edittext_orange_corner_radius"
+        android:spinnerMode="dropdown" />
 
 
     <TextView

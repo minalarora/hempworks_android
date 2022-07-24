@@ -58,13 +58,7 @@ class LedgerAdater(val mContext: Context, val mOrderListener: OrderListener,
                     idTvOId.text = id.toString()
                     idTvStatus.text = status
                     idTvTime.text = date.toString()
-                    if (transactionid == null){
-                        idTvTransactionId.text = "Any"
-                    }
-                    else{
-                        idTvTransactionId.text = transactionid.toString()
 
-                    }
 
                     idTvPrice.text = totalprice.toString()
                 }

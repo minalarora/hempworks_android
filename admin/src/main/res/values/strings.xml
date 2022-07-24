@@ -61,4 +61,5 @@
     <string name="pdf">Pdf</string>
     <string name="enter_image_url">Enter image url</string>
     <string name="enter_pdf_url">Enter Pdf url</string>
+    <string name="payment_method">Payment Method: </string>
 </resources>

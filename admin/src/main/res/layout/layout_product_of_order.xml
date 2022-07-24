@@ -16,7 +16,7 @@
             android:id="@+id/idTvIds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Order"
+            android:text="Product Id: "
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -30,24 +30,40 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
 
+<LinearLayout
+    android:id="@+id/idLlVariant"
+    android:layout_width="match_parent"
+    android:layout_below="@+id/idTvIds"
+    android:layout_height="wrap_content"
+    >
 
-        <TextView
-            android:id="@+id/idTvVarId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/idTvIds"
-            android:layout_marginTop="12dp"
-            android:text="@string/name"
-            android:textColor="@color/black"
-            android:textSize="16sp"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Variant Id: "
+        android:layout_marginTop="12dp"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
-            />
+    <TextView
+        android:id="@+id/idTvVarId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idTvIds"
+        android:layout_marginTop="12dp"
+        android:text="@string/name"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+
+        />
+
+</LinearLayout>
 
         <TextView
             android:id="@+id/idTvNames"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/idTvVarId"
+            android:layout_below="@+id/idLlVariant"
             android:layout_marginTop="12dp"
             android:text="@string/name"
             android:textColor="@color/black"
