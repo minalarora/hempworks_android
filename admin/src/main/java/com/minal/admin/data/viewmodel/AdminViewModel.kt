@@ -10,6 +10,9 @@ import com.minal.admin.data.remote.Result
 import com.minal.admin.data.repo.AdminRepository
 import com.minal.admin.data.request.*
 import com.minal.admin.data.response.*
+import com.minal.admin.data.response.ledger.Ledger
+import com.minal.admin.data.response.ledger.ResponsePendingAmount
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.io.File
 import java.text.SimpleDateFormat
@@ -313,41 +316,50 @@ class AdminViewModel() : ViewModel() {
     }
 
 
-    fun ledger(token: String){
+    private val _ledgerList = MutableLiveData<List<Ledger>>()
+    val ledgerList: LiveData<List<Ledger>>
+        get() = _ledgerList
+
+    private val _paymentResponse = MutableLiveData<ResponsePendingAmount>()
+    val paymentResponse: LiveData<ResponsePendingAmount>
+        get() = _paymentResponse
+
+    fun ledger(token: String, doctor: String){
         viewModelScope.launch {
             loading.postValue(true)
 
-            val resultOrder = AdminRepository().getAllOrder(token)
-            val resultWallet = AdminRepository().walletHistory(token)
-            val resultTransaction = AdminRepository().transactionAll(token)
-            val resultCredit = AdminRepository().creditHistory(token)
+
+            val adminRepository = AdminRepository()
+            val deferredOrderList = async { adminRepository.getAllOrderLedger(token, doctor) }
+            val deferredWalletList = async { adminRepository.walletHistory(token, doctor) }
+            val deferredCreditList = async { adminRepository.creditHistory(token, doctor)}
+            val deferredPaymentList = async { adminRepository.transactionAll(token, doctor) }
+            val deferredPaymentResponse = async { adminRepository.creditHistoryPending(token, doctor) }
 
             val localLedgerList: ArrayList<Ledger> = ArrayList();
 
-            allOrderList.postValue(resultOrder)
-            walletHistory.postValue(resultWallet)
-            transactionAll.postValue(resultTransaction)
-            creditHistory.postValue(resultCredit)
+            deferredOrderList.await().let {
+                if (it is Result.Success) localLedgerList.addAll(it.data.map { it -> Ledger(it.date, it) })
+            }
 
-//                resultOrder?.let { list ->
-//                    val expandedList = mutableListOf<OrderList>()
-//                    for (orderObject in list) {
-//                        if (orderObject.order.isNullOrEmpty()) continue
-//                        for (orderProduct in orderObject.order) {
-//                            val order = orderObject.copy(order = listOf(orderProduct))
-//                            expandedList.add(order)
-//                        }
-//                    }
-//                    orderList.value = expandedList
-//                    localLedgerList.addAll(expandedList.map { it -> Ledger(it.date, it) })
-//                }
+            deferredWalletList.await().let {
+                if (it is Result.Success) localLedgerList.addAll(it.data.map { it -> Ledger(it.date, it) })
+            }
+            deferredCreditList.await().let {
+                if (it is Result.Success) localLedgerList.addAll(it.data.map { it -> Ledger(it.date, it) })
+            }
+            deferredPaymentList.await().let {
+                if (it is Result.Success) localLedgerList.addAll(it.data.map { it -> Ledger(it.date, it) })
+            }
 
+            deferredPaymentResponse.await().let {
+                if (it is Result.Success) _paymentResponse.postValue(it.data)
+            }
 
+            localLedgerList.sortByDescending { it.date }
+            _ledgerList.postValue(localLedgerList)
 
-
-
-
-
+            loading.postValue(false)
 
         }
     }

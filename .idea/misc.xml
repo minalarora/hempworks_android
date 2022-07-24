@@ -19,6 +19,18 @@
         <entry key="..\:/SanTech/hempworks_android/app/src/main/res/drawable/layout_manual_order_item.xml" value="0.114" />
         <entry key="..\:/SanTech/hempworks_android/app/src/main/res/layout/fragment_order.xml" value="0.18703703703703703" />
         <entry key="..\:/SanTech/hempworks_android/app/src/main/res/layout/item_order.xml" value="0.33" />
+        <entry key="admin/src/main/res/layout/fragment_ledger.xml" value="0.4244791666666667" />
+        <entry key="admin/src/main/res/layout/fragment_single_order.xml" value="0.4244791666666667" />
+        <entry key="admin/src/main/res/layout/item_credit.xml" value="0.4244791666666667" />
+        <entry key="admin/src/main/res/layout/item_payment_history.xml" value="0.4244791666666667" />
+        <entry key="admin/src/main/res/layout/item_wallet.xml" value="0.4244791666666667" />
+        <entry key="admin/src/main/res/layout/layout_order.xml" value="0.4244791666666667" />
+        <entry key="admin/src/main/res/layout/layout_product_of_order.xml" value="0.4244791666666667" />
+        <entry key="app/src/main/res/layout/fragment_ledger.xml" value="0.4244791666666667" />
+        <entry key="app/src/main/res/layout/item_credit.xml" value="0.4244791666666667" />
+        <entry key="app/src/main/res/layout/item_order.xml" value="0.4244791666666667" />
+        <entry key="app/src/main/res/layout/item_payment_history.xml" value="0.4244791666666667" />
+        <entry key="app/src/main/res/layout/item_wallet.xml" value="0.4244791666666667" />
       </map>
     </option>
   </component>

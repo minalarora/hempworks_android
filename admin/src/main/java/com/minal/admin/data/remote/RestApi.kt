@@ -2,6 +2,7 @@ package com.minal.admin.data.remote
 
 import com.minal.admin.data.request.*
 import com.minal.admin.data.response.*
+import com.minal.admin.data.response.ledger.*
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
@@ -61,17 +62,30 @@ interface RestApi {
                             mRequestOrderUpdate: RequestOrderUpdate):Response<ResponseOrderUpdate>
 
 
+    //LEDGER
     @GET(RestConstant.API_WALLET_HISTORY)
-    suspend fun walletHistory(@Header("Authorization") token: String): Response<List<ResponseWalletHistory>>
+    suspend fun walletHistory(@Header("Authorization") token: String,
+                              @Query ("doctor") doctor:String?): Response<List<WalletHistory>>
 
+    //LEDGER
     @GET(RestConstant.API_TRANSACTION_ALL)
-    suspend fun transactionAll(@Header("Authorization") token: String): Response<ArrayList<ResponseTransactionAll>>
+    suspend fun transactionAll(@Header("Authorization") token: String,
+                               @Query ("doctor") doctor:String?): Response<ArrayList<Transaction>>
 
+    //LEDGER
     @GET(RestConstant.API_CREDIT_HISTORY)
-    suspend fun creditHistory(@Header("Authorization") token: String): Response<ArrayList<ResponseCreditHistory>>
+    suspend fun creditHistory(@Header("Authorization") token: String,
+                              @Query ("doctor") doctor:String?): Response<ArrayList<CreditHistory>>
 
+    //LEDGER
     @GET(RestConstant.API_CREDIT_HISTORY_PENDIG)
-    suspend fun creditHistoryPending(@Header("Authorization") token: String): Response<ResponseCreditHistoryPending>
+    suspend fun creditHistoryPending(@Header("Authorization") token: String,
+                                     @Query ("doctor") doctor:String?): Response<ResponsePendingAmount>
+
+    //LEDGER
+    @GET(RestConstant.API_ORDER_LIST)
+    suspend fun getOrderListLedger(@Header("Authorization") token: String,
+                             @Query ("doctor") doctor:String?) : Response<ArrayList<OrderList>>
 
     @POST(RestConstant.API_CREATE_BANNER)
     suspend fun createBanner(@Header("Authorization") token: String?,@Body mRequestCreateBanner: RequestCreateBanner): Response<ResponseCreateBanner>

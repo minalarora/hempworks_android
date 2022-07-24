@@ -1,4 +1,4 @@
-package com.minal.admin.data.response
+package com.minal.admin.data.response.ledger
 
 import java.util.*
 

@@ -11,6 +11,7 @@ import com.minal.admin.data.remote.RetrofitClient
 import com.minal.admin.data.remote.SafeApiRequest
 import com.minal.admin.data.request.*
 import com.minal.admin.data.response.*
+import com.minal.admin.data.response.ledger.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -100,25 +101,32 @@ class AdminRepository(private val apiClient: RestApi = RetrofitClient.apiInterfa
         return safeApiCall(call = {apiClient.updateOrder(token,id,mRequestOrderUpdate)})
     }
 
-    suspend fun walletHistory(token: String): Result<List<ResponseWalletHistory>>
+    //LEDGER
+    suspend fun getAllOrderLedger(token: String, doctor: String): Result<ArrayList<OrderList>>
     {
-        return safeApiCall(call = {apiClient.walletHistory(token)})
+        return safeApiCall(call = {apiClient.getOrderListLedger(token, doctor)})
     }
 
-    suspend fun transactionAll(token: String): Result<ArrayList<ResponseTransactionAll>>
+    suspend fun walletHistory(token: String, doctor: String): Result<List<WalletHistory>>
     {
-        return safeApiCall(call = {apiClient.transactionAll(token)})
+        return safeApiCall(call = {apiClient.walletHistory(token, doctor)})
     }
 
-    suspend fun creditHistory(token: String): Result<ArrayList<ResponseCreditHistory>>
+    suspend fun transactionAll(token: String, doctor: String): Result<ArrayList<Transaction>>
     {
-        return safeApiCall(call = {apiClient.creditHistory(token)})
+        return safeApiCall(call = {apiClient.transactionAll(token, doctor)})
     }
 
-    suspend fun creditHistoryPending(token: String): Result<ResponseCreditHistoryPending>
+    suspend fun creditHistory(token: String, doctor: String): Result<ArrayList<CreditHistory>>
     {
-        return safeApiCall(call = {apiClient.creditHistoryPending(token)})
+        return safeApiCall(call = {apiClient.creditHistory(token, doctor)})
     }
+
+    suspend fun creditHistoryPending(token: String, doctor: String): Result<ResponsePendingAmount>
+    {
+        return safeApiCall(call = {apiClient.creditHistoryPending(token, doctor)})
+    }
+//LEDGER END
 
     suspend fun createBanner(token: String?,mRequestCreateBanner: RequestCreateBanner): Result<ResponseCreateBanner>
     {

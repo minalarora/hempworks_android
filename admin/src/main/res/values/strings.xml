@@ -61,4 +61,472 @@
     <string name="pdf">Pdf</string>
     <string name="enter_image_url">Enter image url</string>
     <string name="enter_pdf_url">Enter Pdf url</string>
+    <string name="hello_user">Hello User</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="get_started">Get Started</string>
+    <string name="prescription_record">Prescription Record</string>
+    <string name="onboarding_text1">Here you can keep a record of all your patient prescriptions with date and patient details for any future references.</string>
+    <string name="onboarding_text2">Here is a quick access for you, to help you place your regular orders conveniently.</string>
+    <string name="onboarding_text3">This is a one tap solution for you to attend all Ananta Sambhasha Sessions.</string>
+    <string name="onboarding_text4">Now, you can access the benefitting sessions available to you in this tutorial hub.</string>
+    <string name="onboarding_text5">Our Monthly Newsletter where we share the Industry news, product launches, offers and rewards. A fun space to look out for, every month!</string>
+    <string name="medical_cannabis_tutorials">Medical Cannabis Tutorials</string>
+    <string name="live_cme_sessions">Live CME Sessions</string>
+    <string name="email_or_mobile_number">Email or mobile number</string>
+    <string name="mobile_number">Enter mobile number</string>
+    <string name="address_mobile_number">Mobile number</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="enter_confirm_password">Confirm your password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="skip_login">Skip Login</string>
+    <string name="new_user_sign_up">New user? <b>Sign up</b></string>
+    <string name="enter_mobile_number">Enter your mobile number to create your account.</string>
+    <string name="update_mobile_number">Enter your mobile number to update.</string>
+    <string name="update_email">Enter your Email to update.</string>
+    <string name="update_password_message">Enter your mobile number to verify your account.</string>
+    <string name="enter_otp">OTP is sent to your mobile number.</string>
+    <string name="continue_text">Continue</string>
+    <string name="submit_text">Submit</string>
+    <string name="done_text">Done</string>
+    <string name="resend_otp_timer">Resend OTP in %1$d</string>
+    <string name="resend_otp"><b>Resend OTP</b></string>
+    <string name="update_password">Change your Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="sign_up_sign_in">Create Account / Login</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="enter_your_clinic_name">Enter your clinic name</string>
+    <string name="address_title">Address</string>
+    <string name="address_line_1">Flat, House no., Building</string>
+    <string name="address_line_2">Area, Street, Sector</string>
+    <string name="city">City</string>
+    <string name="pincode">Pincode</string>
+    <string name="doctor_registration_certificate">DOCTOR REGISTRATION CERTIFICATE</string>
+    <string name="leaf_of_life_n_monthly_newsletter">Leaf of Life \n(Monthly Newsletter)</string>
+    <string name="upload_certificate">Click here to upload certificate</string>
+    <string name="upload_prescription_text">Click here to upload prescription</string>
+    <string name="permissions_required">Necessary permissions required</string>
+    <string name="select_doctor_certificate">Select doctor registration certificate</string>
+    <string name="doctor_certificate">Doctor registration certificate</string>
+    <string name="uploaded_file_exceeded_size_limit">The uploaded file is above the 10 MB size limit.</string>
+    <string name="please_select_valid_file">Please select a valid file.</string>
+    <string name="password_updated_successfully">Password updated successfully</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="home">Home</string>
+    <string name="dosage_calculator">Dosage Calculator</string>
+    <string name="profile">Profile</string>
+    <string name="live_sessions">Live Sessions</string>
+    <string name="tutorials">Tutorials</string>
+    <string name="orders">Orders</string>
+    <string name="newsletter">Newsletter</string>
+    <string name="support">Support</string>
+    <string name="log_out">Log Out</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="notification">Notification</string>
+    <string name="search">Search</string>
+    <string name="categories">CATEGORIES</string>
+    <string name="best_seller">BESTSELLER</string>
+    <string name="product_price_from">from Rs. %1$d/-</string>
+    <string name="product_category_in">in %1$s</string>
+    <string name="trending_products">BEST RATED PRODUCTS</string>
+    <string name="all_products">ALL PRODUCTS</string>
+    <string name="all_products_small">All Products</string>
+    <string name="search_products">Search Products...</string>
+    <string name="no_products_found">NO PRODUCTS FOUND</string>
+    <string name="cart">Cart</string>
+    <string name="price_normal">MRP: Rs. %1$s</string>
+    <string name="price_user">MRP: Rs. %1$s  %2$s <font color='#8B0000'>Rs. %3$s</font></string>
+    <string name="size">Size</string>
+    <string name="description">Description</string>
+    <string name="add_to_cart">ADD TO CART</string>
+    <string name="buy_now">BUY NOW</string>
+    <string name="place_order">PLACE ORDER</string>
+    <string name="download_pdf">DOWNLOAD PDF</string>
+    <string name="you_may_also_like">You may also like</string>
+    <string name="tax_included">Tax Included</string>
+    <string name="download_test_reports">DOWNLOAD TEST REPORTS</string>
+    <string name="out_of_stock">OUT OF STOCK</string>
+    <string name="prescription">Prescription</string>
+    <string name="full_name">Full Name</string>
+    <string name="clinic_name">Clinic Name</string>
+    <string name="contact_no">Contact No.</string>
+    <string name="due_amount">Due Amount</string>
+    <string name="approved">Approved</string>
+    <string name="your_id_verification_is_in_progress">Note: Your ID verification is in progress</string>
+    <string name="edit">Edit</string>
+    <string name="edit_address">Edit Address</string>
+    <string name="pay_remaining_amount">Pay remaining amount</string>
+    <string name="update">Update</string>
+    <string name="no_prescriptions_found">No Prescriptions Found :-(</string>
+    <string name="no_orders_found">kindly add items in Cart :-(</string>
+    <string name="upload_prescription">Upload Prescription</string>
+    <string name="max_30_words">Max 30 words...</string>
+    <string name="write_here">Write here...</string>
+    <string name="add_description">Add Description (Max 30 words... )</string>
+    <string name="note_only_image_and_pdf_can_be_uploaded">Note: Only Image and PDF can be uploaded.</string>
+    <string name="your_orders">Your Orders</string>
+    <string name="leaf_of_life_monthly_newsletter">Leaf of Life (Monthly Newsletter)</string>
+    <string name="select_any_value">Select any type</string>
+    <string name="select_product">Select Product</string>
+    <string name="select_product_type">Select Product Type</string>
+    <string name="select_indication">Select Indication</string>
+    <string name="select_your_weight">Select Your Weight</string>
+    <string name="delete_your_account">To delete your account, <font color="#8B0000">Click Here</font></string>
+    <string name="delete_account">Delete Account</string>
+    <string name="confirm_delete_account">Are you sure you want to delete your account?</string>
+    <string name="confirm_logout_account">Are you sure you want to log out?</string>
+    <string name="no">NO</string>
+    <string name="yes">YES</string>
+    <string name="no_data_found">No data found :-(</string>
+    <string name="search_here">Search here...</string>
+    <string name="instagram_feed">INSTAGRAM FEED</string>
+    <string name="live_session_header">LIVE SESSION</string>
+    <string name="result">Result</string>
+    <string name="indication">INDICATION</string>
+    <string name="disclaimer">DISCLAIMER</string>
+    <string name="ok">OK</string>
+    <string name="coupon">Coupon</string>
+    <string name="price_to_pay">Price to pay</string>
+    <string name="no_coupon_applied">NO COUPON APPLIED</string>
+    <string name="use_the_below_codes_to_avail_discount">Use the below codes to avail discount</string>
+    <string name="enter_coupon_to_avail_discount">Enter coupon code to avail discount</string>
+    <string name="enter_coupon_code">Enter Coupon Code</string>
+    <string name="apply">Apply</string>
+    <string name="expiry_coupon">Expiry on %1$s</string>
+    <string name="invalid_coupon">Invalid Coupon</string>
+    <string name="invalid_amount">Invalid Amount</string>
+    <string name="coupon_applied">Coupon Applied!</string>
+    <string name="check_offers">Check offers</string>
+    <string name="select_any_address_to_proceed_checkout">Select any address to place order</string>
+    <string name="proceed_checkout">Proceed Checkout</string>
+    <string name="add_address">ADD NEW ADDRESS</string>
+    <string name="update_address">UPDATE ADDRESS</string>
+    <string name="add_address_done">ADDRESS CREATED!</string>
+    <string name="update_address_done">ADDRESS UPDATED!</string>
+    <string name="no_address_found">Kindly add address to place order</string>
+    <string name="new_address_text">Add your address to place order</string>
+    <string name="update_address_text">Update your existing address to place order</string>
+    <string name="trans_pending">Please Wait!</string>
+    <string name="trans_completed">Transaction Successful!</string>
+    <string name="trans_failed">Transaction Failed!</string>
+    <string name="trans_pending_desc">We are continuously checking the status of your payment. We request you not to make multiple payments and wait for few minutes till the status is updated.</string>
+    <string name="trans_completed_desc">Your transaction of Rs. %1$s has been successfully completed. Kindly note the transaction ID: %2$s for your reference.</string>
+    <string name="trans_failed_desc">Your transaction of Rs. %1$s has been failed or denied. In case of amount deducted, it will be credited within 14 working days. Kindly note the transaction ID: %2$s for your reference.</string>
+    <string name="contact_support">CONTACT SUPPORT</string>
+    <string name="product_added">PRODUCT ADDED IN CART</string>
+    <string name="empty_string"></string>
+    <string name="transaction_amount">Rs. %1$s</string>
+    <string name="transaction_subtitle">For payment of %1$s #%2$s</string>
+    <string name="success">SUCCESS</string>
+    <string name="txStatus">txStatus</string>
+    <string name="orderId">orderId</string>
+    <string name="mode_of_payment">MODE OF PAYMENT?</string>
+    <string name="payment_dialog_text">While doing payment via CREDIT, you can pay us from 30 to 45 days with no extra cost.</string>
+    <string name="credit_dialog_text">CREDIT</string>
+    <string name="pay_now">PAY NOW</string>
+    <string name="order_id">Order #%1$s</string>
+    <string name="transaction_id">Transaction #%1$s</string>
+    <string name="wallethistory_id">Credit Note #%1$s</string>
+    <string name="credithistory_id">Credit #%1$s</string>
+    <string name="order_price">Rs %1$s</string>
+    <string name="order_quantity">Qty: %1$s</string>
+    <string name="request_cancellation">REQUEST_CANCELLATION</string>
+    <string name="canceled">CANCELLED</string>
+    <string name="add">ADD</string>
+    <string name="failed">FAILED</string>
+    <string name="completed">COMPLETED</string>
+    <string name="send_message">Send Message...</string>
+    <string name="no_notifications_found">No Notifications found :-(</string>
+    <string name="today">Today</string>
+    <string name="paying_amount">Paying Amount</string>
+    <string name="proceed_to_pay">PROCEED TO PAY</string>
+    <string name="pending_amount_title">Your credit amount of Rs. %1$s is pending. Kindly pay before %2$s to continue using this service.</string>
+    <string name="ledger_amount_title">You can pay credit amount of Rs. %1$s. Kindly pay before %2$s to continue using this service.</string>
+    <string name="offers">Offers</string>
+    <string name="blogs">BLOGS</string>
+    <string name="www_hempworks_in_info_hempworks_in">www.hempworks.in | info@hempworks.in</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="approved_alert">YOUR ACCOUNT IS NOT APPROVED YET!</string>
+    <string name="products">Products</string>
+    <string name="my_account">My Account</string>
+
+    <string name="account_profile">Profile</string>
+    <string name="account_orders">Orders</string>
+    <string name="account_payment">Payment History</string>
+    <string name="account_prescriptions">My Prescriptions</string>
+    <string name="account_credit">Credit Notes Earned</string>
+    <string name="account_ledger">Ledger</string>
+    <string name="account_logout">Logout</string>
+    <string name="chat_us">CHAT</string>
+    <string name="email_us">EMAIL</string>
+    <string name="whatsapp">WHATSAPP</string>
+    <string name="payment_history">Payment History</string>
+    <string name="wallet_history">Credit Notes History</string>
+    <string name="credit_coins_used">Credit coins used</string>
+
+    <string name="disclaimer_pres">The uploading of the prescriptions is required for compliance with the applicable Indian laws including circulars, notification and guidelines. The doctors are entirely responsible for the contents mentioned in the prescription. Ananta Hemp Works will only use uploaded prescriptions for regulatory compliance and the information included therein will not be used for any marketing / promotional purposes.
+</string>
+    <string name="disclaimer_home">This application\'s content including the dosage calculator is solely for the purpose of providing general information to the doctors. All products should only be purchased and/or prescribed by the respective doctors as per their judgment and Ananta Hemp Works has no bearing or liability in this regard. The products advertised herein are not intended for use or sale by anyone under the age of eighteen.
+</string>
+    <string name="disclaimer_home_2">
+        Ananta Hempworks manufactures Vijaya Leaf Extract Medicines under a valid Loan Manufacturing License under Ayurveda in the state of Madhya Pradesh. Our Products are made strictly for Medicinal use only. We don’t promote or advocate recreational use of our products on any online or offline platform. Some of our products are Schedule E 1 Medicines, which are sold only under a Valid Prescription from a registered Ayurveda practitioner.
+    </string>
+    <string name="disclaimer_tutorial">The live Sambhasha Sessions are purely for general guidance and information to the viewer(s) on the hemp-based products. These sessions are neither intended to act as a guide or a prescription for the purpose of purchase or consumption of the product(s) of Ananta Hempworks Solutions Private Limited.</string>
+    <string name="privacy_policies">Privacy Policy</string>
+    <string name="terms_and_conditions">Terms And Conditions</string>
+    <string name="privacy_desc"><![CDATA[
+<div>
+         <h2  style="font-weight: bold;">PRIVACY POLICY – ANANTA PARTNERS
+         </h2>
+         <p >This policy was last updated on 03-May-2022</p>
+         <div>
+            <strong>Introduction</strong>
+            <p><span style="font-weight: 400;">Your privacy is extremely important to us, i.e. Ananta Hempworks Solutions Private Limited, (&ldquo;</span><strong>Company</strong><span style="font-weight: 400;">&rdquo;, "</span><strong>We</strong><span style="font-weight: 400;">," "</span><strong>Us</strong><span style="font-weight: 400;">," or "</span><strong>Our</strong><span style="font-weight: 400;">") and We are dedicated to respecting the strong privacy practices of Our doctors (&ldquo;</span><strong>You</strong><span style="font-weight: 400;">&rdquo;, &ldquo;</span><strong>Your</strong><span style="font-weight: 400;">&rdquo;). We intend to safeguard You and Your patients&rsquo; personal data/ sensitive personal data (as defined below) and aim to keep it private and secure.&nbsp;</span></p>
+            <p><span style="font-weight: 400;">This Privacy Policy (&ldquo;</span><strong>Policy</strong><span style="font-weight: 400;">&rdquo;) covers Our data storage, collection, processing, and usage on the Company mobile application namely Ananta Partners (&ldquo;</span><strong>Application</strong><span style="font-weight: 400;">&rdquo;) which is solely designed for doctors. This Privacy Policy governs access to and use of the Application, as well as the services provided on the Application.&nbsp;</span></p>
+            <p><span style="font-weight: 400;">This Policy is released in accordance with the Information Technology Act of 2000 and the Information Technology (Reasonable security practices and procedures and sensitive personal data or information) Rules, 2011 (the "</span><strong>Applicable Law</strong><span style="font-weight: 400;">").</span></p>
+         </div>
+         <div>
+            <p><strong>1. COLLECTION AND USE OF PERSONAL DATA</strong></p>
+            <p><strong>Personal&nbsp;Data</strong><span style="font-weight: 400;">: It pertains to information that can be used to directly or indirectly identify a person such as You or Your patient(s). Personal Data also includes anonymous data that is linked to information that can be used to directly or indirectly identify a person. Sensitive personal data is also included under the ambit of Personal Data. Sensitive personal data or information refers to information about a person\'s password, health &amp; biometric data as well as financial information such as bank account, credit/debit card, or other payment instrument details.&nbsp;</span></p>
+            <p><span style="font-weight: 400;">Personal Data does not include data that has been irreversibly anonymised or aggregated so that it can no longer enable Us, whether in combination with other information or otherwise, to identify a person such as You or Your patient(s).&nbsp;</span></p>
+            <ol>
+               <li>
+                  <strong>&nbsp;What Personal Data We Collect :&nbsp;</strong><span style="font-weight: 400;">On the basis of product(s) and service(s) You avail from Us, We collect different kinds of Personal Data from or about You, which are</span>
+                  <ol>
+                     <li>
+                        <strong>Data You provide:&nbsp;</strong>We collect and store the Personal Data You provide when:<br />
+                        <ol>
+                           <li>You log in as a new user on Our Application, the data includes your name, email address, clinic name, address and the details available on doctor&rsquo;s registration certificate and other identification related documents, if any, provided by You currently or in future through the usage of Our App;</li>
+                           <li>You avail of Our product(s) and service(s);&nbsp;</li>
+                           <li>You upload Personal and Sensitive Personal Data by way of prescriptions. We only use uploaded prescriptions for regulatory compliance and the information included therein is not used for any marketing and advertisement purposes.&nbsp;</li>
+                        </ol>
+                     </li>
+                     <li>
+                        <strong>Data about payments</strong>:&nbsp;When You make any purchase on Our Application, We and our payment gateway partners collect Your personal data and sensitive personal data in connection with such purchase. This data may include:<br />
+                        <ol>
+                           <li>Data about Your payment, such as Your credit or debit card number and other card information, and other account and authentication information &amp;</li>
+                           <li>Data about Your billing, shipping, and contact details.</li>
+                        </ol>
+                     </li>
+                  </ol>
+               </li>
+               <li>
+                  &nbsp;<strong>How We Use Your Personal Data</strong>
+                  <ol>
+                     <li><span style="font-weight: 400;">The Personal Data received by Us or shared with Us will be handled and used to provide Our services, including but not limited to the distribution of the products ordered by You and for compliance with Applicable Laws. We require Your Personal Data so that We can offer You live CME sessions, medical cannabis tutorials and monthly newsletters based on your interests.</span></li>
+                     <li><span style="font-weight: 400;">Furthermore, </span><span style="font-weight: 400;">We use Personal Data to help verify accounts and user activity, as well as to promote safety and security, such as by monitoring fraud and investigating suspicious or potentially illegal activity or violations of Our terms or policies. Such processing is based on Our legitimate interest in helping ensure the safety of Our product(s) and service(s).</span></li>
+                  </ol>
+               </li>
+            </ol>
+            <p><strong>2. How long do We require Your Personal Data&nbsp;</strong></p>
+            <p><span style="font-weight: 400;">Personal Data is collected for legitimate purposes only. We store Personal Data for as long as it is needed to fulfil the objectives for which it was collected, as well as long as Applicable Law requires.</span></p>
+            <p><span style="font-weight: 400;"><br /></span><strong>3. Disclosure of Personal Data</strong></p>
+            <p><span style="font-weight: 400;">We make certain Personal Data shared by or collected from You, available to a strategic partner(s) that work with Us, to provide our product(s) and service(s) or help Us to market it to You. Personal Data will only be shared by Us with other companies in order to provide or improve Our product(s) and service(s); it will not be shared with third parties for their own marketing purposes.&nbsp;</span></p>
+            <ol>
+               <li>
+                  <strong> Legal Compliance and Security</strong>
+                  <ol>
+                     <li><span style="font-weight: 400;">It may be necessary&mdash;by law, legal process, litigation, and/or requests from public and governmental authorities within or outside Your country of residence&mdash;for Us to disclose Personal Data shared by or collected from You. We may also disclose Personal Data shared by or collected from You, if We determine that the same is essential for the purposes of national security, law enforcement, or other issues of public importance, disclosure is necessary or appropriate.</span></li>
+                     <li><span style="font-weight: 400;">We may also disclose Personal Data shared by or collected from You, if We determine in good faith that disclosure is reasonably necessary to protect Our rights and pursue available remedies, enforce Our terms and conditions, investigate fraud, or protect Our operations or customers.</span></li>
+                     <li><span style="font-weight: 400;">If you have any complaints or queries regarding the processing of your Personal Data or Sensitive Personal Data then reach out to us at </span><a href="mailto:info@hempworks.in"><span style="font-weight: 400;">info@hempworks.in</span></a><span style="font-weight: 400;">. We shall endeavour to resolve Your grievance(s) and/or Your queries within one month of receipt.</span>&nbsp;</li>
+                  </ol>
+               </li>
+            </ol>
+            <p><strong>4. Your Rights</strong></p>
+            <p><span style="font-weight: 400;">We take reasonable steps to ensure that Your Personal Data is accurate, complete, and up to date. You have the right to access, correct, or delete the Personal Data that We collect. To the extent permitted by law. You are also entitled to restrict or object, at any time, to the further processing of Your Personal Data. You have the right to receive Your Personal Data in a structured and standard format.&nbsp;</span></p>
+            <p><span style="font-weight: 400;">To protect the privacy and the security of Your Personal Data, We may request data from You to enable Us to confirm Your identity and right to access such data, as well as to search for and provide You with the Personal Data We maintain. There are instances where Applicable Law or regulatory requirements allow or require Us to refuse to provide or delete some or all of the Personal Data that We maintain.</span></p>
+            <p><span style="font-weight: 400;">You may contact Us to exercise Your rights with respect to the Personal Data shared by or collected from You. We will respond to such request(s) in a reasonable timeframe, and in any event in less than 30 days.&nbsp;</span></p>
+            <p><strong>5. Data Security, Integrity, and Retention</strong></p>
+            <p><span style="font-weight: 400;">We use reasonable technical, administrative, and physical security measures designed to safeguard and help prevent unauthorized access to Your Personal Data, and enable the genuine use of the Personal Data that We collect</span><span style="font-weight: 400;">. </span><span style="font-weight: 400;">It is important that You take precautions against unauthorized access to Our product(s), service(s), and account credentials, availed by You. If you feel that the security of Your account or Personal Data has been compromised, please immediately contact us at info@hempworks.in. Please be aware that, despite Our best efforts, no security system is impenetrable. In the event of a security breach, We will promptly notify You and the proper authorities if required by law.&nbsp;</span></p>
+            <p><span style="font-weight: 400;">We will retain Your Personal Data for as long as it is necessary to fulfill the purposes outlined in this Policy, unless a longer retention period is required or permitted by law.</span></p>
+            <p><strong>6. Changes to this Privacy Statement</strong></p>
+            <p><span style="font-weight: 400;">We may periodically change this Policy to keep pace with new technologies, industry practices, and regulatory requirements, among other reasons. Your continued use of Our product(s) and service(s) after the effective date of the Policy means that You accept the revised Privacy Policy. If You do not agree to the revised Privacy Policy, please refrain from using Our product(s) or service(s) and contact Us to close any account You may have created.</span></p>
+            <p><strong><strong>7. Governing Law</strong></strong></p>
+            <p><span style="font-weight: 400;">By continuing and using Our services, You agree to submit to the exclusive jurisdiction of the courts at New Delhi in the event of any dispute arising out of in connection with this Policy.</span></p>
+            <p><strong>8. Contact Us</strong></p>
+            <p><span style="font-weight: 400;">If You have any questions regarding this Policy or its implementation, here is how You can reach Us:&nbsp;</span><a href="mailto:info@hempworks.in"><span style="font-weight: 400;">info@hempworks.in</span></a></p>
+            <p><span style="font-weight: 400;">Copyright: Ananta Hempworks Solutions Private Limited</span></p>
+            <p><br /><br /></p>
+         </div>
+      </div>
+]]></string>
+    <string name="tac_desc"><![CDATA[
+        <p><strong>TERMS &amp; CONDITIONS &ndash; ANANTA PARTNERS</strong></p>
+<p><span style="font-weight: 400;">These Terms and Conditions were last revised on 07 May 2022.</span><strong>&nbsp;&nbsp;</strong></p>
+<p><span style="font-weight: 400;">Ananta Hempworks Solutions Private Limited (hereinafter referred to as&nbsp;&ldquo;</span><strong>We</strong><span style="font-weight: 400;">&rdquo;, &ldquo;</span><strong>Us</strong><span style="font-weight: 400;">&rdquo;, &ldquo;</span><strong>Our</strong><span style="font-weight: 400;">&rdquo; or</span> <span style="font-weight: 400;">the</span><strong>&nbsp;</strong><span style="font-weight: 400;">&ldquo;</span><strong>Company</strong><span style="font-weight: 400;">&rdquo;)&nbsp;welcomes you to its application,&nbsp;Ananta Partners (hereinafter referred to as</span><strong>&nbsp;</strong><span style="font-weight: 400;">the &ldquo;</span><strong>Application</strong><span style="font-weight: 400;">&rdquo;)</span><strong>.&nbsp;</strong><span style="font-weight: 400;">This Application contains content(s) and provides product(s) for purchase to the doctors, such as you, who choose to register themselves on the Application (hereinafter referred to as</span><strong>&nbsp;&ldquo;User&rdquo;, </strong><span style="font-weight: 400;">&ldquo;</span><strong>You</strong><span style="font-weight: 400;">&rdquo; or &ldquo;</span><strong>Your</strong><span style="font-weight: 400;">&rdquo;),</span><strong>&nbsp;</strong><span style="font-weight: 400;">which are available to them, subject to the Terms and Conditions provided herein.&nbsp;</span></p>
+<p><span style="font-weight: 400;">By accessing or visiting this Application, or by purchasing the product(s) listed on the Application, You acknowledge that You have read, understood, and agree to be lawfully bound by the contents of these&nbsp;</span><strong>Terms&nbsp;&amp;&nbsp;Conditions, </strong><span style="font-weight: 400;">and Our&nbsp;</span><strong>privacy policy </strong><span style="font-weight: 400;">(as contained in the Application), which are hereby collectively referred to as the&nbsp;&ldquo;</span><strong>Agreement</strong><span style="font-weight: 400;">&rdquo;.</span></p>
+<p><em><span style="font-weight: 400;">These Terms and Conditions are in compliance with the Consumer Protection (E-Commerce) Rules, 2000 and other applicable laws of India (hereinafter referred to as the &ldquo;</span></em><strong><em>Applicable Law</em></strong><em><span style="font-weight: 400;">&rdquo;).&nbsp;</span></em></p>
+<ol>
+   <li>
+      <strong>CONTENT :</strong>
+      <ul>
+         <li>
+            <p>The content(s) of this Application including, without limitation, (i) the Application&rsquo;s&nbsp; trademarks including logos and brand names, trade names and other distinctive identification; (ii) information, data, texts, materials, interfaces, computer code, databases, products, services, software applications and tools, text, images, photographs, audio and video material, and (iii) the design, structure, selection, compilation, assembly, coordination, expression, functionalities, applications, look and feel, and arrangement of any content contained in or available through the Application, shall be collectively referred to herein as &ldquo;<strong>Contents</strong>&rdquo;.
+            <p>
+         </li>
+      </ul>
+   </li>
+   <li>
+      <strong>INTELLECTUAL PROPERTY:</strong>&nbsp;
+      <ul>
+         <li>
+            <p>The Contents, as defined above, are the property of the Company or its licensors, and are protected under Indian laws including laws relating to copyright, trademark and other intellectual property rights.&nbsp;User(s) shall not modify, publish, transmit, participate in the transfer or sale of, reproduce, create new work from, distribute, perform, or in any way exploit, any of the contents or services in whole or in part.&nbsp;Any such conduct of the User shall grant the Company with the right to initiate legal proceedings against such User.
+            <p>
+         </li>
+      </ul>
+   </li>
+   <li>
+      <strong>YOUR OBLIGATIONS AND RESPONSIBILITIES:</strong>
+      <ul>
+         <li>
+            <p><strong>&nbsp;</strong>While accessing or using the Application, You shall always comply with the terms mentioned herein and any future warnings or instructions for access or use, posted on this Application. Your usage of the Application should always be in a legally compliant manner. You may not make any change or alteration to the Application or any Content or services that may appear on this Application and may not impair in any way the integrity or operation of the Application. Without limiting the generality of any other provision of these Terms and Conditions, if You default negligently or willfully any of the obligations set forth in these Terms and Conditions, You shall be liable for all the losses and damages that may arise out of such conduct, to Us.</p>
+         </li>
+      </ul>
+   </li>
+   <li>
+      <strong>ACCURACY OF INFORMATION:</strong>
+      <ul>
+         <li>
+            <p><strong>&nbsp;</strong>We attempt to maintain Our accuracy to a&nbsp;possible extent when selling Our products on the Application.</p>
+         </li>
+      </ul>
+   </li>
+   <li>
+      <strong>COPYRIGHT COMPLAINTS :</strong>
+      <ul>
+         <li>
+            <p><strong>&nbsp;</strong>We duly respect other&rsquo;s rights towards intellectual property. If You believe that copyrighted materials have been copied in a way that constitutes copyright infringement, please send an email or a written notice to Us for notifying such an infringement and provide the following:&nbsp;<strong>(i)</strong>&nbsp;identification of the copyrighted work(s) that You claim has been infringed and that You are the copyright owner or authorized to act on the copyright owner&rsquo;s behalf;&nbsp;<strong>(ii)</strong>&nbsp;a description of the material that You claim is infringing and the location of the material on the Application;&nbsp;<strong>(iii) </strong>proof of copyrighted material ownership, and <strong>(iv)</strong>&nbsp;Your address, telephone number and email address to: <a href="mailto:info@hempworks.in">info@hempworks.in</a>.</p>
+         </li>
+      </ul>
+   </li>
+   <li>
+      <strong>REPRESENTATIONS AND WARRANTIES AND LIMITATION OF LIABILITY :</strong>
+      <ul>
+         <li>
+            <p><strong>&nbsp;</strong>Our Application is presented in an &ldquo;As Is&rdquo; form. We make no representations or warranties of any kind whatsoever, express or implied, in connection with the Application, including but not limited to warranties of merchantability, non-infringement or fitness for a particular purpose, except to the extent such representations and warranties are not legally excludable.</p>
+         </li>
+         <li>
+            <p>We will not be responsible or liable (whether in contract, tort (including negligence) or otherwise), under any circumstances, for any&nbsp;<strong>(a)</strong>&nbsp;interruption of business;&nbsp;<strong>(b)</strong>&nbsp;access delays or access interruptions to the Application;&nbsp;<strong>(c)</strong>&nbsp;data non-delivery, mis-delivery, corruption, destruction or other modification;&nbsp;<strong>(d)</strong>&nbsp;loss or damages of any sort incurred as a result of dealings with or the presence of off-Application links on the Application;&nbsp;<strong>(e)</strong>&nbsp;computer viruses, system failures or malfunctions which may occur in connection with Your use of the Application, including during hyperlink to or from third party websites&nbsp;<strong>(f)</strong>&nbsp;any inaccuracies or omissions in Content or&nbsp;<strong>(g)</strong>&nbsp;events beyond Our reasonable control.</p>
+         </li>
+         <li>
+            <p>Further, to the fullest extent permitted by law, We will not be liable for any indirect, special, punitive, incidental, or consequential damages of any kind (including lost profits) related to Our Application or Your use thereof regardless of the form of action whether in contract, tort (including negligence) or otherwise, even if We have been advised of the possibility of such damages and in no event shall Our maximum aggregate liability exceed Indian Rupees 2,000 only.</p>
+         </li>
+      </ul>
+   </li>
+   <li>
+      <strong>&nbsp;INDEMNIFICATION:</strong>
+      <ul>
+         <li>
+            <p>You agree to defend, indemnify, and hold Us harmless for and against any loss, damages or costs, including attorneys&rsquo; fees (as per actuals), resulting from any third-party claim, action, or demand resulting from Your use of Our Product(s) and this Application or breach of these Terms and Conditions.</p>
+         </li>
+      </ul>
+   </li>
+   <li>
+      <strong>DISPUTES:</strong>
+      <ul>
+         <li>
+            <p><strong><strong>&nbsp;</strong></strong>By continuing and using Our Application post perusal of these Terms and Conditions, You agree to submit to the exclusive jurisdiction of the courts at New Delhi.</p>
+         </li>
+      </ul>
+   </li>
+   <li>
+      <strong>TERMINATION:</strong>
+      <ul>
+         <li>
+            <p><strong>&nbsp;</strong>You may terminate this Agreement at any time by stopping the use of this Application. We hereby reserve the right to control, restrict or terminate Your access to this Application in the event We find You breaching any of the Terms and Conditions of this Agreement.</p>
+         </li>
+      </ul>
+   </li>
+   <li>
+      <strong>SEVERABILITY:</strong>
+      <ul>
+         <li><strong>&nbsp;</strong>It is hereby provided that if any provision of this Agreement is or becomes illegal, unenforceable, or invalid, in the provided jurisdiction, either by an Act passed by the Legislature or by an order passed by a Court, the same shall not affect the enforceability or validity in of any other provision(s) of this Agreement.&nbsp;</li>
+      </ul>
+   </li>
+   <li>
+      <p><strong>GENERAL:&nbsp;</strong></p>
+      <ul>
+         <li>You acknowledge and agree that these Terms and Conditions constitute a complete and exclusive agreement between Us concerning Your use of Our Application, and supersedes and govern all prior proposals, agreements, or other communications. We reserve the right, in Our sole discretion, to change these Terms and Conditions at any time by posting the changes on the Application and providing notice of such change. Any changes are effective immediately upon posting to the Application and release of notice of such change. Your continued use of the Application thereafter constitutes Your agreement to all such changed Terms and Conditions. With or without prior notice, We may terminate any of the rights granted by these Terms and Conditions. You shall comply immediately with any termination or other notice, including, as applicable, by ceasing Your use of Our Application.</li>
+         <li>Nothing contained in these Terms and Conditions shall be construed as creating any agency, partnership, or other form of joint enterprise between Us. Our failure to require Your performance of any provision hereof shall not affect Our full right to require such performance at any time thereafter, nor shall Our waiver of a breach of any provision hereof be taken or held to be a waiver of the provision itself. In the event that any provision of these Terms and Conditions shall be unenforceable or invalid under any Applicable Law or be so held by any applicable arbitral award or court decision, such unenforceability or invalidity shall not render these Terms and Conditions unenforceable or invalid as a whole but these Terms and Conditions shall be modified, to the extent possible, by the adjudicating entity to most fully reflect the original intent of the parties as reflected in the original provision.</li>
+      </ul>
+   </li>
+</ol>
+<p><span style="font-weight: 400;">If You have any questions regarding these Terms and Conditions, please email Us at:&nbsp;</span><a href="mailto:info@hempworks.in"><strong>info@hempworks.in</strong></a><span style="font-weight: 400;">.&nbsp;</span></p>
+    ]]></string>
+    <string name="course_tac_desc"><![CDATA[
+        <div><p style="text-align: center;"><strong>CERTIFICATION FOR  PRACTICING VIJAYA LEAF EXTRACT BASED MEDICINES</strong></p>
+    <p><strong>Terms &amp; Conditions</strong></p>
+    <ol>
+    <li><strong><span style="font-weight: 400;">On purchase of Ananta Products for only </span>Rs. 7,500/- (seven thousand five hundred only)<span style="font-weight: 400;"> the course shall be exclusively provided on the &ldquo;</span>ANANTA PARTNERS APP<span style="font-weight: 400;">&rdquo; platform &ldquo;</span>FREE OF ANY COST TO OUR ANANTA DOCTORS&rdquo;.</strong></li>
+    <li><span style="font-weight: 400;">This course has been designed by Dr. Piyush Juneja,who want to enhance their knowledge on how to practice Vijaya Leaf Extract based Medicine in Ayurveda.</span></li>
+    <li><span style="font-weight: 400;">This course gives you knowledge on the legality, molecular biology and effects of Vijaya Leaf Extract based Medicine on humans.</span></li>
+    <li><span style="font-weight: 400;">This course should ideally be completed within 90 days.</span></li>
+    <li><span style="font-weight: 400;">After you complete reading and learning from the course, an evaluation of your understanding shall be officially carried out by Dr. Piyush Juneja, and based on his evaluation, a certificate as a Vijaya Leaf Extract based Medicine Practitioner shall be handed over to you.</span></li>
+    <li><span style="font-weight: 400;">This course is intended to be for registered Ananta Doctors Only.</span>&nbsp;</li>
+    </ol>
+    <p><strong>Disclaimer</strong><span style="font-weight: 400;">:</span></p>
+    <p><span style="font-weight: 400;">Course Material has been designed by a team of Doctors, under the guidance and supervision of Dr Piyush Juneja, Founder of Indian Vaidyas. Ananta Hempwork’s application “ANANTA PARTNERS” is only a digital partner and has no role to play on the information provided in the course material. Listing of this course is only for the purpose to help assist doctors to get easy access to the course and certification to freely and confidently practice Vijaya Leaf Extract based Medicine in Ayurved.</span></p>
+    </div>
+    ]]></string>
+    <string name="courses">Courses</string>
+    <string name="i_hereby_acknowledge_agree_amp_accept_the_above_terms_and_conditions_i_understand_the_course_is_intended_for_information_only"><![CDATA[I hereby acknowledge, agree & accept the above terms and conditions. I understand the course is intended for information only.]]></string>
+    <string name="course_tac_checkbox_error"><![CDATA[Kindly agree & accept the above terms and conditions]]></string>
+    <string name="thank_you_for_apply">Thank you for applying.</string>
+    <string name="course_snackbar">Please check your email to access the course</string>
+
+    <string-array name="account_list">
+        <item>Profile</item>
+        <item>Orders</item>
+        <item>Payment History</item>
+        <item>My Prescriptions</item>
+        <item>Credit Notes Earned</item>
+        <item>Ledger</item>
+        <item>Logout</item>
+    </string-array>
+
+    <string-array name="state_list">
+        <item><b>Select State</b></item>
+        <item>Andaman and Nicobar</item>
+        <item>Andhra Pradesh</item>
+        <item>Arunachal Pradesh</item>
+        <item>Assam</item>
+        <item>Bihar</item>
+        <item>Chandigarh</item>
+        <item>Chhattisgarh</item>
+        <item>Dadra and Nagar Haveli</item>
+        <item>Daman and Diu</item>
+        <item>Delhi</item>
+        <item>Goa</item>
+        <item>Gujarat</item>
+        <item>Haryana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jammu and Kashmir</item>
+        <item>Jharkhand</item>
+        <item>Karnataka</item>
+        <item>Kerala</item>
+        <item>Lakshadweep</item>
+        <item>Madhya Pradesh</item>
+        <item>Maharashtra</item>
+        <item>Manipur</item>
+        <item>Meghalaya</item>
+        <item>Mizoram</item>
+        <item>Nagaland</item>
+        <item>Orissa</item>
+        <item>Puducherry</item>
+        <item>Punjab</item>
+        <item>Rajasthan</item>
+        <item>Sikkim</item>
+        <item>Tamil Nadu</item>
+        <item>Telangana</item>
+        <item>Tripura</item>
+        <item>Uttar Pradesh</item>
+        <item>Uttarakhand</item>
+        <item>West Bengal</item>
+
+    </string-array>
 </resources>
