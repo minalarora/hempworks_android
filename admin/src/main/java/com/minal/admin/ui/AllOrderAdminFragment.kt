@@ -76,9 +76,6 @@ class AllOrderAdminFragment: BaseFragment<FragmentAllOrderBinding>(), OrderListe
 
                     mAllOrderAdminAdapter.addItems(it.data)
 
-
-                    orderId = it.data.getOrNull(0)?.id.toString()
-
                     mBinding.idRvOrders.apply {
                         layoutManager =
                             LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -102,7 +99,7 @@ class AllOrderAdminFragment: BaseFragment<FragmentAllOrderBinding>(), OrderListe
             R.id.idRlOrder->{
                 replaceFragment(isAddToBackStack = true,
                     R.id.idFcvAdmin,
-                    SingleOrderAdminFragment.getInstance(orderId),
+                    SingleOrderAdminFragment.getInstance(data?.id.toString()),
                     SingleOrderAdminFragment.TAG
                 )
             }

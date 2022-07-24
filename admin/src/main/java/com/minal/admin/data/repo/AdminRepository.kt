@@ -17,6 +17,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.Response
+import retrofit2.http.Query
 import java.io.File
 
 class AdminRepository(private val apiClient: RestApi = RetrofitClient.apiInterface) : SafeApiRequest {
@@ -151,6 +152,16 @@ class AdminRepository(private val apiClient: RestApi = RetrofitClient.apiInterfa
     suspend fun tutorial(token: String?,mRequestTutorial: RequestTutorial): Result<ResponseTutorial>
     {
         return safeApiCall(call = {apiClient.tutorial(token,mRequestTutorial)})
+    }
+
+    suspend fun productUpdate(token: String?,  id: String?,mRequestUpdateProduct: RequestUpdateProduct): Result<ResponseProductUpdate>
+    {
+        return safeApiCall(call = {apiClient.productUpdate(token,id,mRequestUpdateProduct)})
+    }
+
+    suspend fun productVarUpdate(token: String?,product: String?,variant: String?,mRequestUpdateProduct: RequestUpdateProduct): Result<ResponseProductUpdate>
+    {
+        return safeApiCall(call = {apiClient.productVarUpdate(token,product,variant,mRequestUpdateProduct)})
     }
 
     var mediaFile: RequestBody? = null

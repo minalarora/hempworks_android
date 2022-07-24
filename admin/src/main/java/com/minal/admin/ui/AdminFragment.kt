@@ -101,6 +101,11 @@ class AdminFragment : BaseFragment<FragmentAdminBinding>(),AdminWorkListener {
         )
         modelClasses.add(
 
+            DataArray("Update Variant")
+
+        )
+        modelClasses.add(
+
             DataArray("Create Ledger")
 
         )
@@ -201,11 +206,18 @@ class AdminFragment : BaseFragment<FragmentAdminBinding>(),AdminWorkListener {
                         ProductUpdateFragment.TAG)
                 }
 
-                else if (position == 11){
+                else if (position == 12){
                     replaceFragment(isAddToBackStack = true,
                         R.id.idFcvAdmin,
-                        LedgerFragment.getInstance(),
-                        LedgerFragment.TAG)
+                        UpdateVariantFragment.getInstance(),
+                        UpdateVariantFragment.TAG)
+                }
+
+                else if (position == 13){
+//                    replaceFragment(isAddToBackStack = true,
+//                        R.id.idFcvAdmin,
+//                        LedgerFragment.getInstance(),
+//                        LedgerFragment.TAG)
                 }
 
 

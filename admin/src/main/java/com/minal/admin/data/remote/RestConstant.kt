@@ -11,7 +11,7 @@ object RestConstant {
     var BASE_URL=  if (BuildConfig.DEBUG) "https://hempworks-web-l5hj7.ondigitalocean.app"
                         else "https://api.techhempworks.co.in"
 
-    const val API_PRODUCT_ALL="/v1/product/all"
+    const val API_PRODUCT_ALL="/v1/product/all/admin"
     const val API_CREATE_COUPON = "/v1/coupon"
     const val API_DOCTOR_LIST= "/v1/doctor/list"
     const val API_SINGLE_DOCTOR ="/v1/doctor/single"
@@ -35,6 +35,8 @@ object RestConstant {
     const val API_LIVE_SESSION="/v1/livesession"
     const val API_NEWS_PAPER="/v1/newspaper"
     const val API_TUTORIAL = "/v1/tutorial"
+    const val API_PRODUCT_UPDATE="/v1/product/update"
+    const val API_VARIANT_UPDATE="/v1/variant/update"
     const val API_UPLOAD_IMAGE="/v1/upload/image"
 
 

@@ -59,7 +59,7 @@ interface RestApi {
 
     @PATCH(RestConstant.API_ORDER_UPDATE)
     suspend fun updateOrder(@Header("Authorization") token: String?, @Query("id") id: String?,
-                            mRequestOrderUpdate: RequestOrderUpdate):Response<ResponseOrderUpdate>
+                           @Body mRequestOrderUpdate: RequestOrderUpdate):Response<ResponseOrderUpdate>
 
 
     //LEDGER
@@ -101,6 +101,15 @@ interface RestApi {
 
     @POST(RestConstant.API_TUTORIAL)
     suspend fun tutorial(@Header("Authorization") token: String?,@Body mRequestTutorial: RequestTutorial): Response<ResponseTutorial>
+
+
+    @PATCH(RestConstant.API_PRODUCT_UPDATE)
+    suspend fun productUpdate(@Header("Authorization") token: String?, @Query("id") id: String?,
+                          @Body mRequestUpdateProduct: RequestUpdateProduct):Response<ResponseProductUpdate>
+
+    @PATCH(RestConstant.API_VARIANT_UPDATE)
+    suspend fun productVarUpdate(@Header("Authorization") token: String?, @Query("product") product: String?,
+                                 @Query("variant") variant: String?,@Body mRequestUpdateProduct: RequestUpdateProduct):Response<ResponseProductUpdate>
 
     @Multipart
     @POST(RestConstant.API_UPLOAD_IMAGE)

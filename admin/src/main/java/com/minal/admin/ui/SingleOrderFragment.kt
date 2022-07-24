@@ -108,6 +108,9 @@ class SingleOrderFragment: BaseFragment<FragmentSingleOrderBinding>() {
                            idTvCreated.text = doctorobject.createdAt
                            idTvEmail.text = doctorobject.email
                            idTvMobile.text = doctorobject.mobile
+                           idTvPayment.text = payment
+                           idTvDiscount.text = discountprice.toString()
+                           idTvTotal.text = totalprice.toString()
                            idTvAddress.text = "${address.address1}, ${address.city}, ${address.pincode}, ${address.state}"
                            orderStatusType = status
 
@@ -137,14 +140,14 @@ class SingleOrderFragment: BaseFragment<FragmentSingleOrderBinding>() {
                                adapter = mSingleOrderListAdapter
                            }
 
-                           if (it.data.status == "INITITATED"){
+                           if (it.data.status == "INITIATED"){
                                mBinding.idRbInitiated.isChecked = true
                            }
                            else if(it.data.status == "DISPATCHED"){
                                mBinding.idRbDispatched.isChecked = true
 
                            }
-                           else if (it.data.status ==" COMPLETED"){
+                           else if (it.data.status =="COMPLETED"){
                                mBinding.idRbCompleted.isChecked = true
 
                            }
@@ -157,9 +160,10 @@ class SingleOrderFragment: BaseFragment<FragmentSingleOrderBinding>() {
 
                            }
                            else if (it.data.status == "CANCELLED"){
-                               mBinding.idRbCancel.isChecked = false
+                               mBinding.idRbCancel.isChecked = true
 
                            }
+
 
                        }
                    }
@@ -167,7 +171,6 @@ class SingleOrderFragment: BaseFragment<FragmentSingleOrderBinding>() {
                 }
             }
         }
-
     }
 
     private fun setListener() {
@@ -181,7 +184,7 @@ class SingleOrderFragment: BaseFragment<FragmentSingleOrderBinding>() {
                 mBinding.idRbRequestCancellation.isChecked = false
                 mBinding.idRbCancel.isChecked = false
 
-                statusChange("INITITATED")
+                statusChange("INITIATED")
             }
         }
 
@@ -199,7 +202,7 @@ class SingleOrderFragment: BaseFragment<FragmentSingleOrderBinding>() {
             }
         }
 
-        mBinding.idRbInitiated.setOnCheckedChangeListener { compoundButton, b ->
+        mBinding.idRbCompleted.setOnCheckedChangeListener { compoundButton, b ->
             if (b) {
                 mBinding.idRbInitiated.isChecked = false
                 mBinding.idRbDispatched.isChecked = false
@@ -254,8 +257,6 @@ class SingleOrderFragment: BaseFragment<FragmentSingleOrderBinding>() {
 
             }
         }
-
-
     }
 
 
@@ -263,7 +264,6 @@ class SingleOrderFragment: BaseFragment<FragmentSingleOrderBinding>() {
         mRequestOrderUpdate.apply {
             status = type
         }
-
         token?.let {
             viewModel?.updateOrder(it, docType, mRequestOrderUpdate)
         }

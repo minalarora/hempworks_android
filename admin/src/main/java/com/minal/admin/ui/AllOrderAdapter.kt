@@ -66,16 +66,9 @@ class AllOrderAdapter(val mContext: Context, val mOrderListener: OrderListener,
                  mBinding.apply {
                      idTvOId.text = id.toString()
                      idTvStatus.text = status
-                     idTvTime.text =date.toString()
-                     if (transactionid == null){
-                         idTvTransactionId.text = "Any"
-                     }
-                     else{
-                         idTvTransactionId.text = transactionid.toString()
-
-                     }
-
-                     idTvPrice.text = totalprice.toString()
+                     idTvTime.text = date.toString()
+                     idTvPayment.text= payment
+                     idTvPrice.text = discountprice.toString()
                  }
              }
 

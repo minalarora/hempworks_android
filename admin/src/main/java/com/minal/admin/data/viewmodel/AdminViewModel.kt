@@ -114,6 +114,14 @@ class AdminViewModel() : ViewModel() {
         MutableLiveData<Result<ResponseTutorial>>()
     }
 
+    val productData: MutableLiveData<Result<ResponseProductUpdate>> by lazy {
+        MutableLiveData<Result<ResponseProductUpdate>>()
+    }
+
+    val productVarData: MutableLiveData<Result<ResponseProductUpdate>> by lazy {
+        MutableLiveData<Result<ResponseProductUpdate>>()
+    }
+
     val uploadImage: MutableLiveData<Result<ResponseUploadImage>> by lazy {
         MutableLiveData<Result<ResponseUploadImage>>()
     }
@@ -418,6 +426,29 @@ class AdminViewModel() : ViewModel() {
 
         }
     }
+
+    fun productUpdate(token: String?,id:String?,mRequestUpdateProduct: RequestUpdateProduct)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            val result = AdminRepository().productUpdate(token,id,mRequestUpdateProduct)
+            productData.postValue(result)
+            loading.postValue(false)
+
+        }
+    }
+
+    fun productVarUpdate(token: String?,product:String?,Variant:String?,mRequestUpdateProduct: RequestUpdateProduct)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            val result = AdminRepository().productVarUpdate(token,product,Variant,mRequestUpdateProduct)
+            productVarData.postValue(result)
+            loading.postValue(false)
+
+        }
+    }
+
 
     fun uploadImage(token: String,mFile: File)
     {
