@@ -166,7 +166,6 @@
             android:paddingVertical="5dp"
             android:visibility="gone"
             android:text="viewmodel.dateRangeText"
-            app:hideIfFalse="viewmodel.dateRangeVisibility"
             tools:text="Showing results for 17 DEC 21 - 30 jan 21"/>
 
         <ImageView
@@ -179,7 +178,6 @@
             app:layout_constraintBottom_toBottomOf="@id/date_range"
             app:layout_constraintEnd_toEndOf="parent"
             android:visibility="gone"
-            app:hideIfFalse="viewmodel.dateRangeVisibility"
             app:tint="@color/dark_red" />
 
         <androidx.recyclerview.widget.RecyclerView

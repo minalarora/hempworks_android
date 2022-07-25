@@ -22,7 +22,7 @@ import com.minal.admin.data.response.OrderList
 import com.minal.admin.data.response.ledger.Ledger
 import com.minal.admin.data.viewmodel.AdminViewModel
 import com.minal.admin.databinding.FragmentCreateBlogBinding
-import com.minal.admin.databinding.FragmentLedgerBinding
+import com.minal.admin.databinding.FragmentLedgerAdminBinding
 import com.minal.admin.ext_fun.baseActivity
 import com.minal.admin.ext_fun.replaceFragment
 import com.minal.admin.ext_fun.showToast
@@ -31,7 +31,7 @@ import com.minal.admin.utils.OrderListener
 import java.io.File
 import java.text.SimpleDateFormat
 
-class LedgerFragment : BaseFragment<FragmentLedgerBinding>() {
+class LedgerFragment : BaseFragment<FragmentLedgerAdminBinding>() {
 
     private val permissions = arrayOf(
         Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -56,8 +56,8 @@ class LedgerFragment : BaseFragment<FragmentLedgerBinding>() {
     }
 
     override fun getViewBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): FragmentLedgerBinding {
-        return FragmentLedgerBinding.inflate(inflater, container, false)
+    ): FragmentLedgerAdminBinding {
+        return FragmentLedgerAdminBinding.inflate(inflater, container, false)
     }
 
     override fun onViewInitialized() {
