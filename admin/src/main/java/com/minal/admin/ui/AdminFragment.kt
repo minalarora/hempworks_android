@@ -104,11 +104,7 @@ class AdminFragment : BaseFragment<FragmentAdminBinding>(),AdminWorkListener {
             DataArray("Update Variant")
 
         )
-        modelClasses.add(
 
-            DataArray("Create Ledger")
-
-        )
 
 
         var adapter = AdminAdapter(modelClasses,this)
@@ -213,12 +209,7 @@ class AdminFragment : BaseFragment<FragmentAdminBinding>(),AdminWorkListener {
                         UpdateVariantFragment.TAG)
                 }
 
-                else if (position == 13){
-//                    replaceFragment(isAddToBackStack = true,
-//                        R.id.idFcvAdmin,
-//                        LedgerFragment.getInstance(),
-//                        LedgerFragment.TAG)
-                }
+
 
 
             }

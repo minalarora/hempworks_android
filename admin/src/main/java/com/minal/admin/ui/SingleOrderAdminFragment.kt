@@ -113,6 +113,7 @@ class SingleOrderAdminFragment: BaseFragment<FragmentSingleOrderBinding>() {
                             idTvPayment.text = payment
                             idTvDiscount.text = discountprice.toString()
                             idTvTotal.text = totalprice.toString()
+                            idTvWallet.text = walletprice.toString()
 
                             idTvAddress.text = "${address.address1}, ${address.city}, ${address.pincode}, ${address.state}"
                             orderStatusType = status

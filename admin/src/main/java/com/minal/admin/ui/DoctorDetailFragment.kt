@@ -187,6 +187,15 @@ class DoctorDetailFragment: BaseFragment<FragmentDoctorDetailBinding>() {
             )
         }
 
+        mBinding.idTvLedger.setOnClickListener {
+            addFragment(
+                isAddToBackStack = true,
+                R.id.idFcvAdmin,
+                LedgerFragment.getInstance(doc),
+                LedgerFragment.TAG
+            )
+        }
+
         mBinding.idRbApprove.setOnClickListener {
             mBinding.idRbApprove.isChecked = true
             mBinding.idRbReject.isChecked = false

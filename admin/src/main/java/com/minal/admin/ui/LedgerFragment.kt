@@ -24,6 +24,7 @@ import com.minal.admin.data.viewmodel.AdminViewModel
 import com.minal.admin.databinding.FragmentCreateBlogBinding
 import com.minal.admin.databinding.FragmentLedgerBinding
 import com.minal.admin.ext_fun.baseActivity
+import com.minal.admin.ext_fun.replaceFragment
 import com.minal.admin.ext_fun.showToast
 import com.minal.admin.utils.FileUtils
 import com.minal.admin.utils.OrderListener
@@ -86,8 +87,11 @@ class LedgerFragment : BaseFragment<FragmentLedgerBinding>() {
         viewModel.ledgerList.observe(viewLifecycleOwner) {
             mBinding.recyclerview.adapter = LedgerAdapter(it as ArrayList<Ledger>, object : OrderListener {
                 override fun dataPass(position: Int?, v: View?, data: OrderList?) {
-                    //NAVIGATE TO SINGLE ORDER
-                }
+                    replaceFragment(isAddToBackStack = true,
+                        R.id.idFcvAdmin,
+                        SingleOrderAdminFragment.getInstance(data?.id.toString()),
+                        SingleOrderAdminFragment.TAG
+                    )                }
 
             })
         }
