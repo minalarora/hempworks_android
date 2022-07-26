@@ -5,10 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.minal.admin.data.response.OrderList
 import com.minal.admin.data.response.ledger.*
-import com.minal.admin.databinding.ItemCreditBinding
-import com.minal.admin.databinding.ItemPaymentHistoryBinding
-import com.minal.admin.databinding.ItemWalletBinding
-import com.minal.admin.databinding.LayoutOrderBinding
+import com.minal.admin.databinding.*
 import com.minal.admin.utils.OrderListener
 
 
@@ -76,7 +73,7 @@ class LedgerAdapter(private var list: ArrayList<Ledger> = mutableListOf<Ledger>(
         }
     }
 
-    class PaymentViewHolder private constructor(val binding: ItemPaymentHistoryBinding) : RecyclerView.ViewHolder(binding.root){
+    class PaymentViewHolder private constructor(val binding: ItemPaymentHistoryAdminBinding) : RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: Transaction) {
             binding.viewmodel = PaymentHistoryViewModel(binding.root.context, item)
@@ -86,14 +83,14 @@ class LedgerAdapter(private var list: ArrayList<Ledger> = mutableListOf<Ledger>(
         companion object {
             fun from(parent: ViewGroup): PaymentViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemPaymentHistoryBinding.inflate(layoutInflater, parent, false)
+                val binding = ItemPaymentHistoryAdminBinding.inflate(layoutInflater, parent, false)
                 binding.root.clipToOutline = true
                 return PaymentViewHolder(binding)
             }
         }
     }
 
-    class CreditViewHolder private constructor(val binding: ItemCreditBinding) : RecyclerView.ViewHolder(binding.root){
+    class CreditViewHolder private constructor(val binding: ItemCreditAdminBinding) : RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: CreditHistory) {
             binding.viewmodel = CreditHistoryViewModel(binding.root.context, item)
@@ -103,14 +100,14 @@ class LedgerAdapter(private var list: ArrayList<Ledger> = mutableListOf<Ledger>(
         companion object {
             fun from(parent: ViewGroup): CreditViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemCreditBinding.inflate(layoutInflater, parent, false)
+                val binding = ItemCreditAdminBinding.inflate(layoutInflater, parent, false)
                 binding.root.clipToOutline = true
                 return CreditViewHolder(binding)
             }
         }
     }
 
-    class WalletViewHolder private constructor(val binding: ItemWalletBinding) : RecyclerView.ViewHolder(binding.root){
+    class WalletViewHolder private constructor(val binding: ItemWalletAdminBinding) : RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: WalletHistory) {
             binding.viewmodel = WalletHistoryViewModel(binding.root.context, item)
@@ -120,7 +117,7 @@ class LedgerAdapter(private var list: ArrayList<Ledger> = mutableListOf<Ledger>(
         companion object {
             fun from(parent: ViewGroup): WalletViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemWalletBinding.inflate(layoutInflater, parent, false)
+                val binding = ItemWalletAdminBinding.inflate(layoutInflater, parent, false)
                 binding.root.clipToOutline = true
                 return WalletViewHolder(binding)
             }
