@@ -8,6 +8,7 @@ import com.minal.admin.data.response.OrderList
 import com.minal.admin.databinding.LayoutOrderBinding
 import com.minal.admin.utils.CalendarUtils
 import com.minal.admin.utils.OrderListener
+import java.text.SimpleDateFormat
 
 class AllOrderAdminAdapter(val mContext: Context, val mOrderListener: OrderListener,
                       private var mItemList: ArrayList<OrderList> = arrayListOf(),
@@ -55,9 +56,12 @@ class AllOrderAdminAdapter(val mContext: Context, val mOrderListener: OrderListe
 
             dataItems?.apply {
                 mBinding.apply {
-                    idTvOId.text = id.toString()
-                    idTvStatus.text = status
-                    idTvTime.text = doctorobject.name
+                    val dateFormat = SimpleDateFormat("dd MMM yyyy  hh:mm:ss a");
+                    val dateString: String = dateFormat.format(date)
+
+                    idTvOId.text = id.toString() + ", " + dateString
+                    idTvStatus.text = "Order status: $status"
+                    idTvTime.text = "Doctorname:" + doctorobject.name
                     idTvPayment.text= payment
                     idTvPrice.text = discountprice.toString()
                 }

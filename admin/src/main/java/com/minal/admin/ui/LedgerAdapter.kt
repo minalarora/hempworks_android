@@ -1,5 +1,6 @@
 package com.minal.admin.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,6 +8,7 @@ import com.minal.admin.data.response.OrderList
 import com.minal.admin.data.response.ledger.*
 import com.minal.admin.databinding.*
 import com.minal.admin.utils.OrderListener
+import java.text.SimpleDateFormat
 
 
 class LedgerAdapter(private var list: ArrayList<Ledger> = mutableListOf<Ledger>() as ArrayList<Ledger>,
@@ -48,9 +50,14 @@ class LedgerAdapter(private var list: ArrayList<Ledger> = mutableListOf<Ledger>(
         fun bind(item: OrderList, mOrderListener: OrderListener) {
             item?.apply {
                 binding.apply {
-                    idTvOId.text = id.toString()
-                    idTvStatus.text = status
-                    idTvTime.text = date.toString()
+
+                    @SuppressLint("SimpleDateFormat")
+                    val dateFormat = SimpleDateFormat("dd MMM yyyy  hh:mm:ss a");
+                    val dateString: String = dateFormat.format(date)
+
+                    idTvOId.text = id.toString() + ", " + dateString
+                    idTvStatus.text = "Order status: $status"
+                    idTvTime.text = "Doctorname:" + doctorobject.name
                     idTvPayment.text= payment
                     idTvPrice.text = discountprice.toString()
                 }

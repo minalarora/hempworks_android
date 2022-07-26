@@ -107,7 +107,7 @@ class SingleOrderAdminFragment: BaseFragment<FragmentSingleOrderBinding>() {
                             idTvName.text = doctorobject.name
                             idTvClinic.text = doctorobject.clinic
                             idTvId.text = id.toString()
-                            idTvCreated.text = doctorobject.createdAt
+                            idTvCreated.text = date
                             idTvEmail.text = doctorobject.email
                             idTvMobile.text = doctorobject.mobile
                             idTvPayment.text = payment

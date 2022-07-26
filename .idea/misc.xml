@@ -24,6 +24,7 @@
         <entry key="admin/src/main/res/layout/item_credit.xml" value="0.4244791666666667" />
         <entry key="admin/src/main/res/layout/item_payment_history.xml" value="0.4244791666666667" />
         <entry key="admin/src/main/res/layout/item_wallet.xml" value="0.4244791666666667" />
+        <entry key="admin/src/main/res/layout/item_wallet_admin.xml" value="0.4244791666666667" />
         <entry key="admin/src/main/res/layout/layout_order.xml" value="0.4244791666666667" />
         <entry key="admin/src/main/res/layout/layout_product_of_order.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/drawable/background_orange_corner_radius.xml" value="0.196" />
