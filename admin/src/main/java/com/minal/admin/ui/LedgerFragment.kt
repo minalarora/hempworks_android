@@ -94,6 +94,7 @@ class LedgerFragment : BaseFragment<FragmentLedgerAdminBinding>() {
                     )                }
 
             })
+
         }
 
         viewModel.paymentResponse.observe(viewLifecycleOwner) {
@@ -110,5 +111,4 @@ class LedgerFragment : BaseFragment<FragmentLedgerAdminBinding>() {
 
 
     }
-
 }
