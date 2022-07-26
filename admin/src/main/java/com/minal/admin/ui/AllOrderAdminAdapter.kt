@@ -57,7 +57,7 @@ class AllOrderAdminAdapter(val mContext: Context, val mOrderListener: OrderListe
                 mBinding.apply {
                     idTvOId.text = id.toString()
                     idTvStatus.text = status
-                    idTvTime.text = date.toString()
+                    idTvTime.text = doctorobject.name
                     idTvPayment.text= payment
                     idTvPrice.text = discountprice.toString()
                 }

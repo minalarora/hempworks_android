@@ -66,7 +66,7 @@ class AllOrderAdapter(val mContext: Context, val mOrderListener: OrderListener,
                  mBinding.apply {
                      idTvOId.text = id.toString()
                      idTvStatus.text = status
-                     idTvTime.text = date.toString()
+                     idTvTime.text = doctorobject.name
                      idTvPayment.text= payment
                      idTvPrice.text = discountprice.toString()
                  }
@@ -75,9 +75,6 @@ class AllOrderAdapter(val mContext: Context, val mOrderListener: OrderListener,
             mBinding.idRlOrder.setOnClickListener {
                 mOrderListener.dataPass(adapterPosition,it,dataItems)
             }
-
-
-
         }
     }
 
