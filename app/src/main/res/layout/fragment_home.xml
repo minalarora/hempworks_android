@@ -183,7 +183,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/offer_banner2"
+                            glideImage="@{viewmodel.imageResponse.url}"
                             tools:src="@drawable/offer_banner2" />
 
                     </androidx.cardview.widget.CardView>

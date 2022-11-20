@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.hemp.works.base.BaseViewModel
+import com.hemp.works.dashboard.model.Order
 import com.hemp.works.dashboard.model.Prescription
 import com.hemp.works.dashboard.prescription.data.repository.PrescriptionRepository
 import kotlinx.coroutines.launch
@@ -37,21 +38,29 @@ class PrescriptionViewModel  @Inject constructor(private val repository: Prescri
     private var dateRange: Pair<Date, Date>? = null
 
     private fun filterList(list: List<Prescription>) : List<Prescription> {
-       (if (dateRange != null) {
+       val filteredList = (if (dateRange != null) {
             list.filter { prescription ->
                 prescription.date!!.after(dateRange!!.first) && prescription.date!!.before(dateRange!!.second)
             }
         } else {
             list
-        }).also {
-            return if (!description.isNullOrBlank()) {
-                it.filter { prescription ->
+        }).apply {
+             if (!description.isNullOrBlank()) {
+                filter { prescription ->
                     prescription.description?.contains(description!!, true) == true
                 }
-            } else {
-                it
             }
        }
+
+        val expandedList = mutableListOf<Prescription>()
+        for (prescriptionObject in filteredList) {
+            if (prescriptionObject.prescriptions.isEmpty()) continue
+            for (prescriptionMedias in prescriptionObject.prescriptions) {
+                val prescription = prescriptionObject.copy(prescription = prescriptionMedias.prescription, type = prescriptionMedias.type)
+                expandedList.add(prescription)
+            }
+        }
+        return expandedList
     }
 
     fun fetchPrescriptions() {

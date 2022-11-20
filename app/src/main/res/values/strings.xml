@@ -111,7 +111,7 @@
     <string name="upload_prescription">Upload Prescription</string>
     <string name="max_30_words">Max 30 words...</string>
     <string name="write_here">Write here...</string>
-    <string name="add_description">Add Description (Max 30 words... )</string>
+    <string name="add_description">Add Description (Max 100 words... )</string>
     <string name="select_dates">Select Dates</string>
     <string name="note_only_image_and_pdf_can_be_uploaded">Note: Only Image and PDF can be uploaded.</string>
     <string name="your_orders">Your Orders</string>

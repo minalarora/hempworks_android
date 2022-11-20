@@ -1,5 +1,6 @@
 package com.hemp.works.dashboard.home.ui
 
+import android.opengl.Visibility
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -21,6 +22,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     val blogList = repository.blogList
     val booleanResponse = repository.
     booleanResponse
+    val imageResponse = repository.imageResponse
     val pendingAmount = repository.pendingAmount
 
     private val _scroll = MutableLiveData<Int>(0)
@@ -28,6 +30,9 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
 
     private val _bannerVisibility = MutableLiveData(false)
     val bannerVisibility: LiveData<Boolean> = _bannerVisibility
+
+    private val _offerVisibility = MutableLiveData(false)
+    val offerVisibility: LiveData<Boolean> = _offerVisibility
 
     private val _categoryVisibility = MutableLiveData(false)
     val categoryVisibility: LiveData<Boolean> = _categoryVisibility
@@ -81,6 +86,10 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
 
     fun handleBannerVisibility(isEmpty: Boolean) {
         _bannerVisibility.postValue(!isEmpty)
+    }
+
+    fun handleOfferVisibility(visibility: Boolean) {
+        _offerVisibility.postValue(visibility)
     }
 
     fun handleCategoryVisibility(isEmpty: Boolean) {

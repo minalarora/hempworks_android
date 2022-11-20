@@ -1,6 +1,7 @@
 package com.hemp.works.dashboard.home.data.remote
 
 import com.hemp.works.base.BooleanResponse
+import com.hemp.works.base.ImageResponse
 import com.hemp.works.dashboard.model.*
 import com.hemp.works.login.data.model.User
 import retrofit2.Response
@@ -11,6 +12,9 @@ interface HomeService {
 
     @GET("/v1/banner")
     suspend fun fetchBanners(): Response<List<Banner>>
+
+    @GET("/v1/offer")
+    suspend fun fetchOffer(): Response<ImageResponse>
 
     @GET("/v1/category/all")
     suspend fun fetchCategories(): Response<List<Category>>

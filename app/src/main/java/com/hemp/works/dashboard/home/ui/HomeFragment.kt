@@ -42,6 +42,7 @@ import com.hemp.works.di.injectViewModel
 import com.hemp.works.login.LoginActivity
 import com.hemp.works.login.ui.LoginFragmentDirections
 import com.hemp.works.utils.PreferenceManagerUtil
+import com.hemp.works.utils.setImage
 import java.text.SimpleDateFormat
 import javax.inject.Inject
 
@@ -233,6 +234,10 @@ class HomeFragment : Fragment(), Injectable {
             (binding.bannerRecyclerview.adapter as BannerAdapter).submitList(it)
             viewModel.handleBannerVisibility(it.isEmpty())
             if (it.isNotEmpty()) viewModel.startScrolling()
+        }
+
+        viewModel.imageResponse.observe(viewLifecycleOwner) {
+            viewModel.handleOfferVisibility(true)
         }
 
         viewModel.categoryList.observe(viewLifecycleOwner) {

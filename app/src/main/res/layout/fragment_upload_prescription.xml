@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toStartOf="@+id/upload_imageview"
                 android:gravity="end"
-                android:text="@{viewmodel.isFile ? viewmodel.fileName : @string/note_only_image_and_pdf_can_be_uploaded}"
+                android:text="@{viewmodel.isFile ? viewmodel.fileNames.toString() : @string/note_only_image_and_pdf_can_be_uploaded}"
                 tools:text="@string/note_only_image_and_pdf_can_be_uploaded" />
 
         </RelativeLayout>
@@ -130,9 +130,9 @@
             android:background="@drawable/edittext_orange_corner_radius"
             android:hint="@string/write_here"
             android:padding="@dimen/_8sdp"
-            android:lines="3"
+            android:lines="7"
             android:gravity="start"
-            android:maxLength="30"
+            android:maxLength="100"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/description_title" />

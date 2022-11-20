@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hemp.works.base.BaseRepository
 import com.hemp.works.base.Constants
+import com.hemp.works.base.ImageResponse
 import com.hemp.works.base.LiveEvent
 import com.hemp.works.dashboard.home.data.remote.HomeRemoteDataSource
 import com.hemp.works.dashboard.model.*
@@ -49,6 +50,10 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
     val booleanResponse: LiveData<Boolean>
         get() = _booleanResponse
 
+    private val _imageResponse = MutableLiveData<ImageResponse>()
+    val imageResponse: LiveData<ImageResponse>
+        get() = _imageResponse
+
     private val _pendingAmount = LiveEvent<ResponsePendingAmount>()
     val pendingAmount: LiveData<ResponsePendingAmount>
         get() = _pendingAmount
@@ -64,6 +69,7 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
             val deferredAllProductList = async { getResult(handleLoading = false) { remoteDataSource.fetchAllProducts() } }
             val deferredInstagramList = async { getResult(handleLoading = false) { remoteDataSource.fetchInstagram() } }
             val deferredBlogList = async { getResult(handleLoading = false) { remoteDataSource.fetchAllBlogs() } }
+            val deferredOffer = async { getResult(handleLoading = false) { remoteDataSource.fetchOffer() } }
 
 
             deferredBannerList.await()?.let {
@@ -85,6 +91,10 @@ class HomeRepository @Inject constructor(private val remoteDataSource: HomeRemot
 
             deferredBlogList.await()?.let {
                 it.data?.let { list -> _blogList.postValue(list) }
+            }
+
+            deferredOffer.await()?.let {
+                it.data?.let { offer -> _imageResponse.postValue(offer) }
             }
 
             _loading.postValue(false)

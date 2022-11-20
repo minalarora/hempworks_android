@@ -30,6 +30,7 @@ import com.hemp.works.di.injectViewModel
 import com.hemp.works.login.ui.CreateFragment
 import com.hemp.works.utils.FileUtils
 import com.hemp.works.utils.PreferenceManagerUtil
+import java.io.File
 import javax.inject.Inject
 
 
@@ -87,7 +88,7 @@ class UploadPrescriptionFragment : Fragment(), Injectable {
         }
 
         viewModel.mediaUrl.observe(viewLifecycleOwner) {
-            if (!it.success) viewModel.removeMedia()
+            if (it.any { imageResponse -> !imageResponse.success }) viewModel.removeMedia()
         }
 
         viewModel.booleanResponse.observe(viewLifecycleOwner) {
@@ -140,6 +141,7 @@ class UploadPrescriptionFragment : Fragment(), Injectable {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         val chooser: Intent? = Intent.createChooser(intent, getString(R.string.upload_prescription))
         intent.addCategory(Intent.CATEGORY_OPENABLE)
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
         intent.type = if (mimeTypes.size == 1) mimeTypes[0] else "*/*"
         if (mimeTypes.isNotEmpty()) {
@@ -155,19 +157,43 @@ class UploadPrescriptionFragment : Fragment(), Injectable {
         super.onActivityResult(requestCode, resultCode, data)
         if (data != null) {
             if (resultCode == Activity.RESULT_OK && requestCode == PICK_FILE_REQUEST) {
-                if (isFileUploadAllowed(data.data, FileUtils.MAX_FILE_SIZE)) {
-                    // Get the Uri of the selected file
-                    FileUtils.getFileFromUri(
-                        requireContext(),
-                        data.data,
-                        getString(R.string.doctor_certificate),
-                        Environment.DIRECTORY_DOCUMENTS
-                    )?.let { file ->
-                        FileUtils.getFileTypeFromUri(requireContext(), data.data)?.let {
-                            viewModel.saveMedia(file, it)
+
+                val files = ArrayList<Pair<File, String>>()
+
+                if (data.data != null) {
+                    if (isFileUploadAllowed(data.data, FileUtils.MAX_FILE_SIZE)) {
+                        // Get the Uri of the selected file
+                        FileUtils.getFileFromUri(
+                            requireContext(),
+                            data.data,
+                            getString(R.string.doctor_certificate),
+                            Environment.DIRECTORY_DOCUMENTS
+                        )?.let { file ->
+                            FileUtils.getFileTypeFromUri(requireContext(), data.data)?.let {
+                                files.add(Pair(file, it))
+                            }
                         }
                     }
+                } else if (data.clipData != null) {
+                    for (i in 0 until data.clipData!!.itemCount) {
+
+                        if (isFileUploadAllowed(data.clipData!!.getItemAt(i).uri, FileUtils.MAX_FILE_SIZE)) {
+                            // Get the Uri of the selected file
+                            FileUtils.getFileFromUri(
+                                requireContext(),
+                                data.clipData!!.getItemAt(i).uri,
+                                getString(R.string.doctor_certificate),
+                                Environment.DIRECTORY_DOCUMENTS
+                            )?.let { file ->
+                                FileUtils.getFileTypeFromUri(requireContext(), data.clipData!!.getItemAt(i).uri)?.let {
+                                    files.add(Pair(file, it))
+                                }
+                            }
+                        }
+
+                    }
                 }
+                viewModel.saveMedia(files)
             }
         }
     }

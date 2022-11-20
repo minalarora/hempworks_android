@@ -19,24 +19,37 @@ class PrescriptionRepository  @Inject constructor(private val remoteDataSource: 
     val booleanResponse: LiveData<Boolean>
         get() = _booleanResponse
 
-    private val _imageResponse = LiveEvent<ImageResponse>()
-    val imageResponse: LiveData<ImageResponse>
+    private val _imageResponse = LiveEvent<ArrayList<ImageResponse>>()
+    val imageResponse: LiveData<ArrayList<ImageResponse>>
         get() = _imageResponse
 
     private val _prescriptionList = MutableLiveData<List<Prescription>>()
     val prescriptionList: LiveData<List<Prescription>>
         get() = _prescriptionList
 
-    suspend fun uploadImage(image: MultipartBody.Part) {
-        getResult(Constants.UNABLE_TO_UPLOAD_IMAGE) { remoteDataSource.uploadPrescriptionImage(image)}?.let {
-            it.data?.let { imageResponse -> _imageResponse.postValue(imageResponse)  }
+    suspend fun uploadFiles(files: ArrayList<Pair<MultipartBody.Part, String>>) {
+        val imageResponses: ArrayList<ImageResponse> = arrayListOf()
+        for (i in 0 until files.size){
+            val imageResponse = if (files[i].second == "image") {
+                uploadImage(files[i].first)
+            } else {
+                uploadPDF(files[i].first)
+            }
+
+            imageResponse?.let {
+                imageResponses.add(imageResponse)
+            }
         }
+
+        _imageResponse.postValue(imageResponses)
     }
 
-    suspend fun uploadPDF(pdf: MultipartBody.Part) {
-        getResult(Constants.UNABLE_TO_UPLOAD_PDF) { remoteDataSource.uploadPrescriptionPDF(pdf)}?.let {
-            it.data?.let { imageResponse -> _imageResponse.postValue(imageResponse)  }
-        }
+    suspend fun uploadImage(image: MultipartBody.Part) : ImageResponse? {
+        return getResult(Constants.UNABLE_TO_UPLOAD_IMAGE) { remoteDataSource.uploadPrescriptionImage(image)}?.data
+    }
+
+    suspend fun uploadPDF(pdf: MultipartBody.Part) : ImageResponse? {
+        return getResult(Constants.UNABLE_TO_UPLOAD_PDF) { remoteDataSource.uploadPrescriptionPDF(pdf)}?.data
     }
 
     suspend fun createPrescription(prescription: Prescription) {
@@ -47,7 +60,10 @@ class PrescriptionRepository  @Inject constructor(private val remoteDataSource: 
 
     suspend fun fetchPrescriptions() {
         getResult(Constants.GENERAL_ERROR_MESSAGE) { remoteDataSource.fetchPrescriptions()}?.let {
-            it.data?.let { list -> _prescriptionList.postValue(list) }
+            it.data?.let {
+                    list ->
+
+                _prescriptionList.postValue(list) }
         }
     }
 }
