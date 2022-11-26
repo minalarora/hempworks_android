@@ -80,7 +80,15 @@ class PresOfFragment: BaseFragment<FragmentPrescripBinding>(), PrescripListener 
                 is Result.Success -> {
                     Log.d("data",it.data.toString())
 
-                    mPrescriptionAdapter.addItems(it.data)
+                    val expandedList = mutableListOf<ResponsePresList>()
+                    for (prescriptionObject in it.data) {
+                        if (prescriptionObject.prescriptions.isEmpty()) continue
+                        for (prescriptionMedias in prescriptionObject.prescriptions) {
+                            val prescription = prescriptionObject.copy(prescription = prescriptionMedias.prescription, type = prescriptionMedias.type)
+                            expandedList.add(prescription)
+                        }
+                    }
+                    mPrescriptionAdapter.addItems(expandedList)
 
                     mBinding.idRvOrders.apply {
                         layoutManager =

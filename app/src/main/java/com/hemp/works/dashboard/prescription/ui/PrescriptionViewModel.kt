@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.hemp.works.base.BaseViewModel
-import com.hemp.works.dashboard.model.Order
 import com.hemp.works.dashboard.model.Prescription
 import com.hemp.works.dashboard.prescription.data.repository.PrescriptionRepository
 import kotlinx.coroutines.launch
@@ -15,7 +14,6 @@ import java.util.*
 import javax.inject.Inject
 
 class PrescriptionViewModel  @Inject constructor(private val repository: PrescriptionRepository): BaseViewModel(repository) {
-
 
     private val _prescriptionsList: MutableLiveData<List<Prescription>> = Transformations.map(repository.prescriptionList) {
        filterList(it)
@@ -64,7 +62,7 @@ class PrescriptionViewModel  @Inject constructor(private val repository: Prescri
     }
 
     fun fetchPrescriptions() {
-            viewModelScope.launch {   repository.fetchPrescriptions() }
+            viewModelScope.launch { repository.fetchPrescriptions() }
     }
 
     fun updateDateRange(startDateInMillis: Long, endDateInMillis: Long) {

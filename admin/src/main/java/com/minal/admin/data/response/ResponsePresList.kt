@@ -16,11 +16,20 @@ data class ResponsePresList(
     @Json(name = "id")
     var id: Long,
     @Json(name = "prescription")
-    var prescription: String,
+    var prescription: String? = null,
     @Json(name = "type")
-    var type: String,
+    var type: String? = null,
     @Json(name = "updatedAt")
     var updatedAt: String,
     @Json(name = "__v")
-    var v: Int
+    var v: Int,
+    @Json(name = "prescriptions")
+    var prescriptions: ArrayList<PrescriptionMedia> = arrayListOf()
+)
+
+data class PrescriptionMedia constructor(
+    @Json(name = "prescription")
+    var prescription: String? = null,
+    @Json(name = "type")
+    var type: String? = null,
 )
