@@ -115,7 +115,7 @@ class TNLViewModel @Inject constructor(private val repository: TNLRepository): B
         _titleText.postValue(when(fragmentType) {
             TNLType.TUTORIAL -> "Tutorial"
             TNLType.NEWSLETTER -> "NewsLetter"
-            TNLType.LIVESESSION -> "Live Session"
+            TNLType.LIVESESSION -> "Clinical Study"
         })
     }
 }

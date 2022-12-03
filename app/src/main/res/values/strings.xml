@@ -61,6 +61,7 @@
     <string name="dosage_calculator">Dosage Calculator</string>
     <string name="profile">Profile</string>
     <string name="live_sessions">Live Sessions</string>
+    <string name="clinical_study">Clinical Study</string>
     <string name="tutorials">Tutorials</string>
     <string name="orders">Orders</string>
     <string name="newsletter">Newsletter</string>
@@ -420,6 +421,7 @@
     </div>
     ]]></string>
     <string name="courses">Courses</string>
+    <string name="case_study">Case Study</string>
     <string name="i_hereby_acknowledge_agree_amp_accept_the_above_terms_and_conditions_i_understand_the_course_is_intended_for_information_only"><![CDATA[I hereby acknowledge, agree & accept the above terms and conditions. I understand the course is intended for information only.]]></string>
     <string name="course_tac_checkbox_error"><![CDATA[Kindly agree & accept the above terms and conditions]]></string>
     <string name="thank_you_for_apply">Thank you for applying.</string>

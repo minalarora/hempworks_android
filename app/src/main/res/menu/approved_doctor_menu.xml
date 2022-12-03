@@ -26,11 +26,11 @@
         <item
             android:id="@+id/live_sessions"
             android:icon="@drawable/ic_menu_live_sessions"
-            android:title="@string/live_sessions" />
+            android:title="@string/clinical_study" />
         <item
             android:id="@+id/courses"
             android:icon="@drawable/ic_menu_course"
-            android:title="@string/courses" />
+            android:title="@string/case_study" />
         <item
             android:id="@+id/tutorials"
             android:icon="@drawable/ic_menu_tutorials"
